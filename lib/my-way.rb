@@ -251,6 +251,11 @@ class Myway
     end.to_html
   end
 
+  get "/diary/*" do |rest|
+    warn rest
+    redirect url(rest)
+  end
+
   get "/*" do |slug|
     slug=slug.strip.gsub(/_+$/,"").downcase
     a=@blog.articles.find do |art|
@@ -263,6 +268,7 @@ class Myway
       halt 404
     end
   end
+
 
   def route_missing
     raise Sinatra::NotFound
