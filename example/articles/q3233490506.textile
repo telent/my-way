@@ -1,0 +1,28 @@
+title: I don't know why, but it appears that spamassassin has no
+author: Daniel Barlow
+date: Wed, 19 Jun 2002 16:48:26 +0000
+
+I don't know why, but it appears that <a
+href="http://spamassassin.taint.org." >spamassassin</a> has no
+<tt>blacklist_to</tt> command.  I'd find this very useful as I have
+old addresses which I still need to check because they're published in
+various places, but which I haven't used otherwise in the last four
+years, and still get a steady stream of spam.
+
+<p>If you're using spamassassin through your .forward file, though<sup>*</sup> -
+or presumably also procmail - it's easy to fake
+
+<pre>
+header SENT_TO_DETACHED To =~ /dan\@detached.demon.co.uk/
+score SENT_TO_DETACHED 3.5
+</pre>
+
+That should tip the balance a little.
+
+<p><sup>*</sup> apparently this doesn't work if you use spamd/spamc
+because it won't pick up new rules from the user_prefs file in that
+case.  This is a shame if so, because I really do need to convert to a
+daemon-based approach - currently I get massive thrashing and load
+averages exceeding 15 when I reintroduce my laptop to the net after
+having been away.  A fix would be nice.
+

@@ -1,0 +1,9 @@
+title: comp.lang.lisp is having its annual "free
+author: Daniel Barlow
+date: Tue, 18 Mar 2003 15:30:49 +0000
+
+<p> comp.lang.lisp is having its <a
+href="http://ww.telent.net/diary/2002/4/#2.1047" >annual</a> "free
+software is a bad thing" debate again.
+
+<g

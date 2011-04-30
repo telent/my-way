@@ -1,0 +1,27 @@
+title: Something odd happened to the new sourceforge mail archive
+author: Daniel Barlow
+date: Wed, 6 Mar 2002 1:14:10 +0000
+
+
+<p> Something odd happened to the new sourceforge mail archive
+interface and I don't know what.  The latest messages available in it
+seem to be getting gradually older and older
+
+<p>Oh well
+
+<p>Lisp news: <a
+href="http://www.geocrawler.com/lists/3/SourceForge/12820/0/8017609/"
+>new asdf version</a> with extra <a
+href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/cclan/asdf/"
+>silly functions</a> to help cclan package maintainers build their packages.
+<a href="http://ww.telent.net/lisp/free-the-x3j-thirteen/2002.02.html"
+>New ftx13</a>
+
+<p>Non-lisp news: passed my driving test, yesterday (i.e. Monday)
+morning.  Some theories claim that this means I am no longer eligible
+to hack on SBCL.
+
+<p>Tomorrow, I hope, vendor-neutral cclan packages for Araneida,
+db-sockets, possibly also cliki.  The plan requires getting some work
+done too, so we'll see ...
+

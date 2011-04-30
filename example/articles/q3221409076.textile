@@ -1,0 +1,27 @@
+title: Later
+author: Daniel Barlow
+date: Wed, 30 Jan 2002 19:51:16 +0000
+
+<p> Later ...
+
+<p> On Saturday, <a href="http://www.advogato.org/person/mbit"
+>Simon</a> (who would get a link to his <i>real</i> homepage, only it
+appears to have turned into something else) turned up, so time for the
+impromptu tour of Oxford's Historic Buildings.
+
+<p>Well, some of them.  We only had the afternoon available, so I
+picked an unrepresentative subset plus the Norrington Room at Blackwells.
+And it rained, which is not unusual for the area at this time of year.
+
+<p>A lot of the time since then has been spent hitting (and where
+possible, fixing) small bugs in SBCL PPC.  Flaoting point traps and
+endianness; suddenly I know more about IEEE 754 than I (a) ever felt the
+need to, or (b) did after a month studying numerical analysis at
+university.  Which is, actually, still not much.  Kahan looks like an
+amazingly cool guy, though.
+
+<p>In between that I've been looking for file descriptor leaks in
+Araneida.  I can't find any way to trigger them on demand, and I can't
+find out what causes them, and they're still happening.  Bah.  I
+thought common lisp was supposed to be good for robust systems?
+

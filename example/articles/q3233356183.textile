@@ -1,0 +1,68 @@
+title: You probably won't read this until the Internet comes back
+author: Daniel Barlow
+date: Tue, 18 Jun 2002 3:29:43 +0000
+
+<p> You probably won't read this until the Internet comes back ...
+
+<p> I'd like to recommend the <a href="http://www.ntl.com/">NTL web
+site</a> as a great demonstration of <I>so many</i> ways to get the design
+of a web site wrong.  Primarily at this present time
+
+<ul>
+
+<li> graphic-heavy design guaranteed to annoy anyone who just had to
+fall back to their emergency analogue modem
+
+<li> no indication anywhere of what the current known faults in the
+network are
+
+<li> or how to report a new one
+
+<li> and completely robot-proof: any Google query for "ntl fault"
+will go straight to the <a href="http://www.nthell.com/">NTHell</a>
+pages instead.  Nice one ...
+
+<li> (actually, there are some Google results for NTL Ireland, but
+luckily NTL have removed the pages in question since they were
+indexed, so all they show now are IIS error messages)
+
+</li>
+</ul>
+
+<p>Eventually I thought to check Robin Walker's (amazing, frankly) <a
+href="http://homepage.ntlworld.com/robin.d.h.walker/cmtips/" >Cable
+Modem Troubleshooting Tips</a> and found the numbers I wanted in the
+<a
+href="http://homepage.ntlworld.com/robin.d.h.walker/cmtips/techsupp.html"
+>Tech Support</a> section there.  For the benefit of future Google
+users who experience similar problems and may end up at this page, 
+0800 052 4315 for the status recording, 0845 650 0121 for the helpline.
+
+<p>For the record, the NTL telephone voicemaze jail is almost as
+well-planned.  I dialled the status recording, which is
+information-rich in much the same way as 10 Angstroms is a long way:
+for each outage it tells you who it affects, that it is due to "a
+technical fault", that engineers are aware of it (in fairness, given
+NTL's usual standards of internal communication, it's entirely
+possible that they would announce a fault on the answering machine and
+forget to tell the engineers, so perhaps there is actually some value
+in knowing that they havent screwed up in this particular way) and
+that they apologise for any inconvenience.  No estimated time to
+repair, and no fault description which would let a caller make a
+reasoned guess at time to fix either.  But anyway, it didn't mention
+Oxford.
+
+<p>So, try the other number.  It says "for cable modem faults, replace
+the handset and dial 0800 052 4315" which number sounds vaguely
+familiar: not surprising, it's the recorded status line I just called
+to be apologised to by a machine.  So instead I retain the handset, I
+select a plausible-sounding option from the next menu and <i>then</i>
+it tells me that they're rewiring the entire HFC network for expansion
+and Oxford is one of the exchanges that will be off from 1am.  Why
+don't they put that on the service status report?  Call me a
+non-technical person, but by any dictionary definition of service
+status, I'd have said that "no service" is relevant.
+
+<p> Could have been worse, anyway.  At least they didn't play their
+hold music at me.
+

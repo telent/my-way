@@ -1,0 +1,35 @@
+title: Again, the new machine comes with Red Hat, and after ascertaining that
+author: Daniel Barlow
+date: Wed, 29 Jan 2003 15:17:51 +0000
+
+<p>Again, the new machine comes with Red Hat, and after ascertaining that
+it boots using grub and an initrd I really don't fancy replacing it
+with Debian remotely.  But nor, to be honest, do I want to continue
+depending on a probably-soon-to-be-unsupported Red Hat version for
+anything beyond a bare minimum set of services. 
+
+<p>Some slightly cool URLs :
+
+<ul>
+<li> <a href="http://people.debian.org/~walters/chroot.html"
+>http://people.debian.org/~walters/chroot.html</a></li>
+<li><a href="http://capricorn.woot.net/~jdrew/debian-chroot.html"
+>http://capricorn.woot.net/~jdrew/debian-chroot.html</a></li>
+</ul>
+
+<p>and another useless error message for the collection:
+
+<pre>
+Jan 29 15:16:52 eval sshd[878]: PAM rejected by account configuration[9]: Authentication service cannot retrieve authentication info.
+</pre>
+
+<p>(In this case, it turns out to mean "when you renamed the user
+you're trying to ssh in as, you forgot to update the <tt>shadow</tt>
+file")
+
+<p>Most of my time lately has been wrestling with posix job control
+stuff, so that multithreaded SBCL behaves somewhat less than
+completely stupidly when two threads want to read from the same tty at
+once.  Not incredibly exciting, although I might some time soon be
+persuaded to write a few words about the xterm -S option before I
+forget how it works again.

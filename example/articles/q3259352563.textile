@@ -1,0 +1,59 @@
+title: Superfluous link to someone's weblog entry
+author: Daniel Barlow
+date: Tue, 15 Apr 2003 0:42:43 +0000
+
+Superfluous link to <a href="http://lemonodor.com/archives/000389.html" 
+>someone's weblog entry</a>
+
+<p> So what did I do this weekend?
+
+<p>On Saturday I missed the <a
+href="http://www.gllug.org.uk/meeting-20030412.html" >GLLUG
+meeting</a>, but turned up to the pub afterwards.
+
+<p> On Sunday I implemented some bits of the SB-POSIX interface.
+Knowing that comp.lang.lisp posters from time to time complain about
+the lack of a standard POSIX interface, I also posted its
+specification there in the hope of stimulating some discussion about
+whata standard should look like..  Almost all the discussion I managed
+to stimulate was about the package name, so I'm lacking any real
+guidance as to whether people think it otherwise (a) sucks ass, (b) is
+good enough in all other respects not to need comment, or (c) is
+fundamentally uninteresting.  Ho hum.  That said, if I <i>had</i> had
+a bunch of followups saying "this is really great" I wouldn't have
+been a lot more pleased about it anyway: "this is really great and I'm
+going to lobby my vendor to implement it", or "this is really great,
+and I am a vendor so will implement it" is more what I would consider
+a positive response.  Never mind.
+
+<p> And today, in between telephone calls, I figured out most of how
+to make RPM automatically get package dependency information from the
+asdf :depends-on options.  So far ...
+
+<pre>
+:; ls
+clx-0.5-1_circle.i386.rpm
+detachtty-7-1_circle.i386.rpm
+hemlock-2003.03.06-1_circle.i386.rpm
+ilisp-5.12.0.2003.03.22T193233-1_circle.i386.rpm
+odcl-1.3.1.20030410T230844-1_circle.i386.rpm
+sbcl-0.pre8.54-1_circle.i386.rpm
+uncommonsql-1.2.0.20030410T231957-1_circle.i386.rpm
+uncommonsql-postgresql-1.2.0.20030410T231957-1_circle.i386.rpm
+</pre>
+
+<p>(All this stuff built with Red Hat 8).  I want to add araneida,
+cliki, and maybe the series library to this.  I probably want to make
+it do Debian packages as well (it sort of does already, but it cheats by
+using alien, so the dependencies are a bit skewed).
+
+<p> Predicted FAQ #1: "Native threads?"  A: "Experimental, but yes".
+#2: "How do I get my hands on this".  A: "send me some money".  #3:
+"isn't that against the principles of free software?"  A: "<a
+href="http://www.fsf.org/philosophy/selling.html">no</a>".  Details
+forthcoming (or <a href="mailto:circle@metacircles.com">send email</a>
+if you can't wait) but if you're new to Lisp, this stuff will save you
+more time fiddling with badly documented install procedures than you
+ever spent trying to configure Wine before giving up and buying <a
+href="http://www.codeweavers.com/products/office/">Crossover
+Office</a>.

@@ -1,0 +1,40 @@
+title: Work continues on trying to make my phone behave
+author: Daniel Barlow
+date: Mon, 23 May 2005 22:20:1 +0000
+
+Work continues on trying to make my phone behave.  I missed a bunch of
+calls on Sunday because I diodn't notice it vibrating while I was
+skating, so today I thought I'd sort out a nice mp3 ringtone.  So that
+I remember for next time, and in case Google ever leads other
+similarly-afflicted people here (magic keywords: <b>v220</b>
+<b>mp3</b> <b>ringtone</b> <b>p2k</b>), the procedure is as follows:
+
+<ol> 
+
+<li> Create a suitable mp3.  Actually, I just took one I had handy and
+used dd to chop the first twenty seconds; when I have a moment I'll go
+back and do some fancy editing and eq, and possibly recode it at a lower
+rate.
+
+<li> Upload it to the phone's <tt>/a/mobile/audio/</tt> directory.
+
+<li> (important) Delete MyToneDB.db, which you will find in the same
+directory.  It's probably a good idea to back that file up somewhere
+first.
+
+<li> When you go to Themes -> Sounds on the phone now, it will sit
+there with a "please wait" dialog for longer than usual (several tens
+of seconds, on my phone) - I assume it's rebuilding the MyToneDB file
+- then show your new upload along with all the crummy default rings.
+
+<li> Press the Menu button then 'Apply as Ring Tone'
+
+<li> There may be a power cycle involved somewhere as well (yay, feels
+just like Windows).  Or maybe that bit wasn't necessary.
+
+</ol>
+
+Disclaimer: no warranty/this worked for me - it might not work for
+you/if it breaks your phone, you get to keep both pieces.  Well,
+probably they really belong to your network provider or something, but
+I want no part of it anyway.

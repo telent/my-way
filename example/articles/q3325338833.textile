@@ -1,0 +1,42 @@
+title: I must start diary entries with shorter sentences
+author: Daniel Barlow
+date: Tue, 17 May 2005 18:13:53 +0000
+
+I must start diary entries with shorter sentences.  That or do
+something <i>sensible</i> with my rss generator such that Planet Lisp
+doesn't get really ugly titles, but that would involve hacking and we
+all know I don't do that any more
+
+<p>The Awesome Power of Open Source came through for me in the end: I
+eventually found an app called <a href="http://moto4lin.sf.net"
+>moto4lin</a> on Sourceforge which - after some smacking with the
+gdbhammer, as the error messages are not really conducive to working
+out what on earth it's trying to do - lets me <a
+href="http://moto4lin.sf.net">download pictures and other files on my
+v220 in Linux</a>.
+
+<pre>
+void P2kProc::drv_switchP2K(char * st)
+{
+        char cmd[1024];
+        sprintf(cmd,"echo \"AT+MODE=8\" > %s", (st == 0) ? ACMdev : st);
+        system(cmd);
+}
+</pre>
+
+I'm pretty sure that even C++ has enough library support that you
+could do this without recourse to the shell, but leaving aside the
+slightly questionable style, <tt>AT+MODE=8</tt> has a truly magical
+effect on a v220 - it causes it to stop being a tty, change its USB
+product id, and start presenting some probably-motorola-proprietary
+"P2K" interface to USB, which the moto4lin program will understand.
+Then I can browse the filesystem and also do SEEM editing, which
+latter sounds potentially irreversible so I have decided not to bother
+with until I have some idea what on earth it is.
+
+<p>How to get it <i>out</i> of this P2K mode again, other than by
+disconnecting the USB cable, I don't yet know.  There's no longer any
+tty to which I can issue <tt>AT+MODE=0</tt>
+
+<p>The picture quality is exactly as bad as I was expecting, by the
+way.  Still, nice gimmick.

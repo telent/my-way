@@ -1,0 +1,35 @@
+title: Bcc: dan
+To: lispweb@red-bean.com
+Subject: New (betaish) releases of araneida, cliki, db-sockets
+author: Daniel Barlow
+date: Sun, 12 Jan 2003 4:13:25 +0000
+
+<pre>
+Bcc: dan
+To: lispweb@red-bean.com
+Subject: New (betaish) releases of araneida, cliki, db-sockets
+--text follows this line--
+
+* CLiki is the collaborative community content creation system that
+  most people here have probably heard of already.
+
+* Araneida is the web server it runs on
+
+* db-sockets is the socket library that Araneida uses
+
+SBCL and CMUCL (the latter untested recently) are the implementations
+this all runs on
+
+New versions of the asterisked items are all (at last) now
+available from cCLan, or will be as soon as the mirrors propagate.
+See http://ww.telent.net/cclan-choose-mirror for your nearest.
+
+These are labelled `betaish' because, although the basic code they
+contain has been running on the real CLiki site for some time, there
+may be packaging, portability and other issues that prevent them from
+actually working out of the box.  Any bugs you do find are either
+known or probably trivial, though.  Feedback sought.
+
+Happy New Year, if you mark the occasion at or around this time.  I
+wish you a happy next 12 months anyway, even if you don't.
+</pre>

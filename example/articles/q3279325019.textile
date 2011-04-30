@@ -1,0 +1,28 @@
+title: I have some kind of phone interview thing tomorrow morning, so I
+author: Daniel Barlow
+date: Tue, 2 Dec 2003 3:36:59 +0000
+
+I have some kind of phone interview thing tomorrow morning, so I
+really should be asleep right now.  But
+
+<ul>
+<li> Small SLIME hackage so that the SBCL backend also works with
+Helmut's new code for choosing from a list when multiple definitions
+of a function are found.  Right now this works for generic functions:
+M-. one of them and you get a list of all the methods
+
+<li> Better support for conditional GET in Araneida.  Now when you
+call <b>request-send-headers</b> it returns the HTTP response code it
+sent, and when you call it with a sensible <tt>:last-modified</tt>
+argument and <tt>:conditional t</tt>, it may turn your 200 response
+into a 304.  In which case, you get to go home early without having to
+do that tedious  database query.
+
+<li> Using which, I managed to straighten out the conditional GET in
+<a href="http://www.stargreen.com/">Stargreen</a> a little.  Stargreen
+is an Araneida application but a very old one in parts - possibly
+dating right back to the time before Araneida was so named - and it
+uses bits of the system that I've forgotten exist and I strongly
+suspect nobody else has ever dared try.
+</li>
+</ul>

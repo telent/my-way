@@ -1,0 +1,10 @@
+title: Looks like it's a day for linking to stuff I wrote already
+author: Daniel Barlow
+date: Tue, 18 Nov 2003 15:23:44 +0000
+
+Looks like it's a day for linking to stuff I wrote already.  So,
+<a
+href="http://groups.google.com/groups?q=barlow+raymond+unix+programming&hl=en&lr=&ie=UTF-8&oe=UTF-8&safe=off&selm=87ad7cf3tu.fsf%40noetbook.telent.net&rnum=1" 
+>here's my opinion</a> on ESR's "Art of Unix Programming".
+
+4

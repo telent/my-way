@@ -1,0 +1,31 @@
+title: The other week I talked to an Oracle support guy on the phone
+author: Daniel Barlow
+date: Fri, 4 Oct 2002 13:43:2 +0000
+
+<ul>
+<li>The other week I talked to an Oracle support guy on the phone.  He
+was smart.  We agreed that the configuration we're using is
+unsupported by Oracle (third-party Apache modules in their web
+server), but that it probably should work anyway, and he gave us a
+reasonable workaround.  Then we spent a few minutes talking about the
+suboptimality involved in trying to force-fit a strictly hierarchical
+model of the world onto a real world which is not even vaguely
+hierarchical, which is a subject on which I have fairly strong
+opinions.
+
+<li>Today I get this error message.
+<blockquote>
+An error was encountered while loading page. Failed to initialize
+configuration parameter ApacheMainServer.. Error in the input config
+file. Attribute KeepAlive is a single value attribute.
+</blockquote>
+
+</li>
+</ul>
+
+How can the same company have smart tech support people like that and
+apparently moronic programmers?  <i>Which</i> input config file?
+There are only about eight of the things - and in all cases where the
+word <tt>KeepAlive</tt> is used in any of them, it is indeed followed
+by a single value.
+

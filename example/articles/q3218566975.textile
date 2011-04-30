@@ -1,0 +1,6 @@
+title: The Onshore UncommonSQL CVS repo now supports SBCL
+author: Daniel Barlow
+date: Fri, 28 Dec 2001 22:22:55 +0000
+
+<p> The Onshore UncommonSQL CVS repo now supports SBCL.
+

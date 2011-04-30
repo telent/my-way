@@ -1,0 +1,74 @@
+title: Not a particularly good test, this, because I don't have an unmolested
+author: Daniel Barlow
+date: Sun, 21 Dec 2003 14:16:22 +0000
+
+Not a particularly good test, this, because I don't have an unmolested
+SBCL binary for the same exact version as the one I'm hacking.  But
+here are the numbers, anyway.
+
+<p>Before: an ordinary SBCL 0.8.6.16
+
+<pre>
+* (time (dotimes (i 400) (gc)))
+
+Evaluation took:
+                 20.432 seconds of real time
+                 19.946968 seconds of user run time
+                 0.079988 seconds of system run time
+                 0 page faults and
+                 4935680 bytes consed.
+</pre>
+
+<p>After: an unpurified 0.8.6.37, with some rather vicious cleanups in
+the allocation routines (which seem to have fixed the bug described
+earlier, but more testing will be required)
+
+<pre>
+*  (time (dotimes (i 400) (gc)))
+
+Evaluation took:
+                 13.578 seconds of real time
+                 13.35597 seconds of user run time
+                 0.077988 seconds of system run time
+                 0 page faults and
+                 4096000 bytes consed.
+</pre>
+
+<p>For comparison: CMUCL "x86-linux 3.1.2 18d+", whatever that is
+<pre>
+* (time (dotimes (i 400) (gc)))
+Compiling LAMBDA NIL: 
+Compiling Top-Level Form: 
+
+Evaluation took:
+  12.49 seconds of real time
+  12.315128 seconds of user run time
+  0.057991 seconds of system run time
+  [Run times include 12.37 seconds GC run time]
+  0 page faults and
+  0 bytes consed.
+</pre>
+
+<p>Um... um...  About 35ms per GC, and give that that just returns it
+to CMUCL speeds, I rather suspect that it's all due to fixing the
+fragmentation bug and nothing to do with static space at all.
+
+<p>It should be noted that the stuff to remove fixups and trace tables
+has been disabled temporarily, until I find out why it's breaking
+things.  Due to this and probably other reasons too, the dynamic space
+usage is around 47Mb, and the core is a quite rotund 92Mb.  Yum.
+
+<p>The gencgc cleanups alluded to were the removal of most of the
+special-casing for large objects.  There is now only <i>one</i>
+criterion for whether an object is handled as a large object, which is
+that its size exceeds <tt>large_object_size</tt>.  If so, it will be
+allocated in its own region, which will not share any pages with any
+other region.  It no longer matters whether you call gc_alloc_large or
+gc_quick_alloc_large; the same thing happens in either case.
+
+<p>It's far too close to Christmas to commit any of this right now
+(wait for after 0.8.7) but before I do I'd like to find out whether
+the gencgc policy changes (and the fragmentation bug fix they make
+possible) have any effect on their own, or if this speedup is all due
+to the static space now only being 1456 bytes long.
+

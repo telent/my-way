@@ -1,0 +1,48 @@
+title: Time for a short consumer roundup
+author: Daniel Barlow
+date: Wed, 11 May 2005 12:16:44 +0000
+
+Time for a short consumer roundup.
+
+<ul>
+<li>I remain happy, so far, with my new mp3 player (Creative Zen
+Micro), which is now about 25% full of mp3s - almost all of them rips
+of albums I own already (the only exception so far being an apparently
+legal concert bootleg from archive.org).  When using it on the Tube,
+though, I've realised just how noisy the Central Line is even
+<i>before</i> layering music on top, so I am now also in posession of
+a pair of Sony MDR-EX71 headphones, which fit right inside the ear
+canal and are supposed to cut external noise significantly.  Also
+they're not white, so I'm less likely to be mugged for them (although
+I will probably be unable to hear the mugger behind me anyway; it all
+evens out).  They arrived this morning, and feel ... odd.  Like earplugs,
+which in effect they are of course.  And sound muffled, which probably
+means I need to mess around with the different sizes of earbud.  That
+or get my ears syringed, possibly.
+
+<li>My phone died.  This upsets me as I've had it three years and
+grown to quite like it - insofar as it's possible to like any device
+so antisocial as a mobile phone.  It did a bad job, but it did it
+well.  The replacement is a Motorola V220, which wins points for being
+a USB device and compatible with <a href="http://www.pxh.de/fs/gsmlib/"
+>gsmlib</a>, so I managed to transfer my phonebook into it with little
+trouble.  Other than that I haven't used it enough to form an opinion
+yet.
+
+<li>I bought new skates a couple of weeks ago: these are <a
+href="http://www.londonskaters.com/review-salomon-fsk-crossmax-3-2004.htm"
+>Crossmax 2003</a> (and therefore discounted).  The major
+practical difference from my last pair (Thunder) I suspect is less to
+do with the higher-spec boot, extruded aluminium frame or twincam
+bearings, but the fact they're a size smaller and so <i>fit so much
+better</i>.  My one-footed balance instantly improved a whole lot.
+
+
+<li> My laptop can no longer be described as "new", but I still like
+it.  Only really aggravating feature is that so many of the ports you
+might want to plug and unplug regularly (power, usb, ethernet) are on
+the back behind the screen.   That and the lack of a third mouse button.
+
+</ul>
+
+

@@ -1,0 +1,61 @@
+title: End-of-day roundup
+author: Daniel Barlow
+date: Tue, 20 Nov 2001 23:56:54 +0000
+
+<p> End-of-day roundup
+
+<p> I'd not seen Easy Rider before last night, when Channel 4 showed
+it on TV.  
+
+<ul>
+<li> <p>The bikes looked physically impossible to ride - that incredible
+fork rake?  Actually, I remember reading a magazine article last year
+or so, which indicated that they more or less <i>were</i> impossible to ride.
+So fair enough.
+
+<li> <p>Great soundtrack.  Nice photography.
+
+<li> <p>Clearly it was intended to be deep.  I, however, am shallow (or
+at any rate lazy, which amounts to much the same thing), and therefore
+will not be tackling the complicated stuff in this diary.  "If you
+want to send a message, call Western Union".  
+<p>Google has 10 pages of
+matches for "sam+goldwyn+message+western+union"; if you know the
+actual quotation, I'd be most interested
+
+<li> <p>The ending disturbed me.  Actually, most of the last third
+disturbed me.
+
+</li>
+</ul>
+
+<p> Today was driving lesson day, and I think probably the first time
+I actually got the car up to 70mph.  There's not much else I want to
+say on that subject.
+
+<p> Started a <a
+href="http://groups.google.com/groups?frame=right&th=25a0b644d80ed777&seekm=87bshyns0c.fsf%40inanna.rimspace.net"
+>thread</a> on comp.lang.lisp about what happens to the language's
+ordering guarantees in the presence of multiple threads.  Consensus
+seems to be that they don't apply (which is half of the answer I was
+hoping for) but no real useful information on what the application
+programmer can typically do about that.  Disabling pre-emption for the
+critical section is not a particularly good answer in my mind.  I
+remain convinced that CL can often be written to be close enough to
+the machine that programs can do most of what C programmers do - it
+doesn't end up as portable CL, but it's not portable C either - it's
+just that if the accumulated output of comp.lang.lisp describes the
+Common Lisp community, they really don't seem to be too too interested
+in that stuff.  Which is a reasonable choice to make, of course, but
+not the only rational choice.  Once upon a time there must have been
+lisp programmers who were interested in the low-level grunge, or we
+wouldn't have had OSes written in the language.
+
+<p> I see more name registration antics in the near future, as
+telent.net will be up for renewal early next month.  register.com are
+incorrigible spammers to whom I'm not intending to give any more
+business than I can help.  Let's see if I can transfer to <a
+href="http://www.joker.com/" >Joker</a>.
+
+<p> And so to bed.
+

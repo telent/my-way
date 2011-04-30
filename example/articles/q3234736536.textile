@@ -1,0 +1,12 @@
+title: &lt;dan-b> roll on, version control systems that allow directory renaming
+author: Daniel Barlow
+date: Thu, 4 Jul 2002 2:55:36 +0000
+
+<pre>
+&lt;dan-b> roll on, version control systems that allow directory renaming
+&lt;dan-b> this whole thing with having to pick a name before starting work really sucks
+</pre>
+
+<p><b>entomotomy</b>, Zool. the science of the dissection of insects to ascertain their structure, insect anatomy.
+
+

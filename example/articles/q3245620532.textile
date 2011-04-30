@@ -1,0 +1,37 @@
+title: Fwiw, Mr Shaver (if
+author: Daniel Barlow
+date: Thu, 7 Nov 2002 1:15:32 +0000
+
+Fwiw, Mr <a
+href="http://off.net/~shaver/diary/2002/11/#20021104">Shaver</a> (if
+you do in fact read this diary as well as linking to it), I have it on
+reasonably good authority (one of my friends works there) that the OED
+typically requires five independent citations for a new word before
+they will consider it for inclusion.  So, you can submit as many words
+as you like over the net, but they still exercise a more marked degree
+of editorial control over the result than, say, the <a
+						    href="http://www.elsewhere.org/jargon/html/entry/muggle.html" >Jargon File</a>
+
+<p>For which relief, much thanks.  And on a related note (related to
+the OED, not to the Jargon File, exactly how cruel do you think I
+am?), science fiction readers should look at <a
+href="http://www.jessesword.com/SF/sf_citations.shtml"
+>http://www.jessesword.com/SF/sf_citations.shtml</a> and see whether
+they can supply any of the missing bits.  No, writing and submitting
+your own web page does not count.
+
+<p>I had opportunity this evening to attempt to corrupt the minds of
+youth by presenting Lisp to the <a
+href="http://www.ox.compsoc.net/">OU Computer Society</a>.  Score: 0
+people walked out, 2 people closed eyes and gave every impression of
+having driften off to sleep, at least 2 people asked intelligent
+questions at the end (and a few others during the talk itself).
+Magicpoint users (come on, it's only an apt-get, the first one's free)
+can experience the full beauty of my presentation by downloading the
+slides' source from <a href="http://ww.telent.net/compsoc-slides.mgp">
+http://ww.telent.net/compsoc-slides.mgp</a> - the rest of you can just
+read the source and <i>imagine</i> how the slides must have looked.
+Which is to say, basically the same as the ASCII, but in white
+Helvetica on a blue background, with a yellow stripey thing in the
+corner.  Just like the ILC slides, yes.
+

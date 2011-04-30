@@ -1,0 +1,45 @@
+title: loaclhost.telent.net (a.k.a cvs.telent.net) boots
+author: Daniel Barlow
+date: Sat, 22 Jan 2005 16:35:22 +0000
+
+loaclhost.telent.net (a.k.a cvs.telent.net) boots!  I spent entirely
+too long farting around with the sata_via module before realising that
+Jeff Garzik had already <a href="http://lwn.net/Articles/111222/"
+>added support</a> for the VT6421 back in November (and it still
+hasn't been merged into the kernel, at least as of 2.6.10-ac10), but
+now it seems to be pretty much all there.  You can't get to it yet as
+it's on the wrong side of my DSL, but as soon as it returns to the net
+(next week, I hope) we should be resuming service.  If you formerly
+had an ssh login for it, you still have (I've copied home directories
+across) and needn't resend anything, but please note that the host key
+will have changed - the new fingerprint is <tt>
+6a:2a:97:cf:d5:1b:da:74:14:d2:21:d8:d9:d3:48:b7</tt>.
+
+<p>There are probably a ton of packages that used to be on it that I
+haven't yet reinstalled, but lots of those were only there due to the
+machine's former career as a desktop box.  If you find anything
+missing, drop me a note.
+
+<pre>
+Host: scsi0 Channel: 00 Id: 02 Lun: 00
+  Vendor: IBM      Model: DDRS-34560W      Rev: S97B
+  Type:   Direct-Access                    ANSI SCSI revision: 02
+Host: scsi2 Channel: 00 Id: 00 Lun: 00
+  Vendor: ATA      Model: HDS722580VLSA80  Rev: V32O
+  Type:   Direct-Access                    ANSI SCSI revision: 05
+
+:; sudo hdparm -t /dev/sda
+
+/dev/sda:
+ Timing buffered disk reads:   38 MB in  3.03 seconds =  12.55 MB/sec
+:; sudo hdparm -t /dev/sdb
+
+/dev/sdb:
+ Timing buffered disk reads:  124 MB in  3.05 seconds =  40.70 MB/sec
+</pre>
+
+sda is on the Adaptec 2940 that's still installed to boot from (SRM
+doesn't recognise the SATA controller).  Unbelievable though it may be
+to anyone who's never used an Alpha SX164, anything attached to the
+motherboard IDE interface was actually <i>slower</i> than that scsi
+drive.

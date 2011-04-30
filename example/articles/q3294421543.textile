@@ -1,0 +1,32 @@
+title: I found today what seems to be the only arm movement that still makes
+my shoulder hurt: pumping bicycle tyres
+author: Daniel Barlow
+date: Mon, 24 May 2004 22:5:43 +0000
+
+I found today what seems to be the only arm movement that still makes
+my shoulder hurt: pumping bicycle tyres.  What's interesting, though,
+is that (a few hours later) both of my shoulders now ache, not just
+the right one.  I'm probably carrying my neck in a funny way to avoid
+pulling something, and thereby stretching something else.  Or
+something.  That's handwaving, albeit fairly cautious handwaving in
+case I set something else off.  
+
+<p>Araneida 0.85 is out.  Its release received almost no publicity,
+because to be honest there wasn't much new in it.  The next release of
+Araneida, however, is rumoured to include <a
+href="http://article.gmane.org/gmane.lisp.web/369" >support for
+OpenMCL and Allegro</a> (and possibly also, it's rumoured, <a
+href="http://www.cliki.net/Armed%20Bear%20Lisp">ABCL</a>).  At least,
+I've given Brian CVS commit access, so I hope it will :-)
+
+<p>Why is there apparently no open source icalendar server?  My
+conjecture is that the specification is in some way stupidly complex.
+So, what about subsetting it?  My mobile phone claims to understand
+either icalendar or vcalendar (I forget which); if they can build
+calendaring into such a terminally dumb device as that, surely it's
+not impossible to do a reasonable subsetted implementation of
+icalendar as open source, then rely on network effects to make it a
+universal pidgin.  But what's an appropriate subset?
+
+
+

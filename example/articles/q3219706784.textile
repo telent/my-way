@@ -1,0 +1,19 @@
+title: This is more of a placeholder than a diary entry
+author: Daniel Barlow
+date: Fri, 11 Jan 2002 2:59:44 +0000
+
+<p> This is more of a placeholder than a diary entry.  
+
+<p> New new db-sockets released after Christophe pointed out that 0.5
+&lt; 0.44, so expect to get 0.52.  Comes with free update to the
+documentation generator, which looks marginally prettier
+
+<p> Spent too long hunting necessary bits of paper to do tax return.
+It seems to all make sense now, though.
+
+<p> Not the best driving lesson in the world.  If I could just
+concentrate for 40 minutes, I could pass the test.  Need to work on
+that, I fear.
+
+<p> Back to SBCL/PPC
+

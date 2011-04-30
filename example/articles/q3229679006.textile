@@ -1,0 +1,39 @@
+title: There's a bug in SBCL 0.7.3 (and all older versions) that makes it
+author: Daniel Barlow
+date: Mon, 6 May 2002 14:3:26 +0000
+
+
+<p>There's a bug in SBCL 0.7.3 (and all older versions) that makes it
+randomly get SIGILL when it's working hard.  The problem only
+manifested on newer Alphas, ans given that (i) mine is older, (ii)
+I've never heard from anyone else using it, I've not been too bothered
+about fixing it.  But, now that SBCL is in Debian it's going to be an
+actual problem as the Debian autobuilders are ev6 machines so tend to 
+blow up rebuilding newer versions. 
+
+<p>Well, the problem turned out to be that the icache needs to be
+flushed (or synchronized, or whatever) after new code components are
+made, so a nop sanctify-for-execution is not good enough.  Fixed that,
+and went in search of <a href="http://www.testdrive.compaq.com/"
+>Compaq Testdrive</a> machines to test on.  The next version of SBCL
+(enbd of this month) should work, then.  The Debian version should
+work before then, as I sent the patch directly to the Debian
+maintainer too.
+
+<p>The problem, though, is that I got carried away.  Seeing all those
+OSF/1^WDigital Unix^WTru64 machines there as well, I started
+wondering how hard a SBCL Tru64 port would be.  And, several hours
+later, had one that almost worked: it gets almost up to the point of
+printing the toplevel prompt, gets an error, gets confused, then
+slowly eats all available memory.  
+
+<p>This is where Tru64 starts to get annoying.  It's missing less,
+gdb, a working z option to tar.  The C compiler can't optimize and
+debug at the same time.  dbx won't attach to a process and show me its
+memory.  gdb, which I have no built, gives scary internal error
+messages and offers to dump core whenever I attach to process (and if
+you think I'm going to <i>start</i> SBCL in the debugger and continue
+manually through n-1 perfectly normal garbage collection SIGSEGVs just
+to get to the one that's actually broken ... well
+
+

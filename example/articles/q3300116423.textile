@@ -1,0 +1,22 @@
+title: I'm playing with last.fm
+author: Daniel Barlow
+date: Thu, 29 Jul 2004 20:0:23 +0000
+
+I'm playing with <a href="http://www.last.fm/">last.fm</a>.  A few
+months ago I got annoyed at some of the wailing and teeth-gnashing
+that was happening on uk.music.guitar and posted <a
+href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&c2coff=1&safe=off&selm=87n0441xc1.fsf%40noetbook.telent.net"
+>an article</a> saying approximately "if the `channel' sucks so much
+anyway, stop complaining that you can't break into it and start
+routing around it".  Then I completely omitted to do any of the things
+I'd suggested that people start doing.  But it seems like last.fm is
+doing at least some of them - at least the technical bits - even if so
+far it's mostly just playing stuff at me that I've already heard of.
+First impressions: really rather cool, but minor downsides: does come
+unsynced every so often (the stream is not playing what the popup
+window says it's playing) and involves way more screen space than I
+think it needs to use.
+
+<p>I registered as 'telent', but I don't think it knows enough about
+me yet for it to be worth anyone's time going to find me there right
+now.

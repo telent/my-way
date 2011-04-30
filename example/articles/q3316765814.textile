@@ -1,0 +1,15 @@
+title: MORE PTHREADS
+author: Daniel Barlow
+date: Mon, 7 Feb 2005 11:50:14 +0000
+
+MORE PTHREADS.  sbcl-devel subscribers will already have seen the
+<a href="http://article.gmane.org/gmane.lisp.steel-bank.devel/4256"
+>current state</a> - it appears to work superficially but there are
+still holes.  Most obviously right now, there's some evil recursive
+bustup in internal-error support, so any attempt to run an undefined
+function will cause SBCL to come to a short and sticky end.
+
+<p>The previous `4 is not a list' was caused by a literal 4 that
+should have been an 8 - or probably even an <tt>n-word-bytes</tt>, and
+then we found that assembly trampolines must be 8 byte aligned so that
+their addresses look like fixnums to the GC.  

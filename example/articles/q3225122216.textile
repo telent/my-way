@@ -1,0 +1,34 @@
+title: Lloyds TSB just phoned me up to arrange an account review
+author: Daniel Barlow
+date: Thu, 14 Mar 2002 19:16:56 +0000
+
+
+<p> Lloyds TSB just phoned me up to arrange an account review.  I
+haven't had an account with them for several months, having closed it
+due to their complete indifference, insincere form letters, rapacious
+charges, and general unhelpfulness.  If I'd known then that they would
+do this <i>afterwards</i>, I could have added "basic incompetence" to
+that list.
+
+<p> Courtesy of the <a href="http://www.testdrive.compaq.com/" >Compaq
+Testdrive</a> programme, I tested infinities in CMUCL on Digital Unix.
+CMUCL 18a, because that was the latest version I could find
+
+<pre>
+;;; ev56-based machine
+*  (sqrt SINGLE-FLOAT-POSITIVE-INFINITY)
+0.0
+;;; ev67, same cmucl binary and core
+* (sqrt SINGLE-FLOAT-POSITIVE-INFINITY)
+#.EXT:SINGLE-FLOAT-POSITIVE-INFINITY
+</pre>
+
+<p>So, if the CMUCL people used an ev6 or later, that would explain
+why they haven't seen a problem with this, and reassure me that they
+haven't dealt with it using some deep magic that I am too dumb to
+understand.  All's well that ends well, I guess.  Nobody on cmucl-imp
+answered my questions, but I don't know if they have any Alpha hackers
+working on it these days.  There's no Alpha 18c or 18d, which I would
+view as an indication against
+
+

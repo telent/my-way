@@ -1,0 +1,69 @@
+title: OK, let's review a little
+author: Daniel Barlow
+date: Sat, 5 Jan 2002 13:1:58 +0000
+
+<p> OK, let's review a little.
+
+<p> I recently got reacquainted with <b>db-sockets</b>, while looking
+for a file descriptor leak in on of my <a
+href="http://araneida.telent.net/" >araneida</a>-using sites.  It's
+not actually as bad as I remember it.  Upcoming new version will have
+<ul>
+<li> Support for unix-domain sockets
+<li> Deprecated <tt>make-inet-socket</tt> in favour of 
+<tt>(make-instance 'inet-socket)</tt>,
+which should make it easier to subclass the socket classes
+<li> Substantially changed the alien glue around so that things like 
+sockaddrs are actually allocated as Lisp vectors instead of foreign
+memory.  This might potentially be a little faster, as it doesn't
+involve jumping through the ffi hoops to allocate them; it's almost certainly
+a little more reliable as Lisp arrays will get GCed
+<li> probably fixed a file descriptor leak.  At least, I rewrote the
+finalizers to be simple enough that I understand them, and I can't
+actually make it leak on demand.  So, that may help.
+</li>
+</ul>
+<p> New release soon when I've removed the icky bits which assume
+foreign pointers can be represented in 32 bit.  I'm pondering making
+it use asdf for defsystem instead of mk-, but I don't know yet.
+
+<p><b>Araneida</b> got some updates too, though nothing you'd actually
+notice unless you have lots of traffic and particularly slow response
+handlers.  
+
+<p>No news on <b>SBCL</b> recently; I've been dealing with too much
+administrivia lately to get really involved with it.  I think the
+answer for closures might be to punt all the PPC-specific stuff and 
+make them work exactly as the Alpha does.
+
+<p>There was a <b>power cut</b> here last night, two seconds after Inspector
+Morse pegged it.  
+<blockquote>
+<p>"Thank Lewis for me"
+<p>death rattle
+<p>beeeeeeeeeep
+<p>click.  fizz.  dark.  descending-pitch whirring noises from upstairs. 
+</p></blockquote>
+
+<p>The house is so much quieter with no electricity.  And, yes, darker.
+
+<p>After the usual routine checks (is nextdoor out as well, where is
+my torch, is it the circuit breakers, is it the meter, what
+<i>exactly</i> does the central heating boiler do in these
+circumstances) (yes, in the shed, no, no, pilot light remains lit but
+let's turn the central heating off for the duration just in case) I
+found the phone number for the electricity distribution company
+(thanks to the slightly odd way that the electricity system runs in
+the UK, that is not the same company as actually bills me for using
+the stuff) and called them.  A substantial proportion of the
+neighborhood had apparently already done so; seems that the fuse on
+one of the phases had gone.  Power came back an hour or so later,
+briefly, causing me to leap out of bed, run downstairs, turn the
+lights off and stop the cd player.  Power came back again some time
+after that, causing me to leap out of bed, run downstairs (in the
+dark, this time) and <i>turn the cd player off altogether</i>.
+
+<p>Since yesterday I've had a headache, sore throat and general aches.
+I'm assuming it is a <b>cold</b>.  So, at least I got an early night
+last night.
+

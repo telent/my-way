@@ -1,0 +1,23 @@
+title: Caption competition
+author: Daniel Barlow
+date: Sun, 8 Jun 2003 21:18:47 +0000
+
+<b>Caption competition</b>
+
+<p><a href="http://www.catb.org/~esr/graphics/raymond007-5.jpg"
+>http://www.catb.org/~esr/graphics/raymond007-5.jpg</a>
+
+<ol>
+
+<li> Shooting yourself in the foot in various computer languages,
+#896 - fetchmailrc syntax
+  <pre> shoot tuxedo.org proto anarchist target advocacy there is
+foot here fetchall</pre>
+</li>
+
+<li> "Eric's default emacs binding for leak-microsoft-memo proves more
+unwieldy than he was expecting"
+
+</li>
+</ol>
+

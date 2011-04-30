@@ -1,0 +1,21 @@
+title: That's not how it ended up, though
+author: Daniel Barlow
+date: Fri, 28 Nov 2003 16:1:39 +0000
+
+That's not how it ended up, though.  Faced with the prospect of doing
+lots of Unixy waitpid() stuff without the benefit of SB-GROVEL, I
+punted slightly.  We do all that in the C handler, then call into Lisp
+to run <b>handle-thread-exit</b> which frobs <b>*session*</b>, then
+destroy_thread() runs from C.  Much simpler, and doesn't involve
+interesting design work to
+
+<ul>
+<li> copy the siginfo somewhere safe that call-behind handlers can
+find it
+<li> decide what to do about signal masking during the execution of
+the Lisp handlers
+</ul>
+
+Now committed in 0.8.6.11 anyway.  CLONE_PARENT is no more.
+
+

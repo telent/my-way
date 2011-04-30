@@ -1,0 +1,16 @@
+title: Juho Snellman is clearly a better hacker than I am
+author: Daniel Barlow
+date: Mon, 8 Nov 2004 18:15:38 +0000
+
+Juho Snellman is clearly <a
+href="http://www.cs.helsinki.fi/u/jesnellm/blog/archive/2004-11-07.html"
+>a better hacker than I am</a>.  Of course, that's not an especially
+small group to be a member of, but his progress on SBCL AMD64 is
+nevertheless impressive.
+
+<p>Lately I have been struggling to remember anything I knew about
+matrices ten years ago - though perhaps I'd be better off learning the
+stuff I <i>should</i> have learnt about matrices ten years ago.
+Anyway, one likely effect is that I hope to be beefing up the cliki
+search engine a bit soon.
+

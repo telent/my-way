@@ -1,0 +1,16 @@
+title: Though note that despite the preceding (lexically following)
+author: Daniel Barlow
+date: Fri, 16 Nov 2001 22:34:16 +0000
+
+
+<p> Though note that despite the preceding (lexically following)
+entry, db-sockets is not what I intend to hack on this weekend
+anyway.  No, it's sbcl threads time
+
+<p> I see that <a href="http://www.nat.org/2001/november/">Nat</a> has
+changed his 12th November diary entry.  Boo hiss.  I loved the idea of
+<blockquote>
+indenting to pun
+</blockquote>
+
+

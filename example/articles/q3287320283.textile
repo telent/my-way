@@ -1,0 +1,62 @@
+title: I'm thinking hard about the cirCLe project at the moment: not the
+author: Daniel Barlow
+date: Wed, 3 Mar 2004 16:31:23 +0000
+
+I'm thinking hard about the cirCLe project at the moment: not the
+attempt last year to produce and charge for a CD full of Lisp
+software, but the overall objective of a free lisp-based system.  This
+particular chunk of text started life as "Why I must write cirCLe" in
+the project goals document, but clearly it wants to be longer than the
+single paragraph demanded there.  It also wants to be coherent, and
+isn't entirely yet, so consider this an early draft
+
+<hr>
+The GNU operating system is nearly done.  The OS kernels, libraries,
+basic programming tools and Unix-compatible utilities in systems based
+on Linux and other free Unixlike kernels are good enough that they've
+displaced proprietary Unixes and other operating systems for many
+purposes.  What next?  One obvious answer is "applications"
+
+<p>For many hackers, working on free operating system components has been
+an opportunity to write code that they themselves want to use
+("scratching an itch") and the resulting code has been reliable and
+high-quality.  But now we're writing for "nontechnical" people, and 
+we're to believe that 
+
+<ul>
+<li> the typical user can't even understand our user interface, never
+   mind contribute code to our projects
+
+<li> software should be designed to preserve this state of affairs
+
+</ul>
+
+<p>This is only partly true.  The user should not need to know the
+innards of a piece of software to use it effectively, but there's a
+difference between making it unnecessary to learn more and making it
+difficult to learn more. 
+
+<p>I'm not suggesting that anybody intends to make it difficult, but when
+the typical user is not expected even to try to investigate their
+software, then extensibility, remote control and programmable
+interfaces are - quite reasonably - going to be a low priority.
+Better just to work on the features that the user wants.
+
+<p>So what's likely to happen?  Users have no way to contribute back to
+the software they're using.  Everyone knows the first rule of
+technical support: "``the person on the other end of the phone is an
+idiot''.  Curiously, this applies no matter whether you're asking the
+questions or answering them".  Without the basis for mutual respect
+between the people writing software and the people using it, do we
+really have a community?  More pragmatically, if the only people with
+the expertise to make changes to our free software system are the
+people who wrote it, are we really so much better off than we would
+have been with a proprietary system?
+
+<p>I contend that the answer is "no"; that this disconnect between
+developers and users is harmful, and that we need a system where the
+users and the developers are on equal terms and have the same
+opportunities and the same tools.  So we must use a language
+expressive enough that we can write the <i>whole</i> system in it; where
+the extension language and the implementation language are the same.
+

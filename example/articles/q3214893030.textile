@@ -1,0 +1,49 @@
+title: 
+author: Daniel Barlow
+date: Fri, 16 Nov 2001 9:50:30 +0000
+
+
+
+<p> This is not a blog(sic).  There's a whole weblogging culture out
+there (if `culture' is not too strong a word for it), which is nothing
+to do with this diary.  You will not find a URL with every entry,
+gratuitous use of CSS, all-lowercase entries or XSLT.
+
+<p> There are several arguments I could make for keeping a diary on my
+own site instead of using the Advogato one.  The actual reason,
+though, is that Advogato is just too big these days; when there were
+fewer people there the non-software-related entries were interesting,
+but there are too many people posting them now to get worked up about.
+
+<a name="oracle"> </a>
+<p> I'm on a train.  This is another reason for not using the
+Advodiary, actually: emacs and rsync is a much friendlier interface
+than html forms, and makes it easier to write offline.  I'm on a train
+to Sunbury, where I am going to install exciting new features in an
+aging Perl/Oracle/Java web application, about which client
+confidentiality would prevent me from giving more details, were
+self-preservation instincts not doing a perfectly good job of that
+already.  The problem here is that <a
+href="http://www.google.com/">Google</a> likes me enough that any
+comment I write along the lines of 
+
+<blockquote>"The Oracle 8i graphical installer sucks so much and so
+hard that we suspect it was actually repurposed from its original use
+dividing the waters under the firmament from the waters above the
+firmament" </blockquote> 
+
+will inevitably turn up when some potential customer googles "daniel
+barlow oracle" in two years time.  This would obviously be Bad if I
+were to write anything that's actually controversial - happily, in
+that particular case the only dissenting voices are going to be the
+faction who claim that the installer doesn't suck, it just blows.
+&lt;question type="rhetorical" answer="sparingly"&gt;What were they
+<i>thinking</i>&lt;/question&gt;
+
+<hr>
+<address> <a href="/index.html">Daniel Barlow</a></address>
+<font size=1>
+Local Variables:  <br>
+eval: (local-set-key [f11] (lambda () (interactive nil) (insert "<" "h2>" (current-time-string) "<" "/h2>\n<" "p> ")))  <br>
+End: <br>
+</font></body> </html>

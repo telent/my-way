@@ -1,0 +1,13 @@
+title: From the BBC's Ogg Vorbis
+pages:
+author: Daniel Barlow
+date: Wed, 2 Oct 2002 15:34:43 +0000
+
+From the BBC's <a href="http://support.bbc.co.uk/ogg/" >Ogg Vorbis</a>
+pages:
+
+<blockquote>
+<strong style="color: red">Update</strong> (2002-09-24): Yay, the legal issues have been resolved. We now have rights to all the of the BBC's radio output. Hopefully we should start kicking off these streams soon.
+</blockquote>
+
+Yay indeed.

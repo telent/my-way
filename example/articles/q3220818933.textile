@@ -1,0 +1,35 @@
+title: 128Mb of 10ns SODIMM arrived this morning, and was fitted with
+assistance from the instructions at http://www.theimac.com/ram_vram_steps.shtml - completely
+author: Daniel Barlow
+date: Wed, 23 Jan 2002 23:55:33 +0000
+
+
+<p> 128Mb of 10ns SODIMM arrived this morning, and was fitted with
+assistance from the instructions at <a
+href="http://www.theimac.com/ram_vram_steps.shtml"
+>http://www.theimac.com/ram_vram_steps.shtml</a> - completely
+painless.  Suddenly my GC speed increased from 1Mb/second to something
+over 20.
+
+<p>Armed with that, was able to fix yesterday's problem.  It was dying
+when doing a GC that had been stalled during a pseudo-atomic section.
+This turns out to be due to a disagreement between glibc and the
+kernel about the size of sigset_t; given that the kernel puts its idea
+ofa sigset_t onto my stack, it seems a trifle unsporting to arrange
+headers so that i only get access to the glibc version - especially
+when I then want to change this information and merrily trash the
+following (1024-64)/32 words as well because glibc thinks I have 1024
+signals.  Hate hate despise despise.
+
+<p>Next problem is GCs during assembly routines: if we use the `raw'
+return convention to call a routine that GC might occur during (which
+actually, horrible thought, is any of them, if they get interrupted
+and the signal handler conses), the GC does not adjust the link
+register (it's unboxed, which makes it difficult to decide what to
+update it to) so we end up returning to our old address instead of the
+new one.  The only reliable fix for this, I think, is (1) don't use
+the `raw' return convention anywhere, or (2) figure out some way to
+adjust lr in GC.  That's going to involve finding the caller's
+code vector and fiddling with offsets in much the same way we fiddle
+with our own code vector to calculate PC
+

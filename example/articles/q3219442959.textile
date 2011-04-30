@@ -1,0 +1,31 @@
+title: New db-sockets released at last - find it in cClan
+author: Daniel Barlow
+date: Tue, 8 Jan 2002 1:42:39 +0000
+
+
+<p> New db-sockets released at last - find it in cClan.  Works in SBCL
+on both Alpha and x86; haven't tried it anywhere else or on anything else.
+
+<p>Two hours later, found a fairly obvious bug in the passive open code.
+Updated release released after some struggle with shell.sf.net: edited
+highlights
+
+<pre>
+dpkg-deb: subprocess tar killed by signal (Segmentation fault)
+
+`md5sum < dists/local/lisp/binary-powerpc/lisa_0.9.2-2_all.deb' exited with 11
+
+sh: xmalloc: cannot allocate 3 bytes (0 bytes allocated)
+`md5sum < dists/local/lisp/binary-powerpc/common-lisp-controller_2.7.1_all.deb' exited with 512
+
+dpkg-deb: subprocess gzip -dc killed by signal (Segmentation fault)
+
+sh: xmalloc: cannot allocate 3 bytes (0 bytes allocated)
+`md5sum < dists/local/lisp/binary-powerpc/cl-faq_20011115-1_all.deb' exited with 512
+
+dpkg-deb: subprocess gzip -dc killed by signal (Segmentation fault)
+</pre>
+
+<p>This service is not worth much more than I paid for it...
+
+

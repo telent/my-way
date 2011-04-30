@@ -1,0 +1,39 @@
+title: Sadly, rain stopped play
+author: Daniel Barlow
+date: Mon, 15 Aug 2005 16:52:22 +0000
+
+Sadly, rain stopped play.  Or at least, the forecast threat of it was
+serious enough that we cancelled the Rollerstroll (no link as web site
+is a useless Flash thing) yesterday and instead went out for an
+impromptu skate down by the river and then up and down Pentonville
+Rise.  Happily in a way we did get rained on, thus vindicating the
+"no go" decision for the official skate.
+
+<p>New skates!  Currently borrowing a pair of <a
+href="http://www.simmons-racing.com/images/10degree_03.jpg" >these</a>
+attached to <a
+href="http://www.baysideblades.com.au/inline_skates_dt/inline_skates/bont/bont_sniper_100_frame.htm">these</a>:
+only been out on them twice and they do seem to require a
+significantly different technique than xmax.  Which is not a surprise,
+really.  If I haven't shredded my feet in the next few days - and all
+the signs so far look promising; a certain amount of ankle rubbing on
+the left boot that will go away when I manage to get the frame aligned
+properly - I will be making an offer for the boots (and then have to
+get some frames of my own for them, but that's a fairly
+straightforward deal).
+
+<p>After some hacking with Venkman and the Microoft Script Debugger,
+my Google Maps hack now seems to work in IE as well as Firefox.
+Firefox won't print polylines when I ask for a hardcopy, though, which
+is annoying.
+
+<p>What else?  A full factory reset of my DG834G seemed to improve
+wireless stability a lot, but it still manages to drop off the net
+after about five days and I still don't know why.  Changing the
+frequency from the admin interface was enough to kick it back into
+life.  Also even when it does work, something is not right with the
+DHCP: the router's DHCP server issues addresses with a 12 hour lease,
+and either it refuses renewal requests or Linux doesn't make renewal
+requests, so ... gah.
+
+

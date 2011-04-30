@@ -1,0 +1,64 @@
+title: Two days later, and I'm still using emacs 21, which is longer than
+author: Daniel Barlow
+date: Tue, 27 Nov 2001 0:37:12 +0000
+
+
+<p> Two days later, and I'm still using emacs 21, which is longer than
+I've managed to stand it for on any previous occasion.  It might be a
+goer this time.  Additional fluff for the .emacs:
+<tt>(custom-set-variables '(smiley-regexp-alist nil))</tt>
+
+<p>Sunday was a do-nothing day, so not worth diarizing about.  That
+you get no diary entry for it has less to do with any such concept of
+value than it does that the day was punctuated by a bottle of wine and
+the Channel 4 "100 best films" program.  Monday, post-hangover,
+involved a driving lesson, a timesheet (one step closer to invoicing),
+a weird Solaris problem, more Alpha assembly and several hours with a
+guitar and the tablature (courtesy of OLGA) for <a href=
+"http://www.olga.net/dynamic/browse.php?printer=0&local=main/q/queen/white_queen.tab"
+>White Queen</a>.  I feel quite unreasonably positive about life just
+now, which is an improvement on Sunday.
+
+<p>More on last Saturday's work - how to install Debian using a <a
+name="debian-pxe">PXE boot</a><a href="#debian-pxe">&raquo</a> .  It
+turns out to be quite easy if you have another local machine that can
+do tftp and bootp service.  Almost all the work is done on the server
+<ol>
+
+<li> Install tftp-hpa
+
+<li> Install and configure dhcpd.   In the clause that describes your 
+clients (<tt>subnet</tt>, <tt>host</tt>, <tt>group</tt>, whatever) you
+need to say <tt>filename "/var/tftp/pxelinux.0";</tt>
+
+<li> Get the debian rescue image, loopback mount it, copy the files
+into /var/tftp
+
+<li> Copy /usr/lib/syslinux/pxelinux.0 into /var/tftp
+
+<li> Copy syslinux.cfg into /var/tftp/pxelinux.cfg/default
+
+<li> gunzip root.bin, loopback mount it, copy an appropriate ethernet
+driver onto it, umount, zip it up again
+
+<li> Restart whatever services you just edited the config files for.
+
+<li> Boot the client.  It should come up with the normal Debian
+bootstrap thing.
+
+<li> Before you can install kernel + modules, change to the shell
+(Alt+F2) and insmod your network driver
+
+<lI> When you're ready, proceed at your own pace to an installed
+Debian box
+
+</li>
+</ol>
+
+<p>Handy if you have a laptop like mine (no CDROM, floppy is USB and
+only emulates a legacy floppy at BIOS level, so Linux doesn't see it)
+
+<p>Sorted a bunch of orinoco_plx mail, sent off a new version to David
+Gibson.  No exciting changes, just more PCI IDs that people keep
+sending me.
+

@@ -1,0 +1,75 @@
+title: So, after all the blogging discussion at XCOM 2002, and prodded by the fact that
+author: Daniel Barlow
+date: Tue, 11 Jun 2002 1:17:45 +0000
+
+
+<p> So, after all the blogging discussion at <a
+href="http://www.ntk.net/">XCOM 2002</a>, and prodded by the fact that
+someone had actually <i>asked</i> for it, I decided it was time to
+investigate all that RDF/RSS/news feeds/syndication business.  Not
+(yet, anyway) for this diary, but for 
+<a href="/cliki/">CLiki</a>'s
+<a href="/cliki/Recent_Changes">Recent Changes</a>.
+
+<ul>
+<li>There are four versions: 0.9, 0.91, 0.92, 1.0
+
+<li>0.9 is apparently deprecated.  This hasn't yet stopped slashdot and a
+billion other sites from using it, but let's assume we should avoid it
+for new work.
+
+<li>1.0 seems to be less of a web site summary format and more an
+attempt to take over the world.  Its authors share the common delusion
+that if they can simply agree on the symbols between the angle
+brackets, they can avoid the <i>hard</i> questions about how to
+categorize the planet, and their plan does tend to suffer slightly due
+to these priorities. 
+
+<li> 0.92 is backward compatible with 0.91 (which you'd expect for a
+1% change in version number, really).  0.91 was not compatible with
+0.9; perhaps the people who were around at the time had their
+expectations conditioned appropriately by this fine piece of
+engineering management, which is why they feel so excited by about
+compatibility now.
+
+<li>There is <b>no DTD</b> for 0.92, nor can I find one of those
+new-fangled we're-too-dumb-to-read-dtds xml equivalent things.  The
+nearest thing is a document on the userland site laughably termed a <a
+href="http://backend.userland.com/rss092" >specification</a>, but how
+can you have a <i>validator</i> if there's nothing to validate
+against?  You can't even write a valid DOCTYPE.
+
+<li>This is a more pertinent question than you might have thought, as
+userland have a <a href="http://aggregator.userland.com/validator">
+"validator"</a> on their site.  My rdf files pass it.
+
+<li>But whatever their <a
+href="http://aggregator.userland.com/register">registration form</a>
+does <i>also</i> involves
+some kind of validation(sic), and that <i>doesn't</i> work, failing with
+the error message
+
+<pre>
+  There was a problem reading or parsing your XML file. Here's the
+  error message.
+
+     Can't get the address of "language" because the table doesn't
+     have an object with that name.
+</pre>
+
+This is well up to the Oracle standards for reporting the specifics of
+what went wrong, but it's also inaccurate: if we assume that it means
+``a required "language" element is missing from (somewhere)'', it's
+wrong, because "language" is optional in 0.92.
+</li>
+</ul>
+
+<p>Can you tell how impressed I am by this?  An RDF probably-RSS feed
+of CLiki is now available from <a
+href="http://ww.telent.net/cliki/recent-changes.rdf"
+>http://ww.telent.net/cliki/recent-changes.rdf</a> anyway.  Let me
+know if you find anything useful to do with it.
+
+<p>More <a href="/cclan-choose-mirror">CCLAN mirrors</a>.  Now we need
+some more content, really.
+

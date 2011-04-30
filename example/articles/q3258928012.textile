@@ -1,0 +1,15 @@
+title: Proposed UNIX
+author: Daniel Barlow
+date: Thu, 10 Apr 2003 2:46:52 +0000
+
+Proposed <a
+href="http://article.gmane.org/gmane.lisp.steel-bank.devel/1116" >UNIX
+interface for SBCL</a>
+
+<p>The ads that Sourceforge insert in the footers of messages from the
+email lists they host are usually both amusing and saddening, and the
+reason is the same in both cases: their complete inapplicability.  In
+90% of cases they advertise closed-source development aids for
+problems that dynamic languages don't even have anyway.  "Debugging
+C/C++ programs can leave you feeling lost and disoriented".  So Don't
+Do That Then ...

@@ -1,0 +1,63 @@
+title: Something odd is happening somewhere in the assembler
+author: Daniel Barlow
+date: Sun, 8 Feb 2004 15:12:17 +0000
+
+Something odd is happening somewhere in the assembler.  Here's a 
+bit of the SBCL source code
+
+<pre>
+(defun allocation (alloc-tn size &optional ignored)
+  (declare (ignore ignored))
+  (flet ((load-size (dst-tn size)
+           (unless (and (tn-p size) (location= alloc-tn size))
+             (inst mov dst-tn size))))
+    (let ((caller-saves (list rax-tn rcx-tn ;rdx-tn rsi-tn
+                              ;rdi-tn r8-tn r9-tn r10-tn r11-tn
+                              )))
+      (dolist (r caller-saves)
+        (inst push r))
+      (move rdi-tn size)
+      (inst call (make-fixup (extern-alien-name "alloc") :foreign))
+      (move alloc-tn rax-tn)
+      (dolist (r (reverse caller-saves))
+        (if (location= r alloc-tn)
+            (inst add rsp-tn 8)
+            (inst pop r)))))
+  (values))
+</pre>
+
+<p>As the name suggests, this function outputs some code for allocating
+memory that Lisp will use: it frobs some registers around, then calls
+the C <tt>alloc()</tt> function, arranging that its return value ends
+up in alloc-tn, whichever register that is.  At least, that's what
+it's supposed to do - apart from anything else, you'll notice that
+it's not actually saving most of the registers it's supposed to save.
+But it's not actually relevant what the output code does right now; what's
+important is we don't seem to be getting the right stuff assembled.
+Witness:
+<pre>
+0x000000000b22c57f:     push   %rax
+0x000000000b22c580:     push   %rcx
+0x000000000b22c581:     mov    $0x10,%rdi
+0x000000000b22c58b:     callq  0x4162d0 &lt;alloc>
+0x000000000b22c590:     rexXYZ mov    %r8d,%r11d
+0x000000000b22c593:     pop    %rcx
+0x000000000b22c594:     pop    %rax
+</pre>
+or if you'd like to see that mov instruction in more detail
+
+<pre>
+(gdb) x/8bx 0x000000000b22c590
+0xb22c590:      0x47    0x8b    0xd8    0x59    0x58    0xc7    0x03    0x12
+</pre>
+
+That 'rexXYZ' prefix is presumably gdb's disassembler getting more
+than slightly confused by our 0x47 rex byte.  I'm reasonably certain
+that %r8d should be %rax, likewise supposing that the operand size
+(rex bit 3, counting from lsb=0) should be 64 not 32, and I'll give 
+odds of about 1 in 2 that that's r11 not rdx. 
+
+<p>Strangre thing is, even after placing assertions where we output
+the rex prefix that "you're not outputting #x47, are you?" it still
+doesn't stop.  And there's still #x47 bytes in the core file.  Very
+odd.

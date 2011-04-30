@@ -1,0 +1,31 @@
+title: New release of telent clx
+author: Daniel Barlow
+date: Tue, 10 Jan 2006 23:5:30 +0000
+
+New release of telent clx ...
+
+<pre>
+To: portable-clx@lists.metacircles.com
+Subject: telent clx 0.7.2 released
+From: Daniel Barlow &lt;dan@telent.net&gt;
+
+This is the result of a darcs pull from Christophe's tree and a couple
+of text file edits to update the version number.
+
+---  Changes in SBCL CLX 0.7.2, Tue Jan 10 2006 ---
+
+OpenMCL fixes
+DPMS extension support
+Xauthority ipv6 parsing fixes
+
+Thanks to Bryan O'Connor, Matthew Kennedy, Christophe Rhodes
+
+
+http://ftp.linux.org.uk/pub/lisp/sbcl/clx_0.7.2.tar.gz
+
+darcs get http://verisons.telent.net/clx # version from which releases are made
+          http://common-lisp.net/~crhodes/clx # patches merged by Christophe
+          http://monday-monkey.com/repos/clx/ # OpenMCL tree by bryan o'connor
+
+
+</pre>

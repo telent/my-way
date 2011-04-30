@@ -1,0 +1,26 @@
+title: I swapped a few of the links in this page's header around
+author: Daniel Barlow
+date: Fri, 3 Sep 2004 16:11:38 +0000
+
+I swapped a few of the links in this page's header around.  No major
+changes, but I wanted to include Planet Lisp and remove some of the
+blogs that I read through that aggregator anyway, so don't feel
+unloved if you're no longer linked.  Temporarily fixed my 
+<a
+href="http://feeds.archive.org/validator/check.cgi?url=http%3A%2F%2Fww.telent.net%2Fdiary%2Fdiary.rss"
+>RSS feed</a>, too - it'll last until I restart that process, by which
+time I hope I will have working CVS again and therefore have fixed it
+permanently.
+
+<p>Latest news on cvs.telent.net: returns in full effect next week, we
+hope.  I'm not going to blog about work on principle
+(self-preservation principle, mostly) but we've been moving offices,
+so this has been a busy week.  It's also been a pretty stunning week
+weather-wise, so I've been attempting to make the most of that by
+getting outside: now I have a skin deficit on both elbows, my knees
+creak alarmingly until I've warmed them up by skating a couple of
+miles, and my leg hurts.  Oh, yeah, and my shoulder is better but
+still not actually well.  Truly I am on peak form for <a
+href="http://www.londoninlinemarathon.com/" >the marathon</a>.
+
+

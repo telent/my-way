@@ -1,0 +1,8 @@
+title: The default Lisp syntax highlighting in Red Hat 8.0's vim is possibly
+author: Daniel Barlow
+date: Tue, 15 Apr 2003 19:8:20 +0000
+
+The default Lisp syntax highlighting in Red Hat 8.0's vim is possibly
+the <a href="/angry-fruit-salad.png">ugliest thing</a> I have seen on
+a computer all week.
+

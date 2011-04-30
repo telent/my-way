@@ -1,0 +1,11 @@
+title: OK, don't say I never ask you anything
+author: Daniel Barlow
+date: Thu, 2 Oct 2003 21:15:8 +0000
+
+OK, don't say I never ask you anything.  If you'd like to find out why
+I keep rabbitting on about Lisp for web development (or possibly, you
+already know, and you'd like to help support one small part of the
+Common Lisp community), take a look at the 
+<a href="http://web.metacircles.com/cirCLe+CD" >cirCLe CD</a> proposed 
+product, and fill out the market research survey linked from it.
+

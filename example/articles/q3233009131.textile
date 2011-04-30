@@ -1,0 +1,17 @@
+title: See if that helps
+author: Daniel Barlow
+date: Fri, 14 Jun 2002 3:5:31 +0000
+
+See if that helps.  Permalink format is now
+<tt>/diary/year/month/#date.nnn</tt> where nnn is the number of seconds
+since midnight.  Numbers are not zero-padded; it'll only cause trouble
+if people want to do arithmetic on them in javascript.
+
+<p>Yes, this is not a backward-compatible change.  I could have (did,
+briefly) special-cased the links for old entries, but then I realised
+that the only external link that I knew of was not going to the 
+<a href="/diary/2002/6/#11.54534">right place</a>
+<i>anyway</i>, so really we'll all be happier in the long run
+with a Fresh Start.
+
+

@@ -1,0 +1,89 @@
+title: TDD, BDD, executable specification
+author: Daniel Barlow
+date: Thu, 07 Apr 2011 15:26:57 +0100
+
+The new system at $WORK finally went live about a week ago, hurrah.
+
+The upgrade itself took a few hours longer than I'd have liked, and
+(short shameful confession time), some (but probably not all) of this
+could have been caught by better test coverage.  Which set me on a
+path towards
+"SimpleCov":https://github.com/colszowka/simplecov/blob/master/README 
+(I'm using Ruby 1.9, rcov doesn't work), which led me to start looking
+at the uncovered parts, which set me to thinking.  Which, as we all
+know, is dangerous.
+
+TDD advocates (and pro-testing people in general) say "Don't test
+accessors".  There are two reasons to say this that seem to my mind
+like good reasons: "Ron says
+it":http://xprogramming.com/articles/contradiction-test-everything-but-not-accessors/ 
+because he wants you to write tests that do something else (something
+useful) that happens to involve calling those accessors.  
+"J B Rainsberger":http://junit.sourceforge.net/doc/faq/faq.htm#tests_5 
+says it because "get/set methods just can't break, and if they can't
+break, then why test them?"
+
+The problem comes when you adopt the mindset typified by BDD that "the
+test examples are actually your executable specification", because in that
+case _how do you specify that the object has an accessor_?  This is
+not an unreasonable demand.  Suppose we have objects whose purpose is
+to store structured data that will be used by client code - for
+example, @User@ has an @age@ property.  Jbrains - which must surely be
+the Best Nickname Ever for a Java guy - says there's no useful test
+you can write for this (or not unless you don't trust your platform or
+something, but that way madness lies).  But even if we are going to
+write one: a test that stores one or a few example values can easily
+be faked by the bloody-minded implementor ("the setter is called with
+the argument 42, then the getter is called and should return 42?  I
+know!  @def age; 42; end@") and a test that stores all possible values
+and tests they can be retrieved will take forever to write/read/run.
+Really the best notation in which to specify the behaviour of that
+property is the *same* notation which, when run by the interpreter,
+will implement the said behavior -
+<pre>
+    attr_accessor :age
+</pre>
+It's not just accessors either.  Everything on the continuum between
+declarations of constants (@SECONDS_PER_DAY=86400@, are you _really_
+going to write a test for that?) and simple mathematical formulae
+<pre>
+    class Triangle
+      def area
+        self.base * self.height / 2.0
+      end
+    end
+</pre>
+are most readably expressed to humans as, well, the continuous
+functions that they are, not the three or four example data points
+that we might write examples to test for.  For any finite number of
+test cases, you can write a giant @case...when@ statement that passes
+all of them and still doesn't work in the general case.
+
+Yes, we could and often should write a couple of tests just to make
+sure we haven't done anything boneheaded in implementing the
+function, but they're not spec.  They're just examples.
+
+But here's the rub: where or how do we put that code to make it
+obvious that it's specification that happens also to be a valid
+implementation - and not just implementation that may or may not meet
+a spec expressed in some other place/form?  If we're laying out our
+app in conventional Ruby style, it can't go in the @spec/@ directory
+because that doesn't actually get run as part of the application, and
+it shouldn't go in @lib/@ or @models/@ or wherever else unless we are
+prepared to make our clients rootle through all that code looking for
+whatever "this is specification not just an implementation detail"
+flag we decide to adopt) when they want to use our interface.  
+
+I'm going to make a suggestion which is either radical or bone-headed:
+we should smush the rspec-stuff together with the app code: embed examples (which may in
+some cases be specification and in other cases be "smoke tests")
+in the same files as the implementation (which may itself
+sometimes be specification and other times be the result of our
+fallible human attempts to derive implementation from spec), and then
+we can have some kind of annotations to say which is which, and then
+we can have some kind of rdoc-on-'roids literate programming tool (To Be Implemented) go through the whole
+lot and produce two separate documents.  One for people who want to
+use our code and want to know *what* it should do, and the other for
+the people who have to hack on it and need to know *how* it does. Or
+doesn't.  And then maybe we can have code coverage metrics that
+actually mean something.

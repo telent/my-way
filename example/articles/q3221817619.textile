@@ -1,0 +1,8 @@
+title: ftx13, out now
+author: Daniel Barlow
+date: Mon, 4 Feb 2002 13:20:19 +0000
+
+
+<p> <a href="http://ww.telent.net/lisp/free-the-x3j-thirteen/2002.01.html"
+>ftx13</a>, out now.
+

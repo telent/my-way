@@ -1,0 +1,64 @@
+title: Well, it's no longer Monday, and needless to say, there is still no
+author: Daniel Barlow
+date: Tue, 14 Oct 2003 1:13:10 +0000
+
+Well, it's no longer Monday, and needless to say, there is still no
+Slime on Sourceforge.
+
+<pre>
+>> as I sit here continually failing to checkout SBCL because
+>> sourceforge's anonymous CVS is so broken, I wonder if our destiny
+>> lies elsewhere?
+>
+> Well, I see on their Site Status page that they should be done with
+> the new CVS infrastructure this week - so maybe it's not such a big
+> deal.
+
+I have heard that before, mind you ...
+
+   The good news is, in the very short term, we will have a solution
+   that will solve this issue. We are upgrading our hardware from one
+   aging system to six new speedy boxes; this hardware is a portion
+   of the new CVS infrastructure that we are implementing to improve
+   CVS performance and reliability.
+
+   The solution will be in place by the time I write you next month.
+
+   - SOURCEFORGE.NET UPDATE - 2003-07-24 EDITION
+
+
+   First, in the last sitewide email I described our CVS performance
+   issues and the solution we are introducing to fix them. The
+   performance increase I spoke of (600%+ increase) is just days away
+   from being deployed.
+
+   -  SOURCEFORGE.NET UPDATE - 2003-08-29 EDITION
+
+
+   As of right now, we are working around the clock to get these new
+   boxes online to give relief to the performance issues. Our primary
+   CVS server is copying 15 million files to these six new
+   machines. Since this box is also serving CVS checkins and checkouts
+   to the community simultaneously, the data transfer has been slow
+   going. During the last 4 days we have transfered 40% of the
+   data. We expect the rest of the data to be transfered by Thursday
+   of next week, and the new boxes online shortly there after.
+
+   - SOURCEFORGE.NET UPDATE - 2003-09-30 EDITION
+
+:; cal 
+    October 2003
+Su Mo Tu We Th Fr Sa
+          1  2  3  4
+ 5  6  7  8  9 10 11     <-   _that_ Thursday.  Yes, the one just gone.
+12 13 14 15 16 17 18
+19 20 21 22 23 24 25
+26 27 28 29 30 31
+
+</pre>
+
+<blockquote>
+"I love deadlines.  I love the whooshing sound they make as they go
+by"
+</blockquote>
+<div align=right>Douglas Adams, of course</div>

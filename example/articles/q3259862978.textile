@@ -1,0 +1,16 @@
+title: After testing SBCL/threaded on a real SMP system, I quite rapidly
+author: Daniel Barlow
+date: Sun, 20 Apr 2003 22:29:38 +0000
+
+After testing SBCL/threaded on a real SMP system, I quite rapidly
+(well, rapidly <i>after</i> adding appropriate debugging cruft to stop
+all the threads as soon as any of them fails an assertion) found
+several places it really could have used locks and didn't have.  So
+now it has, and I'm looking for weirdness in the decide-when-to-gc
+code.  More precisely, I'm typing this while watching it rebuild after
+having removed a lot of cruft in the decide-when-to-rebuild code.  If
+it's still broken after doing this, at least it'll be more obvious how.
+
+<p>I think we're probably going to do a 0.pre8 release at or around
+the end of the month so that a slightly wider audience can bang on it.
+

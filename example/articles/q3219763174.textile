@@ -1,0 +1,18 @@
+title: So, SBCL PPC
+author: Daniel Barlow
+date: Fri, 11 Jan 2002 18:39:34 +0000
+
+
+<p> So, SBCL PPC.  Decided that the easiest way to solve all the
+problems with closures and so on was to rewrite the function calling
+code to work just like the Alpha code does.  So, done that, now
+finding out what breaks.  (So far, everything, but that was an
+off-by-one error)
+
+<p> An SBCL rebuild is not the thing my computer is fastest at.
+Expect to see more diary entries in the near future while I wait for
+builds, I guess.  In the meantime, Nathan Froyd sent me a patch for
+db-sockets that needs applying.   Lispers are the <i>best</i> kind of
+users - they're just rare (some claim mythical)
+
+

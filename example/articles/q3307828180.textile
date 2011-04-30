@@ -1,0 +1,10 @@
+title: In the spirit of JFDI for which Lispers everywhere are known[*], please
+author: Daniel Barlow
+date: Wed, 27 Oct 2004 2:9:40 +0000
+
+In the spirit of JFDI for which Lispers everywhere are known[*], please
+find included-by-reference an asdf-installable <a
+href="http://www.cliki.net/trivial-sockets" >trivial socket
+interface</a>
+
+<p>[*] For the avoidance of doubt: yes, this is sarcasm.

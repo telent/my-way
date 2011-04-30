@@ -1,0 +1,36 @@
+title: While we are on this subject, this kernel change on the sourceforge
+author: Daniel Barlow
+date: Mon, 29 Jul 2002 17:54:28 +0000
+
+
+<pre>
+ While we are on this subject, this kernel change on the sourceforge
+ machine meant that I had to transfer my ppc testing laboratory to Dan's
+ iMac. And I found another nasty surprise waiting for me there. On the SF
+ RS/6000 PPC, the floating point modifications worked as expected, giving
+ the right kind of exceptions in the right circumstances. On Dan's iMac:
+ 
+ * (/ 1.0 0.0)
+ 
+ 1.0 ; should signal DIVIDE-BY-ZERO
+</pre>
+
+<p>(Christophe's email to <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=925036&forum_id=4134">sbcl-devel</a>).
+So, somehow, I got nominated to look at it.
+
+<p>I haven't actually <i>fixed</i> it yet.  The immediate problem is
+that it's not sufficient to twiddle the FPSCR to enable floating
+point traps: you also have to set two bits in MSR (which,
+incidentally, you can't directly, as it's a privileged register).
+That's not actually a major problem, because there's a neato glibc
+function called <tt>feenableexcept()</tt> that does this (strace
+suggests that it works by installing a signal handler for SIGUSR1 that
+frobs the on-stack MSR, then doing <tt>kill(getpid(), SIGUSR1)</tt>).
+What is a major problem is getting it to <i>stay</i> set, because it
+gets reset in signal handlers, and restored when the handler returns -
+which punts us back into last week's problem, that half of the time,
+we don't return from said handlers in any conventional kind of way.
+Um.  <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=936232&forum_id=4134">More
+details here</a>

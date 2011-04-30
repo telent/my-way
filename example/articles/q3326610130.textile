@@ -1,0 +1,42 @@
+title: There are many reasons to keep a blog, and most of them are in
+author: Daniel Barlow
+date: Wed, 1 Jun 2005 11:22:10 +0000
+
+There are many reasons to keep a blog, and most of them are in
+conflict with each other.  Today the conflict is between writing
+something so I will remember next year what I was doing this year, and
+writing nothing so that everyone else doesn't have to wade through my
+rambling.  Guess who won?
+
+<ul>
+
+<li> Listening to music on the tube doesn't make the tube journey pass
+any faster in the way that reading a book does (when I can find a book
+interesting enough to read but not yet so interesting that I don't
+just finish it when I get home).  But the headphones do keep the <a
+href="http://london.openguides.org/index.cgi?Bank_Station" >screeching
+noise</a> down.
+
+<li> I'm missing not having a spare computer on the internet.  I don't
+know why, as I barely used the one I did have.  £150 buys me a year's
+worth of 64Mb UML, or £200 (plus delivery) buys me a Celeron from the
+Dell "factory outlet" with really rather a lot more memory and disk
+than that, which my employers will host for me => free bandwidth.  But
+then I'm still stuck with real hardware.
+
+<li> To confirm what everyone already knew really, I am Officially Not
+Hacking SBCL (or much else) right now - really don't have the time or
+the enthusiasm.  If you were waiting for me to finish or merge
+something that's interesting to you, ask on the appropriate mailing
+list and I'll work out what state I left it in and post any WIP I have
+lying around that's not publically available already.
+
+<li> The full extent of my Lisping lately is - would you believe it -
+tools for dealing with HTML forms and databases and stuff without (a)
+going mad, or (b) involving much more of a framework than Araneida
+already imposes.  
+
+</ul>
+
+I think I probably won't be at LSM after all.
+

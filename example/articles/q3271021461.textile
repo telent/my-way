@@ -1,0 +1,26 @@
+title: The standard Perl wisdom is that There's More Than One Way To Do It
+author: Daniel Barlow
+date: Thu, 28 Aug 2003 2:4:21 +0000
+
+<p>The standard Perl wisdom is that There's More Than One Way To Do It. 
+
+<p>In Lisp there are often also many ways to do the same thing.  At a
+low level you'll often see people on comp.lang.lisp or wherever
+comparing approaches: debating loop vs do, or the finer points of
+format strings, or closures vs objects, or recursive vs iterative
+solutions (for the record, tail-recursion is <i>not</i> the Holy
+Grail; if the problem is natureally recursively decomposed, use
+recursion.  Otherwise just write a loop, already.  And these debates
+just tend to help everyone involved to acquire a more complete
+picture of the language.
+
+<p>At a higher level, of course, there are many different strategies
+for solving the problem, but where in Perl you might go with that
+other well-known saying "the Right Answer is whatever lets you get
+your job done" (aside: I'm sure I remember hearing this all the time;
+now I can't find a single instance of it on Google.  Maybe I'm
+assigning too more pragmatism to the Perl Way than I ought; sorry,
+guys), in CL you typically (at least, I typically) spend a bit more
+thinking time upfront to decide on an elegant solution.
+
+<p>I appear to be suffering choice paralysis.

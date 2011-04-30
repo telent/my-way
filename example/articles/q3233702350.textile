@@ -1,0 +1,29 @@
+title: * (let ((report '(:os :alpha :tree t)) (term '(:tree :sbcl))) (every (lambda (x) (let ((tx (getf term x t)) (rx (getf report x t))) (or (eq tx rx) (eq tx t) (eq rx t))))  '(:os :tree :arch)))
+* (let ((report '(:os :alpha :tree :sbcl)) (term '(:tree :sbcl))) (every (lambda (x) (let ((tx (getf term x t)) (rx (getf report x t))) (or (eq tx rx) (eq tx t) (eq rx t))))  '(:os :tree :arch)))
+* (let ((report '(:os :alpha :tree :cmucl)) (term '(:tree :sbcl))) (every (lambda (x) (let ((tx (getf term x t)) (rx (getf report x t))) (or (eq tx rx) (eq tx t) (eq rx t))))  '(:os :tree :arch)))
+author: Daniel Barlow
+date: Sat, 22 Jun 2002 3:39:10 +0000
+
+<pre>
+* (let ((report '(:os :alpha :tree t)) (term '(:tree :sbcl))) (every (lambda (x) (let ((tx (getf term x t)) (rx (getf report x t))) (or (eq tx rx) (eq tx t) (eq rx t))))  '(:os :tree :arch)))
+T
+* (let ((report '(:os :alpha :tree :sbcl)) (term '(:tree :sbcl))) (every (lambda (x) (let ((tx (getf term x t)) (rx (getf report x t))) (or (eq tx rx) (eq tx t) (eq rx t))))  '(:os :tree :arch)))
+T
+* (let ((report '(:os :alpha :tree :cmucl)) (term '(:tree :sbcl))) (every (lambda (x) (let ((tx (getf term x t)) (rx (getf report x t))) (or (eq tx rx) (eq tx t) (eq rx t))))  '(:os :tree :arch)))
+NIL
+</pre>
+
+It's not exactly what you'd call a comprehensive test, but it seems to
+work.  Omitted components in either the criterion we're searching on
+(<tt>term</tt>) or the report we're looking at (<tt>report</tt>)
+default to "any".  For each attribute that we're looking at <tt>'(:os
+:tree :arch)</tt>, a search for "any" yields results for "any" or for
+any other value, and a search for a specific value also matches
+reports that apply to "any".  All clear?
+
+<p>There is admittedly no way in this scheme at present to say "all
+reports <i>except</i> the ones that apply to <tt>:os :linux</tt>", for
+example.  I think I had some reason for this omission along the lines
+of "why on earth would you want to know that"; it remains to be seen
+whether this is convincing.
+

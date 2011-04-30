@@ -1,0 +1,37 @@
+title: Not really getting on too well with this "Finish things"
+author: Daniel Barlow
+date: Mon, 25 Feb 2002 13:17:9 +0000
+
+
+<p> Not really getting on too well with this "Finish things"
+resolution, as asdf is now lingering around while I occupy my time
+with something else.  My excuse for this is that asdf tickles a <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=514293&forum_id=6767"
+>bug</a> in clisp so we can reasonably wait for that to get fixed
+first.  Actually, my real excuse is that GnuCash is now really
+annoying me and I need to replace it with something I understand, that
+doesn't keep adjusting the values in my split transactions, and that
+has more support for VAT.  The thought of tying my invoicing and
+accounting together with something stronger than shell scripts is also
+kind of appealing.
+
+<p>I'm also looking into WAP.  4 lines of text is an information-poor
+channel; when considering that in any situation where one might visit
+a WAP site one could instead, say, make a voice call and have a
+<i>much</i> better user experience, it's going to be hard to make a
+sufficiently compelling application.  Anyone have any worthwhile WAP
+sites they can recommend to me?  The nearest thing I've found is the
+Railtrack site, which on a good day is marginally faster than
+phoning the enquiries line might have been.  
+
+<p>Or was, anyway.  Since my phone came back from the repair shop with
+all its bookmarks erased, I can't find the URL for the Railtrack site
+any more - it seems to be registration-only now.   Bad Kizoom!  No URL!
+
+<p>Everyone else has already linked to this, but never mind.
+JavaLobby has an <a href="http://www.javalobby.org/clr.html" >article
+on .NET</a> which echoes fairly well my <a href="#dot-net">own
+position</a>.  They have included rather more pro-java partisan
+arguing than I would have liked, but to their credit they do seem to
+have coined the term <b>``skinnable language''</b>
+

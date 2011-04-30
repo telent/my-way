@@ -1,0 +1,42 @@
+title: I have been muttering about SBCL runtime cleanups lately
+author: Daniel Barlow
+date: Thu, 24 Mar 2005 21:52:48 +0000
+
+I have been <a
+	    href="http://article.gmane.org/gmane.lisp.steel-bank.devel/4495"
+>muttering</a> about SBCL runtime cleanups lately.  Current thoughts
+are
+
+<ul>
+<li> smaller source files which do one (or a few) things each: e.g 
+<tt>vanilla-cheneygc-sigsegv-handler.c</tt>
+
+<li> dispense with Config.`uname -m`, instead choosing the 
+files to compile/link based on *target-features* - either in the
+Makefile directly if we can find a sensible way to export *target-features*
+to the shell, or with a big features.h file that consists entirely of
+<pre>
+#if defined(LISP_FEATURE_SB_THREAD) && !defined (LISP_FEATURE_SB_PTHREAD)
+#include "sigprocmask-pthread.c"
+#endif
+[...]
+</pre>
+etc.  As a general principle, though, #including *.c files gives me
+the creeps, though, so it's more liekly we hack genesis to write out
+something that make(1) can grok.
+
+<li> probably also implement the long-threatened separation of build
+features from target features.  My current idea for this is that when
+started from a warm core we just create *features* from (what was
+*target-features* at build time) then delete from it wherever we find
+we built with support for a feature that's not present at runtime.  I
+think that Christophe has an arguably neater hack involving the
+package system, though.
+
+</ul>
+Depending on work workload, and on how long it takes to get acpi
+suspend working properly on my new laptop (yes, I finally gave in -
+it's a compaq nc4000; not quite as small as its predecessor but still
+reasonably light), hope to see something along these lines early next
+month.
+

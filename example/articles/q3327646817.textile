@@ -1,0 +1,46 @@
+title: Enotomotomy, Trivial Sockets and Bordeaux-MP added to telent darcs
+author: Daniel Barlow
+date: Mon, 13 Jun 2005 11:20:17 +0000
+
+Enotomotomy, Trivial Sockets and Bordeaux-MP added to <a
+href="http://verisons.telent.net/cgi-bin/darcs.cgi">telent darcs</a>.
+I think this is probably all of the code from telent cvs that anyone
+might be interested in: please holler if there's anything else you're
+missing.
+
+<p>In non-Lisp news, yesterday I fulfilled my <a
+href="http://ww.telent.net/diary/2004/12" >New Year's Resolution
+no. 6</a> and perhaps also number 7.  Two hours doesn't sound like a
+great time, but the winner got 1:35 and I think his usual marathon
+time is more like 1:15-1:20, so my excuse will be (a) vicious
+headwind, (b) lack of people to draft.  I did most of the second half
+without benefit of a paceline.  In short, I'm secretly quite pleased,
+but I'm not telling anybody that.
+
+<p>Actually, since we're now halfway through 2005, I may as well
+update on the status of the other resolutions
+
+<ol>
+<li> zilch
+<li> also nothing (though the PPC issue looks like it will go away of
+its own accord longterm)
+<li> the texinfo translator got stolen with my last laptop and I
+haven't thought about it since
+<li> well, this one has no measurable targets and is therefore easy
+<li> done.  although I'm moving soon anyway, so just in time to 
+put all the books <i>back</i> in boxes....
+<p>I'm thinking about selling or otherwise disposing of a
+whole bunch of said books; presently any fiction book that I've read
+but haven't reread since last time I moved is up for the chop.
+<li><b>Yup!</b>
+<li>I suppose so, yes.  Though I have another next week (which is on
+the <a href="http://www.londoninlinemarathon.com/circuit.php" >Lee
+Valley Cycle Circuit</a> and probably just as slow by virtue of its
+hills as Goodwood was due to headwind) and then Berlin in September,
+which is allegedly <i>much</i> faster.
+<li>no
+<li>likewise no
+</ol>
+
+Looks like a busy autumn ahead.
+

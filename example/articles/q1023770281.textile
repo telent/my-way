@@ -1,0 +1,9 @@
+title: Look Ma, a brand new diary system
+author: Daniel Barlow
+date: Tue, 11 Jun 2002 06:38:01 +0100
+
+Look Ma, a brand new diary system.  One-file-per-entry, lashings of
+Common Lisp, and moderate amounts of emacs glue.  The only real gap
+(so far) is a way of telling emacs that these files are fragments of
+HTML BODY content so I can use psgml for element competion and
+suchlike.

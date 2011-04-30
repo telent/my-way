@@ -1,0 +1,16 @@
+title: Coming soon: cliki rss with diffs
+author: Daniel Barlow
+date: Wed, 8 Dec 2004 1:30:50 +0000
+
+Coming soon: cliki rss with <a
+href="http://cvs.telent.net/liferea.png">diffs</a>.  All the hard work
+has been done already by Nathan Froyd (whose <a
+href="http://www.cliki.net/diff" >diff</a> package is
+asdf-installable, I hadn't realised) and Christophe Rhodes.  In a
+CLiki near you (or, more probably, several at once) just as soon as I
+make it show the <i>right</i> diff instead of simply the most recent
+one.
+
+<p>This work would not have been possible without the generous support
+of the <a href="http://planet.lisp.org/clikis/">Planet Lisp CLiki Edition
+beta</a> programme.

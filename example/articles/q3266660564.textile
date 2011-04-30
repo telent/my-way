@@ -1,0 +1,40 @@
+title: Still alive, not that you'd notice
+author: Daniel Barlow
+date: Tue, 8 Jul 2003 14:42:44 +0000
+
+Still alive, not that you'd notice.  A couple of URLs for your reading
+pleasure:
+
+<ul>
+<li> <a href="http://blackbox.cs.fit.edu/blog/kaner/archives/000056.html"
+>IEEE's "Body of Knowledge" for Software Engineering</a>
+<blockquote>
+The SWEBOK is written as the basis for licensing exams for
+professional software engineers. If your state requires you to get a
+license to practice software engineering (and more will, if they are
+convinced that they can create fair exams based on a consensus
+document from the profession), the SWEBOK is the document you will
+have to study.
+<p>
+I am most familiar with SWEBOK\x{2019}s treatments of software
+testing, software quality and metrics. It endorses practices that I
+consider wastefully bureaucratic, document-intensive, tedious, and in
+commercial software development, not likely to succeed. These are the
+practices that some software process enthusiasts have tried and tried
+and tried and tried and tried to ram down the throats of the software
+development community, with less success than they would like.
+</p></blockquote></li>
+<li> <a href="http://www.tomrobinson.com/work/advice.htm"
+>Tom Robinson on the music industry</a>
+<blockquote>
+By far the most important factor in a successful artist's career has
+to do with identity and focus - in a word, PACKAGING - the one area
+musicians most often neglect. [...]
+<p>
+For music fans, wearing an Oasis T-shirt or getting a Skunk Anansie
+tattoo is a public statement about who they are. Others impress their
+friends with Pavarotti or Sting CD's at a dinner party, while Billy
+Bragg has always carefully packaged himself for people who loathe
+packaging...
+</p></blockquote></li>
+</ul>

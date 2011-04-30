@@ -1,0 +1,7 @@
+title: cvs.telent.net
+author: Daniel Barlow
+date: Fri, 17 Sep 2004 17:1:44 +0000
+
+<a href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/" >cvs.telent.net
+returns</a>.  You read it here first, or possibly second.
+

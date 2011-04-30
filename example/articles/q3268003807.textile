@@ -1,0 +1,52 @@
+title: The Stargreen web site, which I may have mentioned on these pages
+author: Daniel Barlow
+date: Thu, 24 Jul 2003 3:50:7 +0000
+
+The Stargreen web site, which I may have mentioned on these pages
+before - what?  "only twice a week"?  OK then - has a page which lists
+all the gigs in the system for a given month.  Clicky arrows for
+next/previous months, etc.
+
+<p>Anyway, every so often, somebody (it might be a bot) decides either
+to click their way through every month until 2039, or to edit the url
+directly to go to 2039 or some other after-death-of-Dennis-Ritche
+date.  Which causes an error, for which I get to see the backtrace in
+my dribble file.  I wouldn't care too much - after all, it's fairly
+obvious there are not going to be any gigs booked that far in advance,
+these people are really just playing - but for completeness sake if
+nothing else it'd be nice to fix.  After all, this is Lisp, one of
+whose boasts is that we don't have integer overflow problems when we
+exceed 32 bits.
+
+<pre>
+* (decode-universal-time (+ (* 86400 365 50) (get-universal-time)))
+debugger invoked on condition of type TYPE-ERROR:
+  The value 2635786389 is not of type (SIGNED-BYTE 32).
+</pre>
+
+<p>The problem is with timezones.  The only portable way to get
+timezone data is by calling the libc <tt>localtime()</tt> function
+with what the manual page describes as a <i>calendar time</i> - the
+integer number of seconds since 1970, stored as a <tt>time_t</tt>.
+Which is to say, probably 32 bits on most systems in use today.  So,
+despite the fact that we can in principle handle time arbitrarily far
+in the future, we can't if we want to know if Summer Time is in effect.
+
+<p>So I was jyst about to write a long diary entry detailing what the
+various different things we could do at this point are, but instead
+you can read the <a
+href="http://article.gmane.org/gmane.lisp.steel-bank.devel/1622" >mail
+I sent sbcl-devel</a>.  The reason for my sudden change of heart?
+I've just checked the tzfile manual page more closely and noticed that
+
+<pre>
+       The above header is followed by tzh_timecnt <b>four-byte  values</b>  of  type
+       long,  sorted  in ascending order.  These values are written in ``stan-
+       dard'' byte order.  Each is used as a transition time (as  returned  by
+       time(2)) at which the rules for computing local time change.
+</pre>
+
+Which makes the compiled zoneinfo data useless beyond 2038 too.  And
+practically nobody keeps the sources around.  This is exactly the
+excuse I need to not implement option 4.  I think 3.1 is most likely.
+

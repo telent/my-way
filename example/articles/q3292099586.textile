@@ -1,0 +1,14 @@
+title: dillo b0rked
+author: Daniel Barlow
+date: Wed, 28 Apr 2004 1:6:26 +0000
+
+dillo b0rked.   At least, dillo from emacs using my <a href=
+"http://ww.telent.net/diary/2003/10/#27.14804" >special recipe</a> now
+renders the window, starts a second dillo thread for hostname
+resolution, then gets killed by SIGHUP for reasons not completely
+obvious to me.  So, no hyperspec lookup, and time for bed.  
+
+<p>Yesterday's entry may have been ambiguous.  I didn't fall on my
+shoulder because I was drunk - indeed, I fell on my shoulder several
+hours before getting drunk.  I fell while skating, which I claim is in
+some way morally superior.

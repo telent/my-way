@@ -1,0 +1,21 @@
+title: Went to the Consume meeting
+author: Daniel Barlow
+date: Sun, 15 Sep 2002 21:47:45 +0000
+
+Went to the Consume meeting.  Consume is the not-entirely-local local
+community 802.11b wireless group (it's in London; even line-of-sight I
+doubt I could get a 50 mile point-to-point link).
+
+<p>Consume Live is a lot like you'd expect it to be from the flavour
+of the mailing list discusions: that is, it's a loose coalition with
+almost as many reasons to participate in a wireless network as there
+are people who want to, and it meanders gracefully towards nothing in
+particular, occasionally falling into the tar pits of legal arguments
+or needless techy fugues.  Blood fugues, almost.  
+
+<p> But we got in a couple of discussions about the aspects I find
+genuinely interesting: (a) it has a <a
+href="http://consume.net/twiki/bin/view/Main/ConsumeTheNet" >Wiki</a>
+which needs some fairly active love and attention (I have a thing for
+Wikis, as regular readers know) and (b) service discovery.
+

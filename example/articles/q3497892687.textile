@@ -1,0 +1,36 @@
+title: Let me (ac)count the ways: Sagepay Admin API  vs Ruby Enumerable
+author: Daniel Barlow
+date: Thu, 04 Nov 2010 20:51:27 -0000
+
+At $WORK we accept credit card payments through "Sagepay Server":http://www.sagepay.com - a semi-hosted service that enables us to take cards on a service that looks like our web site but without actually having to handle the card numbers.    Which is nice, because the auditing and procedure requirements (google PCIDSS for the details) for people who do take card numbers are requirementful and we have better things to do.
+
+Anyway, for reasons too grisly to go into, I found myself yesterday writing some code, in Ruby, that would talk to the snappily named "Reporting and Admin API".  (It used to be called "Access", but, just like Mastercard once upon a time, apparently got renamed).  It's not particularly difficult, just a bit random.  You create a bunch of XML elements (note, no root node) indicating the information you want plus the vendorname/username/password triple that you'd use to sign in to their admin interface, then you contatenate them being sure not to introduce intereleemnt whitespace,  then you take an md5 hash of what's left, then you delete everything inside the &lt;password> tags and substitute &lt;signature>md5 hash goes here&lt;/signature>.  Then you surround it all with &lt;vspaccess> and &lt;/vspaccess>
+
+If that sounds like doing XML by string munging, that's pretty much exactly what it is, but you don't want to do it using an XML library like anyone sane would do, because that might introduce whitespace or newlines or something which will upset the MD5 hash.  Why didn't they use something standard like HTTP Digest authentication (or even Basic, since it's going out over HTTPS anyway)?  No, I don't know either.  At the least they could have specified that the hash goes somewhere other than in the body of the message it's supposed to be hashing.
+
+Anyway, some Ruby content.  The sagepay R&A call for getTransactionList takes optional @startrow@ and @androw@ arguments but doesn't say what the defaults are if they're not supplied: inspection says that unless you ask for something else you'll get the first fifty, and it's not completely unreasonable to suppose this is because you'll get timeouts or ballooning memory or some other ugliness if you ask for 15000 transactions all at once.  So, we probably want to stick with fifty or whatever they've decided is a good number and do further queries as necessary when we've dealt with each block.  But if we have to handle this in the client it's going to be kind of ugly.
+
+Fortunately (did I say we were getting to some Ruby content?  here it is) we don't have to, because of the lovely new support in 1.9 for external Enumerators.  An Enumerator is an object which is a proxy for a sequence of some kind.  You  create it with a block as argument, and every time some code somewhere wants an element from the sequence it executes the block a bit more until it knows what value to give you next.  This sounds trivial, but it makes control flow so much simpler it's actually pretty gorgeous, because the control flow in the block is whatever you need it to be and the interpretere just jumps in and out as it needs to.  Just call @yielder.yield value@ whenever there's another element ready for consumption and what you do between those calls is up to you.  
+
+This is kinda pseudocodey ...
+<pre>
+offset=0
+Enumerator.new do |yielder| # this arg name is convention
+  loop
+    doc=get_fifty_requests_starting_at(offset)
+    doc.elements.each do |element|
+      yielder.yield element # control goes back to the caller here
+    end
+    if doc.length > 0 then  # there are probably more elements to get
+      offset+=50
+    else
+      break # end of the results
+    end
+  end
+end
+</pre>
+  
+and this is kinda too long to be illustrate the point quite as effectively, but does have the benefit of actually doing something useful:
+https://gist.github.com/662821
+
+If you find it useful, I am making it available under the terms of the two-clause BSD licence.  If you want to extend it, send patches.  If I need more of the API methods I'll be extending it too.  If either of the two preceding things happen and cause it to grow up I'll move it into a proper github project and make it play nice with gem/bundler/all that goodness

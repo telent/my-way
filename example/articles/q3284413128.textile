@@ -1,0 +1,37 @@
+title: Some progress on AMD64: the cross-compiler has managed to
+author: Daniel Barlow
+date: Fri, 30 Jan 2004 0:58:48 +0000
+
+Some progress on AMD64: the cross-compiler has managed to
+cross-compile something
+
+<pre>
+; compiling file "/opt/home/dan/src/sourceforge/sbcl/src/code/show.lisp" (written 02 OCT 2002 06:09:17 AM):
+; compiling top level form: 
+; compiling function SB!INT::CANNOT-/SHOW: 
+; recognizing DEFUN CANNOT-/SHOW
+; compiling top level form: 
+; compiling top level form: 
+; compiling DEFMACRO /SHOW: 
+; compiling top level form: 
+</pre>
+
+The code that it's generating is, I have no doubt, seriously bogus,
+but hey!  It's code!  At that point it fails with
+
+<pre>
+debugger invoked on a SIMPLE-ERROR in thread 27960:
+    failed AVER: "(NOT (EQ SIZE QWORD))"
+</pre>
+
+which comes from the MOV case for big immediate constants which checks
+they're not 64 bit immediate constants - seems that at leastg one of
+them is.  On the basis of the bits of amd64 manual I've read so far it
+seems that I can only load a 64 bit constant into rax and not into any
+other register, which is a shame, because the backtrace says it wanted
+to use rbx.  Perhaps it's bedtime.
+
+<pre>
+&lt;rtoy3> It compiles!  Ship it!
+</pre>
+

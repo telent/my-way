@@ -1,0 +1,20 @@
+title: It was a fixup problem (again)
+author: Daniel Barlow
+date: Mon, 16 Feb 2004 9:50:25 +0000
+
+<p>It was a fixup problem (again).  Having successfully proved that there
+was nowhere I was writing #x47, but that said octet nevertheless
+appeared in the output, there were only as many suspects as there were
+places that rewrite bits of the generated code before it's dumped.
+
+<p>I found that out about a week ago, and haven't looked at AMD64
+since, owing to being absurdly busy - mostly busy sitting on public
+transport journeying to and from London, admittedly, but with a laptop
+that (a) runs for about 40 minutes on a full battery, (b) isn't amd64
+anyway, that's basically just downtime.
+
+<p>Job continues fine.  Weekend consumed mostly by araneida/postgresql
+performance experimentation (I'd like to say "tuning", but that
+implies a goal and a sense of direction largely absent from my
+meanderings)
+

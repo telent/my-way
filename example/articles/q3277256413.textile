@@ -1,0 +1,27 @@
+title: Neil Gaiman being asked about his Duran Duran biography in 
+an interview:
+author: Daniel Barlow
+date: Sat, 8 Nov 2003 5:0:13 +0000
+
+Neil Gaiman being asked about his Duran Duran biography in 
+<a href="http://www.januarymagazine.com/profiles/gaiman.html"
+>an interview</a>:
+<blockquote>
+Whenever I do things because I want to do it and because it seems fun
+or interesting and so on and so forth, it almost always works. And it
+almost always winds up more than paying for itself. Whenever I do
+things for the money, not only does it prove a headache and a pain in
+the neck and come with all sorts of awful things attached, but I
+normally don't wind up getting the money, either. So, after a while,
+you do sort of start to learn [to] just forget about the things where
+people come to you and dangle huge wads of cash in front of you. Go
+for the one that seems interesting because, even if it all falls
+apart, you've got something interesting out of it. Whereas, the other
+way, you normally wind up getting absolutely nothing out of it.
+</blockquote>
+
+<p>Of course, it works better if what you want to do is write books
+like American Gods than if your idea of "fun and interesting" is, say,
+staying in bed until mid-afternoon.  Or possibly even hacking free
+Lisp software.
+

@@ -1,0 +1,23 @@
+title: New release (0.4) of net-telent-date
+author: Daniel Barlow
+date: Sun, 24 Aug 2003 2:27:40 +0000
+
+<p>New release (0.4) of net-telent-date.  I always feel slightly guilty
+about the name of this package: I named it when I was on a bit of a
+"all packages should have guaranteed-unique names, and using the dns
+is the best way to ensure this" kick, but most of the actual code in
+it is in fact lifted from CMUCL, so calling it something with 'telent'
+in the name is in a certain light tantamount to passing off.  Oh well.
+
+<p>Anyway, new function universal-time-to-rfc2822-date, which attempts
+to do local time.  It follows the existing practice of decode-universal-time
+for its argument list, which essentially means there are only two ways
+to use it that don't require a teatowel wrapped around the neck to avoid
+dribbling brain on the floor:
+
+<ol>
+<li> without the optional argument, you get local time
+<li> with <tt>0</tt> as the optional argument, you get UTC (or GMT)
+</li>
+</ol>
+

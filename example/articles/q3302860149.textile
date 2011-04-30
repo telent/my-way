@@ -1,0 +1,39 @@
+title: I said earlier that I'd write something about protocol-oriented
+author: Daniel Barlow
+date: Mon, 30 Aug 2004 14:9:9 +0000
+
+I said earlier that I'd write something about protocol-oriented
+programming.  Then I decided that it'd be more fun to send it to
+ll1-discuss instead of posting it here.  In the process of penning it,
+I came across <a
+href="http://www.mactech.com/articles/frameworks/8_2/Protocol_Evins.html"
+>this article by Mikel Evins</a>, which (a) says everything I wanted
+to, and (b) more, and (c) was written more than ten years ago, so
+decided I didn't need to.
+
+<p>I'm going to add my 2p summary anyway, based on the previous #lisp
+discussion that also led to <a
+href="http://www.advogato.org/person/crhodes/diary.html?start=78"
+>Christophe Rhodes' LSM2004 presentation</a>: a protocol is an defined
+communication across an ownership boundary, <i>in which both sides
+have expectations of the other</i>.  This "equal peers" clause is what
+sets it apart from an API, in which the expectation may all be
+one-directional.  Trivial example: consider the unix <tt>sync()</tt>
+call - the client doesn't have to do a whole lot, but the requirement
+on the implementation is strong.  Conversely, in <tt>qsort()</tt>,
+where the client provides the comparison routine, both sides have
+something important to do if the job is to get done.
+
+<p>(Of course, simply having used a protocol somewhere doesn't mean
+you're thinking in a Protocol-Oriented manner any more than having
+used a function somewhere means you're programming Functionally.  Some
+languages have better support than others for different ways of
+thinking.  Your Mileage May Vary.  There Is No Silver Bullet.  Objects
+In The Rear View Mirror etc etc)
+
+<p>For other stuff about protocols (and especially stuff that predates
+the current flurry), Google Groups might be a good place to start.
+Here's <a
+href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&c2coff=1&safe=off&threadm=A0KR7.13893%245W5.5761440%40typhoon.ne.mediaone.net&rnum=1&prev=/groups%3Fq%3Dg:thl2209172876d%26dq%3D%26hl%3Den%26lr%3D%26ie%3DUTF-8%26c2coff%3D1%26safe%3Doff%26selm%3DA0KR7.13893%25245W5.5761440%2540typhoon.ne.mediaone.net"
+>an article by Scott McKay</a> to be getting on with.  Lots of
+protocol discussion hapened in comp.lang.dylan too, unsurprisingly.

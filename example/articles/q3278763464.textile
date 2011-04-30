@@ -1,0 +1,40 @@
+title: The cirCLe CD is on hold pending a rethink
+author: Daniel Barlow
+date: Tue, 25 Nov 2003 15:37:44 +0000
+
+<p>The cirCLe CD is on hold pending a rethink.  Response from the
+survey showed lots (well, some few tens) of existing CL users who
+thought it would be neat, plus a few people who might want to try it
+for curiosity's sake (personal favourite: the person who wanted a
+Genera clone for $25) but neither of these is sufficient evidence of a
+sustainable market.  Maybe I'm asking the wrong questions; almost
+certainly I'm asking them in the wrong place.
+
+<p>So, Marketing 101: products have <i>features</i> but customers
+actually want <i>benefits</i>.  (Unless, for some reason, the feature
+in question is XML, but I digress).  So, what are the <i>benefits</i>
+of Lisp?  What's our USP?
+
+<p>I think the answer is <b>interactive development</b>: in particular
+for Web application development, where the usual state of the art
+seems to be either error reporting on the web page itself (which is a
+start, provided you can turn it off in production - do you want your
+customers reading your backtraces?)  or dumping stuff in a log file.
+So I've been experimenting with SLIME and Araneida with the intention
+that (a) errors in Araneida handlers can be debugged using the Slime
+debugger, (b) Slime can connect across the network (SSH-tunnelled) to
+a long-lived server process.  Some progress to report on (a): it
+works, but nothing is in CVS yet
+
+<p>Also today, set up a Paypal account: <b>dan@metacircles.com</b>.  Not
+altogether sure what I'm hoping that people will send me money for: if
+you've solved a problem (or just enjoyed) using CLiki or SBCL
+(threads, sockets, CLX, Alpha, PPC) or Araneida or cclan or asdf or
+detachtty or ... and want to fund further development, now you have a
+mechanism.  It might also be a good idea if you sent me email saying
+which of these you're using: not that your $40 is going to
+significantly influence my development whim, but in the aggregate your
+collective $4000 might.
+
+<p>Thanks, by the way, go to Erik Enge for renewing the cliki.net
+domain when i managed to miss the reminders for it.

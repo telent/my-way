@@ -1,0 +1,37 @@
+title: Everyone knows that accountancy is dull
+author: Daniel Barlow
+date: Tue, 26 Feb 2002 11:47:8 +0000
+
+
+<p> Everyone knows that accountancy is dull.  That notwithstanding,
+writing Rosemary (working title for my bookkeeping system which is
+clearly not Sage) over the last few days has been real fun.  It's a
+rare opportunity to write a real Lisp program without having to worry
+about whether it will run on clisp.
+
+<p> The magic part of programming is when you make a change, run it,
+and see it do something that it didn't last time.  All the
+specifications and test cases in the world are just nowhere near as
+compelling as actual running code.  <i>Programming.  It's Better than
+Text</i>.
+
+<p> This instant gratification is one of the reasons that I like Lisp:
+I can write a function and call it.  No test harnesses or stubs, no
+compilation waits, no having to restart the session from the beginning
+and go through all the same steps as last time to recreate the bug.
+Interactive development is the future (and the present, and for some
+lucky people that <i><a
+href="http://www.c2.com/cgi/wiki?SmugLispWeenies" >never shut up
+about it</a></i>, also the distant past)
+
+<p>And if it doesn't work, or it's ugly (and the first few drafts
+probably <i>will</i> be, unless you're superhuman), or you see a
+better way to do it - you revise it.  This is reason &#35;2: Lisp does
+not get in your way when you change your mind after the fact - and
+when you learn to relax and take advantage of that, instead of feeling
+guilty for not getting it right the first time, that's when you start
+to Win Big.
+
+<p>Here endeth the lesson.  I'll save the lectures on macros and CLOS 
+for another time.
+

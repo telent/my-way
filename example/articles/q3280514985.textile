@@ -1,0 +1,73 @@
+title: The other day I had a questionnaire by email (16 lines of text in
+agency which among other things asks:
+author: Daniel Barlow
+date: Mon, 15 Dec 2003 22:9:45 +0000
+
+<p>The other day I had a questionnaire by email (16 lines of text in
+only <i>64k</i> of MIME-encoded Word document) from a recruitment
+agency which among other things asks:
+
+<ul>
+<li> Experience with Unix?
+<li> How many years?
+<li> How strong are you?
+</ul>
+
+<p> I'm sorely tempted to answer "A few quite unsavoury episodes but
+on the whole mostly positive", "seven, with time off for good
+behaviour", and "can lift own weight".  
+
+<p> Really, how hard can it be to ask questions that would actually
+tell you something about the candidate?  You want to know about Perl?
+Ask what their favourite CPAN module is, and why (or whether they've
+written one, and what it does).  You want to know about Linux?  Ask
+them which distribution they'd recommend, or what they most like about
+the 2.6 kernel.  $RDBMS?  Ask how (in the case of MySQL, the more
+adversarial may substute "whether") it compares to $OTHER_RDBMS.  
+
+<ul>
+<li> It'd take a few minutes to fill out, but no longer than I'm now going
+to have to spend deliberating on whether my Linux abilities (I have
+debugged my userland signal handling code by inserting printks in the
+kernel/I did not write the kernel code in question - or any
+significant part of the rest of the kernel) should be classed as
+"intermediate", "advanced", "expert", "guru", or "minor deity".  Some
+people will worship anything, after all.
+
+<li> It'd take a few minutes to mark, too, but then (a) you'd get
+fewer responses to start with, and (b) who's <i>really</i> going to
+rate themselves as anything less than "advanced" on the job's core
+required skills?  At least the answers would mean something
+</ul>
+
+<p> Is it fair to expect agencies to know this stuff?  For 20% of the
+first year's salary, there's some kind of case to be made along those
+lines, yes.  I certainly think it's not unreasonable to expect them to
+know when they <i>don't</i> know, and spend some time in constructive
+discussion with the client to rectify this.
+
+<p>(They also want to know if I can "raw code" HTML.  In the privacy
+of my own home, yes, but I think I'd get arrested if I tried it in
+public and as far as I know "but I'm a web designer" is not an
+admissible defence against a charge of indecent exposure.
+
+<p> Look Ma, no "stand up in court" double entendres.  What?  Damn.)
+
+<p> For the record, some of the agencies I've met or talked with in
+the last couple of months have been doing pretty useful jobs: they're
+often filtering several hundred inappropriate applications for a
+single job, and then they're phoning the potential employer regularly
+to chivvy them into actually making a decision.  Because, to be
+honest, some potential employers could probably go for months or years
+with this potential completely untapped, if it weren't for someone to
+call them up periodically and press them to make their mind up.  I do
+think there's a place for them (and to forestall the obvious
+rejoinder, I don't think it <i>has</i> to be the second circle of
+hell) but there do seem to be more than a few places where the
+recruiter-client relationship is not all it could be, and everyone
+suffers as a result.
+
+<p> Another job description I'm looking at now says that "Candidates
+with experience of Pearl will be at an advantage".  Who's Pearl? Would
+I like her?
+

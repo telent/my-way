@@ -1,0 +1,68 @@
+title: Paul Graham, A Plan for Spam
+author: Daniel Barlow
+date: Fri, 16 Aug 2002 12:3:14 +0000
+
+
+Paul Graham, <a href="http://www.paulgraham.com/spam.html" >A Plan for Spam</a>.
+
+<p>I used spamassassin for a while, but removed it temporarily when it
+started <a href="http://ww.telent.net/diary/2002/7/#6.53053" >eating
+my computer</a> after being reintroduced to 200 emails at once when
+I'd been away from the net.  And I haven't replaced it since, because
+I quite quickly realised that with an approximate 20:1 spam to real
+mail ratio after filtering out mailing list stuff, it's actually
+simpler to delete spam from the inbox by hand these days than it is to
+check the spam folder for false positives (which may be a couple of
+orders of magnitude rarer, and so much easier to miss).  So, I don't
+have any filtering any more.
+
+<p>Probabilities better than scores?  As <a
+href="http://www.advogato.org/person/raph/diary.html?start=258"
+>raph</a> pointed out, you can take logs to the probabilities and get
+scores, but I don't think that's the issue.  The interesting point is
+how you arrive at the per-word numbers in the first place, and the
+advantage of the Bayesian system is that it's transparent.  Assuming
+current styles of email communication, I doubt that you will see Paul
+Graham's webmail system decide that a <a href="/diary/2002/7/#3.50939"
+>valid signature delimiter</a> is an indicator of potential spam.
+
+<p>But on a more general note, I think that Paul's "Defining spam"
+appendix is a pretty good indication that we have terminology
+problems.  What he's built is not in itself a spam filter, it's an
+<i>uninteresting-mail filter</i> - actually a far more useful tool -
+and if he were to refer to it as such, a lot of the borderline cases
+go away.  Domain renewals are interesting to me: offers from Verisign
+for a Free E-Commerce Web Site are not.  It doesn't matter if they
+think I've opted in or if I have an existing relationship with them:
+the point is that I don't want it, and I don't need to define it as
+spam before deciding to filter it.
+
+<p>I define spam as <i>persistent or large scale sending of email
+in which there is no reasonable expectation that the recipients will
+be interested</i>.
+
+<p>This is not a good definition for computers to use; they tend to
+choke on words like `reasonable' - but that doesn't matter.  Computers
+on the receiving end are just filtering for interestingness anyway and
+don't need to care if it's spam.  Computers in the network are
+primarily concerned with abuse <i>of</i> the net, so <i>they</i> don't
+need to care if it's spam either.  If it's relaying through my
+servers, or faking its origin, that's a good enough reason to stop it
+no matter what the message content.
+
+<p> Use of automation is a characteristic of much spam, but it's not
+essential or even exclusive.  Suppose someone at Amazon has determined
+from reading my web pages that I like the Propellerheads, and sent me
+email to say that they have the new album at half price.  That's
+welcome news to me, and it makes no difference whether they sent the
+same email to a million other people (we assume that they'd determined
+that those other million were equally as interested).  On the other
+hand, you can hand-letter your offer of cheap toner cartridges on
+vellum with a quill ten thousand times and send me six of the copies
+(each to slightly different mailboxes which are all too clearly routed
+to the same eventual destination) by courier delivery, and it
+<i>still</i> represents the large-scale sending of mail where you
+clearly made no effort to determine whether the recipients were
+interested.  Spam.
+
+<p> For the record, I don't want to know about toner cartridges.

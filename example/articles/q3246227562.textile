@@ -1,0 +1,16 @@
+title: I was going to post an entry about end-user scripting of the unix
+author: Daniel Barlow
+date: Thu, 14 Nov 2002 1:52:42 +0000
+
+I was going to post an entry about end-user scripting of the unix
+desktop environment, and how nice it would be to have some way of
+remote-controlling the stuff (web browsers, time trackers, cd players,
+screensavers) that presently only really has graphical interfaces.
+Then I decided that more people would see it if I posted it on
+Advogato instead.  
+
+Then I realised that it was basically on-topic for the existing "Cranky
+User" thread on Advogato, so I ended up posting it as <a
+href="http://www.advogato.org/article/572.html#10" >a comment</a>
+instead.
+

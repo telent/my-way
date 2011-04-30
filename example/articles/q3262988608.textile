@@ -1,0 +1,66 @@
+title: In recent months, I've become teed off enough with the speed of
+author: Daniel Barlow
+date: Tue, 27 May 2003 2:43:28 +0000
+
+<p> In recent months, I've become teed off enough with the speed of
+ifile-gnus that I find myself doing all kinds of stuff to avoid
+actually pulling my mail into gnus, often for days at a time.
+Typically this means running mutt on my shell host, which means that
+my mood for the day is set by checking email in the morning and
+deleting 100 assorted get rich quick schemes, offers of
+pharmaceuticals, viruses and invitations to pornographic web sites
+which are probably illegal and damn well should be.  This may be one
+of the reasons I've been so cheerful and enthusiastic lately, and
+ought to be fixable.
+
+<p> The choices open to me, it seems: (a) hack up some kind of
+persistent ifile interface (yay, another network daemon running on the
+loopback interface), (b) installing some other gnus-based filter, or
+(c) saying "sod it, I'll go back to spamassassin".
+
+<p> Someone on the Gnus team seems to have taken the unix
+mechanism-not-policy thing to heart.  Here's a tip: just because you
+have the full power of Lisp as your configuration language is no
+reason to make people have to read your entire source code just to
+find out how to make your program work at all.  If it's actually
+possible to use spam-stat to classify incoming mail into different
+folders for spam vs non-spam, it's seriously non-obvious from the info
+file.  Spam filtering is, unfortunately, a <b>basic requirement</b> of
+a mail reader these days: a mail reader that doesn't do it out of the
+box will soon be about as useful as a mail reader that doesn't use 
+a pager of some kind to display messages a screen at a time.  Still,
+this is CVS gnus so carping about the intallation is perhaps unfair if
+they haven't had time to work on it yet.  
+
+<p> So, instead, I've reverted to spamassassin/spamd.  It's just about
+usable after setting <tt>OPTIONS="-c -m 1"</tt> in
+<tt>/etc/default/spamassassin</tt> (though putting 600 messages
+through it using formail it still managed to push the loadavg to 63
+briefly and then give me "Can't fork" messages, so I don't think
+that's the whole answer).  It still does a worse job of identifying
+spam based on looking at the entire message body than I can based on
+the header alone.  And for each incoming message I have <tt>inetd</tt>
+spawn <tt>sendmail</tt> (actually Exim) spawn <tt>sh</tt> spawn
+<tt>spamc | procmail</tt>.  So, Exim reads the message from the
+network and outputs it to spamc.  spamc reads it and outputs it to
+spamd.  spamd reads it and outputs it, suitably mutilated, to spamc.
+spamc reads it and outputs it to procmail.  procmail reads it and
+outputs it to disk.  And this is the <i>normal</i> way of arranging
+things, if the documentation is to be believed.
+
+<p>I read, sometimes, in <a href="http://www.lwn.net/">LWN</a>, about
+the marvellous things the kernel developers are doing to reduce the
+context switch time or process startup time, or the amount of copying
+done to move packets around the network stack, and I can only conclude
+that it's all a complete and utter waste of time when this is the kind
+of crap that people build on top of it.
+
+<p>Still, if it means I can start my working day tomorrow without ten
+messages from someone eager to tell me that he/she "jammed the
+babysitter" (what is this, CB radio?) maybe it's all worthwhile.
+
+<p>Roll on pervasive PGP, really.  If you should ever bump into me
+physically, ask for my key fingerprint, because I am
+<tt>-&gt;&lt;-</tt> this close to whitelisting signed mail from real
+people and letting everything else queue up in the "Things to do -
+urgent" folder.

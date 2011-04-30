@@ -1,0 +1,12 @@
+title: Fix 3 did indeed, once rebuilt from clean
+author: Daniel Barlow
+date: Thu, 17 Jan 2002 20:25:35 +0000
+
+<p> Fix 3 did indeed, once rebuilt from clean.  Function call is now
+working again, at least to the extent that we're back fighting the
+same bug as we had <a
+href="http://www.geocrawler.com/mail/msg.php3?msg_id=7348688&list=1663">
+last month</a> were before we started messing about with it
+
+<p>Oh, driving test?  I get to have another go at it :-(
+

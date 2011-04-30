@@ -1,0 +1,44 @@
+title: So I think I can probably get this into SBCL 0.7.13 (which will be
+author: Daniel Barlow
+date: Fri, 21 Feb 2003 19:5:39 +0000
+
+So I think I can probably get this into SBCL 0.7.13 (which will be
+released on Sunday, all being well) by claiming it's a bugfix for 
+my very old 
+<a
+href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/sbcl/sbcl/contrib/scriptoids?rev=HEAD&content-type=text/vnd.viewcvs-markup"
+>standaloneize-file</a> hack.
+
+<pre>
+* (require :sb-executable)
+NIL
+* (with-open-file (o "test1.lisp" :direction :output) (format o "(princ \"hello world\")"))
+NIL
+* (compile-file "test1")
+; compiling file "/home/dan/test1.lisp" (written 21 FEB 2003 07:04:41 PM):
+; compiling top level form: 
+
+; /home/dan/test1.fasl written
+; compilation finished in 0:00:00
+
+#P"/home/dan/test1.fasl"
+NIL
+NIL
+* (sb-executable:make-executable "hello" *)
+T
+0
+</pre>
+and then in the shell:
+<pre>
+<font color=green><b>:;</b></font> ./hello
+hello world<font color=green><b>:;</b></font> 
+<font color=green><b>:;</b></font> time ./hello
+hello world
+real    0m0.089s
+user    0m0.060s
+sys     0m0.020s
+</pre>
+
+Yes, that bold green thing really is my shell prompt.  The point is
+that I can select commands by triple-clicking them and then paste them
+into any other xterm.

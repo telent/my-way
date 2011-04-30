@@ -1,0 +1,15 @@
+title: It runs
+author: Daniel Barlow
+date: Fri, 25 Jan 2002 23:51:3 +0000
+
+<p> <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=440191&forum_id=4134"
+>It runs!</a>
+
+<p> Infeasibly big TNs were actually a symptom of an 
+<a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=436466&forum_id=4134"
+>endianness problem</a> - although not in exactly the same area as I
+thought when I wrote that.  But they would have been only sensibly big if
+they'd been the right way around.
+

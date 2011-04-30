@@ -1,0 +1,48 @@
+title: I'm daydreaming
+author: Daniel Barlow
+date: Wed, 12 May 2004 18:5:10 +0000
+
+<p>I'm daydreaming. Yesterday I somehow ended up resubscribed to
+comp.lang.lisp, to participate (well, mostly laugh at) in the
+"Modernizing Common Lisp" thread.  (My fingers seem determined to type
+that as "Mordorizing"; read into that what you will).  Fortunately now
+I'm not taking it as seriously I find it more entertaining than
+frustrating.  I'm not going to post some long screed about it here,
+but I did start thinking at a tangent.
+
+<P>Adopting a Nick Hornby writing clich&eacute; (which I'm sure he
+stole from the Mail on Sunday magazine anyway), here are my top five
+asdf-install-compatible libraries (excluding the ones I wrote).  These
+are not in order of merit, just in the order they occur to me.
+
+<ol>
+
+<li> xmls: I think I'm only using this for xml generation rather than
+actual parsing, but it's a snap for all those trivial XML formats like
+RSS.
+
+<li> cl-ppcre: on which topic I have written before, yes.
+
+<li> pg: although the version I'm actually using predates its
+asdf-installability (it works, and it's in production, and so I'm
+naturally reluctant to upgrade it).
+
+<li> split-sequence: ok, really, how can I not?
+
+<li> clx: kind of stretching a point here in that I asdfized it and
+host the cvs repository, but the <i>hard</i> work is/was all done by
+other people.
+
+</li>
+</ol>
+
+<p>The common feature in all of these (except CLX, which I stuck in
+simply because so much else depends on it) is that they're small, do
+one thing well, and don't impose their way of working on me.
+Remember, you get ten points for a library, but only two for a
+framework.
+
+<p>In other news, I read somewhere that the Allegro CL 7.0 beta now
+includes asdf.  I don't know if beta programme participants are bound
+by NDA or anything, but just in case they are I've conveniently
+forgotten where I got this news.

@@ -1,0 +1,16 @@
+title: psql: FATAL:  cannot write init file -- relation tuple form
+author: Daniel Barlow
+date: Fri, 7 Mar 2003 0:50:48 +0000
+
+<pre>
+psql: FATAL:  cannot write init file -- relation tuple form
+</pre>
+
+<p>Would it have hurt <i>so</i> much at least to say where this init
+file was going to be written?  Maybe also the value of <tt>errno</tt>?
+It turns out to mean "/var is full" .
+
+<p>I don't know why I bothered to set this machine up with more than
+one partition anyway ...
+
+

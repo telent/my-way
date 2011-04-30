@@ -1,0 +1,29 @@
+title: The informal groups' vested interests will be sustained by the
+author: Daniel Barlow
+date: Thu, 11 Sep 2003 21:55:10 +0000
+
+<blockquote>
+The informal groups' vested interests will be sustained by the
+informal structures that exist, and the movement will have no way of
+determining who shall exercise power within it. If the movement
+continues deliberately not to select who shall exercise power, it does
+not thereby abolish power. All it does is abdicate the right to demand
+that those who do exercise power and influence be responsible for
+it. If the movement continues to keep power as diffuse as possible
+because it knows it cannot demand responsibility from those who have
+it, it does prevent any group or person from totally dominating. But
+it simultaneously ensures that the movement is as ineffective as
+possible. Some middle ground between domination and ineffectiveness
+can and must be found.
+</blockquote>
+<div align=right>
+<a
+href="http://flag.blackened.net/revolt/hist_texts/structurelessness.html"
+>'The Tyranny of Structurelessness'</a>, by Jo Freeman
+</div>
+
+<p>It's actually nothing to do with the Free Software movement
+<i>or</i> the Open Source tribe(sic); it was first printed by the
+women's liberation movement in 1970.  But, next time I see Eric
+Raymond's articles on ZDNet or Cnet or wherever and find myself
+muttering things like "<i>I</i> didn't vote for him", well, hmm.

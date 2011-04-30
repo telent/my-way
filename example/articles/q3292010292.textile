@@ -1,0 +1,32 @@
+title: I've pretty much stopped reading comp.lang.lisp (did I mention this
+author: Daniel Barlow
+date: Tue, 27 Apr 2004 0:18:12 +0000
+
+I've pretty much stopped reading comp.lang.lisp (did I mention this
+already?  oh, ok, not for several days), but I do occasionally point
+google groups at it to make sure I'm not missing anything.  Lately
+there seems to be a lot of talk about producing Linux CD-based Lisp
+environments: in short, what I was trying to do (and to charge money
+for) <a href="http://web.metacircles.com/cirCLe%20CD" >six months
+ago</a>.  Not being in a position any longer to see this through (nor,
+happily, being in quite such a pronounced need for new revenue
+streams), I can not only give the world the benefit of my
+<a href="http://ww.telent.net/diary/2003/10/#5.8494">experience</a>
+<a href="http://ww.telent.net/diary/2003/10/#22.52777" >(s)</a>,
+but the <a href="http://ftp.linux.org.uk/~dan/livecd/">code that goes
+with them</a>.  Enjoy.
+
+<p>I have done no Lisp development lately, beyond intermittent (and
+not especially successful) poking at amd64.  Lonix meeting (pub) on
+Wednesday, uk-lispers (pub) on Thursday, Friday Night Skate (followed
+by pub) on Friday, GLLUG saturday (followed by - can you spot the
+pattern?  yes, more alcohol) and <a
+href="http://www.citiskate.co.uk/inline_skating_calender_events.htm"
+>skating to Greenwich</a> (scroll down) on Sunday.  Followed .. ok,
+you get the picture.  Monday morning awoke sore, slightly sunburnt
+and dehydrated, but more annoyingly, unable to raise my right arm
+above shoulder height without wincing: managed to fall on it
+(actually, tripped and rolled on it, I think; I'm a little unclear on
+the details) yesterday.
+
+

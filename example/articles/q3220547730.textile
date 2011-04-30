@@ -1,0 +1,59 @@
+title: Stand back world, I am going to buy a proper guitar
+author: Daniel Barlow
+date: Sun, 20 Jan 2002 20:35:30 +0000
+
+
+<p> Stand back world, I am going to buy a proper guitar.  Went to the
+<a href="http://www.oxfordguitargallery.com">guitar shop</a> (caution:
+web site consists entirely of a flash object and isn't actually all
+that useful anyway) on Friday, played for half an hour with a suitable
+slab of wood.  Red, round at one end, pointy at the other, bits of
+wire running from one end to the other.  (More precisely: made by
+Tokai, looks like a 1950s Strat).  That was fun.  This week I go back
+and hand over actual money.
+
+<p> On Saturday I went to see the Oxford University <a
+href="http://www.oum.ox.ac.uk/">Museum of Natural History</a> and the
+<a href="http://units.ox.ac.uk/departments/prm/" >Pitt Rivers
+Museum</a> with Simon and Judith (who subsequently found this diary
+and has advised me that she will be annoyed if she can't find any
+references to her in it.  Google being what it is, I don't usually
+like mentioning names of people with no net presence, but on
+re-reading this I find that I have already anyway, so there).
+
+<p>The Pitt Rivers Museum is definitely recommended if you're in
+Oxford.  It retains the original layout that it had in Victorian times
+- exhibits are sorted by type or purpose rather than by region or
+period - the display cases are crowded, and a lot of the exhibits are
+really pretty random.  All with neat little hand-written tags
+describing what they are, where they came from, who donated them, etc.
+Usually museums give me that sinking "too much information; I am not
+going to remember anything I've seen here" feeling, but the Pitt
+Rivers is great because there is just so much on display that nobody
+could be <i>expected</i> to remember anything.  Liberating, yes
+
+<p> Dinner at Judith's: conversation, cheese, leek, ham, conversation,
+chicken, rice, veggies, wine, conversation, cheese, conversation,
+chocolate, coffee.  I don't eat much (actually, I don't say much
+either when there are other people carrying the conversation) but I do
+enjoy a good dinner.  Right.
+
+<p>Then back here to stare at SBCL again.  After tracing through more
+type system innards than I really wanted to know about, I see that it
+all hinges on a call to <tt>(%instance-ref structure (dsd-index
+dsd))</tt> which of course we all know has been <a
+href="/sbcl-internals/PPC" >broken for months</a>.  Having realised
+that, went to bed at 5am ish.  
+
+<p> Spent most of today idly speculating about designing my own
+accounts software, as GnuCash has a slew of features I don't need and
+is missing a bunch of others (support for VAT; hooks into my invoicing
+system; a real database for the data so I can have more confidence
+that it'll still be there in six years).  It looks like a Simple
+Matter Of Programming: a real sql database to keep the splits in, and
+some handy functions using usql for posting transactions.  Stopped
+before I actually got as far as writing code, though, and applied
+Christophe's %instance-ref fix for the SPARC to see if the PPC can
+work the same way. Rebuilding now to see what effect it has.
+
+

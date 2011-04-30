@@ -1,0 +1,28 @@
+title: Gnus over ssh
+author: Daniel Barlow
+date: Mon, 22 Jun 2009 16:23:11 +0100
+
+Suppose you had a broadband account with a static IP address (or small network) and an NNTP service, and that you wanted to read news from places other than the broadband network.  Suppose further that your newsreader of choice is Gnus.
+
+The intersection of all these assumptions is that you'd probably be me.  In which case you already have incoming ssh access to the machine(s) on the  broadband and all you need do is add the emacs magic to connect back from wherever in The Cloud(sic) you are through your home net to your news service
+<pre>
+(defun nntp-open-via-ssh-stream (buffer)
+  "Open a nntp connection by ssh to coruskate then then nc to zen"
+  (let ((command '("ssh" "me.homeip.example.com" "nc" "news.myisp.example.com" "119"))
+	proc)
+    (setq proc (apply 'start-process "nntpd" buffer command))
+    (save-excursion
+      (set-buffer buffer)
+      (nntp-wait-for-string "^\r*20[01]")
+      (beginning-of-line)
+      (delete-region (point-min) (point))
+      proc)))
+
+
+(setq gnus-select-method '(nntp "news"
+				(nntp-open-connection-function 
+				 nntp-open-via-ssh-stream)))
+</pre>
+I was a bit surprised there's aparently no canned function for this.  I crafted this by cut and paste from @nntp-open-telnet-stream@, which seemed simpler than trying to bend it to my will by editing the variables therein
+
+"Zen Internet":http://www.zen.co.uk come highly recommended as usual

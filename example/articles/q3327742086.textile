@@ -1,0 +1,27 @@
+title: NOT MORE CONSUMERISM
+author: Daniel Barlow
+date: Tue, 14 Jun 2005 13:48:6 +0000
+
+<b>NOT MORE CONSUMERISM</b>
+
+<p>Latest in the ongoing <a href="">Zen Micro</a> story:
+<blockquote>
+<b>Update</b>
+
+Oops! After people began installing the firmware update, they began
+experiencing problems, like the battery dying when the headphones are
+left plugged in. Creative pulled the update from their Web site,
+saying that you should re-install the older 1.02.05 if you experience
+problems.
+</blockquote>
+
+<div align=right><a href="http://worldcadaccess.typepad.com/gizmos/2005/06/firmware_upgrad.html">http://worldcadaccess.typepad.com/gizmos/2005/06/firmware_upgrad.html</a></div>
+
+<p>So, in fixing the bug that made it not charge when plugged into a
+charger which was already turned on, they managed to add a bug that
+makes it discharge when the headphones are plugged in.  Fucking
+<i>genius</i>.
+
+<p>Needless to say I find this extremely amusing.  That said, I might
+appreciate the joke even more if I hadn't already done the upgrade (or
+had or could still find a copy of the previous firmware version).

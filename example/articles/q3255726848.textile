@@ -1,0 +1,18 @@
+title: Some aspects of CLX are deeply tedious to experiment with, because
+author: Daniel Barlow
+date: Tue, 4 Mar 2003 0:34:8 +0000
+
+<p>Some aspects of CLX are deeply tedious to experiment with, because
+changing them requires hacking around with macros, then you need to
+rebuild all of CLX to make it notice the macro definitions have
+changed.
+
+<p>But still, after a couple of pints I don't care quite as much
+
+<p>Here's a <a href="/clim-address-book.png">screenshot</a> (which I
+admit is dull and ugly and when will CLIM hackers learn that picking a
+font other than Courier is 80% of the work of producing kewl
+screeenshots) showing McCLIM running in SBCL/native threads.  Some
+work is still needed: it busy-waits. CLX has some <i>horrible</i>
+<b>horrible</b> locking macros.
+

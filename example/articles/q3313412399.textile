@@ -1,0 +1,10 @@
+title: cvs.telent.net is down at least until I return to work and sweet-talk
+author: Daniel Barlow
+date: Thu, 30 Dec 2004 16:19:59 +0000
+
+cvs.telent.net is down at least until I return to work and sweet-talk
+someone into kicking it hard - which I hope will be tomorrow, but
+depends on when I wake up and how I feel at that time.  I'm certainly
+feeling better today than yesterday, but otoh I said the same on
+Monday wrt Sunday, so let's not make any hasty assumptions.  Apologies
+to any CLX/cliki/araneida hackers with stuff queued.

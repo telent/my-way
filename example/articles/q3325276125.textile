@@ -1,0 +1,20 @@
+title: For the record, the afore-mentioned Windows
+author: Daniel Barlow
+date: Tue, 17 May 2005 0:48:45 +0000
+
+<p>
+For the record, the <a
+href="http://ww.telent.net/diary/2005/5/#12.47263"
+>afore-mentioned</a> <a
+href="http://www.bvrp.com/customers/motorola/v3/buy/" >Windows
+software</a> - which I gave in and bought, in the hope of getting it
+to work in Wine - is approximately as usable as xmms (for
+approximately the same reasons, too), and also doesn't seem to do
+anything anyway even in real Windows.  More on this some other time,
+but in the meantime it only goes to confirm my previous opinion that
+mobile phone hardware companies are much more interested in network
+operators than network users, and any network user who cares
+significantly about being able to do what <i>they</i> want with their
+personal electronic equipment - rather than what some marketer
+somewhere thinks they should want - should look to some platform other
+than the mobile phone (say, a PDA) for doing it.

@@ -1,0 +1,24 @@
+title: I hate hardware
+author: Daniel Barlow
+date: Sat, 25 Sep 2004 23:22:46 +0000
+
+I hate hardware.  Anyonme who's ever had to share an IRC channel or an
+office with me will know this is not news.  My new keyboard works;
+this is good.  On the other hand, my new laptop memory is actually the
+<i>wrong physical size</i> to fit in the laptop - not sure how I
+managed to screw that up - and my old desktop has decided that
+previously manageable tasks such as e.g. running gcc or building SBCL
+are now too complicated to manage in one go, presumably hoping that
+I'll pander to its laziness and just restart after the first random
+signal 11.
+
+<p>Although I would of course like to replace this boxful of flakitude
+with something that doesn't involve hardware in any way shape or form,
+I reluctantly have to accept that this is not going to be possible.
+So, am making the best of a bad job: arriving next week is an Athlon
+64 and allegedly compatible motherboard and memory for it.  In the
+unlikely event that it works, this may even provide the impetus I need
+to finish the SBCL AMD64 port.
+
+<p>Leg still mending.  Better than it was, not as good as it ought to
+be be: with luck, should be skateable again sometime next week.

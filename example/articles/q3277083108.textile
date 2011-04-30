@@ -1,0 +1,40 @@
+title: I have had enough, for the time being, of USB hotplug
+author: Daniel Barlow
+date: Thu, 6 Nov 2003 4:51:48 +0000
+
+I have had enough, for the time being, of USB hotplug.  I cobbled
+together a plausible though grotesquely kludgey way to do automounting
+even in the presence of partitioned devices: it's an autofs "program"
+map which when asked for the device "list" scans /proc/partitions,
+assuming that /dev/[sh]da<i>n</i> is a partition of [sh]da, and populates
+subdirectories of symlinks to the actual mountable devices.  See, I
+told you I was ill.
+
+<p>No, the good news is that it's time to put another release of
+araneida together.  The feature that people are actually wanting is
+that this one will compile cleanly on current SBCL (so you can stop
+sending me bug reports about <b>sb-unix::sigpipe</b> vs
+<b>:sigpipe</b>), but the feature I will be foisting on them
+additionally is that the rather strange <b>export-server</b> thing is
+gone, along with another few global variables.  These days instead you
+can create an <b>http-listener</b> (which may be threaded or may use
+serve-event) which does the actual listening-on-a-port business and
+has a root-handler slot containing the handler to which it dispatches
+requests.  We're also going to be handling reverse-proxied requests a
+little more correctly: it should now be possible for the front-end box
+to be on a different hostname as well as a different port number,
+which wasn't previously the case if my reading of the code is correct
+(i.e. if it did work it was a coincidence).  How it will work is that
+you install your existing handlers as if you were using the external
+host, then add a `internal-redirect-handler' (which I haven't thought
+of a sensible name for yet, much less implemented) for requests to the
+internal URL: this creates a child request with a suitably rewritten
+url and dispatches that.
+
+<p>When will it be released?  When I've done the redirect handler and
+ideally also decided where to hang the ssl key/certificate information
+that used previously to be on the server object.
+
+
+
+

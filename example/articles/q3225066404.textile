@@ -1,0 +1,76 @@
+title: So, SBCL
+author: Daniel Barlow
+date: Thu, 14 Mar 2002 3:46:44 +0000
+
+
+<p> So, SBCL.  The order of events looks like (1) alpha fp fixes, (2)
+ppc forward port, (3) threads.  As all of these need too much time
+spent rebuilding SBCL, we may get some <a
+href="/cliki/asdf">cclan/asdf</a> stuff done in the gaps.
+
+<p><b>More than you wanted to know about Alpha floating point ...</b>
+and, probably, more than is actually true.  I'm not an expert; I may
+have made bits of this up.
+
+<p>Alpha floating point is IEEE754-compliant.  Kind of.  Alpha
+floating point is IEEE754-compliant, <i>if you ask it to be</i>, but
+not necessarily entirely implemented in hardware.  If you want it to
+handle infinities or denormals or the other difficult stuff, sometimes
+you'll get a trap to the operating system and the kernel has to fix up
+the answer.  For each instruction, you get a choice of fast/correct
+tradeoffs: you can elect to deal with infinities correctly or not, and
+you can elect to handle inexact traps.  Or, indeed, not.
+
+<p>It's common for a FPU to have some kind of status word.  On the
+x86, for example, you can use this to say which exceptions you want to
+get traps for (an exception is a very lightweight thing if you don't
+trap it: just set a status bit and carry on with a default value.  A
+trap usually involves a trip through the kernel), which exceptions
+have happened, how to round answers (tip: setting this away from  the
+default mode may cause libm to do things it wasn't expecting.  So, in
+normal use, don't).  The Alpha has <i>two</i>.  One's hardware and the
+other's per-process in software (and you need a syscall to get/set it).
+The hardware one doesn't correspond to IEEE exceptions either.  
+
+<p>So, the immediate cause of the flurry of Alpha floating point work was
+that it failed on <tt>(sqrt single-float-positive-infinity)</tt>.
+
+<ul>
+<li> Problem 1 was that we were getting 0.0 as an answer.  This turns
+out to be because all the floating point traps were wrong, causing it
+to trap, and the trap was set to userspace as a SIGFPE, and we had a
+stub handler that just did nothing.  So, alter all the fpu trap bits
+to refer to the software fp_control word instead of the harddware
+fpcr.  Write some ffi calls to do the actual get/set
+
+<li> Now we're getting invalid-operation trap instead of 0.0.  This is
+because to calculate square roots of single-precision numbers in SBCL,
+we coerce to double, call libm, and coerce back.  The second coercion
+was trapping.  Investigation showed that it wasn't using the _s suffix
+that enables software completion
+
+<li> Now we get stupidly wrong answers which differ each time.  This
+is because the traps are imprecise, meaning they may be delivered some
+time later.  To find the bogus code, the kernel has to track backwards
+from the place it was awoken, looking for it.  This has two
+implications (well, more than that actually, but two of immediate
+relevance) for generated code: if you want software completion, you
+can't reuse the registers in any of the code immediately following
+(clobbering the input register is a nono too; no <tt>cvtts_sui
+$f1,$f1</tt>) and you can't branch.  The 'at risk' part is called the
+trap shadow, and there are various rules for working out how long it
+might be.  And yes, our coercion operation is doing all of these
+things wrong.
+
+</li>
+</ul>
+<p> I <i>hope</i> it's working correctly now.  It passes tests,
+anyway, for what that's worth.  If you don't know much about FP and
+are vaguely interested in it, google for ``William Kahan''.  He's dead
+cool.
+
+<p>Non-geek activities: I bought a headphone adapter for my guitar amp
+the other day.  At last I can practice late at night with it turned up
+:-)
+
+

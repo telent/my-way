@@ -1,0 +1,48 @@
+title: They say that once you've learnt to ride a bike you never forget
+author: Daniel Barlow
+date: Fri, 18 Apr 2003 3:50:35 +0000
+
+They say that once you've learnt to ride a bike you never forget.
+Or is that elephants?  I have trouble visualising an elephant riding a
+bicycle, but suspect it needs one like a woman needs a fish.
+
+<p>Anyway.  Um.  Not cycling, but I hope some similar law of nature
+applies to driving a car, because not having sat behind the wheel of
+one since <a href="http://ww.telent.net/diary/2002/3/#6.4450" >about
+13 months ago</a>, I've rented a vehicle to get me to Milton Keynes on
+Tuesday.
+
+<p>(Car hire companies all seem to have this bizarre rule that you
+can't hire a car until your driving license is at least a year old.
+Makes no sense to me, but never mind)
+
+<p>So I've been working a little more on this packaging lark, trying
+to beat ilisp into the kind of shape that it will install and do
+anything useful without requiring the services of an emacs guru.
+Which involved what looks suspiciously like an <a href=
+"http://groups.google.com/groups?q=gnu.emacs.bug+y-or-n-p&hl=en&lr=&ie=UTF-8&selm=mailman.4735.1050513350.21513.bug-gnu-emacs%40gnu.org&rnum=1"
+>emacs bug</a>.  (Phoenix 0.5 users are cautioned against clicking on
+that link: at least on my machine, it hangs the browser).  I'm being
+continually reminded that there's lots of stuff that I as a relatively
+seasoned lisp user don't usually even <i>notice</i>, but which would
+probably cause the newbie to reach for his support line.  Or (which is
+probably just as bad) cause him to develop a tolerance for random
+spewage which would lead to his missing messages that actually
+<i>are</i> important.
+
+<p>Anyway, now you can type <tt>circle</tt> at a shell prompt, and it
+updates your .emacs file, launches emacs, starts sbcl, that kind of
+stuff.  And so we edge gradually closer to something that's actually
+usable.
+
+<p>And fixed a few random SBCL <a
+href="http://sbcl-internals.cliki.net/Threading" >threading</a> bugs.
+I still need to muck around with the wait queues a little, and
+probably to export the symbols from timer-related functions, but I
+think we're at the point where we could usefully put out pre-release
+binaries to pick up a slightly wider test audience.  (I believe that
+Debian unstable users can do this already, thanks to kmr: <tt>apt-get
+install sbcl-mt</tt>.  If they are doing, though, they aren't
+reporting bugs)
+
+

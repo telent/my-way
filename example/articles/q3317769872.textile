@@ -1,0 +1,10 @@
+title: I'd like to add a postscript to the preceding: this is not set in
+author: Daniel Barlow
+date: Sat, 19 Feb 2005 2:44:32 +0000
+
+I'd like to add a postscript to the preceding: this is not set in
+stone.  (1) I'll probably hack it for some looser equality predicate
+than EQ.  (2) To cope with uses like <tt>(incf (ref thing :el))</tt>
+it would be very nice to pass an optional default.  Now is however not
+the time to decide which arg the default will be, but it's looking
+kind  of non-obvious at present.

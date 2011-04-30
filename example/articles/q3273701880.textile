@@ -1,0 +1,83 @@
+title: Made a certain amount of what I think is progress on the GC issue
+author: Daniel Barlow
+date: Sun, 28 Sep 2003 2:38:0 +0000
+
+<p> Made a certain amount of what I think is progress on the GC issue.
+
+<p> The <a href="http://sbcl-internals.cliki.net/pseudo-atomic"
+>pseudo-atomic</a> mechanism in SBCL is supposed to let you run short
+sequences of Lisp code without icky things happening if signals are
+received during them.  What it does is set a flag at the start of the
+PA sequence; any signal handler is supposed to check this and say "ah,
+unsafe.  Let's save the information that this signal went off, and the
+signal mask as it was before the signal (from the signal context),
+then block all signals and return immediately".  At the end of the PA
+sequence we check whether a signal had been received.  If so, we run a
+trap instruction which sends us SIGTRAP which runs sigtrap_handler,
+which eventually gets around to running the signal handler for the
+pending signal.  We also hack up the sigmask in the signal context to
+be whatever we'd saved when the pseudo-atomic section was interrupted,
+so when this handler returns, the process will once again be running
+with the normal mask, which is probably "nothing blocked".  Clear?
+Good.  I have to think about it quite hard too.
+
+<p> The net result should be pretty much as it would be if we just
+masked signals for the duration, but in the normal case that no signal
+was sent, we don't have the expense of a couple of syscalls to
+disable/reenable.  Note that we don't have room to save more than one
+signal this way, but that's OK, because we block them all as soon as
+the first one goes off.
+
+<p> So, what have we found
+
+<ol>
+<li> One of the new signals we've added recently (in fact, I haven't
+even <i>committed</i> this yet, that's how recent) is SIG_STOP_FOR_GC
+(actually SIGRTMIN+n), which is half of the protocol for pausing
+threads when we need to vacuum underneath them.  The thread that wants
+to GC sends SIG_STOP_FOR_GC to all the others.  They have a
+sig_stop_for_gc_handler which does the pseudo-atomic thing, then
+kill(this_thread->pid,SIGSTOP).  The first point of note is that this
+signal is not in the set that gets blocked during pseudo-atomic.  So,
+if a thread in PA gets some other signal followed by a request to stop
+for GC, the STOP_FOR_GC signal might overwrite the pending signal
+data.  So, add it to the list.
+
+<li>But this means we can't do any kind of likely-to-block operation
+with signals masked, because the GC will want to pause us while we do
+it, and if we ignore its signal it will sit there (looping) until we
+take note.  Ungood.  Likely-to-block operations include waiting on
+queues, so anything involving lock acquisition is out.
+
+<li>Allocation is sometimes done with signals masked.  I know that
+allocations from C inside an error handler or similar will do this,
+but maybe there's lisp code that also does.  Allocation is
+pseudo-atomic: if we allocate with signals blocked, and the allocator
+decides to arrange for a garbage collection to happen after we're
+done, the saved signal mask in the pending information will have
+signals blocked too, so, well, the upshot is that we will run SUB-GC
+(the Lisp-level GC routine that calls collect_garbage) with, guess
+what, blocked signals.  This is bad because it contains a with-mutex
+form to ensure that only one thread is collecting at a time.
+
+</ol>
+<p> This is looking less and less likely to be fixed in time for
+reasonable testing before 0.8.4.
+
+<p> Anyway, we can now at least unblock before calling SUB-GC, and it
+makes some kind of (positive, I think) difference.  There's still more
+to do, though.  (1) I've managed one time to get a thread looping in
+get-mutex, (2) it's hit against my new debugging assertion that says
+"don't sleep on a queue with signals disabled", but in this case the
+only two blocked signals are SIGTRAP and SIG_DEQUEUE (actually
+SIGRTMIN+n'), and (3) SIGSEGV is not one of the usual blocking set.  I
+don't know if this is because (a) it can never happen in pseudo-atomic
+code - though SIGSEGV as a write barrier for objects in old spaces can
+happen just about anywhere, as far as I can see, or (b) because it
+didn't occur to the authors that SIGSEGV can occur just about anywhere
+- the code might well predate the generational gc and not have been
+updated, or (c) for some other reason I still don't understand. (b) or
+(c) seem likely.
+
+<p>What would block SIGTRAP and SIG_DEQUEUE?  We don't even have a
+signal handler for the latter: we use sigwait() for it instead.

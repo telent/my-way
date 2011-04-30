@@ -1,0 +1,10 @@
+title: cvs.telent.net repository archive is now at http://ftp.linux.org.uk/~dan/telent-cvs.tar.gz
+author: Daniel Barlow
+date: Sat, 11 Sep 2004 13:21:30 +0000
+
+cvs.telent.net repository archive is now at <a
+href="http://ftp.linux.org.uk/~dan/telent-cvs.tar.gz"
+>http://ftp.linux.org.uk/~dan/telent-cvs.tar.gz</a>.  Latest news on
+the return of the machine itself is that next Friday is most likely;
+this is a temporary measure for people desperate to get stuff before
+then.  Sorry for the delay.

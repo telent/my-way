@@ -1,0 +1,6 @@
+title: I fixed the end-of-month bug
+author: Daniel Barlow
+date: Fri, 12 May 2006 1:52:1 +0000
+
+I fixed the end-of-month bug.  Of course, now that I have posted to
+tell you this, you won't be able to tell it's fixed until next month.

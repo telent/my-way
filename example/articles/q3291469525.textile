@@ -1,0 +1,24 @@
+title: After some fairly extensive googling I seem to have fixed the problem
+author: Daniel Barlow
+date: Tue, 20 Apr 2004 18:5:25 +0000
+
+After some fairly extensive googling I seem to have fixed the problem
+on my laptop that makes the <a
+href="http://ww.telent.net/diary/2004/3/#30.13645" >clock run too
+fast</a>.  Somewhere in 2.5, the Linux people decided to use the TSC
+for a time source instead of whatever was previously being used (the
+PIT, or the 8042, or something).  My laptop continuously varies CPU
+speed to save the battery (and without informing the kernel in any way
+that I know about, so the CPU_FREQ stuff is no help), which makes the
+TSC go up and down and round and round, or something.  After rebooting
+with the option <tt>clock=pit</tt> it seems to be much happier.
+
+<p>Except that <tt>/proc/cpuinfo</tt> now says
+<pre>
+model name      : Pentium III (Coppermine)
+stepping        : 3
+cpu MHz         : 0.000
+</pre>
+which seems ... wrong.  But that's just cosmetic, whereas the clock
+drift was causing actual problems.
+

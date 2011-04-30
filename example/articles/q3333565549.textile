@@ -1,0 +1,46 @@
+title: I just had to reboot my computer after a Lisp program wedged it
+author: Daniel Barlow
+date: Sat, 20 Aug 2005 23:25:49 +0000
+
+I just had to reboot my computer after a Lisp program wedged it.
+
+<p>Well, I guess that needs a little qualification.  The Lisp in
+question was librep, the librep interpreter was also running my
+window manager (Sawfish), and the program was <tt>(read-line)</tt>.
+And the computer wasn't totally wedged (it carried on playing my MP3s)
+but wouldn't listen to any keyboard input or focus changes, nor even
+to M-C-F1 or M-C-Backspace, making it rather hard to regain control.
+So if I had another machine here I could probably have sshed into it,
+but I haven't, so there.
+
+<p>Still, if one of the supposed advantages of Lisp is the ease of
+interactive experimentation and debugging, (and I think I've <a
+href="http://ww.telent.net/diary/2003/1/#14.28515" >said this
+before</a>), Sawfish is not it.
+
+<P>Context: still flushed from my success in getting 90%-working
+suspend-to-disk, I thought I'd make the machine's power button
+activate it instead of having to su root and echo stuff into obscurely
+named files in <tt>/sys</tt>.  That worked quite well once I'd
+accounted for my script getting run multiple times on each button
+press.  Then I decided to make the volume buttons work too, and that's
+where I started playing with sawfish.  Maybe it's time to try <a
+href="http://common-lisp.net/project/eclipse/">Eclipse</a> again.
+
+<pre>
+#!/bin/sh
+# /etc/acpi/powerbtn.sh
+# Initiates suspend-to-disk when the power putton has been
+# pressed.  Note use of background process and locking: button 
+# seems to send two events (up and down?) each time it's pressed,
+# and we only get called for the second after the script has returned
+# from the first.
+( if lockfile -r0 /tmp/.acpi-suspend-lock; then
+ echo 'platform' >/sys/power/disk
+ echo 'disk' >/sys/power/state
+ rm  /tmp/.acpi-suspend-lock
+else 
+ echo 'Ignoring second suspend attempt'
+fi ) &
+exit 0;
+</pre>

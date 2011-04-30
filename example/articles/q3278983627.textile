@@ -1,0 +1,41 @@
+title: So, reviewing how far I got today, I realise that I didn't make it as
+author: Daniel Barlow
+date: Fri, 28 Nov 2003 4:47:7 +0000
+
+So, reviewing how far I got today, I realise that I didn't make it as
+far as "remove threads from the session on exit".  We need some way of
+notifying the thread that created the exiting thread that its child
+exited, then it needs to clean up.  Briefly, then
+
+<ol>
+<li> Remove CLONE_PARENT from clone() flags.  We don't need it now
+we're not doing stop-for-GC with ptrace().  Add instead an RT signal
+called, say, SIG_THREAD_EXIT, so that our thread death signals queue
+up when lots of children exit at once.
+
+<li> Add a C handler for thread exit, which does normal pseudo-atomic
+stalling then calls a Lisp handler.
+
+<li> Write the Lisp handler to do appropriate surgery on *SESSION* and
+foreign-call destroy_thread.
+</li>
+</ol>
+
+<p> Since we're here, we may as well make the new handlers call-behind.
+Since we're doing that, we may as well add a general Lisp interface
+for establishing call-behind handlers, and have a look at the existing
+handlers to see what could be converted to the new style
+
+<p>Many of the existing handlers just drop into the debugger with an
+appropriate message, but they expect the sigcontext and stuff to be on
+the stack so they can dig into it for PC and so on.  This is not the
+case for a call-behind handler: Something Must Be Done.  I'm quite
+tempted to make them all call some internal interface and repurpose
+the existing <b>enable-interrupt</b> to do call-behind.  User code 
+won't (shouldn't) notice the difference, after all.
+
+<p>Removing CLONE_PARENT also means that (a) the parent thread has
+getting on for nothing at all to do whatsoever, and it might even be
+possible to get rid of it completely, and (b) that the system 
+might get a bit easier to port to BSD.  But apparently FreeBSD doesn't 
+have POSIX RT signals, so still not actually <i>possible</i>.

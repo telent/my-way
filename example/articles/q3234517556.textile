@@ -1,0 +1,9 @@
+title: Cool URL of the Day: In Pursuit of Simplicity: the manuscripts of Edsger W
+author: Daniel Barlow
+date: Mon, 1 Jul 2002 14:5:56 +0000
+
+Cool URL of the Day: <a href="http://www.cs.utexas.edu/users/EWD/"
+>In Pursuit of Simplicity: the manuscripts of Edsger W. Dijkstra</a>
+
+<p>They're scanned PDFs,  of a somewhat ropey quality: readable at 1.4
+magnification, though

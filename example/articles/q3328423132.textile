@@ -1,0 +1,27 @@
+title: Still no closer to Resolution 7, I'm afraid
+author: Daniel Barlow
+date: Wed, 22 Jun 2005 10:58:52 +0000
+
+Still no closer to Resolution 7, I'm afraid.  <img
+src="http://ww.telent.net/conicalwheel.jpg" align=right> Sunday
+afternoon was stupidly hot, and having managed to lose count of the
+number of laps I'd done, get suntan lotion in my eyes, and wear my
+back wheel down to the plastic core, I decided I had reasonable excuse
+for stopping when I thought I was about half way through.  Turned out
+I was nearer 2/3 of the way through, but still.  Better luck in Berlin.
+
+<p>I've been <a
+href="http://article.gmane.org/gmane.lisp.climacs.devel/185" >playing
+a little</a> with <a href="http://common-lisp.net/project/climacs/"
+>climacs</a> lately.  Haven't got much further with it than what you
+see there, though.
+
+<p>In gadget news, the Zen Micro seems quite happy now it's on
+firmware 1.02.05.  The phone is dead, or at least practially useless:
+I broke the screen on Saturday when I fell on it (borrowed some 4x100
+skates to see what they were like, and tried to crossover turn without
+paying enough attention to how long the frames were), so I've returned
+to the Ericsson fold with a T630.  It has OBEX, which inclines me
+favourably towards it already.
+
+

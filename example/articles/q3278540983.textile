@@ -1,0 +1,10 @@
+title: Quick followup re 2.4/2.6
+glibc: when you ask questions you actually get replies from
+author: Daniel Barlow
+date: Sun, 23 Nov 2003 1:49:43 +0000
+
+Quick followup re <a
+href="http://article.gmane.org/gmane.linux.kernel/162728" >2.4/2.6
+SIGTRAP difference</a> (another reason the kernel is better than
+glibc: when you ask questions you actually get <i>replies</i> from
+people working on it)

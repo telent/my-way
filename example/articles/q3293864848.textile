@@ -1,0 +1,36 @@
+title: Brief non-computers roundup:
+author: Daniel Barlow
+date: Tue, 18 May 2004 11:27:28 +0000
+
+Brief non-computers roundup:
+
+<ul>
+<li> My shoulder is more or less better.  The bruising is still pretty
+evident, and it still aches a bit, but I can drink right-handed again,
+which is the main thing.
+
+<li> <A href="http://www.clubblueroom.com/" >Club Blue Room</a>, take
+a bow.  I think I spent about eight pounds in there (new heel brake,
+small tube of bearing grease) since I bought my skates three years
+ago; almost every time I go back to spend money on something else they
+tell me I don't need it and how to fix the problem anyway.  At least,
+they suggested cutting up bits of old insole to move the position of
+my ankle bone in the skate boot; I creatively interpreted the
+instruction and cut up an old mouse mat instead - I seem to have more
+of them lying around than spare insoles, for some reason.  Foot much
+more comfortable now, anyway.  Oh, and thanks to the <a
+href="http://www.positive-internet.com/"Positive Internet Company</a>
+for the mousemat too - but don't worry, guys, I haven't found a
+similar use for the wooden giraffes yet.
+
+<li>Back on bike again, too.  Yesterday, at least.  Tonight is 
+uk-lispers and I'm not really wild about cycling home after beer.
+
+<li>Weather glorious.
+
+<li>Anyone know where I can get small quantities of piezoelectric film
+from in the UK?  Not that it matters immediately now the days are that
+much longer, but sometime before autumn I'd like to experiment with
+boot lighting techniques a bit.
+
+</ul>

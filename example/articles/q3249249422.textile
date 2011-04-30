@@ -1,0 +1,66 @@
+title: Thanks to the Phoenix Picturehouse for managing to show LoTR tonight despite
+author: Daniel Barlow
+date: Thu, 19 Dec 2002 1:17:2 +0000
+
+
+<p>Thanks to the <a
+href="http://www.picturehouse-cinemas.co.uk/site/cinemas/Oxford/local.htm"
+>Phoenix Picturehouse</a> for managing to show LoTR tonight despite
+having had a power problem that knocked out half of their supply (and
+judging by the neighbourhood, approximately a third of the houses on
+the street.  Looks like one of the phases had gone).  Looking forward
+to the next round of <a href="http://diaries.diagon.org/" >Very Secret
+Diaries</a>.
+
+<p>Thanks also to the Botley Road branch of Carphone Warehouse, for
+deciding that my mobile phone was in fact still under warranty and
+sending it back (again) for warranty repair (again).  This time I
+showed them the engineers' reports from its last two holidays: one
+occasion they'd "reflowed filters and p.a." and the other time they'd
+"reflowed p.a.s and filters" - I think I managed to make the point
+that I would prefer they try something different this time (replacing
+the transmitter coil and upgrading the firmware is apparently the
+correct fix), but of course, I made that point to the staff in the
+shop, so it remains to be seen what the engineers will actually do.
+
+<p><b>No</b> thanks to the Cornmarket branch of the same chain, who
+had decided that it was out of warranty, that the Sale of Goods Act
+was not relevant (personally I disagree, having old-fashioned notions
+that "fit for purpose sold" should usually imply "lasts for more than
+three months" when the item in question is a mobile telephone) and
+that really they could not offer any help at all.  Next time I buy a
+phone, it won't be from you guys.  I regret that the last one was, really.
+
+<p>And, really, no thanks to Ericsson, for (a) producing a phone with
+this bug in it anyway, (b) failing to spot it and fix it properly on
+the last two repairs.  Five minutes with Google will tell you all you
+need to know about the <a href=
+"http://groups.google.com/groups?q=alt.cellular.ericsson+t39m+no+network"
+>T39m No Network</a> bug - if it's been fixed in models made since end
+2001, they really could have rectified it on either of the occasions
+it's been back to them in 2002.  Ho hum.
+
+<p>You wanted to know about SBCL threading?  Since the last diary
+entry, fixed stupid bug which was stopping the whole thread-local
+symbol access from working (creating a new thread was also setting %gs
+in the parent thread as well as the child, oops), then owing to not
+wanting to think too hard on Sunday evening about writing new VOPs for
+locking primitives, decided to take short break by <a
+href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/sbcl/sbcl/version.lisp-expr?only_with_tag=dan_native_threads_branch"
+>reintroducing</a> the <a href=
+"http://ww.telent.net/diary/2002/7/#14.47243" >control stack
+exhaustion checking</a> that I'd disabled when doing the initial
+make-multiple-stacks work.
+
+<p>And also took rather longer break (Friday, Saturday, and some
+portion of Sunday and Monday to return suits, PA equipment and
+generally unwind afterwards) to do Best Man stuff for my friends'
+wedding.  No, I did not lose the rings.  No, nobody had any reasons
+that the two persons were not allowed to be joined in matrimony.  Yes,
+they are now successfully married, and guests at least <i>appeared</i>
+to have enjoyed it.  And laughed at (with?) my speech.  But I don't
+write here about people with no web presence of their own, so that's
+all you hear about that.
+
+<p>Thinking about locks again, now.  That's in the context of
+multithreaded systems, not nuptials.

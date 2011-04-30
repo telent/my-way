@@ -1,0 +1,40 @@
+title: Still alive, if anyone was wondering
+author: Daniel Barlow
+date: Mon, 8 Apr 2002 0:22:42 +0000
+
+
+<p> Still alive, if anyone was wondering.  
+
+<p> FTX13 didn't happen, and I expect will be continuing to not happen
+in future months (a total of two people commented on its
+nonappearance).  It was dull to write, it was probably dull to read.
+With any luck the forthcoming <a href="http://www.lisp-p.org/" >Yadda
+Lambda</a> should be more interesting.  Personal opinions (which are,
+frankly, a good deal more fun to talk about anyway) continue to be
+opined here as and when.
+
+<p> <a href="http://www.oxlug.org/">OxLUG</a> meeting today; Russell
+Coker talked on the NSA's <a
+href="http://www.nsa.gov/selinux/">Security-Enhanced Linux</a> (and <a
+href="http://www.coker.com.au/selinux/">here</a>).  Interesting stuff.
+Per-process security domains are neat, but of course mean that you
+have to split stuff up into many Unix processes to get any advantage
+from it; a single proicess running Lisp that starts life at boot time
+is not going to be helped by this.  Sigh.  Unix is a bad fit for the
+traditional Common Lisp model.  And vice versa.  Do we think that
+eventually Unixheads will figure out some sane way to let a process
+gain and relinquish privileges withing exec()ing anything (apparently
+the Hurd can do this.  Does anyone use the Hurd?) or do we think that
+each of the two communities will use this as further evidence that the
+other has a basically misguided outloook?
+
+<p>So, yes, the separate-memory-space processes-invoked-by-exec() Unix
+model is limiting: let's face it, (string) is not an adequately rich
+library of data types to build reliable systems by composing Unix
+"components".  On the other hand, there is a clear need in today's
+systems for protecting one process from another, and there's presently
+nothing better than the Unix model for doing this.  Anyone who claims
+that the lisp package system is capable of this is welcome to give me
+an account on their system and let me try to break it.  ssh public key
+available on request.
+

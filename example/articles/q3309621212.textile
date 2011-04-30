@@ -1,0 +1,46 @@
+title: What a fun day I've had
+author: Daniel Barlow
+date: Tue, 16 Nov 2004 19:13:32 +0000
+
+<p>What a fun day I've had.
+
+<ol>
+
+<li>Perl's global destructors coexist really badly with fork(),
+because they run when the child exits as well as when the parent
+exits.  This is a problem when you have e.g. DBI database handles open
+in the parent and fork off a process to do something transient: when
+it's done, it closes them for you.  Even if your child does abolutely
+nothing involving databases in any way (let's say, for example, it's
+part of an unrelated library), the approved workaround is apparently
+for it to set $dbh->{InactiveClose}=1 for every database handle in the
+app.  How it gets to <i>know</i> what all those handles are, I don't
+know.  
+
+<p>What depresses me is that this problem comes up repeatedly on the DBI
+mailing lists and I can't see why it should not that hard to fix.  (1)
+Decree that a child may not use database handles which were opened by
+the parent (it's already dodgy behaviour as it doesn't work in
+e.g. DBD::Oracle) (2) enforce this by storing the pid of the process
+that called connect() in the database handle, and checking it on
+subsequent accesses, (3) in the DESTROY method, skip the destruction
+if we didn't do the creation.
+
+<li>SOAP and SOAP::Lite entirely reinforce my belief that any
+variation on "Simple" or "Lightweight" in the name of a protocol,
+library or other software product is to be be treated with the same
+suspicion as "People's" or "Democratic" in the name of a country.
+What addlewitted crackpate came up with WSDL?
+
+</ol>
+
+<p>I was going to write a whole lot more in this vein, but you'd find
+it as boring to read as I found it infuriating to, er, find.
+
+<p>In other news, though, 
+<b>(SBCL|telent|portable) <a href="http://ww.cliki.net/CLX">CLX</a>
+<a
+href="http://lists.metacircles.com/pipermail/portable-clx/2004-November/000065.html"
+>0.6 released.</a></b>
+
+

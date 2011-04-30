@@ -1,0 +1,75 @@
+title: A couple of references have been made to the problem with cliki's
+author: Daniel Barlow
+date: Tue, 2 Nov 2004 1:16:54 +0000
+
+A couple of references have been made to the problem with cliki's
+free-software-only stance.  Let me explain why, in the time-honoured
+term, I consider that this is "a feature, not a bug".
+
+<p><i>This diary entry was lifted wholesale from an email I sent
+earlier this evening; I apologise if you have to sit through it more
+often than you wanted to</i>
+
+<P>Two words: <b>"network effects"</b>.
+
+<p>It's like this: the constituency CLiki aims to serve is people
+<i>using</i> the software it lists, not (except incidentally) the
+authors of that software.  Five years ago, a vast amount of the
+commonly used downloadable software in CL had homebrew licences.  Have
+a look around the AI repository.  ILISP had a clause to prohibit
+selling it for money.  mk-defsystem required anyone modifying it to
+submit the changes back to the authors before the modified version
+could be distributed.  Now, you might say "so what?"  and indeed these
+are on the face of it both reasonable positions to take.  But the
+cumulative (possibly even combinatorial) effect of all these homebrew
+licenses was that anyone wanting to write software that builds on them
+had to spend an inordinate amount of time reading licences.
+
+<p>These days?  Practically everything is PD or BSD- or MIT-licensed.
+Some stuff is LGPLed.  A small amount is GPLed.  For anything using a
+familiar licence, it takes about two minutes to determine whether it's
+OK for for a given purpose, and as a result we can all spend more time
+programming and less time reading legalese.  This morning I used <a
+href="http://www.cliki.net/cl-ppcre">cl-ppcre</a> to hack together a
+kludgey regex-based "bad words" filter for cliki in about twenty
+minutes.  If Edi had written his own licence of approximately the same
+length as the BSD one, it'd have taken me that long just to
+<i>read</i> it.  If I'd needed a couple of hours of head-scratching to
+work out whether making cliki (which has in the past been used for
+sites which could be described "commercial use") depend on cl-ppcre
+was legal, that's two hours I'd have probably spent badly
+reimplementing the appropriate bits of cl-ppcre instead.
+
+<p>(So, thank you, Edi)
+
+<p>Things might be different if my focus was more on authors and
+helping them make a buck or two - but honestly, there's not much I can
+do there anyway.  If you're atttempting to make money from programmers
+you're probably deluded anyway - we've always been a really tough
+crowd to please.  And if you're not selling to programmers, what
+exactly do you expect from a listing in a Lisp directory?  Better to
+spend the marketing effort getting listed in a directory appropriate
+to your business domain.
+
+<p> Now, we can argue about some other points: for example
+
+<ul>
+<li> the Unix requirement is mostly there to fit my own personal
+interests and given that most of the software on cliki is pretty
+portable or could be ported, is not terrifically exclusionary anyway.
+
+<li> the "culture" of free software zealotry may dissuade some people
+from contributing to various of the other stuff on CLiki (e.g. the
+standardisation debates)
+</li>
+</ul>
+
+but I don't want people to think that my only reason for stating DFSG
+on CLiki was some "religious" viewpoint.  I think that the community
+software scene around CL is a lot healthier these days than it was
+back in 2000 when CLiki started, and although the people we primarily
+must thank for this are its authors, I'd like to hope that CLiki
+played its own educational and publicity role in encouraging people to
+make their software legally compatible with each other.
+
+<p>My opinion.  Yours may vary.  

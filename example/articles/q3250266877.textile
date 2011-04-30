@@ -1,0 +1,60 @@
+title: :; phoenix
+:;
+author: Daniel Barlow
+date: Mon, 30 Dec 2002 19:54:37 +0000
+
+<pre>
+:; phoenix
+:;
+</pre>
+
+Writing Error Messages, <b>Rule 0</b>: failing silently is not
+acceptable
+
+
+<pre>
+:; phoenix --display :0
+Fontconfig error: Cannot load default config file
+:;
+</pre>
+
+Writing Error Messages, <b>Rule 1</b>: when the problem is with an
+external file, <i>print the file name</i>.  <b>Rule 2</b>: if there's
+an OS error of some kind, print the <tt>errno</tt> information.
+
+<pre>
+:; sudo apt-get install fontconfig
+[...]
+:; phoenix
+</pre>
+
+... and suddenly, it works.  There's some comment to be made here
+also about Debian packaging, but the package was labelled experimental
+anyway, so I'm probbaly not going to be too harsh there.
+
+<p>First impressions: 
+
+<ul>
+<li>it works
+<li>it works with emacs' browser stuff, so I can use it for hyperspec
+lookup
+<li>It has a weird unlabelled extra dialog box beside the url bar,
+with an icon that looks like a lollipop.  Clicking on this gives a
+dropdown menu which allows the selection of 'Find in this Page',
+dmoz.org or Google, so I would guess it's intended as some kind of
+search box.  There's no way of activating it that I can see, though -
+certainly, typing into it and pressing Return doesn't seem to do much.
+Maybe it's displaying into a hidden sidebar?  From the release notes
+it looks like this program appears to like sidebars.  This user,
+however, doesn't.
+<li>It supports that new-fangled font stuff that looks pretty but is
+actually harder to read than the apps I was using five years ago
+</li>
+</ul>
+
+<p>Here's <a href="/phoenix.png">a screenshot</a>.  You may need to
+shift-click and save it if apache mod_proxy is interfering with my
+content-types again.  Need to get that looked at, yes.
+
+
+

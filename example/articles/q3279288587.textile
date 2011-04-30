@@ -1,0 +1,14 @@
+title: I am wondering if there is anyone anywhere who's using the define-page
+author: Daniel Barlow
+date: Mon, 1 Dec 2003 17:29:47 +0000
+
+I am wondering if there is anyone anywhere who's using the define-page
+macro in Araneida.  Revisiting its implementation now, it occurs to me
+that (a) it still uses the old handler model, (b) I don't understand
+how it works.
+
+<p>I think it might be good to set up a mailing list for
+Araneida/CLiki users, just so I have some chance of reaching more than
+three of them at a time
+
+

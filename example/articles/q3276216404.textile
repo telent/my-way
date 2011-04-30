@@ -1,0 +1,30 @@
+title: One of the things that makes programming easy is Hyperspec lookup from
+author: Daniel Barlow
+date: Mon, 27 Oct 2003 4:6:44 +0000
+
+One of the things that makes programming easy is Hyperspec lookup from
+within emacs.  One thing that makes it a bit nicer yet, on this
+underpowered-by-today's-standards laptop, is a lightweight web
+browser.  Some people like one of those emacs browsers, but I've never
+been able to get used to them, so I use <a
+href="http://www.dillo.org/" >dillo</a>.  Here's a kludgey piece of elisp 
+to make it use dillo for hyperspec lookup and stick with a "normal"
+browser (like Mozilla Firebird) for other links where javascript or
+SSL or what-have-you may be needed:
+
+<pre>
+(defun browse-url-dillo (url &optional new-window)
+  ;; new-window ignored
+  "Ask Dillo to load URL.
+Default to the URL around or before point.  Always starts a new instance
+of Dillo, ignoring new-windonw argument"
+  (interactive (browse-url-interactive-arg "Dillo URL: "))
+  (start-process (concat "dillo:" url) nil
+		 (executable-find "dillo")
+		 url))
+
+(defadvice common-lisp-hyperspec (around wrap-dillo 0 (symbol) activate)
+  (let ((browse-url-browser-function #'browse-url-dillo))
+    ad-do-it))
+</pre>
+

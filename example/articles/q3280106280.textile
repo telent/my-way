@@ -1,0 +1,13 @@
+title: My intention today was to hack a couple of fixes into CLiki such that
+author: Daniel Barlow
+date: Thu, 11 Dec 2003 4:38:0 +0000
+
+My intention today was to hack a couple of fixes into CLiki such that
+there's a reasonable time limit on the "you can amend a prior edit
+without it appearing again in Recent Changes" feature, because I
+believe that's what our friend from Brazil was doing.  Also to get on
+with some Stargreen testing. 
+
+<p>So what I did <i>instead</i> was teach SLIME to compile ASDF
+systems.  This is still ongoing, but you can see the 
+<a href="/slime-asdf.png">results so far</a>

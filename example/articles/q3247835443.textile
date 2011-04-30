@@ -1,0 +1,63 @@
+title: Weekend off, pretty much
+author: Daniel Barlow
+date: Mon, 2 Dec 2002 16:30:43 +0000
+
+<p> Weekend off, pretty much.  Weekend spent preparing for,
+co-ordinating and recovering from my friend Simon's stag night.
+
+<p> <i> write diary and plan the next bit</i>, he said on Thursday.
+Said plans have not yet reached the enemy, because still wrestling
+with bugs in the current bit.  Most of them fairly silly bugs once
+found : what's wrong with this code?
+
+<pre>
+
+
+(define-vop (bind)
+  (:args (val :scs (any-reg descriptor-reg))
+	 (symbol :scs (descriptor-reg)))
+  (:temporary (:sc unsigned-reg) tls-index temp bsp)
+  (:generator 5
+    (let ((tls-index-valid (gen-label)))
+      (load-tl-symbol-value bsp *binding-stack-pointer*)
+      (loadw tls-index symbol symbol-tls-index-slot other-pointer-lowtag)
+      (inst add bsp (* binding-size n-word-bytes))
+      (store-tl-symbol-value bsp *binding-stack-pointer* temp)
+      (inst jmp :ne tls-index-valid)
+      ;; allocate a new tls-index
+[...]
+</pre>
+
+That's right.  There's no test before we do the conditional jump.
+Let's try
+
+<pre>
+(define-vop (bind)
+  (:args (val :scs (any-reg descriptor-reg))
+	 (symbol :scs (descriptor-reg)))
+  (:temporary (:sc unsigned-reg) tls-index temp bsp)
+  (:generator 5
+    (let ((tls-index-valid (gen-label)))
+      (load-tl-symbol-value bsp *binding-stack-pointer*)
+      (loadw tls-index symbol symbol-tls-index-slot other-pointer-lowtag)
+      (inst add bsp (* binding-size n-word-bytes))
+      (store-tl-symbol-value bsp *binding-stack-pointer* temp)
+      <b>(or tls-index tls-index)</b>
+      (inst jmp :ne tls-index-valid)
+      ;; allocate a new tls-index
+</pre>
+
+Hmm.  Why doesn't that work either?  This is (also) the kind of bug
+that's blindingly obvious once you realise it, of course: <tt>(or tls
+tls)</tt> is not a form that will assemble into the instruction that
+<i>does</i> set the condition register.  It's a Lisp expression that
+evaluates <tt>tls</tt> then evaluates <tt>tls</tt> if <tt>tls</tt> was NIL.
+But then, as you see, doesn't actually use the result in any case.
+Eventually I noticed the missing bit:
+<pre>
+      (<b>inst</b> or tls-index tls-index)
+</pre>
+
+and things are substantially rosier.  Now we make it all the way
+through cold initialization to the toplevel, but break with what looks
+like random memory corruption shortly afterwards.

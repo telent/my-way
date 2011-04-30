@@ -1,0 +1,11 @@
+title: I've just spent the last hour reading the SBCL generational garbage
+author: Daniel Barlow
+date: Wed, 24 Jul 2002 13:26:46 +0000
+
+I've just spent the last hour reading the SBCL generational garbage
+collector in Borders' cafe, while thinking "I'm getting remarkably
+good battery life here".  Too late I realise that I'm looking at the
+wrong percentage figure in the emacs mode line - that 91% is a measure
+of how much I've read, not how many of the electicity beans I've
+retained.  That would be 42%.  Doh
+

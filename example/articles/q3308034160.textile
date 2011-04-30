@@ -1,0 +1,55 @@
+title: Why trivial socketry: the motivation
+author: Daniel Barlow
+date: Fri, 29 Oct 2004 11:22:40 +0000
+
+<b>Why trivial socketry: the motivation</b>
+
+Essentially, it's part of a plan to make a CL-based system that is
+good for interactive use in a Unixy setting.  There are more than a
+few other things that I expect will also be necessary: this entry
+talks mostly about the repl
+
+<ol>
+
+<li> the unix shell uses short command names ("wc", "nc", "ls") to
+minimise typing.  Minimising typing is good, but I still have the
+typical Lisper's attitude to abbreviations that says there are many
+ways to abbrev. a word and only 1 2 spell it out in full, so guessable
+i/fs shld nt use abbrvs.  So I propose instead, given also that we
+have buckets of cpu these days that Thompson and Ritchie weren't
+blessed with, that the repl has smart symbol completion bound to the
+Space key.  This needs to be sufficiently smart that it can expand
+``dpd Space'' to *default-pathname-defaults*.
+
+<li> the general effect of the preceding will be to make for some very
+long command lines, and navigating through them using only cursor
+left/right will take ages.  It may make sense to have cursor up/down
+move within the current command instead of recalling history entries,
+but at any rate there needs to be some attention paid to this aspect.
+
+<li> a magic bracket key to close all open parens and submit the
+form.  Probably C-Return or similar.
+
+<li> this one may be mildly controversial if you're a Lisper, but: how
+often have you mistyped something and realised after you hit return
+but still long before the error message comes back?  Sometimes when
+using a unix shell (especially on a slow link), I can typo, hit
+return, hit cursor up, fix the problem and press return again before
+I've read the error message, and in such circumstances I really don't
+want a debugger to spring up and disrupt my flow.  On the other hand,
+the debugger is invaluable for real errors, so I'm not sure what the
+right answer here is.  Perhaps pressing Return again (i.e. entering an
+empty line) should exit the debugger; it wouldn't be hard to adapt my
+muscle memory to pressing RET a second time before editing the command
+
+<li> one or both of the following: previous expression results to be
+automatically named (like gdb's $1, $2, ...) so that they can be
+referred to in later commands, or a simple way to create and assign
+them by hand.  In either case, the variables need to be visible in the
+repl but not in functions called by it, and to stay around until the
+repl exits.
+
+<li> More to follow as it occurs to me, I'm sure.  A good idiom for
+doing what unix pipes do, for one thing.
+
+</ol>

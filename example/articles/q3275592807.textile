@@ -1,0 +1,10 @@
+title: With few exceptions, my language in this diary has tended to be more
+author: Daniel Barlow
+date: Sun, 19 Oct 2003 23:53:27 +0000
+
+With few exceptions, my language in this diary has tended to be more
+measured and less crude than, say, in real life.  Or on irc (yes, yes,
+I know that's not the same thing).  So, I'll just say I'm seriously
+investigating non-Knoppix options for a live Debian cd (currently
+looking at debootstrap, mkinitrd-cd, and discover) and leave you to
+fill in the blanks.

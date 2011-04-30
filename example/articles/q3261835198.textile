@@ -1,0 +1,25 @@
+title: This is not the erudite, entertaining and incisively written diary
+author: Daniel Barlow
+date: Tue, 13 May 2003 18:19:58 +0000
+
+<p> This is not the erudite, entertaining and incisively written diary
+entry that you were doubtless (and foolishly) hoping for after more
+than a week's lapse in entries.  It's still on my TODO list, but the
+date has been pushed back to late 2007
+
+<p> This is basically just a note to point out that <a
+href="http://www.b9.com/" >Kevin Rosenberg</a> is organising an AMD64
+(formerly x86-64, formerly Hammer, n&eacute;e Sledgehammer) <a
+href="http://sbcl-internals.cliki.net/x86-64">port</a> of SBCL.  If
+you're interested in helping fund development on this, have a look at
+the <a
+href="https://www.pubsoft.org/pubsoft.py/project?proj=SBCL-AMD64"
+>page on pubsoft</a>.  We're already, ooh, 1/40th of the way to the
+target.  And it's tax-deductable, if you're a US taxpayer.
+
+<p> Declaration of interest: I'm bidding (or more accurately, <a
+href="http://web.metacircles.com/" >metacircles</a> is bidding) on the
+project.
+
+<p> (Volunteers to produce a cute thermometer graphic a la "church
+roof appeal", contact Kevin or me ;-)

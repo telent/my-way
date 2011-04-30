@@ -1,0 +1,49 @@
+title: If I can't remember much of what I did this weekend, that might
+author: Daniel Barlow
+date: Mon, 28 Apr 2003 1:55:57 +0000
+
+If I can't remember much of what I did this weekend, that might
+suggest that it was too boring to be worth writing about.  On the
+other hand, it might suggest that I should write down what little of
+it I <i>can</i>remember, so that I have some record of it in future
+times.  Very well then.  On Friday more Milton Keynes fun, which of
+course involved more zipping around the countryside to get there and
+back.  On Saturday I had to get up early (ish.  early for a Saturday,
+at any rate) to return the car, then took the last few weeks (or more
+likely, months) collection of empty bottles to the bottle bank, then
+came home and fell asleep until lunchtime.  Substantial portions of
+afternoon/evening then spent talking to Christophe on IRC trying to
+find why SBCL was allocating without setting the <a
+href="http://sbcl-internals.cliki.net/pseudo-atomic"
+>pseudo-atomic</a> flag first.  Eventually found a piece of code that
+was at least likely to be the place where the problem occurred (gdb is
+sometimes imperfect when it comes to debugging code that doesn't use
+the C calling convention) and found that it was using the unithread
+pseudo-atomic setup, not the threaded one.  So, blamed it on stale fasls.
+
+<p>Subsequently, Christophe indeed found one or more stale fasls:
+<tt>sh clean.sh</tt> appears to have made the problem go away
+
+<p>Today I've been looking for GC bugs.  These aren't the usual unfriendly
+bugs which are probably somewhere else altogether and only manifest
+during gc because that's when we next scan the heap and actually
+notice it has seven kinds of memory corruption in it.  This is simply
+that gc is not actually running as often as we'd really like it to,
+so by using enough threads and making them allocate fast enough we can
+run the system out of virtual memory.  
+
+<p>Part of the problem is that there are all kinds of situations in
+which GC is disabled and a call to the collector returns immediately -
+pseudo-atomic, WITHOUT-GCING, and recursive entry to the collector are
+just three of them.  The other part is that GC is actually done by
+signalling the GC thread, and this allows the potential for all kinds
+of interesting behaviour if it's already doing something when we
+signal.  
+
+<p>Found an intersting <a href="http://lwn.net/Articles/6972/">LWN
+article</a> which kind of suggests not only that we can co-exist
+reasonably happily with NPTL, but that, come the revolution, we can
+use the "Wine" GDT entry instead of having to muck around with LDTs
+and therefore limit ourselves to only 8192 threads
+
+

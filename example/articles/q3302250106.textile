@@ -1,0 +1,29 @@
+title: For the record, I was wrong
+author: Daniel Barlow
+date: Mon, 23 Aug 2004 12:41:46 +0000
+
+For the record, I was wrong.  We don't find catch tags by searching
+the stack; we maintain a linked list starting at *CURRENT-CATCH-TAG*.
+This is good news insofar as searching the stack is not a precise
+science and it might not have been possible to fix things if we had
+been chaining through stack frames.  This is bad news in that I can't
+find what's clobbering the aforesaid *CURRENT-CATCH-TAG*, so although
+I have no doubt it's possible to fix things, I presently don't know
+how.  In other words, don't expect a fix for 0.8.14
+
+<p>In other news: 
+<ol>
+<li> I'm playing with Eclipse again: rationalisation for this is that
+something strange happened to sawfish on my last apt-get upgrade, so I
+think I'd like a window manager that Debian doesn't know how to break.
+
+<li> More episodes involving minor skin loss; arm still aches a bit
+but seems to be getting better; no visible bruising.  Bought new
+skates a week or so ago; left them at home this morning (it was
+raining) and only realised how much improved the fit is when I went
+out at lunch in the old ones to get a sandwich.
+
+<li> I am 30.  It doesn't seem to be much different.
+
+</ol>
+

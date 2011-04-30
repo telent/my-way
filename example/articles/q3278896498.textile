@@ -1,0 +1,18 @@
+title: OK, more content on web.metacircles.com: Scripting Emacs
+author: Daniel Barlow
+date: Thu, 27 Nov 2003 4:34:58 +0000
+
+OK, more content on web.metacircles.com: <a
+href="http://web.metacircles.com/scripting_emacs" >Scripting Emacs</a>
+is an article I wrote for Linux User &amp; Developer magazine last
+spring (published last summer, as is the way with magazine lead
+times).  The "&amp; Developer" part of their magazine doesn't get 
+as far as their web site, so here's a small bit of it on mine.
+
+<p>I have written other stuff for them too, which I might post sooner
+or later.  That said, the CLiki article is probably out of date, and
+the SBCL threads article doesn't tell you anything that reading the
+paper from my <a href=
+"http://www.ukuug.org/events/linux2003/prog/abstract-DBarlow-1.shtml"
+>UKUUG presentation</a> wouldn't.  Of course it, too, is out of date.
+That's the price of progress.  Or something.

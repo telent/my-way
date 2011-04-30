@@ -1,0 +1,35 @@
+title: I've had this laptop (Toshiba Port&eacute;g&eacute; 3440CT) for
+author: Daniel Barlow
+date: Tue, 20 Jul 2004 0:17:7 +0000
+
+<p>I've had this laptop (Toshiba Port&eacute;g&eacute; 3440CT) for
+something over three years now, and I'm still pretty happy with it,
+mostly.  Yes, it's old and underpowered (500MHz mobile PIII), but it
+weighs practically nothing, it has a trackpoint thing, three mouse
+buttons (actually, two buttons and two scrollwheel simulating buttons
+but I can remap one of those as button 3 and it mostly works apart
+from slightly evil autorepeating behaviour), and it's old enough to
+use APM not ACPI.  Which during most of its early life was a distinct
+advantage on a machine that runs Linux.
+
+<p>It does have a few oddities, though; readers may recall its habit
+of saving power by randomly <a
+href="http://ww.telent.net/diary/2004/4/#20.61525">frobbing CPU speed
+and not telling the OS</a>.  This is not in itself a problem now I've
+weaned Linux away from using the TSC as a time source, and probably
+also saving some power, but the manner of its doing was starting to
+annoy me, in that it will decide apparently at random that it should
+only speed up as far as 266MHz.  Usually it can be persuaded to speed
+up again by removing and reapplying mains power, but after a while
+(and lately it seems to be quite a short while) it's forgotten again.
+This is tedious when recompiling SBCL.
+
+<p>Today I found that (a) the version of <tt>toshset</tt> that I
+already have installed has an option for cpu speed, (b) it was set to
+'low', (c) setting it to 'high' does actually make a difference, and
+to cap it all (d) the cpu speed still varies continuously according to
+system load, so as I mostly use well-behaved apps that only eat cpu
+when they're actually <i>doing</i> things (exception made for the ISC
+dhcp client which from time to time likes to spin on CPU), I still get
+the battery savings.  Happy Bunnies R Us.
+

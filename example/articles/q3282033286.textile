@@ -1,0 +1,19 @@
+title: More RSS fun
+author: Daniel Barlow
+date: Fri, 2 Jan 2004 11:54:46 +0000
+
+<p>More RSS fun.  Apparently weblog rss feeds should have items in
+reverse chronological order, just like the weblogs they syndicate.
+So, I switched mine around.  Also added the first sentence of each
+item as the item title: this will fall down in cases where my rather
+poor heuristics for detecting sentences, or in entries where my
+inverted pyramid has overbalanced.  Apologies to anyone using an RSS
+client which will therefore decide that these are all brand new
+entries and make them read all my old entries again.
+
+<p>If anyone would like to recommend a GUI RSS aggregator for Linux
+that's not (a) Straw, or (b) Emacs-based, please feel free.  There's
+nothing particularly wrong with Straw, but I worry whether the
+debugging messages it spits out from time to time are caused by
+problems with it or problems with my rss.
+

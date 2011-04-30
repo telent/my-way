@@ -1,0 +1,27 @@
+title: A brief note on diff and CL, for people who write functions with more
+author: Daniel Barlow
+date: Tue, 18 May 2004 11:24:22 +0000
+
+A brief note on diff and CL, for people who write functions with more
+than four lines of body -
+
+<pre>
+:; cvs diff -u <b>-F '^(def'</b>  url.lisp
+Index: url.lisp
+===================================================================
+RCS file: /usr/local/src/cvs/araneida/url.lisp,v
+retrieving revision 1.11
+diff -u -F^(def -r1.11 url.lisp
+--- url.lisp    10 Jul 2003 08:53:19 -0000      1.11
++++ url.lisp    18 May 2004 10:30:13 -0000
+@@ -252,7 +252,7 @@ <b>(defun urlstring-escape (url-string)</b>
+   (apply #'concatenate 'string
+    (loop for c across url-string
+          if (urlstring-reserved-p c)
+-         collect (format nil "%~X" (char-code c))
++         collect (format nil "%~2,'0X" (char-code c))
+          else
+          collect (string c))))
+</pre> 
+
+Emphasis mine.

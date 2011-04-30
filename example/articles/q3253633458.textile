@@ -1,0 +1,18 @@
+title: Something I've been meaning to get around to for a long time: a
+author: Daniel Barlow
+date: Fri, 7 Feb 2003 19:4:18 +0000
+
+Something I've been meaning to get around to for a long time: a
+"contrib" module system for SBCL.  This is for "code which does not
+form part of SBCL itself, but which is sufficiently closely associated
+with it that it would not be sensible to run it as a completely
+separate project".  Which is to say, code that gets its hands dirty
+with SBCL extensions or internals.  So far we have a BSD socket
+library, a defsytsem, and (thanks to <a href="http://www.b9.com/"
+>Kevin Rosenberg</a>) an ACL-style toplevel, all of which can be
+called up using REQUIRE.  More info from <a
+					 href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/sbcl/sbcl/contrib/STANDARDS?rev=HEAD&content-type=text/vnd.viewcvs-markup" >contrib/STANDARDS</a> in the SBCL source tree.
+
+
+<p>Now I'm trying to figure out what the status of CLX is these days.
+

@@ -1,0 +1,44 @@
+title: Some interesting comments on the cirCle CD already
+author: Daniel Barlow
+date: Fri, 3 Oct 2003 12:2:34 +0000
+
+Some interesting comments on the <a
+href="http://web.metacircles.com/circle+cd" >cirCle CD</a> already.
+I'll send out a mail to the announcement list in a week or so when
+it's a bit clearer what shape things are taking, but for the moment
+let's answer a few of the early questions here:
+
+<ol>
+<li> <b>Documentation</b> is something I'm quite keen on.  The out-of-the-box
+install will bring up a web server with all the docs I can get my
+hands on and legally distribute.  Yes, sadly the Hyperspec is not one
+of these documents; either there'll be an installer package that
+downloads it from the net, or we'll do something ourselves starting
+with the ANSI final draft or the GCL texinfo (which appears to have
+been taken from the same place).
+
+<li> Several requests for an <b>ILISP</b> configuration that works out of the
+box, so that's a priority.  I'm also planning to hook as much of the
+documentation (see above) as possible to ILISP, so that users can
+look up documentation for symbol at point even when that symbol is in
+some other package than COMMON-LISP.
+
+<li> <b>Sources</b> for everything will be included.  This is because (a)
+it's a jolly good idea anyway, and (b) for GPLed components (like
+Emacs) the alternative is a written offer valid for three years to
+provide them at cost.
+
+<li> You don't <i>have</i> to use it as a live filesystem.  If you
+have an <b>existing Linux installation</b>, the intent is that you can just
+install it - subject to kernel version, shared library issues and the
+rest of the happy fun ball of wax that is Linux compatibility.  Yes, I
+know about the LSB.  No, it's not sufficient - at least last time I
+looked, it doesn't specify PostgreSQL shared library versions, to take
+one example.
+
+<li> The live fs is <b>Knoppix</b>-based, but isn't going to include all the
+Knoppix apps and games - we'll need the space for source code.  The
+point of using Knoppix is for the hardware detection, which seems to
+be pretty much universally praised.
+
+</ol>

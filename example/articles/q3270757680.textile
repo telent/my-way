@@ -1,0 +1,35 @@
+title: I suspect we'd disagree on the details
+author: Daniel Barlow
+date: Mon, 25 Aug 2003 0:48:0 +0000
+
+I suspect we'd disagree on the details.  In fact, we'd disagree on
+quite a lot of the general approach, never mind the specific details,
+if only because I'm quite attached to CL and have already invested
+significant time in it (the reader may harbour his own opinion on
+the direction of any possible causal relation there).  But in general
+terms I really do think Tom Lord is onto something with his
+<a href=
+"http://lists.fifthvision.net/pipermail/arch-users/2003-May/027591.html"
+>thoughts on free software architecture</a>.
+
+<pre>
+
+For a long time, the right strategy for GNU was to build a basic unix
+replacement differentiated primarily by licensing.   As software goes, 
+the core of unix is a simple architecture, reflecting its history as a
+design first realized by a very small team of people.
+
+Well, that part's done and the strategy won.
+
+Nowadays, the proprietary competition is about databases, and
+productivity apps, and browsers, and middleware layers.  The software
+we're competing against is not like unix: it isn't simple; it wasn't
+built by a small number number of people; it's a moving target.  It
+isn't a tractable project to clone this proprietary software under
+different licensing.
+
+If the goal is still "(a) build a free alternative to proprietary
+software", then a new strategy is called for:  competition on
+_software_architecture_, not just licensing.
+
+</pre>

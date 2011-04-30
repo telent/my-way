@@ -1,0 +1,21 @@
+title: Quick SLIME note: the SBCL port now uses SERVE-EVENT instead of
+author: Daniel Barlow
+date: Fri, 17 Oct 2003 2:42:35 +0000
+
+Quick SLIME note: the SBCL port now uses SERVE-EVENT instead of
+threads, which means it'll work on platforms other than x86 Linux.  
+Or should do, anyway.
+
+<p>Helmut has done some rather neat stuff for finding function
+callers/callees in the CMUCL port.  Next job (next SLIME job, I mean)
+is to port that and put it in SB-INTROSPECT.
+
+<P>Picked up Neal Stephenson's <a
+href="http://www.amazon.co.uk/exec/obidos/tg/detail/-/0380977427/026-0754514-7002801?v=glance"
+>Quicksilver</a> in Borders this evening (link to Amazon.co.uk because
+the official site is some useless popup thing).  I was moderately
+amused to find it in the Fiction section, not the SF section with all
+his previous works - yes, including the Steven Bury stuff.  Immediate
+impression after 50 pages: his editor should have said a few words
+about the purple prose.  After 100 pages either it's settled down a
+bit or I've got used to it, though.

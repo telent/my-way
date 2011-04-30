@@ -1,0 +1,42 @@
+title: Paid projects calming down a little, so today was housekeeping day for
+author: Daniel Barlow
+date: Wed, 11 Sep 2002 1:35:0 +0000
+
+Paid projects calming down a little, so today was housekeeping day for
+some more of the free stuff.
+
+<ul>
+
+<li> At last, the lucky members of the general public have <a
+href="http://cvs.telent.net/">CVS access</a> again for telent projects
+</li>
+
+<li> New release of <a href="/cliki/db-sockets">db-sockets</a> with
+all known bug fixes (this is not another day of saying "all known bugs
+fixed").  This will be 0.55 when it appears on vn-cclan and the
+notable change is a fix for unix-domain sockets
+</li>
+
+<li> First <a href="/cliki/Entomotomy">Entomotomy</a> <a
+href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/entomotomy/">checkin</a>:
+code I hacked out before and during the LSM and haven't really looked
+at since.  I'm pretty sure it did <i>something</i>, or at any rate
+that I believed at the time that it did something.  Which may not be
+the same thing entirely
+</li>
+</ul>
+
+Immediate priorities for, say, tomorrow, are to understand what
+entomotomy does or doesn't do, and hopefully to get it into a state
+where it does something useful.
+
+<p>I'd write something amusing here, but the truth is I'm tired and
+would rather get some sleep.  I briefly also considered writing
+something bitter and cynical about the darker parts of ANSI CL, or
+this afternoon's fight with cvs error messages, or even Oracle (a rich
+seam of source material which I don't think will ever really run out),
+but the truth is I'm just too happy (for, it must be admitted,
+substantially unrelated reasons) to summon the necessary bile.  So,
+nyer.
+
+

@@ -1,0 +1,15 @@
+title: Changing OSS in mid-stream
+author: Daniel Barlow
+date: Tue, 19 Jan 2010 22:04:11 -0000
+
+It was always a given that the Oliver OSS (that's "/dev/dsp" to you) interface would eventually need to be swapped out for something else, just because it doesn't work on many machines other than mine.
+
+Now Oliver has reached the point that it functions as a rudimentary music player for general use (i.e. it presents me a list of my music on the left that I can drag into the playqueue on the right), I realise that "eventually" is sooner than I was expecting, simply because it opens the dsp exclusively and forces all other audio programs (e.g. youtube vids) to fail.  In short, it doesn't work acceptably well on my machine either.  Fail.  I'd forgotten how miserable Linux audio used to be.
+
+In other news
+
+* webkit doesn't support javascript 1.7, which is a grave disappointment as this is the one with proper lexical scope (via "let":https://developer.mozilla.org/en/Core_JavaScript_1.5_Guide/Working_with_Closures#Creating_closures_in_loops.3a_A_common_mistake )
+
+* minor edit to previous post for comprehensibility, as re-reading it I realised it made more sense in my head than on the page.  
+
+* as tweeted: "there is a fine line between genius and idiot, and I'm still not sure on which side of it to place the jquery api".  Selecting document elements using CSS syntax, yes, great idea.  Returning those elements in an object sufficiently similar to an array that Firebug prints it as square brackets, but then making it respond to @map@ in an entirely different way to the real Array - no, stupid idea.  Hours of my life I won't get back

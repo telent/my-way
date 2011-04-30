@@ -1,0 +1,15 @@
+title: So I finally upgraded my desktop to 2.6 (2.6.0-test9), at least, after
+author: Daniel Barlow
+date: Thu, 13 Nov 2003 21:19:24 +0000
+
+So I finally upgraded my desktop to 2.6 (2.6.0-test9), at least, after
+fiddling a bit so that it's still using the old OSS-style sound module
+instead of spiffy new Alsa.  This is because spiffy new Alsa doesn't
+work, as far as I can tell: there seems to be no way to persuade my
+motherboard to put the video card (Voodoo3) and the onboard audio in
+different interrupts: ye olde technologie trident.o can cope with
+sharing, but ALSA snd-trident makes some really really evil noises
+every time I select a menu item in Mozilla.  Anyway, that's an
+exploration for another day.
+
+<p>What this means immediately is that it's time to play with futexes.

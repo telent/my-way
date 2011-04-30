@@ -1,0 +1,21 @@
+title: This is not for universal distribution yet, but I'm sure my readership
+author: Daniel Barlow
+date: Fri, 5 Mar 2004 19:20:35 +0000
+
+This is not for universal distribution yet, but I'm sure my readership
+is sufficiently short of universal (and, I like to imagine, a
+civilised, well-mannered subset of the universe that is prepared to
+tolerate a degree of unfinishedness and consider ideas on their merits
+instead of rejecting them out of hand on the basis of an
+ill-thought-out emotional response) that nothing bad will happen if I
+tell you guys what I've been doing lately.
+
+<p>(Yes, it is legal.  Well, what I'm about to talk about is legal.  I'm
+not sure that the rollerblading in bus lanes which I have also been
+doing lately is likewise legal, but that's not germane as I'm not
+about to talk about that)
+
+<p>So, this is <i>not</i> an announcement of <a
+href="http://www.cliki.net/cirCLe" >The cirCLe Project</a> Version 2 -
+whose goal is to produce the cirCLe distribution, version 0 - but you
+might want to take a look anyway.

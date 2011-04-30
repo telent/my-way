@@ -1,0 +1,48 @@
+title: MORE TOYS
+author: Daniel Barlow
+date: Thu, 18 May 2006 15:29:33 +0000
+
+MORE TOYS.
+
+<p>I bought a Palm TX the other day.  This may actually be more connected
+with skating than with Lisp: basically, I was looking for something
+that I could use to quell uprisings on web servers and suchlike even
+when I was away at a race or in an airport or something, and didn't
+want to lug my laptop around with me.  It's quite a small laptop, but
+it's still space that I could be using for another change of clothes.
+
+<p>So far I mostly like it, but I'm still learning my way around.
+Builtin Wi-Fi worked out of the box on my home network: builtin
+bluetooth was eventually persuaded to talk to my work computer using a
+disgustingly Heath Robinson combination of dund and pppd, and to my
+mobile phone (though I had to mess around for a while there as there's
+not a configuration for my phone and mobile network).  There's a workable ssh
+client (<a href="http://www.sealiesoftware.com/pssh/">pssh</a>) which
+in combination with the <a
+href="http://store.palm.com/sm-palmone-universal-wireless-keyboard--pi-1861852.html"
+>Universal Wireless Keyboard</a> ought to fulfill the stated purpose
+of emergency access to servers - at least, will when I can persuade
+pssh to recognise the Control key on the keyboard, which isn't yet
+happening.  It does at least now recognise the majority of the other
+keys, whch was not the case until I found the updated <a
+href="http://www.palm.com/us/support/downloads/universal_wireless_keyboard.html#palmos"
+>v1.10 keyboard driver</a>
+
+<p><img align=right src="/tmp/Picture_2_.jpg"> Other things I would
+like to be able to do with it now I've got it: (1) organise my race
+calendar and remind me to do things like book flights; (2) email,
+sensibly (VersaMail seems to be a bit crap); (3) control the xine on
+my desktop, preferably over the xine TCP interface.  (Yes, I know
+about OmniRemote, but my desktop doesn't have IR, so that's a bit of a
+non-starter).  The screenshot on the right is the result of my first
+tentative step towards learning how to program the thing, and comes to
+you from my mobile phone via bluetooth to the palm, where I attached
+it to a VersaMail message, then sent it to my work address which cause
+it to go by smtp-over-(ppp-over-bluetooth to my desktop) to gmail,
+smtp back to the office mailserver, pop3 to my desktop again, then scp
+to the machine that hosts this blog.  Marvellous.
+
+<P>I was going to tell you I found a German dictionary for it too, but
+I suppose my use for that is more about the skating than the Lisp as
+well.  Oh well.  More about LispMe to follow as I get to grips with it
+...

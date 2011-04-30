@@ -1,0 +1,20 @@
+title: This space reserved for a rant about Knoppix; specifically, how in the
+author: Daniel Barlow
+date: Sun, 19 Oct 2003 4:34:8 +0000
+
+This space reserved for a rant about Knoppix; specifically, how in the
+hell is anybody supposed to reliably find all the source code for the
+packages it's composed of - especially when it's based on Debian
+<i>testing</i> given that (as far as I know) there's no requirement on
+a Debian mirror to keep all previous versions of testing around
+indefinitely in case Knoppix users want the sources they're entitled
+to.  Given how much of this stuff is GPLed, the commercial
+distributors (if not Knopper himself) are going to have a pretty
+unpleasant time of it when RMS finds out.
+
+<P>apt-get on the filesystem which will one day be the cirCLe CD
+(rather, disc 1 of the two disc circle cd set) has just decided it
+wants to upgrade over 100Mb of stuff.  So, whether it will still
+actually work when it's burnt to CD, who knows?
+
+

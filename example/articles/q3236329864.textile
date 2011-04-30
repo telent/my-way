@@ -1,0 +1,36 @@
+title: Control stack exhaustion is still in a state of "pretty much"
+author: Daniel Barlow
+date: Mon, 22 Jul 2002 13:31:4 +0000
+
+Control stack exhaustion is <i>still</i> in a state of "pretty much"
+(i.e. "not") working.  This past weekend was more or less the deadline
+for commits for the next SBCL release (0.7.6) so I thought I had
+better try it on something other than an x86 Linux box.  First step,
+the Alpha.  That worked OK, so, FreeBSDeers, prepare for battle.
+
+<p>(Why FreeBSD?  There's one in the sourceforge build farm.  The
+sourceforge build farm is sucky in entirely numerable ways, but at
+least it's there).  
+
+<p>First hurdle: it uses SIGBUS instead of SIGSEGV for writes on
+unmapped pages.  That's easy enough.  Second problem, some screwup
+with overlapping mmaps that really ought not to (defining a signal
+stack in the middle of the dynamic space is bad, ok?).  Third problem:
+the <i>second</i> time you hit the guard page, you get a SIGBUS
+followed immediately (before the sigbus handler runs, even) by a
+SIGILL.  I don't know why.
+
+<p> Funniest URL of the day: this bit from the 
+<a
+href="http://www.freebsd.org/doc/en_US.ISO8859-1/books/developers-handbook/x86-one-pointed-mind.html"
+>FreeBSD Developer's Handbook</a>. 
+
+<blockquote>
+While a typical Windows application is attempting to do everything
+imaginable (and is, therefore, riddled with bugs), a typical Unix
+program does only one thing, and it does it well.
+</blockquote>
+
+Sure.  So I imagined <tt>cat -s</tt> and <tt>ls -C</tt>, or are they
+not typical Unix programs?
+

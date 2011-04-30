@@ -1,0 +1,23 @@
+title: It's looking a little less frenetic around here now, then
+author: Daniel Barlow
+date: Wed, 16 Jul 2003 15:58:22 +0000
+
+It's looking a little less frenetic around here now, then.
+
+<p>On Moday I spent some time playing with <a
+href="http://sawmill.sf.net/">Sawfish</a>.  The task was to have it
+listen to my modem (which lives on my voice line and is only ever used
+for faxes or dire emergencies) and popup a window with caller ID
+details whenever the phone rings; unfortunately it turns out that my
+modem doesn't do caller id anyway, and even supposing it did it's
+uncertain that my phone company (NTL, Oxford franchise) can turn it
+on. 
+
+<p>I've been using Sawfish as a window manager for three years or
+something and still haven't actually tried its Lisp dialect.  Initial
+impressions: nice general design, but handicapped by being based on
+a lousy Lisp.  Painful development process: dying on SIGSEGV is
+<i>not</i> convenient when the window manager was the last command run
+from .xinitrc
+
+

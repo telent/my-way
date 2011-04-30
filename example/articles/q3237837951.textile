@@ -1,0 +1,68 @@
+title: The symptom: we're getting a SIGSEGV which (from looking at the
+author: Daniel Barlow
+date: Fri, 9 Aug 2002 0:25:51 +0000
+
+<p>The symptom: we're getting a SIGSEGV which (from looking at the
+arguments to the handler) appears to be due to writing into a
+write-enabled page.  Yes, I did say <b>enabled</b>
+
+<p>The cause: I'd written (void *)foo-1 instead of (void **)foo-1
+
+<p>The intervening steps (in reverse order)
+<ol>
+<li> The SIGSEGV was actually from executing an iret instruction, and
+nothing (much) to do with write-enabled pages.  
+
+<li> The iret was in a part of memory mostly filled with zeroes.  In
+x86 assembler, zeroes disassemble to <tt>add %al,(%eax)</tt> which
+while pointless is basically harmless, so we really didn't know for how
+long it had been dashing through snowfields by the time it got
+there
+
+<li> So, perhaps we should have a look at the stack.  Here is your
+five minute guide to interpreting sbcl x86 stack traces:
+
+<pre>
+esp            0x403ff84c       0x403ff84c
+ebp            0x403ff870       0x403ff870
+
+0x403ff840:     0x00000008      0x00000008      0x0cafd99c      0x00000004
+                                                                  ^ sp  
+0x403ff850:     0x403ff850      0x0500000b      0x0d659a19      0x0caffeff
+                                                                ^ return addr
+0x403ff860:     0x0cacc14b      0x00000000      0x0a32fbc0      0x403ff890
+                                                                ^ prev frame
+0x403ff870:     0x0cace37f      0x0cacc0a3      0x0caa778b      0x00000008
+                   ^ ebp
+0x403ff880:     0x0a330f14      0x00000004      0x0a330f14      0x403ff8d0
+0x403ff890:     0x403ff8b4      0x0500000b      0x09463627      0x403ff874
+0x403ff8a0:     0x00000014      0x0b3effd1      0x0cacc0a3      0x0500000b
+</pre>
+
+Start at ebp.  The preceding word (address ebp-4) gives the ebp for
+the previous frame.  Four words prior to that is the lisp return
+address (raw untagged address: x86 insns aren't all the same length
+after all)
+
+</li>
+<li><tt>0x0caffeff</tt> was full of zeroes.  So were the code pointers for the
+preceding several frames
+
+<li>Why do we have apparently correct control frames which contain
+such obviously bogus return addresses?  Well, what if there were valid
+code there originally, which got moved by, say, GC?  Like, the GC that
+just occurred a minute ago
+
+<li>Oh look, we're scavenging the control stack from <tt>0x403ffffe</tt> rather
+than <tt>0x403ffffc</tt> as we should.  See `The cause', above.  Whatever
+values we look at from that angle, it's a pretty good bet they won't
+be recognisable lisp pointers.  Duh.
+
+</li>
+</ol>
+
+<p>Now I'm back at the state of having lisp which actually can build
+PCL and dump a core, I guess I should look at my new <tt>bind</tt> 
+<a href="/sbcl-internals/VOP">vop</a> and see if it's doing anything
+yet
+

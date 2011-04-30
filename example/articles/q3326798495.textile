@@ -1,0 +1,22 @@
+title: Obviously I should be charging it with the power off
+author: Daniel Barlow
+date: Fri, 3 Jun 2005 15:41:35 +0000
+
+<p>Obviously I should be charging it with the power off ...
+
+<blockquote>
+It has been reported by some of our customers that they have
+experienced reduced battery life after charging their Zen Micro. Our
+product development team has researched these reports and determined
+that the users may have experienced this after they plugged their Zen
+Micro into the AC adapter that was already inserted into a wall socket
+with the AC power on.
+
+<p>While this is not the conventional way to plug in a player for
+charging, we wanted to ensure that our customers did not experience
+this problem, so we have developed a solution to address this, which
+simply involves upgrading the Zen Micro's firmware. 
+</blockquote>
+<a
+href="http://www.nomadworld.com/downloads/firmware/wma-zenmicro.asp?nProdID=556&sProd=Creative%20Zen%20Micro"
+>http://www.nomadworld.com/downloads/firmware/wma-zenmicro.asp?nProdID=556&sProd=Creative%20Zen%20Micro</a>

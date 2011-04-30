@@ -1,0 +1,77 @@
+title: Newsgroups: comp.lang.lisp
+Subject: Re: CMU CL or SBCL on (FreeBSD/)AMD64 any time soon
+author: Daniel Barlow
+date: Thu, 21 Oct 2004 2:47:29 +0000
+
+<pre>
+Newsgroups: comp.lang.lisp
+Subject: Re: CMU CL or SBCL on (FreeBSD/)AMD64 any time soon?
+</pre>
+
+Gareth McCaughan &lt;gareth.mccaughan@pobox.com> writes:
+
+<pre>
+> But I don't want to find myself without a decent zippy
+> Lisp implementation. Several different people seem to have
+> done work on making SBCL run on AMD64 in the last N months
+> (generally for Linux rather than FreeBSD); what's the
+> current state of the world?
+</pre>
+
+<p>Since acquiring an amd64 machine of my own last weekend I've dusted
+off the SBCL work I was doing earlier in the year (many thanks to
+Kevin Rosenberg for ssh access to his machines, but it's a lot more
+comfortable developing locally than over the internet, not to mention
+that the appeal is so much greater now I own a machine that it'll run
+on ...)
+
+<p>You asked about "current state" rather than "progress", which I like,
+becuase otherwise I'd have only have been able to say "it'll be done
+when it's done".  So:
+
+<p>If you're familiar with the SBCL build process I can tell you that
+when I left off last it was generating plausible-looking
+cross-compiled core files that got maybe two thirds of the way through
+the cold-init process (at the end of which is a repl).  After that all
+that remains is building PCL, which is allegedly portable, and the
+contrib modules, which are mostly <i>actually</i> portable if we limit
+ourselves to considering sbcl-on-different-architectures.
+
+<p>After picking it up again on Sunday, I broke it utterly by deciding to
+rewrite the floating point support to use sse2/sse3/xmm (faster, more
+predictable, less weird) instead of the legacy x87 instructions.  That
+work is mostly complete at least in that it's now back to the point of
+generating plausible cross-compiled cores, but (whether due to new FP
+or to having simultaneously forward-ported the branch by several
+months) it dies at about the second function call.  This could be
+considered a regression.
+
+<p>Feature checklist: 
+
+<ul>
+<li> 64-bit lisp word (yes, big cores) 
+<li> 61 bits of fixnum.  
+<li> uses all 16 registers 
+<li> sse for floating point (16 xmm registers)
+</li>
+</ul>
+
+<p>Big known issue between here and the goal: bignum support, which is
+still based on 32-bit words.  Other than that it's mostly a question
+of seeing what crops up.
+
+<p>I don't know much about the FreeBSD amd64 port, but unless they've don
+something really weird I can't imagine it being much work to get SBCL
+up on once we have a working compiler and runtime.
+
+<p>As others have mentioned, the x86 port of SBCL (at least on Linux)
+runs fine[*] under a 64 bit kernel if furnished with appropriate shared
+libraries.  On my machine it takes around 9-10 minutes to build itself
+including all contribs: I don't know objectively how zippy this is,
+but it's about a sevenfold improvement on the box it replaced, so I at
+least am content for the moment.
+
+<p>[*] Actually, fine except for threads.  But if you're on freebsd you
+    don't get them anyway, so I mention that mostly for completeness'
+    sake
+

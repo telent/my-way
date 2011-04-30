@@ -1,0 +1,25 @@
+title: Hacking in abeyance today, in favour of starting to clean house,
+author: Daniel Barlow
+date: Sun, 18 Nov 2001 1:6:14 +0000
+
+
+<p> Hacking in abeyance today, in favour of starting to clean house,
+and visitors.  Visit bottle bank, walk through the university parks
+and over to Marston, then back for coffee.  Then we went out for
+dinner to celebrate the first anniversary of my vanity company.
+Tomorrow more cleaning (received notice that landlord is coming round
+to inspect the place sometime during the week when I'm out, causing me
+to look at the skirting boards and think "hmm, when did I last dust
+<i>that</i>?") and hopefully some writing of invoices.  The company
+first traded on Dec 31 last year, but I'm hoping that I can actually
+close the accounts at the end of November to coincide with the VAT
+return.
+
+<p> Now let's see if we can finish a roadmap for the next stage of
+SBCL threads before bedtime.  The thread switching primitives work
+fine (and have for months, in fact) so we just(tm) have to worry about
+writing a scheduler, queueing, locking, timer events, and doing enough
+integration into the stream io system that the thing will still
+actually run.  Preferably without rendering the whole thing completely
+unusable for people who elect <i>not</i> to use threads, too. 
+

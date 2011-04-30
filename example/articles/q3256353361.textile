@@ -1,0 +1,14 @@
+title: One of the things I am really looking forward to, given a natively
+author: Daniel Barlow
+date: Tue, 11 Mar 2003 6:36:1 +0000
+
+<p>One of the things I am really looking forward to, given a natively
+threaded Lisp implementation, is the possibility of writing, acquiring
+or just plain waiting for a text editor that can be customized in a
+slightly saner language than elisp.  In particular, right now, I would
+like a comint mode that either (1) only retains n line sof output, or
+(2) (preferably) doesn't eat 30% of my cpu appending lines to the
+comint buffer when it gets large.  Where large is around 250k lines,
+at the moment.
+
+<p>I hate having to reboot my emacs.

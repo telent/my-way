@@ -1,0 +1,47 @@
+title: Did I mention I got new skates
+author: Daniel Barlow
+date: Sun, 11 Sep 2005 22:34:11 +0000
+
+Did I mention I got new skates?  No, it appears that I just mentioned
+I was borrowing them.  Well, after a few one-hour sessions on the
+Serpentine Road without reducing my feet to hamburger (in fact, they
+get <i>more</i> comfortable after the first few minutes - probably as
+the leather warms up) I decided I might as well go for it.  Now all I
+have to do is learn to use them, and preferably in the next two weeks
+(Berlin is the weekend of the 24th).
+
+<p>Rained-off Rollerstroll was rescheduled for two weeks later (28th
+August) and went ahead on that date without loss of life or serious
+injury that I knew of, so I rate it as successful.  Then I went out
+for some celebratory falling-down juice, and, er, fell down.  Some
+skin missing from elbow, but more embarrassing than painful.
+
+<p>Two thirds of the way nearer to having finished moving house:
+rented small van to retrieve stuff from garage of previous flat (it's
+only five miles away, I figured I'd rather have something easy to park
+and do multiple trips if necessary) and transferred two vanloads which
+comprise pretty much all my possessions except for the various bits of
+furniture (bookcases, cd racks, and a table) they they go in/on.  Then
+the garage padlock jammed leaving me unable to get the rest.  So, I am
+no longer in a very bare flat, I am in a flat surrounded by boxes of
+all my stuff.
+
+<p>Still haven't worked out what's up with my wireless AP dropping the
+connection periodically, except that <tt>iwlist eth1 scan</tt> is a
+less-invasive way to kick it than <tt>ifdown</tt>/<tt>ifup</tt>
+
+<p><b>Occult</b> v.tr. 1.  To conceal or cause to disappear from view.
+2. Astronomy. To conceal by occultation: The moon occulted Mars.<br>
+
+<b>OCCLT</b> n. A vague <a href="/toy.lisp">half-arsed attempt</a> at writing a window manager
+with CLX.  Presently works(sic) for xeyes, xlogo and emacs, but
+doesn't support enough iccccccccm to map an xterm in any way that
+makes it actually visible.  And, er, has no actual <i>window
+management</i> support yet (e.g. for choosing where on the screen they
+go, or moving or resizing them, etc).  Name chosen because, well, it's
+a bit like an <a href="http://common-lisp.net/project/eclipse/">eclipse</a>.
+
+<p>(I anticipate writing a lot more about skating in the near future,
+and not a lot more regularly about Lisp.  Planet Lisp readers will
+however be relieved to hear that I anticipate also to be splitting the two
+into separate RSS feeds first)

@@ -1,0 +1,19 @@
+title: pthreads progress: threads.impure.lisp no more broken than usual
+author: Daniel Barlow
+date: Fri, 4 Mar 2005 14:25:4 +0000
+
+pthreads progress: threads.impure.lisp no more broken than usual.  After <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=6723508&forum_id=8256"
+>implementing</a> (and then <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=6728621&forum_id=8256" 
+>fixing</a> (with thanks to Juho, again)) interrupt-thread, the test
+file appears to pretty much work.  Except for the bit where it
+assumes thread ids are pids and therefore acceptable to
+<tt>sb-unix:unix-kill</tt>, anyway.
+
+<p>Next step: port this forward (which should be trivial), fix it to
+not break clone()threads (#ifdef), merge it on HEAD.  Next next step:
+even those users who didn't find it icky that we exposed pids to Lisp
+as thread ids will be upset by our similar use of the pthreads
+thread_t.  So, some kind of object representation of the thread would
+be nice.

@@ -1,0 +1,50 @@
+title: Sometimes I wonder whether the C library maintainers want to actually
+author: Daniel Barlow
+date: Sun, 24 Aug 2003 22:9:8 +0000
+
+Sometimes I wonder whether the C library maintainers want to actually
+<i>discourage</i> programmers from e.g. writing signal handlers.
+In glibc 2.3.1 on the 32 bit PowerPC, it was possible to access
+machine registers in a signal context (e.g. from a SA_SIGINFO signal
+handler) by doing something like
+
+<pre>
+   ((context->uc_mcontext.regs)->gpr[offset])
+</pre>
+
+In 2.3.2 this fails with the message
+
+<pre>
+  error: structure has no member named `regs'
+</pre>
+
+It looks from a brief inspection of the glibc cvs as though changes to
+the ucontext structure were made for compatibility purposes with
+ppc64.  Which is probably reasonable; can't stand in the way of
+progress, Mr Dent.   So this code should now be
+
+<pre>
+   ((context->uc_mcontext.gregs)[offset]);
+</pre>
+
+The problem, of course, is that this code doesn't build on the older
+version, which a lot of people (me, certainly, and most other people
+probably) are still using.  So, this calls for conditional compilation
+based on some header feature: icky, maybe, but necessary.
+
+<p>Based on <i>what</i> header feature, exactly?
+<pre>
+/* Major and minor version number of the GNU C library package.  Use
+   these macros to test for features in specific releases.  */
+#define __GLIBC__       2
+#define __GLIBC_MINOR__ 3
+</pre>
+<div align=right>&lt;features.h></div>
+
+<p>
+Whoever wrote this file obviously subscribed to the (quite sensible,
+IMO) point of view that new features were not going to be introduced
+in patchlevel releases.  Whoever added the 64 bit support, which
+breaks our <i>source code</i> compatibility, seems to have quite
+different ideas :-(
+

@@ -1,0 +1,10 @@
+title: Welcome to the brand new diary system
+author: Daniel Barlow
+date: Tue, 11 Jun 2002 5:42:55 +0000
+
+Welcome to the brand new diary system.  With luck you should barely
+notice the difference, but I do.  One-file-per-entry, lashings of Common
+Lisp, and small amounts of emacs glue.  The only real gap (so far) is
+a way of telling emacs that these files are fragments of HTML BODY
+content so I can use psgml for element competion and suchlike.
+

@@ -1,0 +1,63 @@
+title: Testes on testing
+author: Daniel Barlow
+date: Sat, 16 Jan 2010 00:42:37 -0000
+
+Lest the reader assume from my previous post that I'm against
+automated testing: no, I'm not. In fact, Oliver hacking time over the
+last couple of days has been all about writing tests for the
+playqueue and turning the hacked together OSS interface into something
+that can pass them.
+
+I offer for your consideration, though, that the benefits of writing a
+test suite are not so much about "having an executable specification"
+or even catching regressions as they are about _making the software
+easier to test_, by encouraging the programmer to (1) decouple interfaces so that units may be
+tested without a plethora of complicated test doubles (stubs, mocks)
+which may themselves contain bugs, and (2) reduce their dependence
+on complicated state.  The easiest code to test is the purely
+functional, and happily this is also the easiest code to statically
+reason about (thus reducing our need to write tests in the first
+place).
+
+There are other considerations: I object to the false confidence of
+"our change passes tests, so we can feel good because it must be
+correct" - though I suspect I'm fighting a straw man there anyway - and
+I am not sure that even attempting to write tests for some classes of
+bug (say, race conditions) is a more productive use of ones time than,
+say, Thinking Very Hard at the program to be tested.  And there's the
+whole issue of whether the executable specification (probably written
+by a computer programmer) is a fair reflection of the business
+requirement (if written by the "customer", probably much less precise
+and probably not even consistent), but by that point we just have to
+accept that, well, TDD won't fix world hunger either.  Chiefly my
+message is that writing (and more importantly, maintaining) tests is
+Not Free nor axiomatically Good, and therefore is only to be
+commended when there is some expected benefit from it.
+
+I leave you with two final thoughts that are vaguely related but don't fit into the overall argument anywhere else...  
+
+First: correct me if I'm wrong here, but
+
+* *Test-Driven Development* is what, back in the XP days, they called
+  "test-first programming": you write the unit tests before the code
+  that they test.  In Ruby, Test::Unit is/was the tool for running
+  unit tests
+
+* *Behaviour-Driven Development* is an exercise in redefining concepts,
+   to change the emphasis from unit tests (which typically operate on
+   a particular class) to functional tests (which may span several
+   classes, and address user stories or whole-system behaviour).  In
+   Ruby, RSpec was developed with this end.
+
+* *Missing the point*, therefore, must be the practice of editing all
+   your Test::Unit cases into RSpec syntax to pretend more
+   convincingly to the new orthodoxy.  They don't magically turn into
+   functional tests just because @test_barf_when_value_negative@ is
+   now written @it "should barf when value negative"@.  Er?  Do they?
+
+Second: a powerful driver for a good test suite, from my experience
+with SBCL, is that of checking the program is not broken by
+environmental changes (new os, new cpu architecture, whatever). When
+working on that project I saw test suite breakages far more often in
+those circumstances than I ever did from hacking the code they were
+supposed to protect.

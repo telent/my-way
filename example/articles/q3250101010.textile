@@ -1,0 +1,39 @@
+title: Happy Christmas
+author: Daniel Barlow
+date: Sat, 28 Dec 2002 21:50:10 +0000
+
+Happy Christmas.  Mine was, anyway.
+
+<p>Today I went to the AGM of the SBCL Development Team (UK Chapter).
+Or, put another way, I had lunch with <a
+href="http://www.cliki.net/Christophe" >Christophe</a>, and we divided
+the universe between us.
+
+<p>So we talked about what we were planning and/or hoping to do this
+year.  All being well, you can look forward to
+
+<ul>
+<li> Native threads
+<li> Better CLOS integration.  Faster CLOS too, perhaps.
+<li> Generational GC on non-x86 ports
+<li> A de-facto standard for contrib software packaging
+<li> More ports, possibly: OSX (because it's popular) or HPUX
+(because it would help prove the HPPA backend is OK)
+<li> "Linkage Tables" port from CMUCL: basically, the ability to dump
+a core image with foreign code in it
+<li> "State of the Implementation" - an overview paper
+<li> XREF port from CMUCL: better introspection in an image ("where is
+this defined", "who calls it", etc)
+</ul>
+
+<p>Other possibilities - these are less likely to happen without
+external contributions ("we're taking patches") or funding.  Or a
+miracle might happen, even. 
+
+<ul>
+<li> 64 bit port
+<li> ARM port
+<li> Unicode support
+</ul>
+
+<p> Happy New Year ...

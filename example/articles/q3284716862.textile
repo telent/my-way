@@ -1,0 +1,25 @@
+title: AMD64 SBCL now builds 50-odd files before running into an array type
+author: Daniel Barlow
+date: Mon, 2 Feb 2004 13:21:2 +0000
+
+AMD64 SBCL now builds 50-odd files before running into an array type
+problem.  Said files are doubtless still riddled with garbage; the
+easiest way to see the disassembled output will be to get all the way
+through make-host-2 (building the target compiler) then starting up
+the the new runtime with the cold core thus generated, so I'm not
+worrying about that just now.  There is a disassembler in SBCL, but
+it's no more likely to be correct than the assembler is, so let's hope
+gdb on linux x86-64 is up to the standard of gdb on linux x86 as
+opposed to the less well-supported platforms like, ooh, almost
+anything else it claims to run on.
+
+<p>Anyone reading this whose workday is in large part concerned with
+gdb on Linux x86 may be forgiven for wondering if I've been drinking.
+As it happens, I've been drinking "Bat-currant Ribena" (the carton
+has a disclaimer on it saying "does not contain real bat", which is
+reasonable as they're a protected species), but that's not relevant:
+let me assure you that the contrast with, say, linux alpha (tru64
+alpha is even worse) is readily apparent.
+
+<p>I watched "A Life Less Ordinary" on tv last night.  If I had the
+year 1997 all over again, I'd have paid more attention to the music.

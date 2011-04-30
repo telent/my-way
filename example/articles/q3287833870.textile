@@ -1,0 +1,24 @@
+title: So, it looks like I have somewhere to live in London
+author: Daniel Barlow
+date: Tue, 9 Mar 2004 15:11:10 +0000
+
+So, it looks like I have somewhere to live in London.  Which is a
+weight off my mind, because I no longer have somewhere to live in
+Oxford after next week (and though I might possibly be able to get
+away with sleeeping under my desk for a few days, I think people
+would get rapidly annoyed if I moved all my books, cds and computers
+in here as well)
+
+<P>A couple of people probably had error messages from CLiki last
+night complaining about read-only file systems.  This was some kind of
+ext3 error, as a result of which I lost my 360 day uptime.  Aw.  Note
+that during the course of that year and a bit I did many things to the
+system which may not have come up cleanly on boot: while I believe
+it's all working and happy again, if you see any behaviours more odd
+than usual from it, drop me email.
+
+<p>(CLiki posting was fixed as of about five minutes ago, so don't
+email me if you last tried it previous to that)
+
+
+

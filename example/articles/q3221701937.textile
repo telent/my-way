@@ -1,0 +1,21 @@
+title: Not a terribly successful week, code-wise
+author: Daniel Barlow
+date: Sun, 3 Feb 2002 5:12:17 +0000
+
+<p> Not a terribly successful week, code-wise.  
+
+<p> SBCL Alpha 0.7 has a bug whereby setf of (get 'nil 'anything) will
+cause all error reporting henceforth to break, which apart from
+anything else means it can't be used to build itself.  Discovered this
+when attempting to rebuild with -dynamic so that I could use clg with it.
+
+<p> SBCL PPC (still 0.6.13) doesn't build itself either, blowing up in
+second genesis when it attempts to load a specialised array with an
+element size of 0.  I suspect we may still be having byte ordering
+issues.
+
+<p> Raymond Wiker's CLX for SBCL works nicely, though.  It had most of
+a working set of dependencies for db-sockets already, so sent him some
+code to open the stream to $DISPLAY and thereby remove its foreign
+code dependency.
+

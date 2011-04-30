@@ -1,0 +1,10 @@
+title: Anyone know whether a Toshiba Portege 3440CT will work with PC133 RAM
+author: Daniel Barlow
+date: Sat, 18 Sep 2004 13:58:16 +0000
+
+Anyone know whether a Toshiba Portege 3440CT will work with PC133 RAM?
+I just ordered a SO-DIMM of that particular hue as it's half the price
+of the PC100 RAM I'm supposed to use in this machine, and web sites
+seemed to indicate I had at least a 50% chance of it working ("it's
+supposed to, but sometimes it doesn't", seems to be the summary).  I
+guess I'll find out when it arrives.

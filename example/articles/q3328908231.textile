@@ -1,0 +1,14 @@
+title: I'm not going to say much about the LispNYC Summer of Code stuff,
+author: Daniel Barlow
+date: Tue, 28 Jun 2005 1:43:51 +0000
+
+I'm not going to say much about the LispNYC Summer of Code stuff,
+except to note that the final project list is significantly less dumb
+than some of the proposed projects were, and to congratulate Dirk on
+getting one for Erlisp.  After writing the SBCL socket stuff and <a
+href="http://www.cliki.net/trivial-sockets">trivial sockets</a>, I
+feel required to have 
+<a
+href="http://meme.b9.com/cview.html?channel=lisp&utime=3328883600#utime_requested" >an opinion on "Lisp Sockets"</a>, though.
+
+

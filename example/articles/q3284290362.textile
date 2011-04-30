@@ -1,0 +1,34 @@
+title: The novelty of being back on the internet has still not entirely
+author: Daniel Barlow
+date: Wed, 28 Jan 2004 14:52:42 +0000
+
+The novelty of being back on the internet has still not entirely
+subsided.
+
+<p>I am working on a <a
+href="https://www.pubsoft.org/pubsoft.py/project?proj=SBCL-AMD64" >64
+bit SBCL for the AMD64</a> (formerly x86-64, n&eacute;e Hammer)
+architecture.  So far it makes it successfully through make-host-1
+(the cross-compiler) and make-target-1 (the runtime), and all the
+offsets and suchlike that genesis spits out look correct - all the
+ones I've checked, at least.  Before anyone gets too excited, though,
+it is without question utterly broken in several important ways: not
+least that I haven't taught it how to generate code for the 64 bit
+registers, or taught gencgc about all the interesting new types and widths
+
+<p>I can't help feeling it would be nice if something could be
+automated to dig the information that gencgc needs from Lisp.  
+
+<p>TODO list as soon as I take a break from this:
+<ul>
+<li> cliki index bug 
+
+<li> stargreen behaviour-under-load frobbing
+
+<li> get version-control archive thingies for araneida/cliki "out
+there" so that next time my connectivity goes away it doesn't stop
+other people from hacking on them.  This <i>may</i> involve learning
+<tt>arch</tt>, if its replicated repository stuff means that I get to
+hack on them too in such circumstances.
+
+</ul>

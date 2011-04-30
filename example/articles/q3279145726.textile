@@ -1,0 +1,6 @@
+title: Another one for the neglected dialog box
+author: Daniel Barlow
+date: Sun, 30 Nov 2003 1:48:46 +0000
+
+Another one for the neglected <a href="/dialogs.html">dialog box
+collection</a>

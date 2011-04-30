@@ -1,0 +1,32 @@
+title: CLIKI IS NOT A LIVEJOURNAL SUBSTITUTE
+author: Daniel Barlow
+date: Tue, 18 Feb 2003 18:18:49 +0000
+
+<b>CLIKI IS NOT A LIVEJOURNAL SUBSTITUTE</b>
+
+<p>Ahem.  I feel better for having said that, though.
+
+<p>In other news, I've been trying to page SBCL/threads back into my
+brain.  This morning in the shower I made the executive decision to
+punt on all the POSIX job control stuff
+
+<ul>
+
+<li> It's complicated.  I don't think anyone really ever intended that
+multiple tasks produced with CLONE_VM should be in different process
+groups.
+
+<li> It's messy to debug.  <tt>ptrace()</tt> reparenting makes
+<tt>strace(1)</tt> a lot less useful than it might be, and
+<tt>fprintf(stderr,"...")</tt> is not so helpful either when it causes
+the process in question to get <tt>SIGTTOU</tt>
+
+<li> It's probably just going to confuse the shell, which expects to
+do this stuff itself.
+</li>
+</ul>
+
+So, decided to adopt a much easier approach towards getting
+"non-foreground" threads to ignore ^C: they can ignore SIGINT.  Does
+anyone ever send SIGINT other than from the keyboard anyway?  Please
+tell me they don't.

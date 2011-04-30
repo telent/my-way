@@ -1,0 +1,103 @@
+title: mpt's "archives are broken, as per Blogger usual" quote should probably
+author: Daniel Barlow
+date: Fri, 21 Jun 2002 2:38:20 +0000
+
+mpt's "<a href="http://mpt.phrasewise.com/discuss/msgReader$253"
+>archives are broken, as per Blogger usual</a>" quote should probably
+enter some kind of stock-blogger-phrases list if its not on one
+already.  I <i>wanted</i> to link to Juri talking about <a
+href="http://pakaste.blogspot.com/2002_06_09_pakaste_archive.html#77689174"
+>multipart/form-data in Araneida</a>.  Guess what, his archives are
+broken, so you get to read about xchat usability first.  Or scroll
+down.
+
+<p>Anyway, I finally got as far as reading his patch.  Then I thought
+I should go and look at the spec (<a
+href="http://ww.telent.net/diary/2002/5/#23.57621" >for a change</a>),
+so I stopped along of RFCs <a
+href="ftp://ftp.isi.edu/in-notes/rfc2616.txt" >2616</a> and then <a
+href="http://www.ietf.org/rfc/rfc2388.txt" >2388</a>.  (Yes, links to
+archives on different sites.  I can never remember an rfc mirror site, so I
+tend just to google for `RFC <i>number</i>' and choose the result my
+eye is most immediately drawn to.  Anyway.)
+
+<p>I've not really looked at XML-RPC, so my primary motivation for
+multipart/form-data encoding is to handle those forms with file upload
+fields - you remember, they were all the rage back in the days of
+Netscape 2.  Basically it's a MIME multipart encoding, or pretty
+similar.  So ...
+
+<pre>
+   For example, a form with a text field in which a user typed 'Joe owes
+   &lt;eu>100' where &lt;eu> is the Euro symbol might have form data returned
+   as:
+
+    --AaB03x
+    content-disposition: form-data; name="field1"
+    content-type: text/plain;charset=windows-1250
+    content-transfer-encoding: quoted-printable
+
+    Joe owes =80100.
+    --AaB03x
+</pre>
+
+- let's call it about 150 bytes to represent 21 characters?  That this
+is followed a page later by
+
+<pre>
+   The multipart/form-data encoding has a high overhead and performance
+   impact if there are many fields with short values. However, in
+   practice, for the forms in use, for example, in HTML, the average
+   overhead is not significant.
+</pre>
+
+leads me to suspect that someone somewhere can't count.  (In a
+real-life example it's more likely that the user would only be
+entering the digits <tt>100</tt> and the currency would be displayed
+read-only or in a separate field, so no need for the charset
+declaration.  Still over 100 bytes of data and now for <i>3</i>
+characters.  Nice one)
+
+<p>Anyway, that's just me grousing about anything I can find to grouse
+about (I've had this problem for about a week, since spending <a
+href="/diary/2002/6/#12.56505" >most of Wednesday</a> reading the
+Unix-Haters list archives) rather than an actual practical
+objection.  We have bigger pipes and faster CPUs these days than we
+need for processing HTML form uploads (so quick, introduce a slower
+encoding scheme before people get bored and find something
+<i>useful</i> to do with all those spare cycles)
+
+<p> The more relevant issue is about uploading big files, and even
+more so, about uploading big files that perhaps the user didn't mean
+to upload, or that we didn't want the user to upload.  Right now,
+Araneida just reads Content-Length characters into memory, ambles
+through it finding separators and conses up a bunch of strings and
+keywords and stuff with all the relevant header values.  And right
+now, the only way anyone normal would get data into Araneida would be
+by typing it in or by cut and paste, so it's not really a problem.
+Yet.  But watch that RAM usage rocket when one of those form elements
+is multimegabytesized.
+
+<p>I think half of the answer is to make REQUEST-BODY `lazy', so that
+it only reads the body the first time someone asks, and then to add
+something like REQUEST-FLUSH-BODY to be called on error or by a
+handler that knows it won't need the body parameters at all (e.g one
+that says "you aren't authorized to upload.  pfooey").  We have to
+read the body <i>sometime</i> before we actually start writing to the
+stream, as otherwise the peer gets upset, but we could do this in
+REQUEST-SEND-HEADERS and pretend that <tt>(format stream "HTTP/1.0 200
+OK~%Content-type: text/html~%~%")</tt> (which has hitherto always
+worked) was undocumented and unsupported.  As there is no useful
+documentation and no support for Araneida, this is almost a defensible
+position.  Kind of.  Alternative is to use <a
+href="ftp://parcftp.xerox.com/pub/cl/cleanup/mail/stream-definition-by-user.mail"
+>Gray streams</a>, but that always makes me want to say "yay, cool!
+another layer of pointless buffering".
+
+<p>A stream interface to the request body would also, I think, be
+useful.  After all, if you really <i>did</i> want to let the user
+upload a 25Mb file, chances are you're only going to write it out
+somewhere anyway and only need look at one block at a time.
+
+
+

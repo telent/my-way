@@ -1,0 +1,23 @@
+title: Today the weather was lovely and I had a chance to get out and ride
+author: Daniel Barlow
+date: Sun, 25 Nov 2001 3:40:2 +0000
+
+
+<P>Today the weather was lovely and I had a chance to get out and ride
+my bicycle (in shorts and short-sleeved top, even.  Unusual for a UK
+November).  This was the first time in something like three weeks (not
+entirely the weather's fault, I've been out of Oxford a lot recently
+and lazy when I was here) and I feel <i>much</i> better for it.
+
+<p>As compensation for that, the hard disk in my laptop gave up.
+Which was something of a surprise as it wasn't even ill yesterday.
+I got a backup which seemed to include most of the important data, but
+I managed to lose my package list, so reinstalling onto the new one
+took longer than I wanted it to, and there are probably still packages
+missing from it that I will find I need.  It has no cclan yet
+
+<p>I took the opportunity to upgrade to emacs 21.  Anyone know how to
+get rid of the irritating <a href="vertical-grey-strips.gif">vertical
+grey strips</a> down the sides of the frame?  
+
+

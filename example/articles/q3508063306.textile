@@ -1,0 +1,11 @@
+title: The Neighbour-Net Proxy Protocol
+author: Daniel Barlow
+date: Wed, 02 Mar 2011 14:01:46 -0000
+
+Borrowing a riff from "Charlie Stross'":http://www.antipope.org/charlie/blog-static/index.html "books I will not write" meme, I present the first in a series of indeterminate length entitled "Software I will not implement".
+
+This is the result of a couple of days thinking about how to do a distributed Facebook (or at least, the interesting bits thereof) originally inspired by Eben Moglen's "Freedom in the Cloud":http://www.softwarefreedom.org/events/2010/isoc-ny/FreedomInTheCloud-transcript.html talk last year, and my subsequent disappointment to see that our most publically well-known hope Diaspora were all gungho about their implementation but publically completely silent about the protocols.  In my opinion a monoculture is not the way to a robust ecology.
+
+So (per the opening para of this post) why aren't I implementing it?  Purely and simply, a severe deficiency of Copious Free Time.  I am posting what I've got publically in the hope that it triggers some good ideas in others.  In the (perhaps unlikely) event that anyone reading this thinks it's an awesomely good idea and does have the time to drive it forwards, take it or fork it and let me know and I will of course be deliriously happy to flipflop on this position and shelve something else instead if I can contribute.
+
+https://github.com/telent/nnpp # READ ME;  READ ME NOT; READ ME; READ ME NOT;

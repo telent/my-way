@@ -1,0 +1,50 @@
+title: This entry is more in the nature of "hello, I'm still alive" than
+author: Daniel Barlow
+date: Sat, 28 Feb 2004 0:9:5 +0000
+
+This entry is more in the nature of "hello, I'm still alive" than
+"hey, see the cool stuff I've hacked on lately".  I suspect that
+you're not so interested in the news that I think I've optimised my
+route for skating from Baker St to the office (one way systems are
+involved; the return journey still needs some work).
+
+<p>In no particular order
+<ul>
+
+<li> sbcl amd64
+
+<li> sbcl threading special variable binding changes: in the interests
+of predictability, make new threads start witha default set of special
+variable values/bindingsd instead of whatever the parent had.
+
+<li> a clim-based postgresql client to kick psql's ass ($dayjob uses a
+lot of postgres, so this is my excuse to install lisp on my work
+machine).  It's going to interrogate posgres metadata so the user can
+navigate through the database by clicking on field names, stuff like
+that.  Colourised/marked up illustrations of the query plan, perhaps
+some kind of interface to help with query generation, etc etc.  Lots
+of ideas I haven't quite locked down that need prototyping before I
+can tell if they're good ones or not.
+
+<li> longterm handwavey project: a lisp-based "thin platform" based on
+SBCL/Linux that's easily scriptable.
+</ul>
+
+Installing SBCL on my work machine provided an illustration of just
+how far we've come lately.  Untar and install sbcl then 
+
+<pre>
+* (require 'asdf-install)
+* (asdf-install:install 'clx)
+;; fiddle with cliki for 2 minutes to add a :package link for pg
+* (asdf-install:install 'pg)
+</pre>
+
+and I have graphics, sockets, and database connectivity.  McCLIM took
+a little longer, but it was still pretty straightforward.  All told,
+it took me less time to get lisp-based web serving environment up than
+it did to install coldfusion, and that's a real commercial product.
+(Actually, it took less time to install the lisp-based web serving
+environment than it did just to <i>unpack</i> coldfusion, and it eats
+less ram, too)
+

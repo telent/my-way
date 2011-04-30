@@ -1,0 +1,18 @@
+title: In a spirit of 'release early, release often', I have decided to start
+author: Daniel Barlow
+date: Sun, 24 Aug 2003 2:56:24 +0000
+
+In a spirit of 'release early, release often', I have decided to start
+making new araneida/cliki/etc releases more or less as often as I fix
+bugs, except when I definitely know it to be in a broken state.  This
+is as distinct from my previous approach of only releasing when I was
+at least moderately confident that it would work, which meant that I
+never released anything
+
+<p>Of course, the Internet (or perhaps NTL) has chosen the occasion of
+this decision to break, so 
+
+It might also be the impetus I need to hone my release procedure a
+bit further.
+
+<p>

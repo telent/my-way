@@ -1,0 +1,46 @@
+title: SLIME rocks
+author: Daniel Barlow
+date: Fri, 10 Oct 2003 19:14:46 +0000
+
+<a href="http://www.cliki.net/slime">SLIME</a> rocks.  Messrs
+Sourceforge, please hurry up and restore the project, I want to commit
+to its cvs tree.
+
+<pre>
+;;; Cursory testing has found that the following appear to work
+;;;
+;;; * Symbol completion.
+;;; * Evaluation of forms with C-M-x
+;;; * Apropos.
+;;; * Compilation of defuns with C-c C-c
+;;; * File compilation with C-c C-k, apparently including error parsing
+;;; * Disassembling the symbol at point with C-c M-d
+;;; * Describing symbol at point with C-c C-d
+;;; * Macroexpanding with C-c RET
+;;; * find-definition works some of the time (need to use sb-introspect)
+;;;
+;;; Things that aren't done yet:
+;;;
+;;; * Cross-referencing.
+;;; * I don't understand the test suite results, but some kind of problem
+;;;    is apparent
+;;; * Basic debugger functionality, jumping to frames is not implemented yet.
+</pre>
+
+So I'm reading through the file and digging in SBCL internals, with
+the intention of creating a supported interface to at least some of
+the functionality it needs. 
+
+<blockquote>
+SBCL is creating a "supported" interface to meet the needs of
+Lisp/editor integrations software (ELI, ILISP, SLIME etc). 
+This will be an SBCL contrib package containing functions like VALID-FUNCTION-NAME-P, FUNCTION-ARGLIST, FIND-DEFINITION, etc
+
+<p> <a
+href="http://lists.metacircles.com/cgi-bin/mailman/listinfo/navel"
+>This list</a> is for discussion and requests from the likely users of this interface, and also for Lisp implementation hackers who would like to implement the same or similar interface in their Lisp implementation.
+</p></blockquote>
+
+Run, don't walk.
+
+

@@ -1,0 +1,24 @@
+title: cvs.telent.net downtime, imminent
+author: Daniel Barlow
+date: Wed, 25 Aug 2004 17:18:22 +0000
+
+<b>cvs.telent.net downtime, imminent.</b>
+
+<p>cvs.telent.net is hosted by my employers.  Due to an office move
+this weekend, the network it's attached to is going away.  Indeed, the
+box is also going away, but won't immediately be reunited with the
+network when it arrives in its new home.  Downtime will be from some
+time on Thursday 26th; limited access (essentially just ssh,
+cvs-over-ssh, and mail) will be available from mid next week, and full
+availability (anon cvs and cvsweb) we're not sure when.  Worst case
+estimate is Novemeber, I think, though obviously we're hoping it'll be
+considerably sooner.  If it does take a while I may look at enabling
+anoncvs over ssh as well.
+
+<p>In short, if you're reliant on anoncvs for any of CLX, araneida,
+cliki, or anything else on that machine I'd forgotten about, now would
+be a good time to cvs update.
+
+<p>This does not affect www.cliki.net or any of that stuff; that's all
+elsewhere.  This is just for access to source code.
+

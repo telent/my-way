@@ -1,0 +1,17 @@
+title: Streaming media with Sinatra for lightweights
+author: Daniel Barlow
+date: Mon, 06 Dec 2010 22:01:00 -0000
+
+I started looking at all the UPNP/DLNA stuff once for a "copious spare time" project, but I couldn't help thinking that for most common uses it was surely way over-engineered.  What is actually needed, as far as I can see, is 
+
+# a way to find hosts that may contain music
+# a way to search the collections of music therein for stuff you might want to listen to
+# a way to get the bits that encode that music across the network
+# a way to decode them, and push them to a DAC and some speakers
+
+And it seems to me that "DNS Service disovery":http://files.dns-sd.org/draft-cheshire-dnsext-dns-sd.txt ought to cover the first requirement quite adequately, HTTP is perfectly suited to pushing bits across a network, and once you've got the bits to the client then everything else is trivial.  So this only leaves "search the collection" as an unsolved problem, and it surely can't be too hard to do this by e.g. sending an "XQuery":http://www.w3.org/TR/xquery/ search to the collection server and having it return a  "XSPF":http://xspf.org/ playlist of matching files.
+
+Probably the only reasons I haven't done this yet is that I don't know the first thing about XQuery, and I can't see a RESTful way to send XQuery to a server without misusing POST, because from the examples I have seen it looks too big to fit in a GET query string.  So I'm letting it all mull in my mind in the hope of coming across a truly succint search syntax that does like being URL-encoded.  In the meantime, though, because even though I don't need to discover my music but I still want to play it in the living room anyway, here's my one hour hack:
+
+<script src="https://gist.github.com/731115.js"> </script>
+

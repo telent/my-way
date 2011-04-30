@@ -1,0 +1,10 @@
+title: FTX13 this month will be either late or not happening
+author: Daniel Barlow
+date: Sat, 30 Mar 2002 10:14:18 +0000
+
+<p> FTX13 this month will be either late or not happening.  Late
+because I won't have much of a network this weekend, possibly not
+happening because of lack of interest.  Lack of interest especially
+from most of the projects it mentions, and I'm bored of doing it all
+myself when I could be hacking.
+

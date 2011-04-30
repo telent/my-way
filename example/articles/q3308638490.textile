@@ -1,0 +1,22 @@
+title: Lisp/Scheme
+author: Daniel Barlow
+date: Fri, 5 Nov 2004 10:14:50 +0000
+
+<b>Lisp/Scheme</b>
+
+<ul>
+<li> C/C++
+<li> Pascal/Modula-2
+<li> Java/ObjC
+<li> TeX/LaTeX
+<li> C#/dhcpd.conf
+<li> Python/Makefile
+</ul>
+
+Contributions welcome.  The rules: (1) the two things to suffer
+aggregation must have superficially similar syntax and be in other
+respects utterly different, (2) the proponents of either or both are
+likely to consider the comparison unfair, (3) the judge's decision is
+final and no correspondence will be entered into unless I feel like
+it.
+

@@ -1,0 +1,51 @@
+title: Latest on cvs.telent.net: I plan to move to darcs
+author: Daniel Barlow
+date: Mon, 23 May 2005 1:48:44 +0000
+
+Latest on cvs.telent.net: I plan to move to darcs.
+
+<pre>
+To: lispweb@red-bean.com,portable-clx@lists.metacircles.com
+Subject: Telent CVS broken (again), likely move to darcs
+From: Daniel Barlow <dan@telent.net>
+
+[ this message is crossposted.  if you reply, please exercise
+  restraint in your recipient lists ]
+
+cvs.telent.net, the machine that does (did ...) CVS hosting for -
+among other things - Araneida, CLiki, and "telent CLX", is currently
+down with suspected hardware problems.  
+
+My time and inclination for babysitting flakey hardware in colo space
+is limited, but also, as many have noted, my record of late for
+hacking on and merging patches to these projects is pretty poor
+anyway.  I intend, therefore, to move the said projects over to darcs
+
+   http://www.darcs.net/
+
+This is one of the new breed of cvs-replacement version control
+systems, with two important features from my perspective:
+
+1) it's decentralised, so people can keep their own trees with local
+patches in them, and worry less about getting changes through me.  If
+anyone does a really good job (or indeed, a consistently
+better-than-indifferent job) at patch merging and ongoing development
+for any of the formerly-at-cvs.telent.net projects, I will be entirely
+happy to hand over the "official" mantle to them.
+
+2) it needs no special server support, so I don't have to worry about
+finding a replacement machine for cvs.telent.net (call me paranoid,
+but even chrooted I don't like running cvs pserver on any machine
+that's used for something else)
+
+cvs.telent.net is unlikely to return to service.  If anyone had an
+account on it with data in their home directory, (a) well, you
+probably shouldn't have done that, but (b) feel free to email me and
+we'll make some kind of arrangement to get it off there.
+
+I hope this should make things run a bit more smoothly in future.
+More details when I've had a chance to upload the repositories
+somewhere accessible.
+
+-dan
+</pre>

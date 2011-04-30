@@ -1,0 +1,23 @@
+title: I lied, as it turns out
+author: Daniel Barlow
+date: Mon, 17 Apr 2006 0:54:43 +0000
+
+I lied, as it turns out.  On closer inspection, there's been a darcs
+repo for <a
+href="http://verisons.telent.net/cgi-bin/darcs.cgi/dbs/?c=browse">dbs</a>
+on verisons.telent.net for most of a year.  Now updated with my latest
+bout of hacking - the principal change is that <b>get-row</b> now
+{needs,accepts} only one argument.
+
+<p>See the <a
+href="http://verisons.telent.net/cgi-bin/darcs.cgi/dbs/README?c=annotate">README</a>
+for more.
+
+<p>This stuff is not guaranteed useful, or even suggested useful.
+<i>I</i> like it, you are at liberty to like it or not.  Even if you
+do, you may not like what it develops into, or the cavalier attitude I
+propose to take towards backward compatibility when I see things that
+I think could be improved in the course of that development.
+
+<p>(While I'm here: who has sexql patches that I don't?  Please send
+them (or put links to them or to your darcs tree or something on cliki))

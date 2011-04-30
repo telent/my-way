@@ -1,0 +1,20 @@
+title: CLiki visual makeover FAQ
+author: Daniel Barlow
+date: Fri, 18 Jul 2003 1:57:27 +0000
+
+<a href="http://www.cliki.net/" >CLiki visual makeover</a> FAQ
+
+<ol>
+
+<li> <b>Q</b>: It's very nice.  Did you do it?  <br><b>A</b>: Yes,
+isn't it?  No, we have <a href="http://www.caddr.com/" >Miles Egan</a>
+to thank for all the pretty stuff.  A certain amount of blame for
+butchering it to fit into the existing cliki framework(sic) may be
+attributed to me.
+
+</li>
+<li> <b>Q</b>: The text is very small.  Can you make it bigger?
+<br><b>A</b>: Yes.  Any day now.
+
+</li>
+</ol>

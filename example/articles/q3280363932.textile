@@ -1,0 +1,16 @@
+title: I've been working on and off (mostly off) lately on a replacement for
+author: Daniel Barlow
+date: Sun, 14 Dec 2003 4:12:12 +0000
+
+I've been working on and off (mostly off) lately on a replacement for
+the <a href="/lisp/howto.html">terribly outdated CMUCL HOWTO</a>, and
+I think there's probably enough in it now that people might find it
+useful even though it's clearly unfinished.  
+
+<p><a href="/lisp/according_to/">...according to</a> is an unofficial
+Getting Started guide to SBCL on Linux.  Comments welcome.
+
+<p>In other news, I seem to have disposed of the useless parent thread
+in multithreaded SBCL builds, so now it will only show up once in
+<tt>ps</tt> instead of twice.
+

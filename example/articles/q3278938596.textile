@@ -1,0 +1,22 @@
+title: Just spotted this on lisp-p.org: 
+author: Daniel Barlow
+date: Thu, 27 Nov 2003 16:16:36 +0000
+
+Just spotted this on lisp-p.org: 
+<a href="http://www.lisp-p.org/taga/node1.html"
+>Thoughts about Game &amp; Simulation Programming Architecture</a>.
+haven't read it yet, it's in the queue
+
+<p>Preceding it in said queue:
+<ul>
+<li> make QUIT work sensibly when background threads exist
+<li> have threads removed from the *interactive-threads* list when
+they die
+<li> investigate some problem with OpenGL bindings
+</ul>
+
+<p>I recently - after only five years ownership of this Voodoo3 - did
+the necessary fiddling to get hardware-accelerated 3d (turns out that
+I seem to be mostly immune to Tuxracer) so that OpenGL thing looks
+like it could be interesting.
+

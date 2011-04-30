@@ -1,0 +1,27 @@
+title: More cirCLe CD news, or lack thereof: spent most of the week getting
+author: Daniel Barlow
+date: Sun, 2 Nov 2003 15:0:57 +0000
+
+<p>More cirCLe CD news, or lack thereof: spent most of the week getting
+to grips with the Debian kernel packaging stuff, and building initrds,
+and El Torito boot images.  Then spent most of the weekend so far
+writing up what I'd done (look out for forthcoming Linux Journal
+article, with any luck).
+
+<p>The simplest way to do moderately sensible removable media support
+seems to be a combination of hotplug (to notice when new devices
+appear/disappear), supermount (to notice when/whether these devices
+actually contain disks) and xfe: a file manager which doesn't require
+a whole desktop infrastructure to be present before it will so much as
+run.  I remember using supermount an awful long time ago (I guess it
+would have been about 1995, when I still used floppies for anything): I'm
+amazed it still exists and is available for current kernels.  Kudos
+to Stephen Tweedie and all the hackers who've worked on it since then.
+
+<p>I don't often use a file manager: a shell with tab completion does
+most of what I want to do with files.  After playing with xfe for a
+few minutes to see if it works, though, I notice my home directory is
+significantly less cluttered with random files I'll never use again.
+Perhaps I <i>should</i> use a file manager.
+
+

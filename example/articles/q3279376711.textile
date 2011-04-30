@@ -1,0 +1,18 @@
+title: Interview went not so well: feedback was that I was "wary of perl",
+author: Daniel Barlow
+date: Tue, 2 Dec 2003 17:58:31 +0000
+
+<P>Interview went not so well: feedback was that I was "wary of perl",
+which is somewhat embarrassing given that it's one of my three
+favourite programming languages.  Need to work on that a little,
+perhaps.  Hmm.
+
+<p>Added another LU&amp;D <a href="http://web.metacircles.com/cliki_here"
+>article</a> pointer to the metacircles site: this one was about
+CLiki.  It's giving me ideas for an article on setting up SBCL to do
+web development with Araneida:  "0 to (port) 80 in 3000 words".
+
+<p>Though, conceded, probably port 8000 if you're sensible.  I
+would tend to avoid running SBCL as root. 
+
+

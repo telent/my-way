@@ -1,0 +1,24 @@
+title: I should have written about "Fast User-extensible Streams" before
+author: Daniel Barlow
+date: Tue, 28 Sep 2004 0:6:25 +0000
+
+I should have written about "Fast User-extensible Streams" before.
+This is currently all just handwaving, and its intended goal is as a
+stream substrate for SBCL (replacing fd-streams) rather than to become
+a standard.  There's an <a
+href="http://sbcl-internals.cliki.net/fu-stream" >sbcl-internals cliki
+page</a> where you can find a pointer to wherever the latest draft is
+living, and comment on it.
+
+<p>To save myself the trouble of writing a third entry - and you the
+trouble of reading it - I may as well add here that my leg though not
+actually <i>right</i> again is sufficiently better that I can walk at
+normal speeds with only a slight ache, and descend stairs in merely
+moderate discomfort.  I have a newfound admiration for anyone who
+loses the use of one or more legs more seriously than I did, and add
+that unless you've had an injury of that kind and know this
+experience, you have <i>no idea</i> how much enjoyment I'm getting from
+the pursuit of such simple pleasures as being able to walk around
+again without being overtaken by grannies all the time.
+Crippled-no-more.
+

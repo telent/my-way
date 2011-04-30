@@ -1,0 +1,18 @@
+title: In the Olden Days when I was writing FTX13, I used periodically to
+author: Daniel Barlow
+date: Tue, 23 Jul 2002 12:0:14 +0000
+
+In the Olden Days when I was writing FTX13, I used periodically to
+report on new versions of <a href="http://lisa.sourceforge.net/"
+>LISA</a>, a production rule system for Common Lisp.  As with so much
+of the other stuff that went into FTX13 I'd never actually downloaded
+it to try for myself, so these reports tended just to recycle whatever
+the project release notes said.   The accrued boredom and low-level guilt 
+from doing this over a six month period was one of the factors in
+giving up FTX13.
+
+<p> So, there's a new version of LISA out today (1.3), and I
+<i>still</i> haven't looked at it, and i still feel vaguely uneasy
+about this.  Anyway, you can probably determine whether it's useful
+for you: see e.g. <a href="http://lisa.sourceforge.net/mab-clos.lisp"
+>mab-clos.lisp</a>

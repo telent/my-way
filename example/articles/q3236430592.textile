@@ -1,0 +1,49 @@
+title: Ha
+author: Daniel Barlow
+date: Tue, 23 Jul 2002 17:29:52 +0000
+
+Ha!
+
+<P>The FreeBSD problem was that it really didn't like us fixing up the
+stack pointer (to swap back to the normal control stack) by hand in
+assembly: when it's about to call the signal handler on subsequent
+occasions, it seems to remember that it's still on the alternate stack
+- note if you will that we aren't actually ever returning from the
+signal handler, we're just calling into lisp and letting lisp unwind
+past it.  I assume it's storing the running-on-external-stack-p
+property somewhere instead of just comparing the stack pointer with the
+bounds of the alternate stack.
+
+<p>Either we fix this somehow, probably involving the perusal of
+FreeBSD kernel sources, or we think of a new approach.  The latter
+sounds tempting ...
+
+<p>Here's how to do it, then.  
+<ol>
+<li> In the signal handler, fake a control stack frame in much the
+same way as fake_foreign_function_call - the function that prepares us
+for calling into Lisp after a signal is received - would have done.
+This is actually a no-op on x86 anyway.
+
+<li> Frob the PC in the signal context, plus sundry other registers to
+make it look plausible, so that the signal handler "returns" to our
+error-raising function.  This is the lovely piece of code
+
+<pre>
+    function=
+       &(((struct simple_fun *)
+          native_pointer(SymbolFunction(CONTROL_STACK_EXHAUSTED_ERROR)))
+         ->code);
+    *os_context_pc_addr(context)= function;
+</pre>
+
+<li> Amazingly, this works.  And it lets us delete all that awful x86
+assembler, which pleases me no end as I feared that I'd be stuck
+answering questions when it turned out to be buggy.
+
+</li>
+</ol>
+
+Patch going to sbcl-devel mailing list and/or being committed (I'll
+decide which after I've read it again and formed an opinion on the 
+essential/accidental grottiness ratio)

@@ -1,0 +1,31 @@
+title: Remember what I said before
+author: Daniel Barlow
+date: Thu, 1 Jan 2004 15:32:27 +0000
+
+Remember what I said <a
+href="http://ww.noetbook.telent.net/diary/2003/12/#21.51382" >before
+Christmas</a> about GC frobbing?  With the new simpler region allocation
+policy described there, but no changes to static space usage :
+
+<pre>
+* (time (dotimes (i 400) (gc)))
+
+Evaluation took:
+                 30.413 seconds of real time
+                 30.354383 seconds of user run time
+                 0.058991 seconds of system run time
+                 0 page faults and
+                 4939776 bytes consed.
+NIL
+</pre>
+
+and in fact we can easily double that again by disabling the check for
+read-only objects and dumping <i>everything</i> in static space, so it
+looks like the write barrier stuff does make a difference.  So why is
+CMUCL doing in 13 seconds what takes us 30 (the easy answer is "it has
+a better object/region allocation policy", obviously, but better why?)
+and how much faster would it be if it were also to remove
+purify-into-static-space?
+
+<p>In happier news, while thinking about tidying up today I found a
+Brian Aldiss novel I apparently haven't read yet.

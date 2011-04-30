@@ -1,0 +1,73 @@
+title: There's no CVS for telent at present, because it lives on the wrong
+author: Daniel Barlow
+date: Thu, 18 Dec 2003 10:58:34 +0000
+
+<p>There's no CVS for telent at present, because it lives on the wrong
+side (or, from my personal point of view, the <i>right</i> side) of my
+cable modem, and said cable modem connection is not working.  I'm
+stuck with an analogue modem that can't hold a connection for more
+than five minutes - and in a country which still bills local calls by
+the minute anyway, so in some sense that's more of a feature than a
+bug.
+
+<p>Discovery made this morning: the conditional GET support in
+Araneida 0.83 is backwards.  I doubt that anyone is using it much yet,
+but if they are they're not using it successfully.  Updated release
+later today.
+
+<p> I recently had occasion to write the following code.  I
+<i>like</i> extensible http servers -
+
+<pre>
+(defclass session-request (araneida:request)
+  ((session :initarg :session :reader request-session)
+   (cache-p :initarg :cache-p :initform t :accessor request-cache-p)))
+
+(defmethod handle-request-authentication ((h (eql *ssl-handler*))
+					  method request)
+  (let ((id (request-cookie request "SESSION")))
+    (unless (zerop (length id))
+      (change-class request 'session-request)
+      (setf (slot-value request 'session) id))))
+
+;;; disable caching if {initiate,ensure}-session have been called
+(defmethod araneida:request-send-headers ((request session-request) &rest rest)
+  (if (request-cache-p request)
+      (call-next-method)
+      (apply #'call-next-method request
+	     :cache-control "no-cache" :pragma "no-cache"
+	     :conditional nil
+	     :expires (get-universal-time) rest)))
+</pre>
+
+What's happening here is that we have cookie-based authentication, and
+we have a caching reverse proxy in front of Araneida.  This is a
+shared cache, so we don't want to cache any response that needs to
+check the user's credentials - if one user gets information relating
+to another, I'm sure you'll agree that would be bad.  On the other
+hand, we don't want to make the static files (graphics, CSS, etc)
+uncacheable.  So, we have
+
+<ul>
+<li> a handle-request-authentication method that covers all requests
+that might conceivably have a session cookie.  It reblesses (ahem.
+excuse the Perl terminology, please) the incoming REQUEST into a
+SESSION-REQUEST which has the extra slots we need.
+
+<li> (not shown) code in the functions initiate-session and
+ensure-session (one of which is called by every handler that actually
+<i>needs</i> the session information) to set request-cache-p NIL.
+
+<lI> a specialisation of Araneida's request-send-headers method that,
+when the request is marked uncacheable in this way, overrides whatever
+caching would otherwise be done for it.
+</li>
+</ul>
+<p>No changes to the handlers, no changes to Araneida (except for
+fixing the if-modified-since bug) and significantly improved
+cacheability.  OK, it could have been neater if we were designing this
+from scratch - for example, by arranging URLs so that all the
+uncacheable stuff is under a common root - but we have four years of
+accreted URL exports that we want to stay backward-compatibile with.
+In the circumstances, I think this is pretty neat.
+

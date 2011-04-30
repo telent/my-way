@@ -1,0 +1,18 @@
+title: Very quickly then, because I'd really rather be asleep: today's SLIME picture shows the expanding
+author: Daniel Barlow
+date: Mon, 13 Oct 2003 4:28:14 +0000
+
+<p>Very quickly then, because I'd really rather be asleep: <a href=
+"/slime-backtrace.png">today's SLIME picture</a> shows the expanding
+backtrace thing.  No wavey arrows, because this laptop has a
+trackpoint thing instead of a mouse, making it far too painful to
+attempt drawing anything that's not a straight line.
+
+<p>I believe there's enough substance to the SBCL backend now that I
+can start using it for day-to-day work - or at least attempting to, to
+see where it falls over.  I would also give you the latest news from
+Sourceforge ("Monday"), but their web site seems to be down right now.
+
+
+
+

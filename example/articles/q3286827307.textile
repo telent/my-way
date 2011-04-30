@@ -1,0 +1,26 @@
+title: The latest iteration of my standard c.l.l rant:
+author: Daniel Barlow
+date: Thu, 26 Feb 2004 23:35:7 +0000
+
+The latest iteration of my standard c.l.l rant:
+
+<pre>
+> It's a business advantage when other people don't use "better" 
+> programming languages.
+</pre>
+
+<p>Meanwhile it's a quality-of-life disadvantage for every software
+system you use but are not in competition with the suppliers of.  I
+regularly use or am affected by the workings of many many more
+computer systems than I have any hope of personally reimplementing in
+Lisp, and every time one of them fucks up it affects me.
+
+<p>When I can find Lisp-using alternatives for my desktop software, all
+the web sites I visit regularly, my bank, my government, the utilities
+that provide my gas, electricity, and telephone service, the shops I
+buy groceries from, the airlines and travel agents who organise my
+vacations and business travel, and all the thousands of other computer
+users who impact on my daily life, then I'll buy this "popularity
+doesn't matter" argument.  Until then, I have to (and for that matter,
+choose to) exist in a social environment, and I suspect that the same
+is true even for entrepreneurs.

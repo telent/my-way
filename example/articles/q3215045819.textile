@@ -1,0 +1,10 @@
+title: OK, it seems to make enough sense
+author: Daniel Barlow
+date: Sun, 18 Nov 2001 4:16:59 +0000
+
+
+<p> OK, <a href="../lisp/mp.html">it</a> seems to make enough sense
+that I think I can start writing actual code in the logical-morning.
+
+<p>I need to find some <a href="/cliki/asdf">asdf</a> hacking time.  Really.
+

@@ -1,0 +1,49 @@
+title: Not only was yesterday's entry almost criminally dull, rereading shows it not
+author: Daniel Barlow
+date: Wed, 4 Jun 2003 0:24:46 +0000
+
+<p>Not only was <a href="http://ww.telent.net/diary/2003/6/#3.10366"
+>yesterday's entry</a> almost criminally dull, rereading shows it not
+to have been terribly clear either.
+
+<p>The project here is an automatic download/install tool for SBCL,
+along the lines of <a href="http://www.loolix.com/2002/10/#10"
+>CPAN.pm</a>.  How it works: it looks up cliki pages with the same
+name as the package you tell it you want, and it downloads the url
+that the :(package ...)  link on that page points at.  Yes, all the
+stuff about deprecated tokens was talking about CLiki markup syntax.
+If the url pointed to is relative, it gets merged against the URL for
+the cclan dispatcher, so you eventually end up downloading from some
+cclan site that you chose earlier.
+
+CL is actually the third language it's written in: it
+started life as a shell script, then as all shell scripts over twenty
+lines tend to do, turned into a Perl script.  After a couple of hours
+screwing around with pathnames in Perl, I decided that CL would have
+been the better choice after all.
+
+<p>Yesterday, in accordance with the "small tools that do one thing
+each" Unix Philosophy, I was executing <tt>wget</tt> in a subshell to
+actually get the file.  Due to the way that cliki and cclan are
+arranged, this can potentially involve several redirects.  Today I
+determined that to additionally get the PGP signature file for the
+package I'd have to grep the standard output of <tt>wget -S</tt>
+looking for a line (actually, the last of <i>n</i> lines) matching
+<tt>Location</tt>, my "brittle interfaces" meter pegged, and so I decided
+it'd be quicker to write a small HTTP client.
+
+<p>Today's version of <a href="/asdf-install.lisp"
+>asdf-install.lisp</a> is in the same place as yesterday's (see?  I
+<i>told</i> you it was a temporary location) and does approximately as
+little as yesterday's, but in a marginally more sane way.  Seems to
+cope with proxies (tested using the NTL proxy system) but doesn't do
+any lind of proxy authentication yet.  Nor FTP, which limits it to
+cCLan nodes that are available by HTTP.
+
+<p>A word of warning: this represents a software engineering advance
+on yesterday's code.  It is still not, in absolute terms, anything you
+should even briefly entertain the idea of reusing for other purposes:
+there are some much better designed network client libraries out
+there.  The sole purpose of this one is to provide the minimal code
+necessary that the user can easily download and install one of them.
+

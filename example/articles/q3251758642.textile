@@ -1,0 +1,34 @@
+title: OK, a single session transcript doesn't really capture the kewlness
+author: Daniel Barlow
+date: Fri, 17 Jan 2003 2:17:22 +0000
+
+OK, a single session transcript doesn't really capture the kewlness
+aspect of this, so, my turn to put some <a href="/threads.png">Lisp
+pr0n</a> up.  Caution: actually not that visually stimulating after
+all.  Also, it's a big (as in, 1280x960 pixels) picture.
+
+<p>Clockwise from top right:
+<ul>
+
+<li> The initial toplevel window, chock full of important debugging
+printf.  Observe, though, that it's in the break loop, and that this
+has not stopped the other threads from running
+
+<li> an xterm showing ps output with lots of sbcl processes in it
+
+<li> a window on the emacs *shell1* buffer, which is attached to a
+thread that incfs the global variable <tt>*global*</tt> every second
+
+<li> a window on the emacs *shell* buffer, which is displaying a
+message referring to said <tt>*global*</tt> once a second.
+
+
+</li>
+</ul>
+
+<p>Well, <i>I</i> think it's cool.  I'm not about to start producing
+mpegs, though; you may just have to take my word for it that all of
+this is updating at once.
+
+<p>(Or you could check the cvs branch out and try it yourself, of
+course)

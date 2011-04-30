@@ -1,0 +1,15 @@
+title: Two years after I first started hacking on CMUCLish stuff, I still
+author: Daniel Barlow
+date: Wed, 10 Jul 2002 9:42:10 +0000
+
+Two years after I first started hacking on CMUCLish stuff, I still
+don't understand the CMUCL compilation procedure.
+
+<p>(Actually I don't understand a lot of the SBCL compilation procedure
+either, but that's ok, because I don't need to - it Just Works (tm))
+
+<p>Eric Marsden is about to tell us all how it works.  Once he manages to
+get the projector working with his Powerbook, anyway.
+
+
+

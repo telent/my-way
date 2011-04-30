@@ -1,0 +1,24 @@
+title: More work on-and-off on this texinfo stuff, mostly in
+author: Daniel Barlow
+date: Thu, 25 Nov 2004 21:44:32 +0000
+
+<p>More work on-and-off on this texinfo stuff, mostly in
+laptop-battery-sized chunks in Borders.  I was doing quite well, too,
+until I found an open (by design) wireless AP accessible from the
+Borders cafe on Oxford St, but now I find I'm still within reach of
+the net I think I'm going to go and read a book instead.
+
+<p>What did you want to know?  It kinda sorta works for producing
+grotty HTML from the texinfo I happen to have lying around, but there
+are big chunks still to do before it's going to be any use to anyone,
+and it's entirely non-obvious to me how it's going to be usefully
+customised.  There's a TRANSLATE-ELEMENT gf specialised on a
+OUTPUT-TRANSLATOR, so you can always subclass my HTML-TRANSLATOR with
+your SPIFFY-HTML-TRANSLATOR, but it remains to be seen whether that's
+going to be any actual use.  This is very definitely written with that
+particular variety of iterative design known as "no design", which is
+fun but whether it turns out to be any use I can't say yet.
+
+<p>I guess I should at least add support for @menu and for the
+up/down/next/prev links.  
+

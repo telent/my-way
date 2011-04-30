@@ -1,0 +1,57 @@
+title: In other news
+author: Daniel Barlow
+date: Tue, 15 Feb 2005 0:24:56 +0000
+
+In other news...
+
+<ul>
+<li> I got an author contract from Linux Journal for an article I
+wrote for them about eighteen months ago.  Frankly, I'd given up on
+ever hearing from them a while ago (they didn't reply to my "ping"
+email), and I'm not sure what to do now.  The article was about how to
+make your own live CD out of bits of Debian unstable: I'm not at all
+sure that the procedure described in it would still work, and I'd
+really find it hard to believe that nothing that's come along in the
+meantime is an improvement.  Like, say, gnoppix-based-on-ubuntu.
+
+
+<li> Got new wheels; need more.  My skates use a rather lame "hi-lo"
+setup where the front two axles are nearer the ground than the back
+two, meaning that the wheels in the front set should be 4mm smaller.
+So on Sunday I got new 76s to replace the rather triangular-looking
+ones on the front, then on fitting them found that they were actually
+<i>larger</i> than the supposed 80s in the back.  Some wheel swapping
+ensued and I now have 76 on the back and previously-80-now-probably-72
+on the front.  Tested with a few minutes tottering around the
+serpentine road, then the sunday stroll down to Battersea Park and back in the face of a strong
+headwind.
+
+<li> I came very close to writing a Perl script on Saturday, then just
+in time came to my senses and realised that the machine it'll be
+installed on doesn't even have the DBI/DBD modules installed yet and
+why sully it?  So, I'm fiddling on and off with database APIs until I
+find something I like.
+
+<pre>
+(with-query (q (istr::*database-handle* "select * from country"))
+   (loop
+    (let ((row (get-row istr::*database-handle*  q)))
+      (unless row (return))
+      (format t "hello ~S~%" row))))
+</pre>
+
+As previously discussed, <a
+href="http://ww.telent.net/diary/2003/6/#21.51860" >I don't like O-R
+mapping much</a>.  But nor can I remember the pg.lisp interfaces, and
+when I do go to look them up I find that the efficient one
+(pg-for-each, uses cursors) not only wants to execute a callback
+function for each row, but doesn't pass the attribute names to that
+callback.  
+
+<li> Pthreaded AMD64 SBCL mostly works but doesn't yet
+have <tt>interrupt-thread</tt>, and gives wrong error messages when you
+ask it for backtraces.  I don't know how much time I have for hacking
+it in the next two weeks, though; it's all looking a bit busy around
+here.
+</ul>
+

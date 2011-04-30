@@ -1,0 +1,18 @@
+title: Social
+Problems Of Lisp:
+author: Daniel Barlow
+date: Mon, 24 Feb 2003 18:15:9 +0000
+
+<h2><a href="http://www.c2.com/cgi/wiki?SocialProblemsOfLisp">Social
+Problems Of Lisp</a>:</h2>
+
+<pre>
+&lt;bziki__> why am i complaning ???  i'll tell you why.  because the
++attitud of the room sucks. you guys are really not trying to help, you
++are just try to educate user i how to learn. and that is not part of
++this idea. the idea behind these chat rooms is whenever someone has
++already looked in the books/docs/mans and did not find what he/she
++needed - or - he/she are in serious need for immdiate help.
+</pre>
+
+"serious need for immdiate help", indeed

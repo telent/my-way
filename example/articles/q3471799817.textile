@@ -1,0 +1,78 @@
+title: Back after the break
+author: Daniel Barlow
+date: Wed, 06 Jan 2010 20:50:17 -0000
+
+If anyone reading this is presently as disillusioned with
+computing/hacking/coding as I was a few months ago, I cannot recommend
+Peter Seibel's "Coders at Work" highly enough.  
+
+Why my discontent?  I don't trust anyone who elevates a programming
+practice (or indeed, almost anything else) to the status of a
+religion, and it seemed to me that "Test Driven Development" shares
+the important characteristics of UML, J2EE, pair programming, and
+"goto considered harmful" in that it promotes a high-ceremony dogma
+that is on the face of it really rather unlikely to save you time, on
+the professed basis mostly that it will make you a Better Person.
+And, presumably, get your reward in heaven.
+
+But herein lies the problem.  If you want to write stuff for a Unixoid
+platform right now, after discounting the really tedious heavyweight
+stuff like C and its variants your choice is basically Ruby.  Or, at a
+pinch, Javascript.  Common Lisp is - for all that I spent the last
+decade or so hacking on SBCL (more about that soon) - a platform not
+just a language, and a platform that nobody really wants to stand on;
+Perl is basically moribund; Python is dull and patronises its users
+(ESR likes it, which fits because he is also dull and patronising);
+the Schemes are fragmented and don't have momentum; and Java and C# -
+well, honestly they're out of the realms of everyday religion and
+straight into the flagellation: not my kink at all.
+
+(Did I miss anyone?)
+
+Anyway, Ruby is actually quite OK apart from the syntax (as a Lisper,
+I don't actually care what the syntax is, that it has one is the
+problem), it'll have acceptable performance in 1.9, and the lack of
+macros/programs-as-data is *mostly* - I don't say entirely, but mostly
+- made up for by a lexically succint notation for blocks, which do
+most of what you might want to do with them.  (It's actually a minor
+source of amusement to me that Ruby folk are so mad keen on DSLs when
+they have to jury-rig them all into method syntax, but that's a story
+for another time).  Anyway, if I can still remember my original point,
+I think it was that Ruby is currently the nearest thing around to a
+programming language that is both interesting and useful, but what
+about the TDD weenies?
+
+So, back to Coders at Work.  I bought it after it seeing that JWZ's
+interview had generated a certain amount of controversy with the unit
+testing dweebs, and reading it over the space of a couple of days I
+was immensely cheered to find that none of the other interviewees -
+interesting people, great hackers and luminaries among them - were
+blind adherents of that particular orthodoxy either.  And, bizarre and
+pathetic as it sounds, that gave me the innoculation against TDD mind
+control that I thought I'd need in a group of Ruby programmers, so I
+have started (1) making some kind of an effort to get to the "London
+Ruby Users Group":http://lrug.org/ meetings, (2) making a good-faith
+attempt to actually learn the language.  
+
+LRUG?  Well, the first meeting was all about reinforcing the
+stereotype: a "Coding Dojo", or "what do you get if you try to scale
+pair programming".  Answer is, you get mob programming: one active
+pair and ten to fifteen other onlookers.  Which doesn't mean it wasn't "thought-provoking":http://lists.lrug.org/pipermail/chat-lrug.org/2009-September/004069.html , of course
+
+The "second meeting":http://lrug.org/meetings/2009/09/18/october-2009-meeting/ 
+I turned up principally for the functional programming talk, which 
+seemed to create quite a buzz in the pub (that's a good thing) and 
+left me quite reassured that at least some part of the Ruby community
+"get it".
+
+And learning the language?  I'm writing a program.  It has bits of
+Ruby, bits of Javascript, bits of audio coding (fairly noddy audio
+coding, as getting Ruby to run fast enough for anything more
+interesting looks like a challenge) and will eventually embed webkit.
+Yes, I'm writing an mp3 player/library manager, just on the basis that
+the downgrade from Amarok 1.4 to 2 in Debian has left me without a working music player that will export playlists to my phone, but that I already have a Twitter client.  More on that as it progresses.
+
+I'm never quite sure what "normal" is around here, but
+hacking-and-blogging service has been resumed.
+
+[ posted a day later.  But look what else I found since - Eleanor McHugh's "On Agility":http://feyeleanor.livejournal.com/127046.html#cut rant.  This is not _exactly_ what I wanted to say about TDD and BDD, but it has themes I'm going to pick up on ]

@@ -1,0 +1,18 @@
+title: I bought a new mp3 player
+author: Daniel Barlow
+date: Fri, 6 May 2005 18:38:53 +0000
+
+I bought a new mp3 player.  This has nothing (afaik) to do with Lisp,
+but I thought I'd note it anyway, if only to pacify the end-of-month
+bug.
+
+<p>This reminds me that I never did write the <a href=
+"http://ww.telent.net/diary/2004/7/#4.78600">review I promised</a> of
+my last foray into portable music devices, so here it is: "The Synn
+{something or other} is cheap in both senses.  It ate batteries
+faster than my portable CD player - an impressive feat for something
+with no moving parts - and after a few months of intermittent use it
+developed a hiss in the left channel that was so loud it made the
+music unlistenable".
+
+<p>I hope to have better luck with the Creative Zen Micro.

@@ -1,0 +1,26 @@
+title: revision 1.368
+date: 2002/03/18 17:56:09;  author: dan_b;  state: Exp;  lines: +1 -1
+author: Daniel Barlow
+date: Mon, 18 Mar 2002 18:30:47 +0000
+
+
+<pre>
+revision 1.368
+date: 2002/03/18 17:56:09;  author: dan_b;  state: Exp;  lines: +1 -1
+        Merge PPC port
+        ... new directories src/compiler/ppc, src/assembly/ppc
+        ... other new files
+        ... new clause in genesis for PPC fixups
+        ... new files in runtime, PPC conditionals added in other .[ch] files
+
+        Small Makefile cleanups in runtime
+        ... actually _use_ the dependency information
+        ... regenerate depends on source changes
+
+        We don't actually use sigreturn() in _any_ present port: conditionals
+        changed to make this obvious
+</pre>
+
+<p> You read it here third.  
+
+

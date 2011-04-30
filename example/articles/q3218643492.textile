@@ -1,0 +1,11 @@
+title: As predicted six weeks ago:
+http://www.google.com/search?q=daniel+barlow+oracle
+author: Daniel Barlow
+date: Sat, 29 Dec 2001 19:38:12 +0000
+
+<p> As predicted <a href="#oracle">six weeks ago</a>:
+<ul>
+<li><a href="http://www.google.com/search?q=daniel+barlow+oracle">http://www.google.com/search?q=daniel+barlow+oracle</a>
+</li>
+</ul>
+

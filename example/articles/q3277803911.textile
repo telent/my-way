@@ -1,0 +1,62 @@
+title: Kernel interfaces vs Glibc/POSIX: discuss
+author: Daniel Barlow
+date: Fri, 14 Nov 2003 13:5:11 +0000
+
+<p>Kernel interfaces vs Glibc/POSIX: discuss.
+
+<p>One thing that working on SBCL threads has really brought home to
+me is that there is sometimes much better taste in API design in the
+Linux kernel than there is in the POSIX standards that the GNU/Linux
+project as a whole seeks to follow.
+
+<p> clone() vs POSIX threads is one example: either I can have this
+nice clean interface where the receiver of a signal is the person who
+asked for it or otherwise induced it, or I can have some weird
+monstrosity where signals are sent randomly to any thread that hasn't
+blocked them.  But I'm sure I've talked about that before, at the
+UKUUG conference if nowhere else.
+
+<p> I think I'm finding similar issues in futexes.  The system call
+support for futexes is, at base, really really simple: you have
+<ul>
+<li> one operation that tests whether some word in memory is a given
+value, and goes to sleep in a queue in the kernel if so.
+<li> another operation that wakes some specified number of tasks 
+which are waiting on that queue.
+</li>
+</ul>
+
+<p>But then, you have the "approved" method of accessing it from
+userspace (futex(4)): basically a counting semaphore which uses these
+syscalls when the lock is contended.  But we didn't <i>want</i> a
+counting semaphore.  And even that you're not supposed to use
+directly, instead relying on your trusty NPTL implementation - which
+means FFI bindings to pthread_* functions in glibc, which means
+function call overhead - even in the uncontended case - if they really
+are functions, and screwing around with glue code if as I suspect half
+of them turn out to be inlined or macros.
+
+<p>So, considered in isolation, I think good taste requires that I
+call sys_futex() directly (modulo that I'm not sure it didn't get
+deprecated and replaced with a separate futex_* call for each
+different operation sometime in 2.5).  Considered in the context of
+programs that do FFI to libraries that expect the full layered NPTL
+experience, though, will we interoperate?  
+
+<p>At root the question is: are we building a Lisp that runs on a
+Linux system, or a Lisp that runs on a GNU/Linux system?  It's ironic
+that I can use Richard Stallman's nomenclature to describe the
+difference: the Linux system that he's not involved with seems pretty
+language-agnostic, but the GNU system, which was originally
+<i>created</i> by this Lisp advocate and former Lisp Machine hacker,
+seems to only really like C programmers.  Good luck finding the value
+of <a
+href="http://www.caddr.com/macho/archives/sbcl-devel/2003-11/2745.html"
+>SIGRTMIN</a> in any other language, anyway.  (Yes, the Glibc
+behaviour described there is certaintly allowed by POSIX.  It's not
+particularly helpful and I don't think it really holds up against the
+Principle of Least Surprise, but I can't argue that the <a href=
+"http://www.opengroup.org/onlinepubs/007908799/xsh/signal.h.html"
+>SUS</a> says "integral expression" and not something more helpful
+like "constant expression")
+

@@ -1,0 +1,62 @@
+title: Of course, the Wiki markup rules started life as simple things,
+like typing indented-but-not-preformatted text by typing TAB : SPACE
+author: Daniel Barlow
+date: Wed, 3 Jul 2002 15:8:59 +0000
+
+<p> Of course, the Wiki markup rules started life as simple things,
+and it wasn't until later that people realised they could do things
+like typing indented-but-not-preformatted text by typing TAB : SPACE
+TAB at the start of the line (and possibly also typing the entire
+paragraph on one line; I forget whether it makes a difference in that
+specific instance.  it does for italics, though)
+
+<p> This reminds me of some other software I've been using recently
+that starts out with a simple set of rules which combine in
+dizzyingly unpredictable ways to do things you would never have
+dreamed sensible.  I'm talking about <b>spamassassin</b> here, of course.
+
+<p> I've never been entirely clear, it must be admitted, on how best
+to use all the weird gnus options to keep copies of outgoing mail, and
+eventually came to the conclusion that the simplest answer would be to
+Bcc it all to myself.  This has the neat advantage that I can then
+use gnus splitting to filter incoming mail to some regular correspondent
+into the same folder as mail <i>from</i> said correspondent, and then
+I have both sides of the conversation in the same place.  It has the
+(fairly innocuous) side-effect, though, that my outgoing mail loops
+through spamassassin before coming back to me, so I get to see
+how spammy my mail looks.  Well, look at this
+
+<pre>
+X-Spam-Status: No, hits=-98.4 required=5.0
+        tests=SIGNATURE_DELIM,FOR_FREE,USER_IN_WHITELIST
+        version=2.31
+</pre>
+
+<pre>
+body     Standard signature delimiter present     SIGNATURE_DELIM    0.488  
+</pre>
+
+<p> A <i>positive</i> score for a signature delimiter?  "- - SPACE
+\n", so rarely correctly implemented that it became favoured all over
+Usenet as the choice "get a real news reader" stick with which to beat
+Outlook users (and another great example of why whitespace sensitivity
+is a dumb idea, fwiw) is now suddenly an indication that the mail was
+sent from some bulk mailing program that injects fake unparseable
+received headers, has the wrong system date, and probably still thinks
+X-UIDL is a header that should be provided by the sending host?  I
+find this not entirely plausible.
+
+<p> From conversations on IRC, I understand that the actual scores for
+each rule are computed by feeding a large pile of known-spam and
+another large pile of known-nonspam into a genetic algorithm and
+letting it work them out.  This sounds like really great news for the
+stability of weights on each rule ...
+
+<p>I wish I could find my neural networks book.  It was possibly the
+most boring book ever written about what should be an interesting
+subject, but I desperately want to be able to liken spamassassin to a
+neural network with only one neuron after the kind of particularly
+vicious overtraining that should have the owner in court on animal
+cruelty grounds, and I really could do with a reliable source to tell
+me whether it's a remotely fair comparison.
+

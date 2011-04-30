@@ -1,0 +1,64 @@
+title: New Araneida finally out of the door
+author: Daniel Barlow
+date: Mon, 10 Nov 2003 5:25:22 +0000
+
+New Araneida finally out of the door. 
+<pre>
+
+Bcc: dan
+To: lispweb@red-bean.com
+Subject: ANNOUNCE: release Araneida 0.80
+X-Draft-From: ("nnml+private:mail.lists.sbcl-devel" 3030)
+From: Daniel Barlow <dan@telent.net>
+Date: Mon, 10 Nov 2003 05:25:01 +0000
+Message-ID: <874qxckd76.fsf@noetbook.telent.net>
+--text follows this line--
+<#secure method=pgpmime mode=sign>
+
+Araneida 0.80 has been released to ftp.linux.org.uk and is now making
+its way to whichever CCLAN mirrors are actually still maintained.
+From the release notes:
+
+* New HTTP-LISTENER abstraction drastically improves the threaded
+  variant of Araneida, and also replaces a lot of older ad-hocky code
+  and global variables.  The following are at least obsolete, and may
+  not even exist any more
+
+  - The 'server' stuff: export-server etc
+  - *root-handler*
+  - install-{thread,serve-event}-handlers, remove-handlers
+
+* Raising HTTP errors from handlers is now accomplished in a far
+  cleaner fashion, by signalling CL conditions.  (This also means that
+  parent handlers may handle these conditions to provide e.g. custom
+  404 pages).  A condition exists for each 4xx and 5xx HTTP response code
+
+* Add REFRESH header to REQUEST-SEND-HEADERS; sends the not-quite-HTTP
+  'Refresh: ' header (really, not part of HTTP/1.0 or 1.1: it appears to
+  have been a Netscape extension)
+
+* Fix packaging problem in 0.72
+
+* ... and even compiles (in fact, only compiles) in current SBCL versions
+
+
+This version of Araneida requires source code changes in your
+application - although not terribly pervasive ones; unless there are
+vastly more Araneida users than I'm aware of, I felt it would be
+quicker for users to update their configuration than for me to provice
+legacy compatibility routines.  There is a complete and working
+example of Araneida configuration in doc/example.lisp: it should be
+about three lines for most people.
+
+Feedback appreciated.  
+
+
+-dan
+
+-- 
+
+   http://web.metacircles.com/cirCLe_CD - Free Software Lisp/Linux distro
+
+
+</pre> Yay.  I can probably go to bed
+now.

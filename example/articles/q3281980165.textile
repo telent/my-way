@@ -1,0 +1,19 @@
+title: I lied
+author: Daniel Barlow
+date: Thu, 1 Jan 2004 21:9:25 +0000
+
+I lied.  Well, I was mistaken: in the course of tidying up purify so
+that I might understand it, I managed to break it.  <tt>!(a &&
+!b)</tt> is <i>not</i>, De Morgan will happily tell you, the same
+thing as <tt>(!a && b)</tt>.  Doh.  I was copying a whole bunch of
+stuff (constant boxed vectors, or possibly unboxed inconstant vectors)
+to static space that should have been happy in read-only space.  So
+static space was up to 9.5Mb from its normal 5, hence the extra time
+spent checking it.  If it takes an approximate extra 10s to GC when
+there's an extra 5Mb of static space to check, this also goes some way
+to explain why CMUCL is faster: in 18e it only has 2.5Mb of static
+space, so that's 5s off the GC time, leading us to predict that it
+should take about 15s.  It's actually a bit under (13s) but that's
+only a couple of seconds still to claw back, then.
+
+<p>All times are to execute <tt>(time (dotimes (i 400) (gc)))</tt>

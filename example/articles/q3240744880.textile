@@ -1,0 +1,13 @@
+title: Some day I will learn how to release new versions of stuff into
+author: Daniel Barlow
+date: Wed, 11 Sep 2002 15:54:40 +0000
+
+<p>Some day I will learn how to release new versions of stuff into
+vn-cclan.  Today's trick (repeatedly) has been to forget to do the cvs
+commit before making the tar file.  And to upload the wrong tar file
+at least once, I suspect.  Not sure how that happened
+
+<p>Still, today's db-sockets 0.57 fixes a bug in yesterday's 0.55 (and
+all previous versions, in fact) when used with SBCL 0.7.7 or any other
+compiler that actually checks the syntax of <b>defgeneric</b> forms
+

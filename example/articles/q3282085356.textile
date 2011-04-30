@@ -1,0 +1,19 @@
+title: I have just come back from my first rollerblading in three years or
+author: Daniel Barlow
+date: Sat, 3 Jan 2004 2:22:36 +0000
+
+I have just come back from my first rollerblading in three years or
+so.  It was more fun than I remembered, and obviously not as
+difficult: I only fell over once, which evasive manoeuvre was more or
+less planned, and involved comparatively<sup>*</sup> little loss of
+skin.  Oxford may not have a worthwhile Hyde Park equivalent, but it
+still has more smooth pavement than I'd realised.
+
+<p>OK, you'd rather have heard about some kind of low-level SBCL
+hacking or something.  Bad luck.
+
+<p><sup>*</sup>compared to, say, last Sunday morning, when I fell over
+- sober, which is more than I am now - while showering, and cut my
+head on the corner of the towel rail.
+
+

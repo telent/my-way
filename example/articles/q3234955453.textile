@@ -1,0 +1,54 @@
+title: A half hour wasted by spamassassin
+author: Daniel Barlow
+date: Sat, 6 Jul 2002 15:44:13 +0000
+
+
+<p>A <b>half hour wasted by spamassassin</b>.  I reattached to the
+wireless lan when I got here this morning, ran fetchmail, and watched
+my computer eat all its swap and drive the load average to something
+above 40 trying to start 70 copies of spamassassin.  It's really time
+I sorted some kind of daemon-based approach; in the meantime I just
+disabled the thing.  Perhaps I should replace it with some elisp/gnus
+stuff that I can actually trust.
+
+<p>A <b>PHP</b> talk: "Using PHP for large web sites".  Can be
+summarised as "PHP is too evil to use for large web sites" (slightly
+longer summary: "PHP is <i>far</i> too evil to use for large web
+sites), but was more entertaining in the long form.  It was gratifying
+to have my uninformed three-hours-reading-the-docco opinions on PHP
+confirmed by someone who has actually used it in anger.
+
+<p>A <b>Bugzilla</b> talk: how to write a scalable featured
+database-backed bug tracking and management system.
+
+<ul>
+<li>150000 bugs (120000 dead)
+<li>50k users (15k active)
+<li>&gt;2Gb of data
+</li>
+</ul>
+
+<p> Not that I think any of these are going to be requirements for
+Entomotomy in the near future, but we can hope.
+
+<p> They also have serious problems with low-quality bug reports, and
+a lot of their development (the UNCONFIRMED status, voting on bugs,
+etc) has been driven by the need to manage this.  Hope this won't be
+our problem either in the near term.  
+
+<p> Out-of-context quote of the day: "Bugzilla is a very forked project"
+
+<p> Bug 12411: <a href="http://bugzilla.mozilla.org/show_bug.cgi?id=122411"
+>Mozilla does not have a kitchen sink</a> (look at the attachments)
+
+<p> An <B>RT</b> talk: RT is an insanely customizable ticket tracking
+system.  But then, it's written in Perl, which (when done right) is
+almost sufficient to get you both of "customizable" and "insane" For
+Free.
+
+<p><b>Zope 3</b>.  You thought Zope was a web application server, but
+actually it's an "Operating System for the Network".  I found the
+combination of buzzwords, warmth in the lecture theatre, and XML-like
+code in the slides to be unfortunately soporific, but as my network
+doesn't actually <i>need</i> an operating system I thought I'd not be
+missing anything earth-shattering if I slipped out early.

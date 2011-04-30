@@ -1,0 +1,25 @@
+title: There is a PHP mode for emacs
+author: Daniel Barlow
+date: Thu, 15 Apr 2004 19:9:5 +0000
+
+<p>There is a PHP mode for emacs.  It's available separately, or at
+least not part of my Emacs installation, and claims to be "mostly
+concerned with setting up syntax colouring" - it leaves indentation to
+the C mode that it's based on.  I'm not getting warm fuzzies from the
+thought that PHP has been around all this time and still nobody with
+elisp clue has wanted to spend significant time on it.
+
+<p> Sod that then, I'll use C mode.
+
+<p> This impressed me:
+<blockquote>
+Now the new, combined mode will be invoked if any of the above mentioned files are opened or created. To reduce the indentation problems, always open php regions in your files as follows:
+<pre>
+    &lt;?php /*>*/;
+</pre>
+This will stop psgml-mode from messing with the indentation in the php-mode subregions (it thinks the &lt;?php-tag is immediately closed again) and un-confuse php-mode's parser (which think's the wierd stuff it just read ends at the ";"). :-)
+</blockquote>
+(from <a
+href="http://www.emacswiki.org/cgi-bin/emacs.pl?HtmlModeDeluxe"
+>http://www.emacswiki.org/cgi-bin/emacs.pl?HtmlModeDeluxe</a>)
+

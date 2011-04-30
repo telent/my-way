@@ -1,0 +1,14 @@
+title: Note:  In countries where the use of Bluetooth
+author: Daniel Barlow
+date: Mon, 25 Feb 2002 16:31:16 +0000
+
+
+<blockquote> <b>Note: </b><i> In countries where the use of <b>Bluetooth</b>
+wireless technology is not allowed, you must ensure that the
+<b>Bluetooth</b> function is set to Off.
+</i></blockquote>
+
+<p><i>Ericsson Mobile Phone T39m User's Guide</i>.  Well, it made me
+laugh
+
+

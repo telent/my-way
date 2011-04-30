@@ -1,0 +1,39 @@
+title: Spurred by Debian
+author: Daniel Barlow
+date: Fri, 6 Aug 2004 9:49:18 +0000
+
+<p>Spurred by <a
+href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=259514" >Debian
+bug reports</a> regarding behaviour in asdf that I'm not sure I fully
+understand, I'm thinking about redesigning the internals to be less,
+well, tacky.  
+
+<p>An asdf system is mostly a description of a bunch of source files,
+and doesn't say much about what the outcome should be when that system
+is compiled or loaded or whatever else.  Partly this is intentional:
+users may think of new things to do with a system that the system
+author didn't have in mind, and shouldn't be constrained.  Partly
+though it's just screwy: a traditional build tool for the non-Lisp
+world (such as <tt>make(1)</tt>) lists targets (or goals) that can be
+achieved given the source files and a set of rules, but asdf just has
+the rules.  In fact we can't describe desired outcomes in asdf; not
+only do we have to talk to it procedurally with instructions like
+"apply operation foo to component bar", but to compound the sin we do
+this in the full knowledge that it'll at least partly ignore us:
+applying compile-op to a system doesn't just mean applying compile-op
+to each component of the system but may involve generating and reading
+temporary files, loading some of the files (e.g. those with macro
+definitions) and arbitrary other tasks.  (It gets even more arbitrary
+when there are non-Lisp components involved, but I think that's mostly
+a difference of degree not of kind)
+
+<p>Once we have goals, and we have sub-goals, it should be simpler to
+express a number of problems elegantly in asdf.  For example, we have
+a bunch of c source code files that in some circumstance we want to
+compile, link together into a shared library, and load into the
+running Lisp image.  Or we'd like to define a rule that creates an "<a
+href="http://ww.telent.net/lisp/according_to/hello-world.html"
+>executable</a>" from a system.  I think this should help with any
+operation which involves intermediate files, or which produces a
+different number of files as output than it was supplied with as
+input.

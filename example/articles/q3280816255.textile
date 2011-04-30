@@ -1,0 +1,29 @@
+title: create or replace function to_universal_time(timestamp with time zone) returns bigint as 
+author: Daniel Barlow
+date: Fri, 19 Dec 2003 9:50:55 +0000
+
+<pre>
+create or replace function to_universal_time(timestamp with time zone) returns bigint as 
+'select cast(extract(epoch from $1) as bigint)+2208988800 ;' language sql;
+
+create or replace function from_universal_time(bigint) returns timestamp with time zone as 
+'select timestamp with time zone ''1970-01-01 GMT'' 
+  + cast( ($1-2208988800)||'''' as interval);' language sql;
+
+</pre>
+
+And while we're on the subject, aren't timezones cool?
+<pre>
+:; date --date '1970-01-01'
+Thu Jan  1 00:00:00 BST 1970
+</pre>
+
+Yes, for the time between 27th October 1968 and  31st October 1971,
+the UK's political time was uniformly one hour in advance of what the
+sun said it should be.
+
+<pre>
+&lt;dan_b> YAY POLITICIANS!
+</pre>
+
+Nuff said.

@@ -1,0 +1,20 @@
+title: And since I'm sort of in a blogging frame of mind, I'll mention why
+there's been no update here for the past week and a bit: I was skiing
+author: Daniel Barlow
+date: Thu, 23 Dec 2004 15:47:37 +0000
+
+<p>And since I'm sort of in a blogging frame of mind, I'll mention why
+there's been no update here for the past week and a bit: I was skiing.
+I spent a whole week in Tignes (French Alps) learning to ski and
+didn't break <i>anything</i> - obviously I was being over-cautious.  I
+did however lose my glasses on the slope on the second day, so since
+then (up until about five minutes ago, when a replacement pair turned
+up from the optician) have been walking around wearing sunglasses all
+the time - my only spare pair are tinted.
+
+<p>I'd do a comparison between skiing and skating, but really it'd be
+like trying to compare CL with Scheme, and I just spent all day
+telling people on IRC not to do that.  (Memo to employers: not
+<i>all</i> day, really.  Just the idle bits during slow cvs
+operations).  But I think it's fair to say that if you like one, the
+other might well also appeal.

@@ -1,0 +1,23 @@
+title: Note for SLIME 1.0 users about indentation: you need cl-indent
+author: Daniel Barlow
+date: Sat, 6 Nov 2004 16:18:34 +0000
+
+Note for SLIME 1.0 users about indentation: you need cl-indent.
+
+<p>I don't see this anywhere obvious in the manual, but the
+much-vaunted (does that mean what I think it means?)  autosensing
+macro indentation works <i>in conjunction with</i> cl-indent instead
+of replacing it.  In particular it doesn't know how to indent
+anything in the COMMON-LISP package.  For a long time I hadn't noticed
+this because I have piles of miscellaneous rubbish in my .emacs that
+go back years (maybe even decades) and cl-indent happened to be in
+there.  When I set up my amd64 box I decided to decruftify a little
+and that was one of the casualties. 
+
+<p>To fix: put this in your .emacs or wherever
+<pre>
+;; (load "cl-indent") ; <b>contrary to my earlier instruction, 
+                      ; <tt>require</tt> doesn't work, and
+                      ; <tt>load</tt> isn't needed</b>
+(setq lisp-indent-function 'common-lisp-indent-function)
+</pre>

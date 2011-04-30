@@ -1,0 +1,10 @@
+title: &lt;lisppaste> dan_b pasted "will the madness please fuck off and die
+author: Daniel Barlow
+date: Wed, 20 Oct 2004 21:10:54 +0000
+
+<pre>
+&lt;lisppaste> dan_b pasted "will the madness please fuck off and die?" at
++<a href="http://paste.lisp.org/display/3262" >http://paste.lisp.org/display/3262</a>
+&lt;cliini> This is probably something we should show to people who ask if
++there's something like CPAN for lisp. Show them that and ask "like this?"
+</pre>

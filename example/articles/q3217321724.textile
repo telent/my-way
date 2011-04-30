@@ -1,0 +1,42 @@
+title: On the advice of some people on IRC (sure, yeah, I do everything
+author: Daniel Barlow
+date: Fri, 14 Dec 2001 12:28:44 +0000
+
+
+<p> On the advice of some people on IRC (sure, yeah, I do everything
+they tell me to.  Except when it conflicts with the instructions of my
+toaster) I recently installed <a href="http://spamassassin.taint.org/"
+>spamassassin</a> (there's a Debian package in unstable).  It has a
+point scoring system with a whole slew of "looks like spam" rules,
+then tags the spam with a special header so that I can filter it
+accordingly
+
+<pre>
+SPAM: -------------------- Start SpamAssassin results ----------------------
+SPAM: This mail is probably spam.  The original message has been altered
+SPAM: so you can recognise or block similar unwanted mail in future, using
+SPAM: the built-in mail filtering support in your mail reader.
+SPAM: 
+SPAM: Content analysis details:   (31.2 hits, 5 required)
+SPAM: Hit! (0.1 points)  Subject: contains a question mark
+SPAM: Hit! (2 points)    From: does not include a real name
+SPAM: Hit! (3 points)    Forged From: line claiming to be from hotmail.com
+SPAM: Hit! (2 points)    Invalid Date: header (no timezone)
+SPAM: Hit! (1.6 points)  From: ends in numbers
+SPAM: Hit! (2 points)    BODY: /GUARANTEE/
+SPAM: Hit! (1.9 points)  BODY: /opt-in/i
+SPAM: Hit! (2 points)    BODY: /(?:wish to|click to|To) remove yourself/
+SPAM: Hit! (3.9 points)  BODY: /subject.*remove/i
+SPAM: Hit! (2 points)    BODY: /mailto:\S+\?subject=[3D=\s"']*remove/is
+SPAM: Hit! (2 points)    BODY: /\n\n.*mailto:\S+\?subject=/is
+SPAM: Hit! (3 points)    Listed in Razor, see http://razor.sourceforge.net/
+SPAM: Hit! (2 points)    Received via a relay in relays.ordb.org
+SPAM:                    [RBL check: found relay 48.19.93.203.relays.ordb.org.]
+SPAM: Hit! (3.7 points)  Subject contains a unique ID number
+SPAM: 
+SPAM: -------------------- End of SpamAssassin results ---------------------
+</pre>
+
+<p> Well, yes.  There are very few reasons to <i>pretend</i> to be
+from Hotmail.
+

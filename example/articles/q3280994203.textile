@@ -1,0 +1,80 @@
+title: Today I am looking for a bug in allocation that I suspect I introduced
+author: Daniel Barlow
+date: Sun, 21 Dec 2003 11:16:43 +0000
+
+<p>Today I am looking for a bug in allocation that I suspect I introduced
+into SBCL about a year ago, and it's only by fixing a bug that was
+introduced into SBCL about five years ago that I realised its full
+impact.
+
+<p>In addition to the dynamic space itself, gencgc has a page table
+containing per-page data such as which generation the objects on the
+page belong to, whether the page has been written since last GC, etc.
+
+<p>Each allocation in gencgc is done from an "allocation region": a
+large object will get a region to itself, whereas a small object will
+share a region with others.  Regions are typically created with
+minimum 8k size, and serve two purposes: (a) allocation from a region
+is cheap - each thread gets a region of its own, and an allocation
+request that can be satisfied from within the region doesn't need us
+to lock the allocator and mess with globally visible resources; (b)
+when a region is "closed" so that no further allocation can be done in
+it (when it's full, or when we need to GC) its start address is
+written into the page table entries for each page it encompasses.
+
+<p>To explain why (b) is important we take a short diversion into the
+"conservative" aspect of gencgc.  Gencgc is mostly an exact copying
+GC, but for the C call stack, which mixes Lisp pointers and random
+untagged data.  If we find something that looks like a Lisp pointer on
+the stack we should keep the object alive, in case it is, but
+shouldn't relocate it, in case it isn't: rewriting stack data that
+happens to look like a pointer into the Lisp heap would be bad.  So we
+run over the C stack looking for things that might plausibly be Lisp
+pointers, and tag the pages they refer to as 'dont_move'.  If one of
+these objects is in the middle of a page and the object preceding it
+has overlapped from the previous page, we don't want to tag half that
+object as immovable but not the other half, so in fact we have to look
+as far back as the region start address for our page, and tag
+everything from there to the next oobject that starts on a page
+boundary.
+
+<p>Here is the five year old bug: the page table is not saved with the
+core, and when a core is initially loaded, every page_table entry is
+initialized with the region start address being the start of dynamic
+space.  The whole of dynamic space is therefore in the same region, so
+if a pointer to any of it is found on the C stack, that will cause
+some pretty significant portion of it to be locked down and not
+collected.  Usually you don't see this bcause it's normal to purify
+before saving a core, so the dynamic space tends to be empty at this
+time.  In our new impure scheme, though, we have 40Mb of dynamic space
+and none of it is going to go away.
+
+<p>So, that's a fairly simple one to fix, I thought: look for objects
+that start on page boundaries, and treat them as beginning new
+regions.  And so it was, but now I find <i>my</i> bug: the first GC
+after loading the core thrashes the machine to death for several
+minutes.  
+
+<p>The cause of which, I still don't know.  In brief, though: when
+we're looking for a place to start a new alloc_region, it's sometimes
+possible to tack it onto the same page as a previous one.  (Usually I
+wouldn't expect a region to end in the middle of a page but I'm
+guessing it might have been closed before being filled by GC or
+something).  Although this works fine in the mutator, for some reason
+when we're allocating for the collector, we sometimes ("sometimes"
+meaning that we usually have to compile about half of PCL for the bug
+to manifest) manage to induce heap corruption by putting new
+alloc_regions onto part-full pages.  Since March or so this year we've
+been running with this disabled, meaning that regions always start at
+the top of the page, but I am here to tell you now, brothers and
+sisters, that collecting 40Mb of live objects at once and putting each
+new alloc_region on its own page is a <i>very</i> bad idea: the space
+wastage is actually high enough that you might look at it displayed in
+the GC statistics and think "nah, that's clearly bogus data, nothing
+to worry about".  I should know: I did.
+
+<p>The offending code (that is, the heap corrupting code, not the
+waste-of-space workaround) is, as far as I can tell, identical in
+effect to that in CMUCL.  I'm not foreseeing imminent enlightenment
+here.
+

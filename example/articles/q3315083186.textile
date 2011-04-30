@@ -1,0 +1,34 @@
+title: I had certain problems at the weekend with computer suppliers: most
+author: Daniel Barlow
+date: Wed, 19 Jan 2005 0:26:26 +0000
+
+I had certain problems at the weekend with computer suppliers: most
+notably Simply, who told me on the telephone that thay had lots of
+cdroms and disks in stock for collection from their London branch,
+then in person when I got there (admitedly an hour or two later) that
+they only had 160Gb drives only one kind of cdrom - not the cheap one.
+
+<p>So I mail-ordered instead.  Nice new SATA drive arrived today;
+expected tomorrow, a controller card to use with it.  I've already
+scanned the old disk - on finding that the partition table was
+unreadable anyway I thought I might as well whack it in a PC and see
+what I <i>could</i> get - and the good news is that the corruption was
+entirely confined to the start of the disk (root partition and swap)
+and didn't affect any of the interesting stuff (cvs repositories, home
+directories, etc) - once I'd found the start of <tt>/export</tt>, it
+restored cleanly onto the new disk.  So, with any luck I should have
+it all running again soon and back on the net next week.  Fingers
+crossed.
+
+<p>Not been writing much here lately (as, obviously, you can tell
+easily): when I have been doing/thinking about Lisp-related stuff,
+it's been about a replacement streams system for SBCL.  But I barely
+have anything written down yet, never mind implemented.  Oh, and 
+the <a href="http://alu.cliki.net/">ALU Wiki</a> is going to die
+unless someone does something, but I've had no responses of any kind
+to that message yet, so that shouldn't be a big deal.
+
+<p>Today's neat software: <a
+href="http://www.kalysto.org/utilities/dd_rhelp/index.en.html"
+>dd_rhelp</a>, and <a href="http://www.garloff.de/kurt/linux/ddrescue"
+>dd_rescue</a>, on which it depends.

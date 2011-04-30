@@ -1,0 +1,53 @@
+title: Fun with threads
+author: Daniel Barlow
+date: Fri, 28 Feb 2003 3:17:54 +0000
+
+Fun with threads.  No, really.  No sarcasm.
+
+<p>So after cleaning up the CVS mess left over from yesterday's
+merging exercise, I checked out a fresh copy of Araneida, built a new
+threaded SBCL, and hacked around a little. 
+
+<ol>
+
+<li> When using apachebench for microbenchmarking your web server, the
+easiest way to get a really good requests/second figure is of course
+to use a really small file.  I was seeing 90-130 requests/second at
+times, but each response is something like 240 bytes long, so, well,
+yeah.  
+
+<li> When <tt>ab</tt> complains about failed requests due to "length",
+what it means is that some of the documents returned were of different
+length to the first response.  Obviously if your test document is
+anything like <a href="http://araneida.telent.net/counter">this
+one</a>, you can expect 91 alleged failed requests in the first test in
+a fresh image.
+
+<li> So, as you'd guessed, I'm using apachebench as a basic smoke test
+to flush out the most obvious threading issues in SBCL.  So far I
+found 
+
+<ul>
+<li> that my spinlock_get in C actually didn't (didn't spin <i>or</i>
+lock, in fact), 
+<li> that there was some thread-unsafe code to allocate new
+buffers for file-streams, 
+<li> that my db-sockets hack to allocate new
+sockaddrs in Lisp space really needed to be protected with
+<tt>without-gcing</tt>, 
+<li> but that it wouldn't have made much difference
+if it had been, because <tt>without-gcing</tt> doesn't actually disable
+garbage collection any longer.  
+</li>
+</ul>
+
+Fixed the first three, kludged around
+the last - now it would work if atomic-incf were actually atomic
+instead of just a placeholder for incf.  
+
+<p>All told it's going pretty well right now, so there's bound to be
+some horrible problem cropping up soon.
+
+</li>
+
+</ol>

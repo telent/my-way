@@ -1,0 +1,31 @@
+title: It's looking marginally more believable now
+author: Daniel Barlow
+date: Wed, 19 Feb 2003 6:31:42 +0000
+
+It's looking marginally more believable now.  I stripped all the unix
+process group stuff I could find, which was wonderfully cathartic
+
+<p>	At various important places when we are shortly about to do
+	input (e.g. printing the toplevel prompt, or entering the 
+	debugger) we need to check that we own the stream we're going
+	to read from.  fd-stream gets a new slot that contains a
+	sb-thread:mutex
+	
+<p>	MAYBE-WAIT-UNTIL-FOREGROUND-THREAD (bad name) does this for
+	the debugger.  For the repl, at the moment we just hook it
+	with something unnamed.  That needs fixing
+
+<p>	Because it also needed doing, I also rewrote the mutex to use
+	an actual queue (and signals) instead of having each waiting
+	thread sleep a bit and retest and sleep a bit and ... (I 
+	broke timeouts in the process.  But that can be fixed, we just
+	need to pass timeout info down to sigtimedwait())
+
+<p>	There's some fairly icky code duplication between C and Lisp,
+	and a fill-in-the-gaping-hole stub routine for spinlock
+	acquiring on the C side.  The ideal here would be to teach
+	Lisp the necessary signal mask manipulation stuff and avoid
+	having to do C at all.
+
+<p>	Still need to enable/disable SIGINT handlers when things go
+	into/out of foreground.  But first I need some sleep

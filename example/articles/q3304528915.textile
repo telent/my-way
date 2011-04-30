@@ -1,0 +1,21 @@
+title: A month or so ago I remapped my
+author: Daniel Barlow
+date: Sat, 18 Sep 2004 21:41:55 +0000
+
+A month or so ago I <a
+href="http://ww.telent.net/diary/2004/8/#6.31005" >remapped my
+keyboard</a> to swap control and caps lock, in the hope of reducing
+the unpleasant sensation I was getting in my wrist when chording
+control key sequences.  Shortly after mentioning this to my boss, my
+work machine suddenly acquired a so-called "Natural Keyboard", so it's
+hard to tell exactly what difference which change made.  Of course,
+that evening I went out and stacked skating which didn't really help
+any effort to determine cause and effect either.  But anyway.
+
+<p>Having rather more recently got my desktop machine at home working
+again (needed new hard disk, and some furniture shuffling to create a
+space to use it) I find that the split keyboard really does make a
+difference to my typing comfort, and have had to order one.  Sigh.
+So, if anyone's keeping track, please cons another on the "I hate all
+Microsoft software but they do make (or OEM, whatever) some nice
+hardware" list.

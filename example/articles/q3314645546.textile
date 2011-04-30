@@ -1,0 +1,16 @@
+title: loaclhost.telent.net (a.k.a cvs.telent.net) has a very ill hard disk
+author: Daniel Barlow
+date: Thu, 13 Jan 2005 22:52:26 +0000
+
+loaclhost.telent.net (a.k.a cvs.telent.net) has a very ill hard disk
+and is down until further notice.  Right now I don't even have any
+other device I can boot it from (or indeed, media to boot) so I'm
+going to have to spend some time finding a cdrom drive and a suitable
+Linux Alpha cdrom image to put in it before any further progress is
+noted.  Weekend project, i think.
+
+<p>No, I can't just put it in a PC.  (1) I don't have one spare, (2)
+the disk uses weirdo Alpha partition tables: the effort involved in
+digging out a suitable machine and doing necessary kernel stuff to it
+would be better spent on getting the alpha running again.  Yes, it's
+possible.  No, "just" is not the right word.

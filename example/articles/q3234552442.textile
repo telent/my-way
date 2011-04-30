@@ -1,0 +1,70 @@
+title: Today is random asides day
+author: Daniel Barlow
+date: Mon, 1 Jul 2002 23:47:22 +0000
+
+Today is random asides day
+
+<h3>On Living with Packages</h3>
+
+<ol>
+
+<li> don't ever use <b>common-lisp-user</b> for anything bigger than a
+noddy two-line test function.  Anything important enough to get saved
+in a source file is important enough to set up a package for.
+
+<li> define your package(s) using <b>defpackage</b> forms.  I usually put
+these in their own source files, too.
+
+<li> every file starts with an <tt>(in-package :package-name)</tt> form -
+except the file with the <b>defpackage</b> form, anyway
+
+<li> make sure you load the files containing the defpackage forms before any
+of the other files
+
+<li> <b>use-package</b>, <b>import</b> or any of the other
+"imperative" package stuff is, like the use of <b>eval</b>, generally
+an indication that you're doing something wrong.  Not always, no.
+Usually
+
+<li> a defsystem utility (e.g. mk-defsystem or - my preference - <a
+href="/cliki/asdf" >asdf</a>) will automate the
+loading-stuff-in-the-right-order aspect
+
+</li>
+</ol>
+
+<h3>On being ill</h3>
+
+<p> Well, slightly under the weather at least.  This weekend I had a
+wedding (not my own, no), a barbecue, a party and a nose full of
+microwaved cotton wool.  Last Friday I had an all-afternoon wish to
+lie down and sleep unobtrusively in the middle of the carpet, which I
+now realise was probably early cold symptoms, plus a bunch of scary
+disk error messages from my colo box (Rackspace fitted a new disk,
+upgrading the OS version while they were at it, then I just had to
+reinstall all the locally-changed stuff), plus an evening in the pub.
+This is all in the nature of an excuse for not having done much
+hacking lately.
+
+<h3>On naming</h3>
+
+<p>What really wasn't helping too much is that I'd originally set out
+at the start of the week to add some form of access control to the
+CLiki application (the <a href="http://ww.telent.net/cliki/">CLiki</a>
+site will stay as it is, but there are lots of other applications I'm
+imagining for which it would be better to know who the users are and
+whether they're <a
+href="http://www.jwgh.org/ark/articles/introduction.html#A4"
+>Allowed</a>), realised that the handler system for <a
+href="http://ww.telent.net/cliki/Araneida" >Araneida</a> is suckier
+than it really wants to be for these kinds of application, and ended
+up redesigning large parts of it.  And now I've created a new class
+called <b>handler</b>, I find that I want to introduce lots of new GFs
+whose names clash with existing Araneida functions.  So perhaps this
+is time for a name change.  Nobody appears to have produced http
+serving software called Boris yet, which is a pretty compelling reason
+in itself.
+
+<p>Anyway, we've got to a state where it basically runs again, so
+maybe we can get this wrapped up in time for <a
+href="http://www.ukuug.org/events/linux2002/" >Thursday</a>

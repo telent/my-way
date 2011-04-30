@@ -1,0 +1,44 @@
+title: I have spam filtering again, and this time it's filtered server-side
+author: Daniel Barlow
+date: Fri, 7 Nov 2003 14:9:40 +0000
+
+I have spam filtering again, and this time it's filtered server-side.
+This makes me happy, or at least less readily depressed when I get up
+and see 200 new mails of which approximately 5 are at all likely to be
+interesting to me.
+
+<p>My mail is delivered to a shell host using SMTP.  I pull it onto my
+laptop using fetchmail and "ssh shell /usr/sbin/imapd" when I want to
+read it.  Then emacs Gnus splits it into folders for me.  I like this
+setup: I have all my mail archives to hand locally when I'm away from
+the net, and if I have some form of shell access but no way to get my
+laptop on the net I can still read new mail using mutt on the server.
+So I added procmail on the server to pipe through spambayes then
+filter spam into its own folder, then added a line in fetchmailrc on
+the client to download that folder (not automatically, but just in
+case) then stuck two new keys in gnus to retrain spambayes when it
+misses something - by, uh, ssh into the server host and spitting the
+article contents into sb_filter.py.  Yeah, I know, it's tacky.  
+
+<pre>
+(defun spambayes-train-spam (&optional arg)
+  (interactive (gnus-interactive "P"))
+  (let ((gnus-default-article-saver 
+	 (lambda (x) 
+	   (gnus-summary-save-in-pipe
+	    "ssh eval.metacircles.com /home/dan/python/bin/sb_filter.py -s -f")))
+	(gnus-save-all-headers t))
+    (gnus-summary-save-article arg t)))
+</pre>
+
+As is common with any kind of Unix mail setup stuff there are seven
+zillion possible different ways to do it and I tried several before
+settling on this one.  Most of the wasted time was in trying to get
+Gnus to do disconnected IMAP support, which was basically pain.  Some
+of it was installing Python from source three times (the debian stable
+packages are too old to run spambayes): the first two builds were
+missing dbm and zlib respectively owing to missing header files. 
+
+<p>It seems to be working pretty well, so far, and should definitely
+makes mornings a bit less insta-bad-mood.
+

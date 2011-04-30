@@ -1,0 +1,157 @@
+title: I'd better write something about NotCon, then
+author: Daniel Barlow
+date: Mon, 7 Jun 2004 21:29:55 +0000
+
+<p> I'd better write something about <a
+href="http://www.xcom2002.com/nc04/" >NotCon</a>, then.  If you'd been
+to XCOM two years ago, it was sort of like that (telling the time with
+a prawn sandwich, full-motion video on a Spectrum), but actually not
+very (accoustics worth a damn - you could actually <i>hear the
+speakers</i> - and without the trestle tables around the edge manned by people
+with wooly beards and woolier ideas)
+
+<p> In no particular order:
+
+<p> I should plug <a href="http://www.theyworkforyou.com/"
+>http://www.theyworkforyou.com/</a>, not that they need the meagre
+googlejuice I can channel their way.  But in five words: "Hansard with
+a user interface".  Glossary for foreigners: "The Official Report
+(Hansard) is the edited verbatim report of proceedings in both Houses
+[of Parliament] Members' words are reported with repetitions and
+redundancies omitted and with obvious mistakes omitted, but nothing is
+left out which adds to the meaning of the speech or illustrates the
+argument."
+
+<p> The prawn sandwich.  Summary from memory: you take the sandwich
+apart and monitor the bread, prawns and mayonnaise separately.  Bread
+and mayonnaise are basically a resistive load; the prawn is, I think,
+partly capacitive, and each component decays at a different rate.  The
+whole thing needs to be about two days past its sell-by date before it
+becomes useful as a time source
+
+<p> I skipped everything between about 2pm and about 4pm to go
+skating.  Which was fun, except that I was foolish enough to leave my
+rucksack at home thinking "I only have a pair of trainers to carry, I
+can just hold onto them".  Indeed I had, and could, and did, but not
+having hands free seemed to cramp my style somewhat; also I forgot my
+wristguards and so erred further on the side of caution than was
+really necessary.
+
+<p> <a href="http://www.sparklefluff.com/siam/" >Tom Dolan's talk on
+managing people</a> (also see <a
+href="http://www.sparklefluff.com/blatantoptimism/archive/000962.html"
+>this blog entry</a>, which made me laugh).  Right now I'm firmly out
+of the management game, but I listened to this and winced remembering
+things I had screwed up last time around.  "When the going gets tough,
+what you should absolutely not do is retreat into your own job"
+(paraphrased) ... um, um.  Conceded, that I was expected to continue
+doing my old job <i>as well</i> as managing didn't really make it easy.
+
+<p> And so to the Danny O'Brien talk, which was the one that really
+struck a chord.  (He's given this talk before: if you <a href=
+"http://www.google.com/search?q=life+hacks" >google "life hacks"</a>
+you'll find about a zillion people have blogged one of its instances,
+probably all linked to each other as well, and most of it 
+utterly worthless.  Cory Doctorow has useful <a href=
+"http://www.craphound.com/lifehacksetcon04.txt"notes from
+ETCON</a>, though)
+
+<p>As usual with a talk about which lots of people enthuse, there are
+a bunch of probably-contradictory messages you can take home.  So
+instead of reporting what Danny actually said (if you weren't there,
+your local Iranian carpet weaver should easily be able to reconstruct
+it from the threads scattered across the aforesaid zillion blogs) I'm
+going to seize random comments and use them as ammunition to promote
+views close to my own heart: I refer of course to "habitable software".
+
+<p>The common thread with all of these allegedly productive people was
+that they had picked a flexible environment/platform (given that
+they're all famous on the interweb and therefore by definition
+involved with publishing their ideas on usually-unix-based boxen, it's
+no surprise that in 95% of cases this platform is the unix shell) and
+scripted it to do things that it might not even be the best tool for.
+Common example: instead of using a clicky graphical project management
+tool, manage your outstanding task list with a lightweight text editor
+and a file called "todo.txt".  
+
+<p>What this means if you want to write software for these people,
+then: <b>don't make it a platform</b> unless it's good enough to
+displace their existing platform (and you can probably assume it won't
+be any time soon: it needs to be significantly <i>better</i> to be
+worth the cost of learning/unlearning).
+
+<p>There's also a relevant argument in the "scripting vs programming"
+debate thing.  (many of) these people know how to write software, and
+indeed are famous for it.  But the private scripts they write to
+manage their lives are typically not the kinds of things you would
+hold up as a good style example: they're often 80% solutions slapped
+together to meet a need which possibly doesn't even exist any more.
+
+<p> And while we're here, and because he mentioned them at the start
+of the talk, I'm going to say a couple of words about CRC cards.  I'm
+not sure whether we were supposed to consider that small paper
+rectangles are also secrets of prolific alpha geeks or whether the
+connection was just to Kent Beck ("I'm an average programmer with very
+good habits") and hence the lead-in to the topic proper, but I'm just
+going to throw this idea in the air: maybe the friction imposed 
+by using inflexible/unsuitable tools is part of what <i>makes</i>
+these people productive in the areas that they need to be, where they
+might instead be adding drop shadows to their priority 1 items?
+<a href= "http://www.c2.com/cgi/wiki?PhysicalCuesInSoftwareDevelopment"
+>PhysicalCuesInSoftwareDevelopment</a> (from Ward's Wiki) has more on that
+theme.  Affordances, guys.
+
+<p>
+For entertainment, then, a sample of the scripts in my ~/bin and
+~/scripts directories - though perhaps my .emacs file would better
+reflect the spirit of the endeavour.
+
+<dl>
+<dt>attach-locally, attach-stargreen, attach-telent <dd>attachtty
+invocations for connecting to <a
+href="http://www.cliki.net/">detachtty</a> instances for important
+servers </dd>
+<dt>diffprep, diffcommit</dt> <dd>Written sometime during the
+dotcom boom that i missed, and in probably near-daily use since then.
+diffprep runs cvs diff and prepends a # to each line.  diffcommit
+reads this file, strips out the lines starting with #, and uses the
+remaining lines to form a commit message for each file that the diff
+touches.  Usage scenario: <tt>diffprep &gt; file</tt>; edit file to
+include a sensible commit message for each file, using the diff to
+remind yourself of what you actually changed; <tt>diffcommit &lt;file
+| sh -s</tt> 
+<dt>getnews <dd> set up a ssh tunnel to a news server I
+no longer use, and run fetchnews
+<dt>gpg-verify-email.pl</dt><dd>Written after a keysigning party(sic)
+a few months ago.  Takes a bunch of key ids, and mails the associated
+email addresses a form letter saying "someone with ID that associated
+themselves with the username on this key was in the pub last Wednesday
+asserting that the key was theirs.  If this was you, please reply so
+that I know the email address corresponds too".  Probably not an
+<i>awful</i> lot of use as it stands except for any future keysigning
+parties organised on Wednesdays in places called "the Lamb and Flag,
+Oxford".  Still, it did a job, and I can hack it for the next one in
+less time than it took to write.
+<dt>imap-metacircles, imap-zen</dt>
+<dd> wrapper scripts so that fetchmail can
+ collect mail via "ssh foo /usr/bin/imapd"
+<dt>proxy</dt><dd> evil kludge (in Perl, natch) to connect to a remote
+host:port through an HTTPS proxy that understands CONNECT proxying.
+Written several years ago, probably used twice.
+<dt>sndplay</dt> <dd> sox $*  -t ossdsp -c 2 /dev/dsp
+<dt>suspend</dt> <dd> script to kill audio-using applications then
+rmmod i810_audio and APM suspend.  Given that it's approaching four
+years since I hacked the i810_audio driver to suspend cleanly, that
+tells you something about how often i clean up around here
+<dt>t39-sync-numbers.pl</dt>
+<dd>crashes my computer, mostly.  It was going to back up my mobile
+phone, but usb blah blah linux blah pl2303 bla blah reverse engineered
+blah panic.  So, it doesn't.
+</dd>
+</dl>
+
+Oh, and this diary entry, like all the others, is brought to you by
+<tt>diarize</tt>; a shell alias for <tt>make -C $HOME/doc/telent sync
+$*</tt>.  I like Makefiles.
+
+

@@ -1,0 +1,43 @@
+title: Cliki (and this blog) was down for a couple of hours this morning
+author: Daniel Barlow
+date: Wed, 9 Mar 2005 15:47:34 +0000
+
+Cliki (and this blog) was down for a couple of hours this morning.
+It's up again now, and apparently has new CPU, motherboard and PSU.
+
+<p> All those years ago when writing the CLiki <a
+href="http://www.cliki.net/Privacy%20Statement" >Privacy
+Statement</a>, I failed to foresee a need to publish excerpts from
+server logs for the purpose of ranting about spammers.  So instead of
+spewing a bunch of grep output from one recent cliki spam, I'd better
+just tell you that 
+
+<ul>
+<li> He seems to be a human using an ordinary web browser, not a
+script.  This also holds for the other recent front page defacement
+that I checked.  And his IP address (which comes from "CNCGROUP
+Beijing province network") isn't on any more DNS blacklists than is
+usual, so no help there either.
+
+<li> His referer(sic) when he arrived was a google search for
+"qzzp.futurenet.com.cn".  When I tried this search it turned up an old
+version of some Cliki page which had been spammed.  Obviously, a
+NOFOLLOW robots tag isn't enough to stop pages from already-followed
+links continuing to appear in the index, and thus cliki continues to
+appear to be a good place to spam.  Even though <a
+href="http://ww.telent.net/diary/2004/10/#26.896">as discussed
+previously</a> it won't get you any googlejuice.
+
+</ul>
+
+<p>So it was easy enough to add NOINDEX to the old pages as well.  To make
+robots take notice, though, I managed to touch every file on the site,
+so the dates of previous revisions are a bit off (where 'a bit' is
+between one hour and five years).  But as of tomorrow evening
+<b>cvs.telent.net</b> goes back online (I hope), which should make it
+more convenient to hack on this, and in the process of adding diff
+support I think I'll have to revamp the way that change information is
+stored anyway, so keeping the dates of previous revisions in some
+place other than the file's mtime should not be a tough additional
+requirement.  
+

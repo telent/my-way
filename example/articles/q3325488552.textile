@@ -1,0 +1,6 @@
+title: I seem to have no network to cvs.telent.net
+author: Daniel Barlow
+date: Thu, 19 May 2005 11:49:12 +0000
+
+I seem to have no network to cvs.telent.net.  Dunno what's broken yet;
+more information as it becomes available.

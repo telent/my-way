@@ -1,0 +1,41 @@
+title: Did I mention that people are asking for good Lisp/Emacs integration
+author: Daniel Barlow
+date: Thu, 9 Oct 2003 5:7:3 +0000
+
+<p> Did I mention that people are asking for good Lisp/Emacs integration?
+This is why I'm looking at SLIME for the cirCLe CD; the options
+available seem to be ILISP, ELI or SLIME, and SLIME.  None of them
+actually work properly with right now, but the last has (a) real
+momentum behind it, (b) intentions to run on SBCL at some future date
+- unlike ELI, which will always be a Franz thing at heart, and (c) a
+refreshingly low amount of cruft.
+
+<p>And that's "work properly" which it doesn't, not "work at all",
+which it does.  After writing the <a href="#3.39754">following
+entry</a> I found a CVS root of Slime as it was ten days ago on Luke
+Gorrie's web site, so I spent a few hours hacking at it.  By means of
+some really rather ugly copy/paste programming, I have increased by
+about 30% the amount of duplicated code in SLIME (ugly but
+inescapable; the most likely outcome of any serious refactoring I
+could do right now would be unresolvable merge conflicts) and got
+something for which the basic functionality runs in SBCL.
+
+<pre>
+;;; Cursory testing has found that the following appear to work
+;;;
+;;; * Symbol completion.
+;;; * Evaluation of forms with C-M-x.
+;;; * Compilation of defuns with C-c C-c.
+;;; * File compilation with C-c C-k (but error parsing is broken)
+;;; * Disassembling the symbol at point with C-c M-d.
+;;; * Describing symbol at point with C-c C-d.
+;;; * Macroexpanding with C-c RET.
+;;;
+;;; Things that aren't done yet:
+;;;
+;;; * Cross-referencing.
+;;; * Apropos.
+;;; * Test suite has not been attempted yet
+;;; * Basic debugger functionality, jumping to frames is not implemented yet.
+;;; * Compiler warnings aren't currently sent to the Emacs stream 
+</pre>

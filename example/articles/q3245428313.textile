@@ -1,0 +1,8 @@
+title: McCLIM installation notes
+author: Daniel Barlow
+date: Mon, 4 Nov 2002 19:51:53 +0000
+
+<p>McCLIM installation notes
+
+ 
+

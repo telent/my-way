@@ -1,0 +1,9 @@
+title: I've just registered for the European Common Lisp Meeting in April: flights, hotel,
+author: Daniel Barlow
+date: Mon, 14 Feb 2005 22:57:16 +0000
+
+I've just registered for the <a href="http://weitz.de/lisp/meeting/"
+>European Common Lisp Meeting</a> in April: flights, hotel,
+conference, the works.  I'll be arriving on Friday so I can do the
+Amsterdam <a href="http://www.fridaynightskate.com/mainf.asp?LangID=2"
+>Friday Night Skate</a> first...

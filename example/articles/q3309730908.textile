@@ -1,0 +1,42 @@
+title: texinfo.lisp, albeit not in any particularly useful form yet
+author: Daniel Barlow
+date: Thu, 18 Nov 2004 1:41:48 +0000
+
+texinfo.lisp, albeit not in any particularly useful form yet.
+<pre>
+CL-USER> (read-info-file "/export/home/dan/src/sourceforge/cclan/asdf/asdf.texinfo")
+#&lt;END-OF-FILE {9D1AE91}>
+CL-USER> (describe (gethash "Error handling" *all-nodes*))
+#&lt;INFO-NODE {9CDD449}> is an instance of class #&lt;STANDARD-CLASS INFO-NODE>.
+The following slots have :INSTANCE allocation:
+ BODY    ((("?" "chapter")) "Error handling
+"
+          (("?" "findex")) "SYSTEM-DEFINITION-ERROR
+"
+          (("?" "findex")) "OPERATION-ERROR
+
+It is an error to define a system incorrectly: an implementation may
+detect this and signal a generalised instance of
+"
+          ((:CODE "SYSTEM-DEFINITION-ERROR")) ".
+
+Operations may go wrong (for example when source files contain
+errors).  These are signalled using generalised instances of
+"
+          ((:CODE "OPERATION-ERROR")) ".
+
+")
+ MENU    "unbound"
+ UP      "Top"
+ PREV    "The object model of asdf"
+ NEXT    "Compilation error and warning handling"
+ NAME    "Error handling"
+; No value
+</pre>
+
+Still have to do conditionals, macro definition and alias stuff, plus
+there's a ton of work left adding definitions for uninteresting
+commands, then I need to think of some way to get the data <i>out</i>
+into one or more useful formats.  Said formats will almost certainly
+include HTML (yes, I know about texi2html; no, it does not produce the
+kind of HTML that I want), and I may even do a CLIM backend too.

@@ -1,0 +1,29 @@
+title: Announcing the TRIVIAL-SOCKETS interface for undemanding network clients
+author: Daniel Barlow
+date: Sun, 24 Oct 2004 2:25:13 +0000
+
+Announcing the TRIVIAL-SOCKETS interface for undemanding network clients.
+
+<p> Having once already tried to define a flexible networking
+interface that would anticipate most of the weird stuff that people
+might want to do with an underlying BSD sockets interface, I'm now
+going to the other extreme: TRIVIAL-SOCKETS has one exported function,
+which takes a hostname and port to connect to and returns a stream.
+
+<pre>
+FOO> (with-open-stream (s (trivial-sockets:open-stream "www.google.com" 80))
+       (format s "HEAD / HTTP/1.0~%Host: www.google.com~%~%")
+       (force-output s) 
+       (read-line s))
+"HTTP/1.0 200 OK
+"
+</pre>
+
+OK, you get the idea.  Mostly unimplemented so far (it kind of works
+on SBCL, but not totally), but please see texinfo spec and so forth at
+<a href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/trivial-sockets/"
+>http://cvs.telent.net/cgi-bin/viewcvs.cgi/trivial-sockets/</a>.  It's
+never going to be sb-bsd-sockets, but we could still aspire to write a
+spec in English that's a bit tighter than the CLOCC PORT stuff.  And
+make it asdf-installable, of course.
+

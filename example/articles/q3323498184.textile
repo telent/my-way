@@ -1,0 +1,84 @@
+title: Some brief feedback on my weekend in Amsterdam
+author: Daniel Barlow
+date: Tue, 26 Apr 2005 10:56:24 +0000
+
+Some brief feedback on my weekend in Amsterdam.
+
+<ul>
+
+<li> The Friday Night Skate was cool.  Started slow, got faster, then
+a short sprint around a park somewhere, then got a little slower again
+as it returned to the road, but still quite a comfortable pace.
+Marshals were competent, and didn't get obviously lost - although I
+had absolutely no idea where I was at all, so they could possibly have
+been lost but covering it well.  And many of the road surfaces in
+Amsterdam (excepting the brick-paved roads) are absolutely gorgeous -
+but when skating between tramlines one does realise pretty quickly why
+the double-push was invented in Holland.  Met Marc Battyani and his
+wife Ann about five minutes after the skate started - they identified
+me by my ILC02 tshirt - so we skated together after that.  We didn't
+hang round much with the skaters afterwards as we went to meet up with
+some of the other conference attendees and eat Chinese instead.
+
+<li> Didn't do much of anything on Saturday.  Lie-in, coffee, visit
+Rijksmuseum - what part of it was actually open - then food, wander
+around in lovely warm sunshine (which continued throughout the
+weekend), back to hotel, sudden realisation that the organised dinner
+was at 1730 not 1930 as I'd thought, rushed out again.  Dinner.  Then
+to Robert Strandh's hotel to talk about Climacs (quote of the weekend
+- "I've been pronouncing that as `Cleemacs'" - Luke Gorrie) and McCLIM
+incremental redisplay.  Apparently it presently still suffers from
+redisplaying in larger increments than would ideally be the case.
+
+<li> Sunday was the actual meeting, pretty tightly-packed with talks
+and I was almost surprised to find that <i>all</i> of the talks were
+good.  Special mention for Luke's SLIME talk, simply because he'd
+written his own presentation software in elisp, and for Peter Seibel,
+who is a very entertaining speaker.  PGP fingerprint exchange happened
+between talks: I think I have now verified id and fingerprints of <a
+href="http://amsterdam-keys.txt">everyone who sent me their key
+beforehand</a> so if you're one of them and reading this, expect to be
+getting encrypted mail from me in the next few days as and when I get
+around to it.
+
+<li> Actually, I confess I was not paying 100% attention in
+demonstration of Lispworks' stepper during the first talk, because I
+was also hacking pthreads sbcl to see if I could make it run on x86 as
+well as x86-64.  I did, so look out for some interesting
+stability-reducing cvs committage soon.  I tend to think that
+single-stepping to find bugs is an admission of defeat - this is not a
+reflection on the value of a stepping tool so much as an admission
+that there are many past occasions I've been defeated in this way
+(usually with assembler not lisp, admittedly), and so having such
+tools demonstrated to me at length smarts a bit.
+
+<li> (Happily, Sunday was also the day that SBCL 0.9 was released.  We
+had intended it that way, but the actual release happened
+independently of anything done by anyone at the meeting, so this is a
+triumph of scheduling if nothing else)
+
+<li> Monday was just airports and shuttle buses and trains and stuff,
+and a renewed attempt to get useful suspend support on this laptop.  I
+<i>think</i> I have it working with Software Suspend 2 now, after
+doing some really quite ugly stuff to get all of usb and all of pcmcia
+and all of the atmel modules to be unloaded on suspend.  It sort of
+hangs dhcping eth0 on resume though (interruptable with C-c, but still
+ugly), which is sucky, but I have too little battery left to find out
+what's causing that.  Some discover/hotplug/ifplugd interaction,
+perhaps.
+
+</ul>
+
+In summary, then: 
+<ul>
+<li>Things I'm already using I still think are cool: sbcl, slime.
+
+<li>Things I know little or nothing about and now believe to be cool: Climacs,
+Practical Common Lisp.
+
+<li>Things which have no intrinsic coolness value but are nevertheless
+going to be required: weak references.
+
+<li>Other things I need to do soon: buy new wheels.
+
+</ul>

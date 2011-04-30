@@ -1,0 +1,14 @@
+title: Oh, yeah, and another thing
+author: Daniel Barlow
+date: Sun, 28 Sep 2003 3:30:34 +0000
+
+Oh, yeah, and another thing.  GC hooks are playing up on some
+platforms, including Linux 2.6.  So I installed it on my desktop
+yesterday (which is a rant for another time; the motherboard onboard
+audio is now painful to listen to) to have a look at.  Th\xce problem
+seems to be with hooks that cons.  Likely fix for for 0.8.4 is to
+remove the before-gc hooks altogether - they weren't that useful
+anyway - and move the after-gc hooks (which includes the code that
+runs finalizers for dead objects, so it's worth keeping) later, so
+that they don't run until the instance is in a more normal state
+(e.g. other threads are resumed, gc lock has been released, etc).

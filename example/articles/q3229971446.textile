@@ -1,0 +1,36 @@
+title: Well, that was an experience
+author: Daniel Barlow
+date: Thu, 9 May 2002 23:17:26 +0000
+
+
+<p> Well, that was an experience.  For the benefit of Google, to get
+XFree 4.1.0 running on a Debian GNU/Linux new-world Imac, I needed
+(1) not to use the kernel framebuffer support, because the kernel is
+determined to use the OpenFirmware console, which is apparently not
+much cop, (2) to configure for 1024x786 at 75Hz, because any other
+resolution results in a black screen (the power button goes orange, so
+I guess this is DPMS cutting in) with no explanation, and (3) that the 
+<tt>XkbModel</tt> should be <tt>macintosh_old</tt>, contrary to what
+the debconf thing says.
+
+<p>In the spirit of cargo cult configuration file hacking (and when has Xkb been
+anything else?) I reproduce the revelant sectionn here
+
+<pre>
+Section "InputDevice"
+        Identifier      "Generic Keyboard"
+        Driver          "keyboard"
+        Option          "CoreKeyboard"
+        Option          "XkbRules"      "xfree86"
+        Option          "XkbModel"      "macintosh_old"
+        Option          "XkbLayout"     "ma"
+        Option "XkbTypes"        "default"
+        Option   "XkbCompat"       "default"
+        Option   "XkbSymbols"      "macintosh/us"
+        Option   "XkbGeometry"     "macintosh"
+EndSection
+</pre>
+
+<p> I spent as long working this out as it used to take to calculate
+modelines back in the bad old X386 days.  Yay progress!
+

@@ -1,0 +1,8 @@
+title: Did I mention that cvs.telent.net is back up
+author: Daniel Barlow
+date: Thu, 8 Apr 2004 10:51:56 +0000
+
+Did I mention that <a href="http://cvs.telent.net/"
+ >cvs.telent.net</a> is back up?  Consider it mentioned.
+
+

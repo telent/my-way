@@ -1,0 +1,48 @@
+title: Random bits of post-LSM notes, many inconsequential
+author: Daniel Barlow
+date: Sat, 10 Jul 2004 23:39:30 +0000
+
+Random bits of post-LSM notes, many inconsequential.
+
+<ul>
+
+<li> The weather was alternately bright warm sunshine and torrential
+rain.  The alternation was on a period of two hours or so: at least,
+it was quite rare that the ground actually dried out
+
+<li> That notwithstanding, I think I've got at least the basics of
+T-stopping by dragging the right foot, and of 180 degree anticlockwise
+spins.  (Previously I've only been a ble to do left foot and/or
+clockwise, so it's nice to be moving back towards symmetry)
+
+<li> There is a brand-new tram system in Bordeaux which runs out as
+far as the University.  On <strike>a</strike> <i>the</i> good day, at
+least.  On all the other days, getting into town involved a bus
+replacement service for at least part of the journey.  Still,
+apparently it was only launched a week ago, so this is probably all
+just teething trouble.
+
+<li>The food was pretty excellent
+
+<li>Rough order of events :
+<br> Tuesday: formal presentations
+<br> Wednesday: de facto standards process discussion, and 
+debate about how to produce a CL Emacs
+<br> Thursday: lightning presentations
+<br> Friday: impromptu GPG keysigning session, creation and CVS upload
+of <a href="http://www.common-lisp.net/project/phemlock/" >Portable
+Hemlock</a> to common-lisp.net
+</li>
+</ul>
+
+I have some thoughts about Protocol-Oriented Programming (one of the
+topics touched on in the formal presentation on Tuesday) and Smalltalk
+(the other people in our track on Tuesday), which will wait for
+another diary entry.  There's also much more to say about the
+protostandards stuff, which is waiting on the others involved to reply
+to their email, and about lightning presentations, but Christophe
+Rhodes is collating that not me.
+
+<p>Oh, yeah.  And I have an (entirely untested) first cut at a
+BORDEAUX-MP implementation for SBCL, which will shortly be committed
+to CVS

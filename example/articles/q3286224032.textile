@@ -1,0 +1,17 @@
+title: More postgres, mostly
+author: Daniel Barlow
+date: Fri, 20 Feb 2004 0:0:32 +0000
+
+More postgres, mostly.  And more rollerblading: still looking for the
+optimal route between <a
+href="http://www.streetmap.co.uk/newmap.srf?x=527905&y=182089&z=1&sv=baker+street&st=6&tl=Baker+Street,+London,+NW1&searchp=newsearch.srf&mapp=newmap.srf"
+>Baker St</a> and <a
+href="http://www.streetmap.co.uk/newmap.srf?x=532250&y=182250&z=1&sv=532250,182250&st=4&ar=N&mapp=newmap.srf&searchp=newsearch.srf"
+>Old St</a>.  Distance is not the overriding concern: more important
+is good surface and the minimum number of (a) junctions at which I
+have to give way, (b) ambulant obstacles.
+
+<p>Is this an appropriate place to mention that I'm due to move to
+London in about a month from now, and therefore (should be) looking
+for somewhere to live?  
+

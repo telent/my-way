@@ -1,0 +1,20 @@
+title: Announcing BORDEAUX-MP, a proposed standard interface for MP in Lisp
+author: Daniel Barlow
+date: Fri, 9 Jul 2004 16:53:1 +0000
+
+<p>Announcing <a
+href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/bordeaux-mp/Specification?view=markup"
+>BORDEAUX-MP</a>, a proposed standard interface for MP in Lisp.  (No,
+I haven't ever <a
+href="http://groups.google.com/groups?selm=87addr2l4q.fsf_-_%40noetbook.telent.net"
+>tried this before</a>).  Discussion on the new 
+<a href="http://common-lisp.net/mailman/listinfo/threads-standard-discuss"
+>threads-standard-discuss</a> list.
+
+<p>Which list is one of a matching set of three; the other two being
+for discussion of the MOP and for extensible (eg Grey, simple-)
+streams.  There's not been a lot of blogging done from LSM that I can
+see (at least, not in our own private little Lisp world) and I'm not
+going to start now (I will later), but Christophe Rhodes is compiling
+"proceedings" of yesterday's lightning talks, so please look out for
+those. 

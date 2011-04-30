@@ -1,0 +1,7 @@
+title: ``I've now bound my aardvark to the result of this select''
+author: Daniel Barlow
+date: Mon, 28 Oct 2002 1:22:29 +0000
+
+``I've now bound my aardvark to the result of this select''
+
+<p> -- Nick Levine on CommonSQL

@@ -1,0 +1,16 @@
+title: Corner cases
+author: Daniel Barlow
+date: Mon, 07 Mar 2011 14:25:12 -0000
+
+!F>5506339544!
+As you see in the image, right, my notebook recently took a dive onto a laminate floor and ended up a trifle dog-eared.  Amazingly, the hardware crash didn't provoke a software crash, but not wishing to take any chances with running it while bending the motherboard, I shut it down myself.  Then I dismantled it and dismantled its "predecessor":http://ww.telent.net/diary/Meet_the_new_box__same_as_the_old_box_ , and swapped parts about between them to create "one combined functional machine":http://yfrog.com/h2rd6yfj .  In the interests of extending battery life I left the fingerprint reader disconnected and removed the original HDD, leaving only the second (and faster) 2.5" disk in the optical media bay.
+
+The new old laptop (henceforth to be known as Igor) worked for a couple of days until I left it running on battery overnight, and when I reapplied power in the morning got a rather nasty-looking "Non-system disk or disk error" message.  The usual tedious mucking about with rescue images on USB keys revealed that the disk was still there and fully working, but the BIOS was determined not to see it until I remembered: PATA has two disks on the same channel.  Sure enough, after removing the 'slave' jumper on the disk drive I suddenly had @hda@ where previously I had a hole where @hdb@ used to be. 
+
+Getting back to a state where it would actually *boot*, though, that was the trick.  Something in Debian's initramfs generation does some kind of magic to detect that the root fs is stored in a logical volume of a volume group of an LVM physical volume on a LUKS device-mapper layer over the physical device, but something in the Debian installer's rescue mode wouldn't let me run anything grub-related (it tried: it failed with unhelpful error messages) after mounting the disk on @/target@, and nothing in the Debian installer would let me reinstall @/@ without also clobbering @/home@, which I wasn't really interested in restoring from two-day-old backup.  The reason for this rant, though, is not to vent (I did that on Twitter last week) but to document somewhere that if you're booting off a disk that has changed its name or address since this magic stuff happened, you can override it with appropriate kernel command line parameters: in my case it was
+<pre>
+cryptopts=source=/dev/hda2,target=eamcs,lvm=eamcs-root
+</pre>
+where @source@ is the raw disk, @target@ is the name of the mapping that the DM encryption code will set up for the decrypted PV (if you don't understand that clause then take heart because I'm not sure I do either, but if you set things up the debian way it's probably your hostname), and @lvm@ is the appropriate LV name inside that PV.
+
+Then it booted!  There were some interesting warnings and it asked me for my passphrase an extra few times for luck, and then I edited @/etc/crypttab@ and @/etc/fstab@ and purged and reinstalled the grub-pc and initramfs-tools packages.  Which may or may not have been strictly necessary but by that stage seemed prudent.

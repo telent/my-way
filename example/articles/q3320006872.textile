@@ -1,0 +1,17 @@
+title: I thought it would be a simple hack when I started
+author: Daniel Barlow
+date: Thu, 17 Mar 2005 0:7:52 +0000
+
+I thought it would be a simple hack when I started.  It turns out it's
+one of those jobs that if done properly will grow another dependency
+every time you look at it.
+
+<P>In principle I am getting a new version of CLiki out of the door
+that has John Wiseman's <A
+href="http://lemonodor.com/archives/001079.html" >cliki diff</a> stuff
+in it.  In the process I decide to upgrade to the latest
+sb-unicode-enabled SBCL versions, and am having <a
+href="http://ppewww.ph.gla.ac.uk/~flavell/charset/form-i18n.html"
+>immense fun with character sets</a>.  Gah!
+
+

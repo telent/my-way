@@ -1,0 +1,46 @@
+title: That was the shortest three weeeks ever
+author: Daniel Barlow
+date: Wed, 15 May 2002 9:43:36 +0000
+
+
+<p> That was the shortest three weeeks ever.  The iMic arrived
+yesterday and is <a href="pictures/imic.jpg">even smaller</a> than I
+was expecting it to be.
+
+<p>Random observations: 
+<ol>
+<li> It <i>does</i> work in full-duplex mode.  This is good, because
+it would be useless for me otherwise
+
+<li> Plugging it in spewed vast amounts of autodetection and debugging
+messages into syslog, then created /dev/dsp1 and a pair of mixers.  gmix
+can find the mixers
+
+<li> Using read() and write(), latency is inaudibly little provided I
+set the fragment size down to 256 bytes or so.  I may also have needed
+to recompile drivers/usb/audio.c without <tt>AUDIO_DEBUG</tt> to get
+this: I did that at some point anyway, but can't remember exactly
+what caused what any more.
+
+<li> I messed around with mmap() for while, but trying to get it
+working without burning out my guitar amp by sending it evil nasty
+sounding random digital data is more effort than I suspect it's really
+worth.  This is a USB device after all, it's not <i>really</i> DMAable.
+
+<li> Simple time-domain effects (tremelo, delay etc) are dead simple.
+Silly twiddly stuff through a multitap delay sounds very Brian May-esque.
+
+<li> SBCL is going about fast enough to keep up.  I don't use
+read-sequence and write-sequence: they want to call select() at times
+that the audio device isn't expecting.  Instead, I use
+array-data-address (from <a href="/ckiki/db-sockets">db-sockets</a> or
+the CMUCL manual) to get the actual address to write data into, then
+call unix-read and unix-write directly
+
+<li> Some frequency domain effects next, I think
+
+</li>
+</ol>
+
+<p>Yes, that is an Irn-bru can.  <i>I</i> like the stuff, OK?
+

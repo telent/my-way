@@ -1,0 +1,30 @@
+title: So, progress on SBCL PPC
+author: Daniel Barlow
+date: Sun, 16 Dec 2001 0:22:52 +0000
+
+
+<p> So, progress on SBCL PPC.  Turns out to be an assembler routine
+which was jumping into the middle of EQL instead of starting at the
+beginning. EQL expects to use 16 bytes of number stack; by joining
+half way through we were omitting to allocate it, but freeing it as
+normal.
+
+<p> Why we were jumping into the middle of EQL, I don't know.  The
+assembler routines were calculating their offsets in a way that would
+have been correct if static-function-offset did what its docstring
+says it should have done.  However it doesn't, and various other stuff
+(basically, the generation of cold-sbcl.map) seems to depend on it
+working as implemented
+<pre>
+
+-  (inst j code-tn
+-       (- (* function-code-offset word-bytes) function-pointer-type))
++  (inst j code-tn 0)
++;;     (- (* function-code-offset word-bytes) function-pointer-type))
+</pre>
+
+<p>Now we have some problem with EQUALP instead, which will probably
+turn out to be related.  From my cvs log entry: "I'm always reluctant
+to claim that code found in cmucl could not possibly have worked.
+Still not sure how this did, though. "
+

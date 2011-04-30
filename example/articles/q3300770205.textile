@@ -1,0 +1,25 @@
+title: Forget what I said about inline alloc
+author: Daniel Barlow
+date: Fri, 6 Aug 2004 9:36:45 +0000
+
+Forget what I said about inline alloc.  On unthreaded builds, or on a
+P4, it makes things <i>slower</i>, and we don't yet know why.  Inline
+allocation has been disabled for the moment until someone (preferably
+with a better grasp of assembly-level optimization than me) looks at
+it.
+
+<p>My keyboard skills are even worse than usual, lately.  After
+noticing twinges in my left wrist when chording sequences like C-t or
+C-w (which, yes, I do entirely left handed, naughty me, in my defence
+I can say only that my laptop has no control key on the right) I
+remapped the Caps lock key as Control and turned the Control key into
+Super.  Well, that was the intention: in practice it seems a bit
+trickier, at least 
+<a href="http://www.tjic.com/computers/x11_emacs_modifier_keys.php"
+>as far as GNU Emacs is concerned</a>.  But I will probably have a
+working Super key again just as soon as I restart X, so I guess that's
+one silver lining to keep in mind next time the computer crashes.
+Anyway, point being: I'd forgotten how many control sequences (C-a,
+C-e, C-k, C-t) are pretty much muscle memory in my everyday typing,
+and now they don't work any more.  Slowly getting used to it.
+

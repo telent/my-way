@@ -1,0 +1,26 @@
+title: This is probably my last post from Oxford
+author: Daniel Barlow
+date: Thu, 18 Mar 2004 20:51:21 +0000
+
+This is probably my last post from Oxford.  At least, last from this
+house in Oxford: I'm sure I'll be visiting Oxford again in the near
+future, and someday I might even want to move back, but this
+particular episode is over.  
+
+<p>So far I have 
+<ul>
+<li>lots of stuff in boxes, in a van
+<li>lots of stuff in boxes, to go in the van
+<li>some amount of other stuff, to go in boxes, to go in the van
+<li>lost (probably packed) the Allen key that I need to take the bookcase apart
+<li>still not done most of the cleaning and vacuuming that I had
+planned to do about six hours ago
+</ul>
+
+All things considered, really I should stop reading mail, turn the
+remaining computers off, and get on with it.
+
+<p>A moderately long post about Havoc's
+Linux-desktop-should-standardise-on-java document may follow (I
+disagree, which should come as no surprise to regular readers).  I've
+had time to think about it but no time to write yet.

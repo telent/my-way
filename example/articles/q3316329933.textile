@@ -1,0 +1,39 @@
+title: Hot property
+author: Daniel Barlow
+date: Wed, 2 Feb 2005 10:45:33 +0000
+
+Hot property
+
+<pre>
+From: Daniel Barlow &lt;dan@telent.net>
+Subject: [OxLUG] GPG key revocation
+
+For anyone who'd signed my GPG key, please be aware that my laptop
+was stolen at the weekend, so don't trust it any more.  The revocation
+cert below has been sent to the keyservers.
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.2.5 (GNU/Linux)  
+Comment: A revocation certificate should follow
+
+iHAEIBECADAFAkIAkncpHQJsYXB0b3AgY29udGFpbmluZyBzZWNyZXQga2V5IHdh
+cyBzdG9sZW4ACgkQHDK5ZnWQiRP18QCfZNMnZyOzdKon3mRKjt6EBn8WpwEAniE/
+9qsy51ZzLlHbFyKellFpMas1
+=U0GC
+-----END PGP PUBLIC KEY BLOCK-----
+
+For information, I claim that my new key is
+
+:; gpg --fingerprint 1297D4B5    
+gpg: NOTE: old default options file `/home/dan/.gnupg/options' ignored
+pub  1024D/1297D4B5 2005-02-02 Daniel Barlow &lt;dan@telent.net>
+     Key fingerprint = 13D7 02AD 8665 27E0 8F71  5326 776F D7C0 1297 D4B5
+sub  2048g/DE0A0FD9 2005-02-02 [expires: 2010-02-01]
+
+but of course I don't expect you to believe that without the whole
+face-to-face authentication hassle, so ...
+[...]
+</pre>
+
+If you see me, feel free to ask for a copy of my fingerprint
+

@@ -1,0 +1,26 @@
+title: More PPC, la la la
+author: Daniel Barlow
+date: Thu, 17 Jan 2002 0:30:14 +0000
+
+<p> More PPC, la la la.   
+<ol>
+<li> the make-closure vop wasn't filling in the header word correctly
+
+<li> anonymous call was jumping to an address based on the closure not
+the function (makes a difference if it really is a closure)
+
+<li> set-fdefn-function was storing the function instead of
+function+offset in the raw-addr slot
+
+<li> lisp-jump still looks odd even if it appears to be working.
+</li>
+</ol>
+
+<p>Fixes 1 and 2 cured yesterday's problem; I'm hoping that fix 3
+should fix the next bug to come along if I rebuild it cleanly, but
+I've already tried a simple make-host-2 with no success, so I'm not
+entirely expecting it will.
+
+<p> Also driving lesson, but but more about that tomorrow when I've
+taken the test.
+

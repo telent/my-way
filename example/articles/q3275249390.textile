@@ -1,0 +1,23 @@
+title: We have SLIME
+author: Daniel Barlow
+date: Thu, 16 Oct 2003 0:29:50 +0000
+
+We have <a href="http://www.common-lisp.net/project/slime/">SLIME
+CVS</a> again, now at <a href="http://www.common-lisp.net/"
+>common-lisp.net</a>
+
+<p>Sourceforge also finally managed to recreate the project, two
+minutes after Luke sent them the support request saying "we don't need
+this any more, we've taken it elsewhere".
+
+<blockquote>
+As you have requested the removal of your project, your project has
+now been set aside in a queue to be purged of data. This purge cycle
+typically occurs every two to three months.  In the mean time, CVS
+data, project web content, mailing lists, file releases and cron jobs
+related to your project will remain intact
+</blockquote>
+
+<p>Of course, the project having been recreated empty, there isn't a
+lot of "CVS data, project web content, mailing lists, file releases
+and cron jobs" there in the first place.

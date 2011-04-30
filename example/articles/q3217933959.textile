@@ -1,0 +1,51 @@
+title: The Today programe reported this morning that "scientists" have found -
+author: Daniel Barlow
+date: Fri, 21 Dec 2001 14:32:39 +0000
+
+
+<p> The Today programe reported this morning that "scientists" have found -
+or possibly just invented, I'm not sure - SSSAD, or Sub-Syndromic
+Seasonal Affective Disorder.  Which is to say, there is now a label
+for people who feel a bit low in winter but not low enough to actually
+reasonably claim there's something <i>wrong</i> with them - in which
+case they would <i>actually</i> (be|have) SAD.  Great news!
+
+<p>It was an incentive to get out of bed, anyway.  That and the
+prospect of Desert Island Discs
+
+<p> Saw LoTR on Wednesday - didn't everyone?  I've only read the book
+once, and that was a couple of years ago, so I can't comment on the 
+fidelity of the film.  I will say: <b>pro:</b> they left out the
+poetry; <b>con:</b> some of the falling masonry in Moria landed in
+completely implausible ways - it acted like it was made from
+polystyrene foam.  The rest of it - well, go and see it yourself and
+make your own mind up.  <i>I</i> enjoyed it.
+
+<p> The problem - or indeed, the opportunity - with buying CDs for
+Christmas is that I find other CDs that I want.  So, I seem to have
+ended up with another Billy Bragg (Don't Try This At Home) and simian
+(chemistry is what we are).
+
+<p> SBCL hacking is going to take a hiatus over Christmas.  Presently
+I still have exactly the same problems as I had on Wednesday, but I'm
+closer to finding out what causes the DEFINE-STORAGE-BASE one: it
+attempts to call a structure slot accessor out-of-line at that point.
+These are implemented as closures over the structure instance, and
+there appears to be something wrong with our closure calling strategy.
+The magic 'jump to a Function object' trick depends in part on the
+second word in a Function being a relative branch to the actual code
+(an offset of #x18 bytes to skip the header) - which is the case for
+all normal functions but seems not to be for closures; instead they
+have a relative branch with offset 0.  So, loop: see loop.
+
+
+<blockquote>
+<i>
+We're living in a North Sea Bubble<br>
+We're trying to spend our way out of trouble</i>
+
+<p><I>You keep buying these things but you don't need them<br>
+But as long as you're comfortable it feels like freedom</i>
+</p></blockquote>
+
+

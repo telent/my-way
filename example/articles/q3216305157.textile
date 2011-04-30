@@ -1,0 +1,13 @@
+title: FTX13 November issue is due out tomorrow
+author: Daniel Barlow
+date: Sun, 2 Dec 2001 18:5:57 +0000
+
+
+<p> FTX13 November issue is due out tomorrow.  You can see the
+preview now at <a
+href="http://ww.telent.net/lisp/free-the-x3j-thirteen/2001.11.html" >
+http://ww.telent.net/lisp/free-the-x3j-thirteen/2001.11.html</a> (not
+at all an easily guessable URL, no).  To be honest, it's looking a bit
+short if anything.  I'm sure something else must have happened this
+month...
+

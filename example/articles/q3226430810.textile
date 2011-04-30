@@ -1,0 +1,18 @@
+title: Hmm
+author: Daniel Barlow
+date: Fri, 29 Mar 2002 22:46:50 +0000
+
+
+<p> Hmm.  Bits of it work, too.  We can create a new process, switch
+to it, run something, and switch back.  Debugging it is a bind,
+though: the debugger depends for corect operation on many of the bits
+we're tampering with.
+
+<p> After a comment on IRC, I found Edsger Dijkstra's <a href="
+http://www.cs.virginia.edu/~evans/cs655/readings/ewd498.html" >How do
+we tell truths that might hurt</a>.
+<blockquote>
+The use of COBOL cripples the mind; its teaching should, therefore, be regarded as a criminal offence.
+</blockquote>
+
+

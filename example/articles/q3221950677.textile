@@ -1,0 +1,60 @@
+title: Completely b0rked, yup
+author: Daniel Barlow
+date: Wed, 6 Feb 2002 2:17:57 +0000
+
+
+<p> Completely b0rked, yup.  It's using the #defines for IEEE
+rounding/trap/exception settings, but attempting to set the hardware
+fpcr with them directly instead of using ieee_set_fp_control() and 
+friends.  Not surprisingly, this doesn't work.  Nor does it work in
+CMUCL for Linux/Alpha (at least, on my computer).  I'm at a loss to
+see how it could have worked on OSF1^WDigital Unix^W^WTru64 either,
+but I think we just trust that it did.
+
+<p> The man at the guitar shop phoned yesterday, so I went round to
+visit today.  It looks like <a
+href="pictures/guitar-all.jpg" >this</a>; up close, bits of it look
+like <a href="pictures/guitar-body.jpg">this</a>, <a
+href="pictures/guitar-pickups.jpg" >this</a>, and <a
+href="pictures/guitar-headstock.jpg" >this</a>.  Now all I have to do is
+learn to play it.  Easy.
+
+<p> <a name="dot-net">OK,</a> so suddenly everybody has an opinion on
+.NET; it seems like I may as well give you mine too. Here goes
+
+<ul>
+<li> Copying an MS API gives me the creeps.  It feels like Open Source
+is playing perpetual catchup with Redmond's Moving Goalposts, and I'm
+not totally convinced that this time the target is firmly planted.
+But I don't have any actual evidence that it won't be, so perhaps I
+had better Just Get Over It.
+
+<li> The CLR is a nice virtual machine, if for some reason you need a
+virtual machine.  Certainly beats the JVM (not, I grant you, that
+that's very hard).  Most of the missing stuff in, say, CL
+(multimethods, a proper numeric tower, symbols, keyword arguments,
+etc) can be implemented on top of it
+
+<li> The problem is that the CLR is also supposed to be a common
+interface language.  If I'm programming in some putative Common Lisp
+.NET, any of my interfaces which use multimethods, arbitrary-sized
+numbers, symbols, or flexible argument list processing are not going
+to be available (or at least, meaningful) to users of other
+.NET-enabled languages.  So, I can't use many of the natural idioms of
+my language in anything which is going to be exported.  I'm going to
+take a guess that users of other "esoteric" (I say "high level")
+languages are in a similar situation; any general-use libraries in
+.NET are going to be either mostly written in C#, or mostly written 
+in some arbitrary C#-like subset of whatever language they are in.
+
+<li>I don't actually have a solution to this.  I'm not sure there is
+one; I think it's a very hard problem.  This is why it annoys me to
+read claims that Microsoft have found it.
+</li>
+</ul>
+
+<p>The Deblog seems to be <a href="http://www.osdi.org/">offline</a>,
+so I replaced it with <a href="http://www.lemonodor.com/"
+>lemonodor</a> - which I've been meaning to link to for a while, but 
+was looking for another word to add to the first sentence.
+

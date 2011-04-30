@@ -1,0 +1,28 @@
+title: Meet the new box (same as the old box)
+author: Daniel Barlow
+date: Wed, 02 Sep 2009 16:20:57 +0100
+
+My two-year-old Compaq NC2400 laptop came to an untimely end last month, as a result of being dunked in a rucksack with a pool of GT85 (long story).  The screen developed slightly psychedelic oil bubbles which moved slowly around, the disk stopped working (or at least, stopped booting), and I really didn't fancy the task of stripping it down to rinse out all the electronics and still not know for definite that I could resuscitate it.
+
+Ypou would think, wouldn't you, that after two years there'd be something better available at around the same price point (~ £600)?  No.  I took a long look at netbooks, which are all variously too small (1024x600 pixels?  Don't be daft), too slow (Atom CPUs were never really the performance demon, even compared to my elderly U2500), and/or fail of VT (Atom again) and decided that the best thing to do was buy exactly the same computer again.  Which I did, from Ebay, for £170
+
+I still felt the need to do something to make it seem like an upgrade, though.  As reviewers mostly seemed to agree that the bottleneck in the NC2400 was the 1.8" disk, I added a new 2.5" disk in the optical bay - never really used the DVD anyway - and migrated everything to it.  
+
+To do this you will need an optical bay caddy, such as the ones from "Newmode US":http://www.newmodeus.com whose praises I will gladly sing.  After having ordered the wrong caddy for my machine (in part due to an arguably misleading web page on their site, now corrected) I emailed them to explain and they sent out the correct one for the $8 price difference, without asking for the old one back or for the international postage to be paid again.  This is service far in excess of what I was expecting.
+
+A nice fast 2.5" pata disk, like the "Samsung HM160HC":http://www.amazon.co.uk/Samsung-Spinpoint-160GB-HM160HC-Laptop/dp/B002ESLJ8S/ref=wl_it_dp_o?ie=UTF8&coliid=I263UB25ZM8IY8&colid=327F2EC4QN8B9 also helps, that being the point of the exercise
+
+The hardware assembly is fairly straightforward, when you have the right sized caddy.  Watch out for setting the jumper on the drive before installing it: it shares an IDE channel with the original disk, so needs to be jumpered to "slave".
+
+The software installation obviously varies according to what you previously had.  When I put Debian on this machine it gave me an encrypted disk with LVM on top of it, so http://www.debian-administration.org/article/How_To_Migrate_to_a_full_encrypted_LVM_system was the key to working out what it had done and how.
+
+The result according to hdparm:
+<pre>
+ /dev/hda:
+ Timing buffered disk reads:   64 MB in  3.06 seconds =  20.91 MB/sec
+ 
+ /dev/hdb:
+ Timing buffered disk reads:  184 MB in  3.01 seconds =  61.15 MB/sec
+</pre>
+The result according to my subjective experience: far faster and less laggy.  Power consumption does for some reason seem to have jumped from 10W to 13W with concomitant decrease in battery life but I strongly suspect "that's unrelated":https://bugs.launchpad.net/ubuntu/+source/linux/+bug/373245
+

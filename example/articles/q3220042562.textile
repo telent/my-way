@@ -1,0 +1,17 @@
+title: A whole day of rebuilding bits of SBCL PPC with not much clear
+author: Daniel Barlow
+date: Tue, 15 Jan 2002 0:16:2 +0000
+
+
+<p> A whole day of rebuilding bits of SBCL PPC with not much clear
+idea of what's going wrong, except that it's probably something to do
+with the combination of MAP, anonymous lambdas, and APPLY.  It all 
+works fine until I want the closure to modify the state it's closed
+over, but that seems to affect the way in which the closure is
+compiled (which is fair enough), causing it to not work at all (which isn't).
+
+<p> Later: well, in some cases it works fine even when one tries to mutate
+the closed-over state.
+
+<p> Rats.
+

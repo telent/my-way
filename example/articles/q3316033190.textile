@@ -1,0 +1,46 @@
+title: I'm hacking threads for SBCL AMD64
+author: Daniel Barlow
+date: Sun, 30 Jan 2005 0:19:50 +0000
+
+I'm hacking threads for SBCL AMD64.  I've only just started on it, but
+there a couple of things I think I've decided on:
+
+<ul>
+<li> The AMD64 sort of has segment registers insofar as <tt>%fs</tt>
+and <tt>%gs</tt> still exist.  However, glibc is using <tt>%fs</tt>
+for its tls, and <tt>%gs</tt> is reportedly slower because the kernel
+uses it for something.  So, as we have some GPRs these days, let's use
+one of them as base address for our thread data (specials &amp;c)
+
+<li> The original decision to use clone() instead of pthreads was
+largely made on not on any objection to the pthreads interfaces, but
+more on the basis that LinuxThreads (the then-current implementation
+of same) is/was pretty bloody awful.  We no longer have to care about
+that, mercifully: NPTL is supposed to be actually quite good.  So,
+let's see if we can use standard(ish) interfaces where appropriate.
+
+</ul>
+
+Of course, there's still a big gap between "uses some pthreads
+interfaces" and "runs everywhere that pthreads does".  Purists will
+point out that the <tt>pthread_t</tt> may be a non-integral type
+(e.g. a structure) and we shouldn't be comparing them with each other;
+I will respond by pointing out that we're still using POSIX RT
+signals, and (at least for the moment, until I can work out whether
+the pthreads locks are adequate) futexes.  Which probably ties it down
+more effectively portability-wise than any weird architecture that
+uses a struct for pthread_t.
+
+<p> So far after an evening's hacking it compiles host-1 and target-1,
+then bails out very early in host-2 as I still haven't done any of
+the lisp stuff: need VOPs for <tt>set</tt>, <tt>bind</tt>, <tt>unbind</tt>,
+<tt>symbol-value</tt> etc.
+
+<p>Oh, before I forget: if you are running a highly loaded site on
+Araneida with a mod_proxy in front of it, 
+<pre>
+ProxyIOBufferSize 131072
+</pre>
+(where 131072 comfortably exceeds the size of your largest likely
+response) seems to make a quite impressive difference to its
+speed/stability.

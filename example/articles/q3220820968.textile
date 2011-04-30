@@ -1,0 +1,14 @@
+title: No it doesn't
+author: Daniel Barlow
+date: Thu, 24 Jan 2002 0:29:28 +0000
+
+<p> No it doesn't!  No it doesn't!
+
+<p> Assembly routines don't have their own code vectors, so we still
+have the callers code vector on entry to gc, so we can calculate the
+new lr perfectly easily as an offset from it just like we do for PC
+when PC is in fromspace.  <i>Easy</i>
+
+<p>And it was.  But now we blow up building PCL, trying to make a TN
+in an infeasibly high-numbered storage class. cvs-commit-and-bed-time
+

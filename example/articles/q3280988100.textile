@@ -1,0 +1,115 @@
+title: Today I am looking for a bug in allocation that I suspect I introduced
+author: Daniel Barlow
+date: Sun, 21 Dec 2003 9:35:0 +0000
+
+<p>Today I am looking for a bug in allocation that I suspect I introduced
+into SBCL about a year ago.
+
+<p>SBCL inherits from CMUCL a fairly nontraditional memory management
+scheme: at startup it mmap()s several large chunks of memory at fixed
+addresses, then doles out parcels of the contents when Lisp does
+things that require memory.  The three large chunks involved are 
+
+<p><b>static space</b>: this contains some objects that must be at
+known addresses for reasonably efficient code generation.  For
+example, comparisons against <b>nil</b> and <b>t</b> occur quite a
+lot, so we put these in known places at the start of static space.
+There are also a number of objects that the C runtime needs to be able
+to find, like <b>sb!kernel::internal-error</b>: it's simplest to chuck
+these in static space too, and when wee generate the initial core file
+we can also write out a header file for C describing the addresses
+(see src/runtime/genesis/constants.h).  The initial static objects
+vary by backend, and the list can be found at the end of
+compiler/target/parms.lisp
+
+<p><b>read-only space</b>: this contains a number of functions and
+bits of functions assembled from src/assembly/target.  These are
+mostly to help with non-local control transfers (stuff like CATCH and
+THROW) and for generic arithmetic.
+
+<p><b>dynamic space</b>: everything else.  Ordinary allocation
+requests are served from dynamic space.
+
+<h2>PURIFY</h2>
+
+<p>Once upon a time (and in fact, right up to the present day on non-x86
+ports) the garbage collector was a pretty simple Cheney collector with
+two semispaces (dynamic space 0 and dynamic space 1, in fact).
+Allocation happened in one of them: GC copied all live objects from it
+into the other.  Given that the standard core (containing the library
+routines and compiler and so on) in SBCL is around 20Mb and unlikely
+ever to become unreferenced, this was 20Mb of copying on each collection.
+
+<p>The obvious fix, then was to accept that this data would remain
+live indefinitely, and move it all somewhere that it would be safe
+from GC.  This is what <b>purify</b> does: it's basically the same as
+GC, but instead of copying into the other dynamic space, it copies
+each object into whichever of read-only or static space seems
+appropriate - read-only if it knows that the object will never be
+modified (e.g.  the strings for symbol names), static otherwise.
+(There are a couple of other differences: purify removes the trace
+table offsets and fixups list from code objects, because if they're
+never going to be mofved again, they'll never need fixing up again.)
+Once this is done, the dynamic space is basically empty and a fresh
+core image can be dumped for future runs.
+
+<h2>Generational GC</h2>
+
+<p>The arrival of the "gencgc" generational GC mostly didn't affect
+any of this, but it does change the expectations of users.  Once upon
+a time, Lisp users were trained to believe that every CONS is sacred
+("if a CONS is wasted/GC makes you late"), but given a slightly less
+dumb GC - as has become more usual in the last, say, twenty years (or
+12 months if you're a Java programer) - there shouldn't be quite the
+same need for all the resourcing and object reuse that hackers of yore
+were accustomed to.
+
+<p>Generational GC is based on the premise that most objects die very
+quickly after they're created, and any object that survives past
+infancy is probably going to live for a long time.  So we should be
+able to save much time at a cost of not much space by collecting the
+new objects often, and the old objects less often.  
+
+<p>First we have to be able to identify the new objects - there might
+be references to them from anywhere in allocated memory.  We use a
+write barrier to limit the search space: with appropriate use of
+mprotect() and a SIGSEGV handler, we arrange matters such that writes
+to old objects are trapped and noted.  When it comes time to GC, we
+can ignore the pages that have not been written to since the last GC,
+because they can't contain any references to objects created since the
+last GC.
+
+<p>Copying the surviving objects is a function of the number (and
+size) of objects that need it - and has nothing (to a first
+approximation, anyway) to do with the number of objects that
+<i>don't</i> need it.  So, generating short-lived garbage should be
+essentially free.
+
+<p>Makes sense?
+
+<h2>Diversion ends</h2>
+
+<p>So why this digression into principles of GC?  What's the catch?
+The catch is that in SBCL this is not the case.  The write barrier only
+applies to dynamic space, and we have to do a full scan over the static
+space (about 5Mb on this machine) each time.  
+
+<p>The obvious fix would be to add a write barrier to static space.
+The more elegant fix, though, would be to not put 5Mb of stuff in
+there in the first place.  Remember that purify exists so that the
+Cheney GC doesn't copy the entire compiler/library backwards and
+forwards on each GC, but gencgc is not going to do this anyway.  A
+full GC happens only very rarely - in fact we can prod the gencgc
+slightly to ensure that it doesn't happen at all unless specifically
+requested.  There are six generations: instead of purifying we could
+tenure the library code into generation 5 and then just use 0 thru 4
+thereafter.
+
+<p>In outline this is as simple as it sounds: just change some numbers
+around.  Testing so far, though, reveals that we tenure about 40Mb of
+stuff (instead of the 20Mb that PURIFY leaves us with) and that we do
+it with some fairly incredible wastage.
+
+
+
+

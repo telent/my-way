@@ -1,0 +1,18 @@
+title: Using a public routed network on a Vigor 2700
+author: Daniel Barlow
+date: Wed, 05 May 2010 15:57:31 +0100
+
+If you have a tech-friendly ISP (like "mine":http://www.zen.co.uk/ ) your DSL service might not only have a static IP address (one that doesn't change each time you reconnect) but several of them.  In my case, 8 (five usable).
+
+If you have a Draytek Vigor router, you can configure it to know about these using the "2nd subnet support":http://www.draytek.co.uk/support/kb_vigor_2ndsubnet.html - this is what I did before I moved, with the 2600 I had at the time
+
+!F>4581256259!
+
+If you have the specific Draytek Vigor 2700 model that I have (and I don't know how wide a problem this is) you may attempt to follow these instructions but find that the configuration options for second subnet are missing. The option for DHCP relay agent is missing too.  I tried a bunch of stuff including factory reset, firmware upgrade, and "phone a friend" to resolve this before eventually grasping the nettle and fiddling with firebug and HTML "view source"
+
+The situation seems to be that the router is entirely capable of doing both these two things (if you're reading this, it must be) but javascript variables govern whether the HTML configuration interface actually lets you, and for no reason I can think of these variables (called @HIDE_LAN_GEN_2NDSUBNET@ and @HIDE_LAN_GEN_DHCPRELAY@) are, on my router, set to @true@.  So, login to the router, pull up the firebug console, enter
+<pre>
+parent.HIDE_LAN_GEN_2NDSUBNET=false
+parent.HIDE_LAN_GEN_DHCPRELAY=false
+</pre>
+and then choose "This frame", "Reload" from the rightclick menu in the main frame, and you should find they magically reappear and you can configure them appropriately.  This will almost certainly take you less time to do than it did me to work out.

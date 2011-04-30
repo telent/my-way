@@ -1,0 +1,72 @@
+title: Time for another monthly placeholder entry
+author: Daniel Barlow
+date: Mon, 1 Aug 2005 1:44:28 +0000
+
+Time for another monthly placeholder entry.  No Lisp lately; my
+employers have been making me actually work for a living for the past
+few weeks, and my non-work time has been occupied with stuff I can't talk
+about yet.  I'm sure that wasn't in the contract...
+
+<p>Round up for the month of July:
+
+<ul>
+<li> July 3rd: <a href="http://www.24rollers.com/">24 heures du Mans
+rollers</a>: a relay race around Le Mans <a
+href="http://www.racingcircuits.net/France/LeMansBugatti2002.html"
+>Circuit Bugatti</a>.  Entered as part of the <a
+href="http://www.londonspeedskaters.com/">LSST Team 2</a>, came 137th
+of 595 starters (or 138th morally, if you accept that the Team Bont
+disqualification was a con).  It's a 4.3km circuit; my average lap
+time was 9:20 and best was 8:45 or so, which I'm pretty happy with.
+More <a
+href="http://www.londonspeedskaters.com/forums/viewtopic.php?p=8656#8656"
+>here</a> (registration may be required, I've had cookies for that
+site so long I can't remember which bits are public).  Next time don't
+buy the Â£10 Tesco Value tent, it's pants.
+
+<li> July 7th: not killed by terrorist attacks.  Not able to get to
+work either: so it goes.
+
+<li> July 9th - present (something of an ongoing process still, this)
+: moved house.  New flat is in Bethnal Green, which is near
+enough work that it's an easy skate and near enough central London
+that it's also a pleasant skate.  (Skating in Leytonstone was mostly an
+exercise in being beeped at and pulled out on by car drivers who'd
+clearly never seen a skater before).  New flat is still however
+looking a bit bare, as too much of my stuff is still in boxes in the
+old place waiting for an opportunity to move it (see "work", above)
+
+<li> But at last I have internet at home again (ADSL from ClaraNET:
+staff deal) and <i>almost</i> have wireless to go with it.  I got a
+Netgear DG834DG bcause it looked cute and cheap and is supposed to be
+quite hackable (it runs Linux) which I thought might be fun.  However,
+in the two or three days since my adsl service was actually switched
+on it's frequently stopped wirelessing for no apparent reason, forcing
+me to plug my laptop in using a cable in order to find out that
+there's nothing in the logs to indicate why.  Gah.  Looks like some
+amount of hacking may be a necessity, then, not just a fun spare-time
+project.  As if I have any spare time right now anyway.  (Yes, I've
+already tried a firmware upgrade: no joy)
+
+<li> On the other hand, it could equally well be the laptop at fault,
+I suppose.  Since I upgraded every part of it at once (Debian from a
+version old enough to have XFree86 to current unstable, the kernel to
+whatever I could find, then some abortive mucking around with
+pcmciautils and udev which I later had to revert because it doesn't
+actually work usefully yet) I have no hibernation support and the
+machine is prone from time to time to spin the disk continuously
+while refusing to respond to M-C-backspace, M-C-F1, Numlock, or
+anything else that might usually be a "hey!" signal.  I can see why
+people buy Macs: because Apple don't have an "unstable" version for public
+release ...
+
+<li> Today: (or technically yesterday).  Registered and booked flights
+for the <a
+href="http://www.scc-events.com/events/berlin_skatemarathon/2005/index.en.php"
+>Berlin Inline Marathon</a>.  With any luck I might actually have some
+speedskates by then and will be able to bend my ankles more than
+Crossmax usually allow.
+
+</ul>
+ 
+

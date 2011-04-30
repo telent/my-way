@@ -1,0 +1,26 @@
+title: Araneida 0.9 released
+author: Daniel Barlow
+date: Fri, 8 Oct 2004 17:31:6 +0000
+
+Araneida 0.9 released.  From the NEWS file:
+<pre>
+* Portability to multiple lisps:
+  - SBCL, as before
+  - OpenMCL, threaded handlers only
+  - Allegro, threaded handlers only
+  - Armed Bear Common Lisp, threaded handlers only
+  - CMUCL, serve-event only
+  - CLISP, serve-event only
+  - LispWorks, threaded (from Jochen Schmidt, based on Portable AServe)
+
+In particular the CLISP support is a bit of a hack; timeouts are still
+notably missing, and you must run (araneida:host-serve-events) after
+you're done running start-listener on all of your listeners.
+
+(Brian Mastenbrook, Jochen Schmidt)
+
+* SERVE-EVENT fixes so that non-Araneida fd handlers can be
+  added/removed during request handling.  More than slightly kludgey,
+  and less than entirely thread-safe, but this can be blamed mostly on
+  the nature of serve-event.  (Brian again, and Luis Oliveira)
+</pre>

@@ -1,0 +1,17 @@
+title: Two out of three leaves ample room for improvement
+author: Daniel Barlow
+date: Wed, 29 Sep 2004 19:48:30 +0000
+
+Two out of three leaves ample room for improvement.  My order from
+Dabs arrived today; 512MB RAM as ordered, Asus K8V-SE mobo ditto, and
+an Athlon XP with a sticker which incorrectly claimed it was an Athlon
+64.  Bunch of muppets.
+
+<p>For the people who know as much about current PC hardware as I did
+last week, know that the Athlon XP and Athlon 64 are entirely
+different beasts in most practical respects.  They run different code,
+fit different motherboards and are different physical shapes.  They
+also, for what it's worth, come in different packaging: the clearly
+visible printing on the box that said "Athlon XP" was my first clue
+that something was not supplied As Described.
+

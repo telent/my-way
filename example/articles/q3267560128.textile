@@ -1,0 +1,67 @@
+title: SBCL just changed the fasl file version, so I need to rebuild CLX and
+author: Daniel Barlow
+date: Sat, 19 Jul 2003 0:35:28 +0000
+
+<p>SBCL just changed the fasl file version, so I need to rebuild CLX and
+McCLIM.  While it chugs away it might be time for some notes on McCLIM
+Day 2, except that there's practically no difference from day 1.  I
+created a class for <b>account</b>, and a presentation type which
+presents as an account name.  Then I decided to tackle some of the
+bugs
+
+<ul>
+<li> The pg problem was that it was doing something akin to
+<pre>
+(handler-case 
+    (foo) 
+  (error (e) 
+    (cleanup forms)
+    (signal e)))
+</pre>
+Notice that the error is resignalled with <b>signal</b> instead of
+<b>error</b>.  The difference between the two is that <b>error</b>
+will enter the debugger if the condition <tt>e</tt> is not handled,
+whereas <b>signal</b> will keep quiet and pretend nothing happened.
+I rewrote this to use an <b>unwind-protect</b> form instead.
+</li>
+
+<li> Spent some time looking at backtraces to decide where the
+periodic hangs were coming from.  After deciding the bug was in SBCL
+itself, spent even more time staring hard at the queueing functions.
+Then rewrite them to have less obvious race conditions.  I don't claim
+it's necessarily correct now, but I haven't managed to break it yet.
+It's probably slower.  It  <i>might</i> be detectably slower; it
+seemed to be quite slow when I was testing it, but I might have 
+been imagining that.  Or it migt have been swapping.  This machine is
+usually swapping, after all.  Anyway, changes committed, will be in
+0.8.2 at the end of the month
+</li>
+</ul>
+
+I'm not going to cry too hard about the slowdown at the moment,
+because McCLIM has native-threads-unfriendly queuing, and the effect
+of that on top of the CLX native-threads-unfriendly thread
+synchronisation primitives means that there should be some fairly
+significant speedups to be made that don't involve staring at sbcl
+disassembly.  In fact, as low-hanging fruit goes, I think that if we
+park the wheelbarrow underneath the tree and shake gently, this stuff
+wouldn't even fall far enough to bruise.
+
+<pre>
+;;; from CLX
+#+sbcl
+(defvar *without-interrupts-sic-lock*
+  (sb-thread:make-mutex :name "lock simulating *without-interrupts*"))
+#+sbcl
+(defmacro without-interrupts (&body body)
+  `(sb-thread:with-recursive-lock (*without-interrupts-sic-lock*)
+    ,@body))
+
+;;; from McCLIM
+(defmacro atomic-incf (place)
+  `(sb-thread::with-spinlock (xlib::*conditional-store-queue*)
+    (incf ,place)))
+
+</pre>
+You get the idea
+

@@ -1,0 +1,11 @@
+title: trivial-sockets now
+author: Daniel Barlow
+date: Sun, 24 Oct 2004 19:42:17 +0000
+
+<a href="http://www.cliki.net/trivial-sockets">trivial-sockets</a> now
+has (some degree of) support for SBCL, CMUCL, CLISP and Allegro.  I
+don't have a machine readily to hand on which I can run OpenMCL
+(actually I have an imac and two broken G3 powermacs, but none of
+them are plugged into anything) but its socket interface looks pretty
+similar to ACLs, so I'm sure it won't be hard to add that one.  ABCL
+would be a nice addition, if anyone feels like it.

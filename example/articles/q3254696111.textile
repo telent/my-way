@@ -1,0 +1,20 @@
+title: Of course, when one thread wants to talk to #&lt;FILE-STREAM for
+author: Daniel Barlow
+date: Thu, 20 Feb 2003 2:15:11 +0000
+
+Of course, when one thread wants to talk to <tt>#&lt;FILE-STREAM for
+"the terminal" {9004749}></tt> and another wants to talk to
+<tt>#&lt;FILE-STREAM for "standard input" {9004539}></tt>,  how does
+Lisp know they're actually the same file underneath it all?  They even
+have different descriptors.
+
+<p>We can use fstat and test device/inode for equality, I guess.  It's
+going to lose on sockets (not on Linux, by inspection, but e.g. OSX
+has no inodes for sockets) and probably other stuff too.  In the worst
+case all we really need to support is ttys (and tell people to use
+ptys if they want sane interactive behaviour) but it hurts to be so
+ugly.
+
+
+
+

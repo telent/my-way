@@ -1,0 +1,27 @@
+title: Two weird SBCL problems, neither of whicl I have any particularly good
+author: Daniel Barlow
+date: Wed, 17 Sep 2003 18:20:47 +0000
+
+Two weird SBCL problems, neither of whicl I have any particularly good
+ideas about
+
+<ol>
+
+<li> On Alpha, SBCL versions built with Glibc versions older than
+2.3.2 don't run on 2.3.2, complaining about <a
+href="http://article.gmane.org/gmane.lisp.steel-bank.devel/1938"
+>invalid args to mprotect</a>.  2.3.2 itself won't build the SBCL
+runtime because we use a custom linker script to force stuff under
+2Gb, which needs updating for 2.3.2
+
+<li> On X86/threaded, there's some kind of (what I assume to be a)
+thread safety bug apparently connected to <tt>&rest</tt> arguments.  I
+can't see anything obviously bad in how we create rest lists, but one
+iteration in every far-too-many we get messages from
+e.g. <b>char-equal</b> saying that <tt>The value 0 is not of type
+BASE-CHAR</tt>.  Which is perfectly correct in itself, but as we're
+not <i>calling</i> <b>char-equal</b> with 0, seems like it should be
+superfuous.
+
+</li>
+</ol>

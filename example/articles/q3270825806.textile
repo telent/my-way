@@ -1,0 +1,75 @@
+title: Make your end-users into peers
+author: Daniel Barlow
+date: Mon, 25 Aug 2003 19:43:26 +0000
+
+<h2>Make your end-users into peers</h2>
+
+<p>I hope Miles won't mind me excerpting from his private email in 
+this public place, but I spent long enough editing this reply that
+I fel I should get full value by exposing the rest of you foolish
+readers to it as well.  He wrote
+
+<pre>
+> Just read your latest journal entry regarding Tom Lord's post about the
+> direction of free software.  It's an interesting idea.  Have you had any
+> thoughts about what this might look like specifically?  
+</pre>
+
+<p>To which I have to admit: no, not really.  I think he's identified the
+problem; I don't know the solution, but I don't think it's any of the
+attempts we've seen so far.
+
+<p>I've read a little by and about Christopher Alexander and the patterns
+movement, and what he said about habitability and piecemeal growth
+struck a chord with me.  The users/inhabitants of a system aren't
+expected to be able (or willing) to rebuild it completely, but do want
+to customise it appropriately to their needs.  And I don't think
+that's what we've got in the applications world; we've got
+customisation knobs for everything the app designer thought it would
+be nice to adjust, and for everything the users have previously
+<i>asked</i> to change, but if anyone thinks of something new that they'd
+like changed, we're back where we started.  
+
+<p>The Unix shell has aspects of the right thing.  Your environmental
+customisation (~/scripts/frob.sh) is using the exact same tools as the
+OS itself (/etc/init.d/frob).  It falls down in the large: either the
+quoting rules come in and bite you, or the lack of support for any
+kind of object that's not a stream of bytes trips you on the way out
+and dribbles caustic saliva from its toothless mouth until you
+dissolve into a small puddle.
+
+<p>Emacs has aspects of the right thing; most of it's written in Lisp,
+and so there's an ecology of stuff built up around it.  That's good.
+X support (not per se, but the way it's been exposed to Lisp code) has
+tended to take it in the wrong direction, and what little I've seen of
+the xemacs team suggests that they're wholly misguided.  (Disclaimer:
+I barely follow xemacs development; I just have the impression of lots
+of C programmers and not a lot of consideration for the high-level
+picture).  Emacs may once have been intended as the basis for a user
+interface to the GNU system, but if this was a primary goal I think
+rms has largely failed to promote it.  And yes, it would help to have
+threading, an option for lexical scope, objects, and UI support good
+for more than just putting words on the screen.
+
+<p>What's the message that's coming through here?  I'm trying to say
+that I want the high level design for free systems to start looking
+less like application design and more like language design.  In my
+ideal world you get twenty five points for writing a library, five for
+a framework, and only three for an application.
+
+<p>Some of the apps people say (or used to say) "we're not designing
+for people like us any more, this is for the end user", but that
+implies a power imbalance which I really don't want to be part of.  I
+want a system that the end-user can participate in, not just one that
+they can take or leave.  A free software community that's actually a
+<i>community</i>, if you like
+
+<p>So I think for the moment the summary is "habitable software", or
+"make your users into your peers".  It's a hard sell, though:
+customisable software in the eyes of business doesn't mean letting the
+accountant edit her own startup file, it means getting a bunch of
+expensive consultants in to misunderstand the business and give you a
+new system that you still don't understand anyway; not automatically a
+Good Thing.  Ideas welcome
+
+

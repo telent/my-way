@@ -1,0 +1,25 @@
+title: Today, in Oxford
+author: Daniel Barlow
+date: Wed, 26 Nov 2003 22:10:18 +0000
+
+Today, in Oxford
+
+<p> <a href="http://web.metacircles.com/">metacircles</a> is now
+offering <a href="http://web.metacircles.com/support">per-incident
+paid-for support</a> for SBCL and related software.  Presently this
+has less to do with actual customer demand and more to do with
+<strike>distracting the people who point to lack of commercial support as a
+reason not to use free CL</strike> <i>predicted</i> customer demand.
+
+<p> There is a fix in SBCL CVS sb-bsd-sockets for the
+writing-to-closed-files bug that SLIME users sometimes experience.
+
+<p> Last week, Frank Neub&uuml;ser found the notes I made last year on
+<a href="http://ww.telent.net/diary/2002/9/#3.58087">Oracle Wallet
+Manager</a>.  By spooky co-incidence, I had occasion on Monday to
+revisit this experience and revise my notes in that light: you can now
+find the new version (and Frank's email) <a
+href="http://web.metacircles.com/oracle%20wallet%20manager" >over at
+metacircles</a>
+
+<p> 

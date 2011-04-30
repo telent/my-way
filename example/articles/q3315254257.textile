@@ -1,0 +1,22 @@
+title: Debian has defeated me once again
+author: Daniel Barlow
+date: Thu, 20 Jan 2005 23:57:37 +0000
+
+Debian has defeated me once again.  I have the ambition, one day, of
+doing a fresh standard debian install that doesn't involve stopping
+halfway through to monkey with modules or an unsupported PXE or
+untarring the base system where it's not supposed to be and using a
+chroot or ... 
+
+<p>Today's alpha install has not satisfied that ambition.  I can't
+make the machine boot the unstable rc2 debian-installer netinst image
+from CD, so I had to do a floppy install.  <i>It's 2005 and I just had
+to buy a new box of floppies - how wrong is that? </i> There isn't, as
+far as I can see, any floppy images newer than woody for Debian Alpha,
+so I ended up installing that and apt-get upgrading.  It still hasn't
+reached the point where I find out whether the SATA controller is
+recognised, because it's still building the 2.6 kernel that I hope
+will contain the relevant driver.
+
+<p>In the process of writing this entry, I just realised that I forgot
+to apply the -ac patch to said kernel before building it.  Bother.

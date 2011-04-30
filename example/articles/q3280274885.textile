@@ -1,0 +1,11 @@
+title: Upgraded the CLiki version on www.cliki.net to 0.4.1; now we can
+author: Daniel Barlow
+date: Sat, 13 Dec 2003 3:28:5 +0000
+
+Upgraded the CLiki version on <a
+href="http://www.cliki.net/">www.cliki.net</a> to 0.4.1; now we can
+have page names with dots in them.  Also re-enabled posting for
+everyone other than A N Other; not that that will dissuade anyone who
+really wants to mess it up, but 90% of A N Other's content seems to be
+from people who don't care a lot whether they mess it up or not.
+

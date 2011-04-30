@@ -1,0 +1,35 @@
+title: Hopefully, you can see from these lists that Perl provides a rich set of interfaces to low-level operating system details
+author: Daniel Barlow
+date: Tue, 2 Dec 2003 23:40:36 +0000
+
+<blockquote>
+Hopefully, you can see from these lists that Perl provides a rich set of interfaces to low-level operating system details. Why is this ``what Perl got right''?
+
+<p>It means that while Perl provides a decent high-level language for
+text wrangling and object-oriented programming, we can still get
+``down in the dirt'' to precisely control, create, modify, manage, and
+maintain our systems and data.
+</blockquote>
+<div align=right><a href="http://www.stonehenge.com/merlyn/LinuxMag/col44.html"
+>Randal Schwartz</a> in Linux Magazine</div>
+
+<p>There's a lesson here for CL, though I'm not sure what it is.  I
+certainly don't buy the idea that POSIX APIs are the best possible
+interface - not that I think this is where Randal is coming from
+anyway: he's clearly arguing from pragmatism.  Filename manipulation,
+for example, is usually done in Perl by a mess of regular expressions
+that probably don't even always work (does <tt>.</tt> match newline?)
+which I don't really want to wish on anyone.  On the other hand, the
+convenience is undeniable.
+
+<p>(Aside: POSIX APIs are not even necessarily, the things that Perl
+actually provides access to: how long did it take Perl to get reliable
+signal handlers?)
+
+<p>To some extent, SB-POSIX and similar things (will) solve this
+problem for SBCL.  We still have a certain impedance mismatch imposed
+by the language itself, though: for example, NIL is the only false
+value in CL; 0 and 0e0 and "" are true.  That said, Perl isn't
+entirely restricted to the C standard datatypes either: ioctls often
+require more fiddling with pack() and unpack() than the mere mortal 
+should entertain.

@@ -1,0 +1,50 @@
+title: Once upon a time I bought a copy of the Unix-Haters Handbook
+author: Daniel Barlow
+date: Wed, 12 Jun 2002 16:41:45 +0000
+
+Once upon a time I bought a copy of the Unix-Haters Handbook.  At the
+time I was the biggest Linux bigot I knew, and intended mostly to
+laugh at it - in fact, I mostly did.  This <a
+href="http://www.linuxgazette.com/issue22/haters.html" >Linux Gazette
+review</a> gives you the flavour of my opinions.
+
+<p> As time went by and when I started thinking a little more
+rationally about operating systems (this change can be explained by
+one of more of (a) finding the <tt>alt.sysadmin.recovery</tt>
+newsgroup, or (b) finishing university and getting a real job) I grew
+to actually quite like my Unix-Haters handbook, even using it as a
+reference for that funky shell trick where you thought you needed
+<tt>$*</tt> but should have been using <tt>${1+"$@"}</tt> or something
+instead.  I retained my initial opinion that the funny bits were
+almost always the reprinted mailing list messages: Garfinkel's filler 
+between them was, well, filler.
+
+<p> ``<tt>${1+"$@"}</tt> or something ''?  Yes, well.  Somebody
+borrowed my copy from the office and didn't return it, and unhappily
+now it's out of print, I can't easily get another.  But after recent
+conversations on IRC suggesting that they were still available, I
+found the actual list archives on the web: <a
+href="http://www.mindspring.com/~blackhart/"
+>http://www.mindspring.com/~blackhart/</a>
+
+<pre>
+Date: Fri, 14 Dec 1990 18:25-0500
+From: GP
+Subject: Re: MC:HUMOR;JARGON >
+
+    Date: Fri, 14 Dec 1990 13:54 EST
+    From: DH
+
+    The JARGON file is being updated.  The guy doing so has
+    changed the nasty references to Unix to refer to MS-DOS
+    because "all the ITS partisans have now become Unix
+    partisans, since the Unix philosophy is the same as the
+    ITS philosophy." as he says.
+
+Amazing!  A valid argument against gun control ...
+
+</pre>
+
+<p>"The guy doing so" presumably being Eric Raymond, I find this
+especially funny...
+

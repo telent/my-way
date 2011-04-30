@@ -1,0 +1,27 @@
+title: Threading: see http://sourceforge.net/mailarchive/forum.php?thread_id=625342&forum_id=4134
+author: Daniel Barlow
+date: Thu, 11 Apr 2002 19:50:45 +0000
+
+
+<p> Threading: see <a
+href="http://sourceforge.net/mailarchive/forum.php?thread_id=625342&forum_id=4134"
+>http://sourceforge.net/mailarchive/forum.php?thread_id=625342&forum_id=4134</a>.
+We can run a repl in a thread.  We can run threads that read and write
+from files.  We have a working SLEEP function.
+
+<p>Still need lots of process control stuff (run/arrest reasons,
+killing a running thread, pause/continue, etc).  Still need a locking
+implementation that does more than a NOP.  Still need to find the
+cause of some as-yet unexplained segvs.  Would <i>like</i> to find out
+why we need to zero unused portions of control stack quite as often as
+we do, given that GC only scavenges the active bit anyway.
+
+<p>In the course of recompiling it yesterday I managed to run my host
+compiler out of dynamic space.  OK, so also need (1) a host compiler
+with bigger spaces (building now) and slightly more graceful
+out-of-space behaviour than an unexplained segmentation fault.
+
+<p>In other news, I think I pulled a muscle somewhere in my neck, or
+something.  Falling asleep on the sofa was not such a smart idea, I
+guess.
+

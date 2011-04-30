@@ -1,0 +1,13 @@
+title: One down
+author: Daniel Barlow
+date: Mon, 4 Feb 2002 23:7:47 +0000
+
+<p> <a href="http://www.geocrawler.com/lists/3/SourceForge/1663/0/7739869"
+>One down.</a>
+
+<p>While I'm here i think I might have a look at some of the other
+outstanding Alpha bugs.  (sqrt single-float-positive-infinity) is,
+bizarrely, 0.0.  I suspect the floating point traps are more than a
+little b0rked too
+
+

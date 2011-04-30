@@ -1,0 +1,28 @@
+title: More Emacs magic
+author: Daniel Barlow
+date: Tue, 11 Jun 2002 16:8:54 +0000
+
+More Emacs magic.  The documentation for PSGML is a bit iffy in
+places, but it does profess to cope with split documents, and I've
+managed to imbue it with at least enough smarts to close tags when I
+press C-c /, and to not beep at the end of each line.  Which is
+refreshing
+
+<pre>
+(define-key global-map [f11] 
+  '(lambda () (interactive nil)
+    (let ((s (shell-command-to-string "echo `date +%s` + 2208988800 | bc ")))
+      (find-file (format "~/doc/telent/htdocs/diary/data/%s.html"
+			 (subseq s 0 (1- (length s)))))
+      (setf sgml-parent-document '("HEADER.inc" "HTML" "BODY" "BODY" ())))))
+</pre>
+
+<p> If you're curious, the magic constant in the bc calculation is the
+number of seconds between 1900 and 1970
+
+<p> Reclaimed my cellphone from the phone repair people.  This time
+they've mamaged to repair it (they "reflowed the pa's and filters",
+whatever that involved) without deleting all the numbers, which is
+nice as I forgot to back it up before taking it in.
+
+

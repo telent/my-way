@@ -1,0 +1,21 @@
+title: Fun with Network Solutions(sic)
+author: Daniel Barlow
+date: Mon, 19 Nov 2001 16:1:35 +0000
+
+
+<p> Fun with Network Solutions(sic).  Every time I visit their site
+(which I try to do as infrequently as possible, I admit) they have
+moved it all around again.  These days it appears that despite
+there being three independent contacts associated with a zone, 
+they will not take updates using the email forms any longer, but
+instead want you to use the web-based interface.  For which they give
+you only <i>one</i> username/password.  So what are the other two
+contacts for then?
+
+<p> Among the things they haven't changed are the length of their
+telephone queues.  After fifteen minutes of  being told that my call
+would be answered in just a moment, I decided they were lying.  
+
+<p> But at least now I have the right SBCL sources for the trip home.
+Hackety hack.
+

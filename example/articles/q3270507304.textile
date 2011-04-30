@@ -1,0 +1,101 @@
+title: I was going to write something here to describe the recent GC
+author: Daniel Barlow
+date: Fri, 22 Aug 2003 3:15:4 +0000
+
+I was going to write something here to describe the recent GC
+rearrangement work.  But then I spent a long time on a mail to
+sbcl-devel explaining it all anyway.  So then I was going to put a
+pointer here to the list archive.  But then it didn't show up in the
+list archive, probably due to mail servers everywhere being hammered
+by windows viruses and their associated bounce messages.  So I may as
+well cut and paste, just to have <i>something</i> in the diary.
+If you read sbcl-devel, you'll (eventually) get this twice.  Sorry
+about that.
+
+<pre>
+The stop-the_world_branch is ready for wider testing (anoncvs users,
+please be sure you have the latest; version.lisp-expr is
+"0.8.2.38.stop_the_world.7").  It's too big a change for 0.8.3
+release, but will probably be merged early in the 0.8.4 cycle.
+
+If you have any application that uses threads, please download it and
+give it a go, and report progress or lack thereof.  If you have any
+kind of single-threaded SBCL, I may well have broken that in the
+process : if you feel like sorting out the wreckage and
+sending/committing patches, that will be a help.
+
+What it does:
+
+1) move from ptrace() to signals for stopping threads at GC time.
+This probably makes it easier to port to other systems - except that
+we're using a couple of Posix RT signals, which FleaBSD apparently
+doesn't have, but I'm sure that can be worked around somehow - and
+also means that you can attach strace to sbcl threads without them
+dying horribly due to ptrace reparenting larks.  Thanks to Gary Byers
+for pointing out (some time ago) this way of doing things.  I think he
+said he got it from the Boehm collector.
+
+2) clean up (or at any rate, rewrite to be differently messy) a pile
+of stuff in the signal handling.  Sometimes this was just adding
+commentary, but also I think the new functions maybe_defer_handler and
+run_deferred_handler make it a lot easier to write signal handlers
+which obey the pseudo-atomic rules - and to know that they're
+uniformly obeyed in the existing handlers that profess to observe
+them, of course.  This also fixes a signal-safety bug in
+interrupt-thread (which, sadly, 0.8.3 will ship with, but
+interrupt-thread didn't exist at all in 0.8.2, so if there are any
+threads users who are insufficiently bleeding edge to be able to
+compile their own CVS versions, they probably won't miss what they
+never had)
+
+3) I wrote last week about return-elsewhere (the new arrangement for
+calling Lisp code as a result of signals being handled: see previous
+message at http://article.gmane.org/gmane.lisp.steel-bank.devel/1737 )
+but I don't think I announced that it was working.  It is (though 
+it's only used for interrupt-thread and control stack exhausion).
+Most of this was done on HEAD before the branch, but if you're going
+to hack around with C-level signals stuff I suggest you look at the
+branched code anyway because the new *_defer* functions make it easier
+to get right.  If they're right, at least.  Otherwise they make it
+easier to blame incorrect operation on me; granted that's a poor
+second best, but it preserves your honour at least.
+
+4) move from a dedicated thread for GC which runs no lisp code, to a
+system where any thread can collect garbage.  The immediate advantage
+is that we now have a thread-safe way of running hooks before/after
+GC, and the most often asked-for hook is something to run GC
+finalisers.
+
+I haven't actually _implemented_ anything to call said hooks yet.  It
+should be a couple of lines of code, but I thought I'd ask first:
+
+a) there are a couple of hook lists for before/after gc in the system
+already.  Functions on these lists take no arguments and return
+nothing interesting
+
+b) CMUCL also has notifiers (or something: I'm going on memory and
+it's been a while):  these get arguments for the amount of time/memory
+spent/saved/wasted/until next gc, etc.  
+
+I'm inclined to unify hooks and notifiers in SBCL, retaining the
+zero-argument hook signature, and shove any interesting-looking kind
+of gc statistics into special variables where calleds could either get
+them or ignore them at their leisure.  Comments?
+
+
+:; cvs status version.lisp-expr
+===================================================================
+File: version.lisp-expr Status: Up-to-date
+
+   Working revision:    1.1167.2.6
+   Repository revision: 1.1167.2.6      /cvsroot/sbcl/sbcl/version.lisp-expr,v
+   Sticky Tag:          stop_the_world_branch (branch: 1.1167.2)
+   Sticky Date:         (none)
+   Sticky Options:      (none)
+
+:; tail -1 version.lisp-expr
+"0.8.2.38.stop_the_world.7"
+
+
+Enjoy
+</pre>

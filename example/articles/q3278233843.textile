@@ -1,0 +1,23 @@
+title: I should say a few words about futexes
+author: Daniel Barlow
+date: Wed, 19 Nov 2003 12:30:43 +0000
+
+I should say a few words about futexes.  Adding futex support to sbcl
+(using <tt>sys_futex</tt>, counting semaphores be damned) was mostly a
+straightforward job taking a couple of afternoons.
+
+<p>Unfortunately, it seems to have exposed a bug somewhere in GC
+handling or stopping-the-world issues around GC.  GC itself is wrapped
+in a <b>without-interrupts</b>, which uses a mechanism very similar to
+<a href="http://ww.telent.net/diary/2003/9/#28.5880"
+>pseudo-atomic</a> to delay incoming signals: when the cleanup from
+without-interrupts detects that a signal was supposed to have
+happened, it calls <tt>int 3</tt>, and the SIGTRAP handler then runs
+the handler for the stored signal.  At least, that's how it's supposed
+to work.  Right now it looks like the kernel has decided that the
+SIGTRAP can't be delivered to the process in the normal fashion and
+instead it would be a good idea to SIGKILL all of our threads.  This
+is probably some kind of stack corruption.  Attaching a debugger to
+the right thread in the right place may be interesting.
+
+

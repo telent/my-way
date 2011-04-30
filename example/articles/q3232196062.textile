@@ -1,0 +1,14 @@
+title: New stuff in 
+CLiki: now you can download the packages straight from the pages (or
+author: Daniel Barlow
+date: Tue, 4 Jun 2002 17:14:22 +0000
+
+
+<p> <a href="http://ww.telent.net/cliki/CLiki%20News">New stuff</a> in 
+CLiki: now you can download the packages straight from the pages (or
+even skipping the page completely if you already know the name)
+
+<p>At some point I should almost certainly find a better place to
+explain it than `CLiki News': I think a lot of the metacliki pages
+need some review.
+

@@ -1,0 +1,55 @@
+title: I think I must have been busy lately
+author: Daniel Barlow
+date: Fri, 28 Mar 2003 0:22:26 +0000
+
+I think I must have been busy lately.  I just can't remember much of
+what I've been doing.
+
+<p>Not that this is the problem that keeping an online diary is
+supposed to solve, or anything.  Oh well.  Speaking of online diaries,
+<a href="http://www.advogato.org/article/644.html" >Is the active
+user-base of Advogato incompetent?</a> Well, yes.  I was going to post
+a followup saying "I used to hesitate before posting Advogato articles
+because they'd get taken apart by knowledgeable people, but now I
+don't bother to post them at all because they get taken apart by
+people who just don't have a clue."  But then I realised that
+it would get taken apart by people who just don't have a clue.  As
+Mark Jason Dominus said, <a
+href="http://perl.plover.com/yak/design/samples/note.html" >"Forget
+what I said about the damn iterator pattern, already"</a>
+
+<pre>
+06:54:53 &lt;Krystof> so the big question is: "what does the next
+version get called?"
+06:55:07 &lt;Krystof> 0.7.14.1? 0.8.0pre.1?
+06:57:10 &lt;Krystof> (well, maybe that's not the big question)
+06:59:16 &lt;wnewman> I haven't noticed any response to my mention of
+0.8.0 on the mailing list, so it seems to be only you and I who care.
+07:00:40 &lt;wnewman> If the SB-PCL:CLASS stuff lands, and Dan either
+puts in threads or doesn't care, it's OK with me if the next release
+is 0.8.0, and it's ok with me if it takes more than a month.
+07:00:40 &lt;wnewman> which hopefully gives everyone concerned enough
+leeway
+</pre>
+
+<p>New SBCL (0.7.14) was released on Monday, and was probably notable
+chiefly for being, as you see here, the last release before 0.8.
+Unless you're using bit vectors, in which case you could get some kind
+of 100x speedup, which I think is worth noting.  0.8 will have better
+PCL integration, and (experimental probably-not-enabled-by-default)
+native threads on x86 Linux.  Yes, that's right, it's merge time.
+Mostly this is an exercise in arranging the source such that threaded
+and unithread sbcl can be built from the same code base, and (for
+bonus points) that the code in question is reasonably free of Weapons
+of Mass #define
+
+<p>Also London and Oxford meetings of (minimally overlapping) subsets
+of the UK-Lispers list.  At (or arguably, after) the latter of these,
+Christophe fixed SXHASH on PPC, so it no longer returns 0 for symbols
+whose names are less than 4 characters long.
+
+<p>Started cycling again last weekend, for the first time since, um,
+<a href="/2002/8/#19.56948">last August</a>.  The saddle on my bike is
+less comfortable than I remembered it as having been, but I expect
+I'll get used to it again.
+

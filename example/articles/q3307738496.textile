@@ -1,0 +1,50 @@
+title: Subject: ROBOTS meta tag and transient information
+author: Daniel Barlow
+date: Tue, 26 Oct 2004 1:14:56 +0000
+
+<pre>
+Subject: ROBOTS meta tag and transient information.
+To: googlebot@google.com
+</pre>
+
+<p> I run a couple of Wiki sites which are regularly crawled by Google: 
+ww.cliki.net and alu.cliki.net.  They feature highly in relevant
+searches and overall I'm pretty happy with this state of affairs.
+
+<p> You're no doubt aware that the less ethical of the "search engine
+optimisation experts" spam their URLs onto pages of unrelated but
+high-PageRanked wiki sites in the hope that the Google bot will 
+index and follow the links to their sites before the wiki's regular
+users spot and revert the changes.  Some people think it's the next
+big thing after blog comment spam.  
+
+<p> So, I would like to minimise use of my wikis as unwitting link farms
+for spammers.  One approach I'm considering is to insert a
+
+<pre>
+ &lt;meta name="ROBOTS" content="NOFOLLOW">
+</pre>
+
+<p> html head element when I serve new versions of pages.  In 24 hours
+it's pretty much a given that someone will have noticed and reverted
+the spam: result, the google karma does not spread to these
+undeserving cases.  Once a page has lasted 24 hours without subsequent
+edits, I'll stop sending out the meta tag and Google can index the
+page as normal thereafter.
+
+<p> The downside: this will be less than ideal if the google bot caches
+meta tags between one run and the next; i.e. if having once seen that
+it shouldn't follow links from www.cliki.net/index, it remembers that
+and never follows them again despite that on its next visit the header
+is no longer there.
+
+<p> So, at last, my question: does your bot cache robots meta tags between
+runs, and if so for how long and is there any way that a web site can
+ask it not to?  If it doesn't, it seems that this would be a
+reasonable approach for a lot of wiki engines to help reduce one
+source of pagerank spam - and when spammers realise this is happening,
+they'll (eventually, maybe) stop spamming the said wikis.  With luck
+and a following wind, everyone wins.
+
+<hr>
+Let's see if we get a reply ...

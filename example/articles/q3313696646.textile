@@ -1,0 +1,58 @@
+title: Happy 2005
+author: Daniel Barlow
+date: Sun, 2 Jan 2005 23:17:26 +0000
+
+Happy 2005.  I could do the end-of-year roundup, but my lisp hacking
+exploits this past year have been infrequent enough that the last
+twelve months diary entries are short enough not to need summary.  Or
+I could do predictions for next year, but I tried that <a
+href="http://ww.telent.net/diary/2003/12/#31.60982" >last year</a>
+with results which were on the whole undistinguished.  So, well, let's
+just qspeculate on what I'd like to do this year:
+
+<ol>
+
+<li> Something with McCLIM, probably involving GPS tracks.  That's
+CLIM application programming, not McCLIM internals hacking, as far as I
+can avoid it.  (More on CLIM later; I had a useful conversation
+with Andy Hefner yesterday, so we'll see if I can write up the
+conclusions without misrepresenting him too badly)
+
+<li> SBCL-wise, (i) replace fd-streams with something I can understand
+and have some reasonable confidence in, (ii) whatever other
+thread/runtime-related stuff imposes itself on me.  If it sounds like
+I'm winding down a bit on SBCL here, I must point out that (a)
+realistically, I did that already, (b) it works pretty well these
+days, and with all the other people hacking it doesn't really need my
+further meddling.  I reserve the right to change my mind on this if
+Apple bring out a laptop that I like (small, thin, light, 1024x768 and
+feel free to leave out the cd/dvd player to assist in these aims) and
+can afford (cheap, and ideally also cheap), because then I'll need
+threads on PPC.
+
+<li> Finish my texinfo translator and hack up some useful texinfo
+warp-to-symbol-documentation infrastructure stuff for
+asdf/circle/slime/thingy.
+
+<li> Follow the progress of Climacs with interest.  Apart from anything
+else, it's the most likely vehicle for using lisp at work that I'm
+going to see for a while.
+
+<li> Buy and/or make (how hard can it be?  please don't mail me about
+jwz's plumbing store special, I've already seen that) some bookshelves,
+and reclaim some parts of the floor in here that I haven't seen for
+most of a year now.
+
+<li> Skate a marathon.
+
+<li> Skate a marathon in a time I'm not ashamed of (although I haven't
+decided what this time will be yet)
+
+<li> Start cycling to work again.
+
+<li> Spend more time with my guitar (another pursuit which suffered in
+2004).  Perhaps even learn to play it ...
+
+</li>
+</ol>
+

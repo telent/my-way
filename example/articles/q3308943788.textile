@@ -1,0 +1,61 @@
+title: Why asdf has no support for building in a separate directory
+author: Daniel Barlow
+date: Mon, 8 Nov 2004 23:3:8 +0000
+
+<b>Why asdf has no support for building in a separate directory.</b>
+
+<p>It's a fairly common question.  People - quite legitimately - want
+to leave their source directories uncluttered and put the fasls
+somewhere else.  Perhaps that somewhere is different
+per-implementation, too, so that they can test the same source tree
+with different lisps.
+
+<p>So the answer is: because I'm lazy - so lazy that I not only
+haven't implemented the feature myself, but have failed even to merge
+patches when people send them to me.  No, but wait, there's a little
+more to it than that.
+
+<p>There are two points: one's important and the other isn't, really.
+Let's get the less interesting one out of the way first.
+
+<p>it goes like this: asdf is supposedly a general system that can
+describe arbitrary operations, so why is <tt>compile-op</tt> such a
+special case that it gets its own special option to say where its
+output files go?  Perhaps we should add similar options for
+<tt>make-manual-op</tt> as well, to say where the dvi and postscript
+files go.  (Please note: I just made up the name of that operation: if
+you believe it exists anywhere in general usage, that just goes to
+show that it's plausible).
+
+<p>This is not such a convincing argument, because even if asdf were
+as much as 419% more general than it already is, most of what people
+would actually use it for would still be compiling Lisp systems, so
+there's a pretty good argument we should cater to the usual case.
+
+<p>Our backup argument is stronger, and it's this: most of the asdf
+systems you're using are for <b>other people's software</b>.  (This is
+already true for me; if isn't yet for you, our efforts to take over
+the world with free common lisp just haven't impacted on you yet.
+Please take a ticket and await the revolution).  Once you start
+editing files that are part of other people's software, you will run
+into conflicts: you'll have to eyeball changes to merge them when the
+author introduces new files or otherwise changes his copy of the file.
+
+<p>So, for each possible customization we could add, the question is
+this: <i>who needs to make this decision?</i> If it's something the
+system author should expect to change (e.g. the files that comprise
+the system, or the dependencies between them) then let's add a
+defsystem option.  If it's something that the user or the local site
+admin (or even the distro maintainer) wants to do, then it needs to be
+achievable without editing the asd file.
+
+<p>Winding up, then: it is my contention that
+separate-directories-for-fasls are a per-user thing, not a per-system
+thing.  If you want your foobar system to use separate directories for
+CLISP and ACL, you will probbaly want the split-sequence, cl-ppcre,
+mel-base, memoize, diff and s-xml systems it depends on to do
+likewise.  And you want them to do so without having to edit all of
+their system files by hand.
+
+<p>It sounds plausible, anyway.  But you can continue to claim it's
+laziness if that makes you feel better.

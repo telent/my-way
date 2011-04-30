@@ -1,0 +1,64 @@
+title: Today I finally got so annoyed with the bizarre behaviour of Linux
+printing (especial culprits: error reporting in every print spooler I
+author: Daniel Barlow
+date: Fri, 22 Nov 2002 15:51:35 +0000
+
+Today I finally got so annoyed with the bizarre behaviour of Linux
+printing (especial culprits: error reporting in every print spooler I
+have tried, transparency of operation in printer filters when
+attempting to debug them ditto, paucity of useful and well-arranged
+documentation for ghostscript drivers which answers questions like "if
+this works with the stc driver, why does the exact same command with
+the uniprint driver give an incomprehensible error message") that I
+bought what professes to be a real PostScript&tm; (well, real HP
+PostScript&tm; emulation) <a
+href="http://www.hp.com/cposupport/prodhome/hplaserjet29796.html"
+>printer</a>.  Random Googling suggests that the scanner part of it
+can be <a
+href="http://www.geocrawler.com/archives/3/5745/2001/5/0/5812001/"
+>persuaded to work with Linux</a> too, so perhaps in future I'll be able
+to sign and send faxes without having to walk up the road to the video
+shop.  Should arrive Monday, with luck, so we'll see what it does.
+
+<p>Today was also the massive new-version-of-CLiki rollout, where at
+last I got around to relocating it in its <a
+href="https://joker.com/index.joker?t_whois=cliki.net&tool=whois&Submit=go"
+>own domain</a>.  By bizarre coincidence, exactly 12 months and one day
+after I registered the domain, too.  Anyway, the well-known URLs for
+CLiki and sbcl-internals both redirect to the new URLs, so apart from
+doubling the number of tcp connections your browser makes, you probably
+shouldn't notice much.  As part of this process I also (at last) moved
+<a href="http://entomotomy.cliki.net/">Entomotomy</a> from the imac on
+my cable modem to the colo box.  New cclan packages for db-sockets,
+araneida, cliki, and entomotomy to follow in the next week or so.
+
+<p>URLs for your reference, Mr Google:
+
+<ul>
+<li><a href="http://www.cliki.net/" >http://www.cliki.net</a>
+<li><a href="http://sbcl-internals.cliki.net/"
+ >http://sbcl-internals.cliki.net</a>
+<li><a href="http://entomotomy.cliki.net/" >http://entomotomy.cliki.net</a>
+<li><a href="http://mcclim.cliki.net/" >http://mcclim.cliki.net</a>
+</ul>
+
+<p><a href="http://purl.org/net/emarsden/home/">Eric Marsden</a> has
+been doing some cool stuff lately with Araneida as an annotation server.
+Gilbert Baumann has been doing some other cool stuff lately to produce
+an annotatable CLIM specification (as far as I know, without Araneida).
+I'm not sure I'm supposed to link to either effort yet, so I won't, but
+we hope the two will converge somehow.
+
+<p>Last night was the followup "hands-on Lisp" session to the <a
+href="http://ww.telent.net/diary/2002/11/#7.4532">talk</a> I gave two
+weeks ago for the OU Computer Society.  Kudos to the Debian packaging
+guys (who more usually get complaints than accolades from me on IRC) -
+it was a lot easier to tell the compsoc sysadmins "apt-get install cmucl
+cmucl-normal ilisp hyperspec" than it would have been to direct them
+through installing cmucl 18d from tarchives, defsystem frpom
+sourceforge, dump a core, install ilisp (which version?) ...  The actual
+session was pretty unstructured (I had been advised previously that they
+tended to be fairly unstructured so hadn't prepared anything specific),
+but people found entertainment in mucking around with loops and
+suchlike, and one guy produced a Mandelbrot generator using CLX which I
+thought was pretty cool.

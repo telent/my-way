@@ -1,0 +1,33 @@
+title: So I started out by looking at FFTW, but (a) calling C is enough of a mess that I prefer not to,
+author: Daniel Barlow
+date: Mon, 20 May 2002 1:49:48 +0000
+
+
+<p> So I started out by looking at <a href="http://www.fftw.org/"
+>FFTW</a>, but (a) calling C is enough of a mess that I prefer not to,
+(b) it wants doubles as input, not the shorts that I actually have,
+(c) I wanted to find out how an FFT works anyway.  Lots of web
+trawling later I game up on most of the other FFT code snippets I
+could find, downloaded the appropriate <a
+href="http://www.ulib.org/webRoot/Books/Numerical_Recipes/bookcpdf.html"
+>Numerical Recipes</a> ("In C" variant) chapter, and transcribed their
+C into Lisp.  With a few type declarations it does a
+forward-then-reverse in-place transform in about 1.4ms.
+
+<p> Then I actually <i>did</i> try FFTW, and it's slower (2.2 seconds
+for the forward transforms alone).  Could be C calling overhead, or my
+lousy measurements, or possibly that 2^10 is neither a very big nor
+complicated size anyway and I would have found it more of a win if I
+had some weirdo 31765 byte buffer, or something.
+
+<p> And earlier today I saw <a
+href="http://www.starwars.com/episode-ii/" >When Clones Go Bad</a>.
+Trouble was, having re-read a lot of Jon Courtenay Grimwood books
+recently (he throws neuroscience terms around like confetti - or like
+confetti would be if it were heavier, slightly squishy,
+oxygen-dependent, full of chemicals and - and actually not very much
+like confetti at all, then) is that I kept hearing Princess Amidala's
+name as <a
+href="http://www.ets.uidaho.edu/med532/amygdala.htm">Amygdala</a>
+
+

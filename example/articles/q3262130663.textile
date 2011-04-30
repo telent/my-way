@@ -1,0 +1,61 @@
+title: The TODO list is looking entirely prosaic right now:
+author: Daniel Barlow
+date: Sat, 17 May 2003 4:24:23 +0000
+
+The TODO list is looking entirely prosaic right now: 
+
+<ul>
+<li> article for Linux User magazine on something to do with CLiki
+(needs finishing)
+
+<li> paper for UKUUG conference (needs starting)
+
+<li> book proposal, revisions to
+
+<li> try to work out if I want to/have the time to/can afford to go to
+Metz for the <a href="http://rencontresmondiales.org/" >LSM2003</a>,
+and if so how much of the UKUUG paper I can recycle and how much I
+need to write fresh. 
+
+</li>
+</ul>
+
+<p>So <i>obviously</i> this is a good time to spend a week looking at
+SBCL 64 bit issues.  In fact I can't think of a more productive use of
+time, provided I discount almost anything else involving a computer in
+some way.  As of my most recent checkin, though, we're at the point
+where
+
+<ul>
+<li> the runtime support builds
+<li> all the Lisp files build in the crosscompiler
+<li> the initial image can be written out
+<li> the initial image is loaded into the runtime, and starts
+executing.  Even calls functions and stuff
+<li> but dies fairly quickly when we start doing floating point
+</li>
+</ul>
+
+<pre>
+&lt;dan_b> 0x00000000321b927c in ?? ()
+&lt;dan_b> 0x321B8FE0: MAKE-HASH-TABLE   #X321B8FC9
+&lt;dan_b> 0x321BB140: HASH-TABLE-COUNT   #X321BB129
+&lt;Krystof> Cooool
+&lt;dan_b> this brings back memories
+&lt;Krystof> yeah, we have been here(tm)
+</pre>
+
+The particular memories I have in mind are from summer/autumn 2000
+when I first started the SBCL Alpha port, and I think I was stuck with
+a problem in this area for some few months.  I expect this time it'll
+be a matter of days or possibly even hours; what's frightening here is
+the realisation of how long ago those days were and how long I must
+have spent reading SBCL code since then.  If I'd devoted the same
+amount of time to gcc, I'd probably be rich by now.  Or, anyway, richer.
+
+<p>Nobody reported any interesting bugs in the sbcl prerelease last
+month, so we'll probably go ahead and do a 0.8 this month.  Which
+means code freeze in about three days time, which means it's time to
+turn my attention to some threading cleanups this weekend.
+<i>Definitely</i> time to stop messing around with 64 bit support.
+

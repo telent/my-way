@@ -1,0 +1,10 @@
+title: It's summer
+author: Daniel Barlow
+date: Sun, 30 Mar 2003 3:12:47 +0000
+
+<p>It's summer.  So says my laptop, anyway.  I can't remember what
+timezone this colo box thinks it's in, though.
+
+<p>Spent some time yesterday and today attempting to determine why
+SBCL unithread-build-of-threaded-code didn't: a variety of silly bugs
+which  nobody is interested in reading about

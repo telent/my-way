@@ -1,0 +1,58 @@
+title: Whitespace sensitivity is cool
+author: Daniel Barlow
+date: Wed, 3 Jul 2002 14:13:47 +0000
+
+<h3>Whitespace sensitivity is cool</h3>
+
+<p> For some reason I've started reading and contributing to <a
+href="http://www.c2.com/cgi/wiki?RandomPages" >Ward's Wiki</a> a lot
+more lately.  When I was first doing Wiki I was mostly using Netscape
+4, which gives you some idea of how long ago it was, because I can't
+actually <i>remember</i> when was the last time I used Netscape 4.
+Mozilla rocks.
+
+<p>But, anyway, well.  Except for this bit.  "This bit" is that wiki
+has <a href="http://www.c2.com/cgi/wiki?TextFormattingRules" >Text
+Formatting Rules</a> which demand a variety of keyboard gymnastics,
+not least among them that various formatting (UL lists, BLOCKQUOTE,
+PRE etc) demands the insertion of a literal TAB (ASCII 007) character.
+Pressing TAB in a Mozilla text field, though, makes it go to the next
+text field instead of inserting anything, ^V doesn't seem to do the
+conventional readline "insert next character as literal" thing, and
+the conventional Emacs "insert next key as literal character" thing -
+<b>don't press that!  You just quit Mozilla!</b>.  Without prompting
+to do anything with the four paragraphs you just typed, either ...
+
+<p> So, I cut and paste from my *scratch* buffer, which is silly but
+just about livable.  But, this is wrong.  This is Free Software.  Even
+if I will probably never ever myself actually write <i>code</i> for a
+project in which the majority of a 45 minute "how to hack on $project"
+talk is given over to a description of getting reference counting
+right, I can at <i>least</i> file a bug report.  Or at least, read the
+bug report that someone must already have opened on this subject and
+see if there's some way to do it already that I'm missing.  Well, they
+did, and there isn't.  Bug <a
+href="http://bugzilla.mozilla.org/show_bug.cgi?id=29086" >29086</a>,
+has been open for more than two years, and attracted so much argument
+that it's over 100k long as viewed by <tt>lynx -dump</tt>
+
+<P>Lessons we can learn:
+
+<ul>
+<li> There is - or should be - an analogue of Godwin's Law which
+substitutes "recommend the introduction of a configuration option" for
+"compare your opponent to Hitler"
+
+<li> I should add <a href="http://mpt.phrasewise.com/" >mpt's
+weblog</a> to my usual reading list instead of stumbling across it
+once a month
+
+<li> Whitespace sensitivity is a Bad Thing.  Let's just remind
+ourselves of that once again
+
+</ul>
+
+<p> (Yes, I know there's a <a
+href="http://www.c2.com/cgi/wiki?ConvertSpacesToTabs" >workaround</a>
+in Wiki, but it's heuristic and doesn't seem to do too great a job)
+

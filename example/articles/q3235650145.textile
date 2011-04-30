@@ -1,0 +1,5 @@
+title: In other news, CLIM rocks
+author: Daniel Barlow
+date: Sun, 14 Jul 2002 16:42:25 +0000
+
+In other news, CLIM rocks.

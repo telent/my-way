@@ -1,0 +1,36 @@
+title: Was pointed to Why compilers are doomed by superant's Advodiary
+author: Daniel Barlow
+date: Sat, 17 Nov 2001 1:33:31 +0000
+
+
+<p> Was pointed to <a href="http://www.equi4.com/jcw/wiki.cgi/56.html"
+>Why compilers are doomed</a> by <a
+href="http://www.advogato.org/person/superant/diary.html?start=40"
+>superant</a>'s Advodiary
+
+<p>I bristle when I hear the phrase "scripting language", because 
+it seamlessly combines "great for quick hacks" with "vomit-inducingly
+ugly for anything more than 200 lines long or where performance is an
+issue", and although there's legitimately some kind of trade-off there
+I really don't believe it's the straightforward <i>x + ay = k</i>
+that people make it out to be.
+
+<p>Yes, it's good to use expressive high-level languages that have
+vast prebuilt libraries, that let you write "hello world" in a single
+line of code and execute it less than a second later without waiting
+for the compiler.  That doesn't mean it <i>has</i> to be slow as
+molasses, have one implementation and no external standard, and have
+insane syntax or horrible support for building big programs.
+
+<p>&lt;opinion&gt;Any language you can't implement in itself is not
+general-purpose.  Any language you wouldn't <i>want</i> to implement
+in itself is not usable.  &lt;/opinion&gt; Granted, that doesn't leave
+a lot of options.
+
+<p>Opinion on the article itself: so many other problem spaces in IT
+map onto something that has been solved as part of compiler design,
+that you'd be damn foolish to decide that compilers were not worth
+studying any more just because silicon is fast these days.  I've never
+needed, say, to write a grep(1) clone, but that doesn't mean I haven't found
+finite automata theory useful on other tasks. 
+

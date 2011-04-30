@@ -1,0 +1,76 @@
+title: How the other half live
+author: Daniel Barlow
+date: Thu, 8 Apr 2004 0:3:51 +0000
+
+<b>How the other half live</b>
+
+<p>This evening I went to the <a
+href="http://schematics.sourceforge.net/scheme-london/" >scheme uk</a>
+meeting, to discuss "threading implementations in Common Lisp
+(probably with a certain amount of focus on what to do with special
+bindings).".  The Schemers were, of course, rightly horrified at the
+whole concept of dynamic bindings, but once over their initial shock
+that any language should have something so evil, we did have an
+interesting discussion.  (Slides <a href="/schematics.lisp">here</a>,
+slide viewing software and general discussion of same <a
+href="/diary/2003/8/#3.75633" >here</a>.)
+
+<p>One of the reasons I wanted to talk about special variables in the
+presence of smart people is that it's been a contentious point for
+SBCL threading lately.  We're agreed on the general concept: a special
+has a global value and may additionally be dynamically bound
+per-thread; threads only see the global value if they don't have
+bindings.  What there seems to be some contention over (and looking
+back over my diary entries over the last couple of months I see I've
+referred to this before) is the initial values that a new thread gets
+when it starts up: are they (a) the values in the thread that called
+MAKE-THREAD, or (b) the global values?
+
+<p>Presently we take the calling thread's values.  I originally wrote
+it this way because it didn't occur to me to write it any other way,
+but in fact there are arguments both ways.  If we take the calling
+thread's values, it becomes very simple to set up a new thread's
+environment if it needs to do anything special:
+<pre>
+(let ((*standard-output* (new-terminal-for-thread)))
+  (sb-thread:make-thread #'myfunc))
+</pre>
+or indeed to <i>not</i> set up the new thread's environment, instead
+letting it share the caller's objects.  For example, we currently
+arbitrate access to the listener's io streams using a mutex bound to
+*session-lock*: when a thread T1 wants to get input or to start the
+debugger or similar, it first attempts to grab *session-lock*; the
+user can then ask the current owner of that lock (which presumably is
+in a repl) to release it so that T1 may interact.  If a new thread T2
+is never going to use this listener (perhaps it's going to create its
+own listener; that seems a fashionable thing to do lately) it merely
+has to create a new lock and rebind *session-lock* to it.  This is
+only possible if each newly created thread gets its specials from its
+parent: a truly global *session-lock* would be a pretty useless thing.
+
+<p>The alternative is to do what apparently every other threaded CL
+does.  (Despite what you may have read about SBCL's attitude to
+backward compatibility, this is actually a pretty compelling argument
+on its own.)  Here's one example of a situation, loosely based on an
+actual SLIME problem, where that would work better: you've written an
+alternate listener that stores, say, a stream connecting it to emacs
+into *emacs-io*.  IO on this stream must obey a particular protocol
+where requests are responded to in sequence.  If the user types
+something into your listener that happens to start a thread, that new
+thread inherits your *emacs-io* handle, and if it then wants to print
+something on this stream (or worse yet, read messages from it) -
+perhaps because it's triggered the debugger - it will almost certainly
+be talking out of turn.
+
+<p>I'm actually now not totally convinced that I've explained the
+SLIME situation correctly, because if I have I think that's their
+fault, and it certainly seemed more convincingly an SBCL issue at the
+time it was explained to me...
+
+<p>Anyway, what's interesting is that despite the fact I've slowly
+come round to thinking that global values would be more sensible, the
+Schemers pretty much universally said "current values" when I asked
+them.  So, hmm.  There also seemed to be fairly strong consensus on 
+how much locking the library should do around things like stream
+buffer and hashtable access (less, rather than more), which is
+gratifying.

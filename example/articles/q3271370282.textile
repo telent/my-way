@@ -1,0 +1,112 @@
+title: Weekend spent on Araneida hacking, which somehow ended up being
+author: Daniel Barlow
+date: Mon, 1 Sep 2003 2:58:2 +0000
+
+<p>Weekend spent on Araneida hacking, which somehow ended up being
+SBCL hacking.  Two motivations:
+<ol>
+
+<li>For the new version of the <a
+href="http://www.buyitlocally.org.uk" >Local Food Directory</a> (a
+CLiki application, if it wasn't immediately obvious from looking at
+it) we're going to be doing interesting things like tying into <a
+href="http://www.streetmap.co.uk/" >Streetmap</a> for postcode
+searches and suchlike.  It's also prettier, which is nice if you like
+that kind of thing.
+
+<p>The practical impact of tie-ins with an external server, though, is
+that our latency for replying to requests now depends on circumstances
+beyond our control.  Most (all) of the Araneida services so far are
+written so that we have some fairly good idea of how long it'll take
+to answer a request: we only talk http to a localhost proxy instead of
+slow remote clients; if we send mail, we send it to an smtp listener
+on the local machine; and our database queries, on the sites that use
+databases, are mostly fairly well tuned.  But, remote hosts.  Can't do
+much with that.  Had better try this threading stuff for real, then.
+
+<li>The users of Araneida, of which there seem to be an expanding number no
+matter what obstacles I throw up in their way (making them all install
+SBCL was going to be a pretty good way to make them go away, I
+thought, but still apparently Not Enough) are fond of pointing out
+that the <b>export-server</b> stuff is a bit weird at best.  I concur.
+It made sense once upon a time.  
+
+</li>
+</ol>
+
+<p>In brief, we add a new class
+<b>http-listener</b>  (concrete subclasses
+<b>threaded-http-listener</b> and <b>serve-event-http-listener</b>) 
+which represents a single endpoint (a host/port combination) and
+dispatches all stuff that comes in on that endpoint to a handler
+
+<pre>
+(defclass http-listener ()
+  ((handler :initform *root-handler* :initarg handler
+	    :accessor http-listener-handler)
+   (address :initform #(0 0 0 0) :initarg :address
+	    :accessor http-listener-address)
+   (port :initform 80 :initarg :port :accessor http-listener-port)
+   ;; ...
+   ))
+</pre>
+
+Many listeners may dispatch to the same handler, and the handler may
+be a dispatching handler if it likes.  There still needs to be some
+provision somewhere for lying about the hostname (as in, your external
+server address is foo.com:80/ but your araneida is actually on :8000)
+and a place to hang random extra bits that would be useful for
+generating apache httpd.conf segments (like where on the disk to find
+ssl certificates, etc), but it looks good so far.
+
+<p>While doing this, add some dynamic guess-how-many-processes-we-need
+stuff to adjust the number of serving threads based on load, slap it
+all back together and hammer it a bit with apachebench.  
+
+<p>Oops.  Not literally "Oops" in the sense that a Linux kernel hacker
+would know it, but EFAULT from <tt>accept()</tt> anyway, which is kind
+of analogous for a user program.  
+<b>sb-bsd-sockets:socket-accept</b> calls <tt>accept</tt> with the
+contents of a suitably sized Lisp vector as the second argument (the
+sockaddr).  To make sure this doesn't get relocated between our taking
+the address and calling out, we wrap it in <b>without-gcing</b> to
+disable gc for the duration.  This is actually a really bad idea
+because all the idle threads block in select(), so we can't GC unless
+we're really really busy; somewhat perverse.  And, just to be awkward,
+doesn't always work either.  For some reason that I haven't yet found,
+it is possible to have a GC happen during <b>without-gcing</b>.
+
+<p>I shall spare you the story of my <a
+href="http://sbcl-internals.cliki.net/VOP" >VOP</a>-writing and GC
+staring-at experience on Sunday afternoon, but the upshot is that 
+<ul>
+
+<li> we have two new VOPs on x86 to put pointers on the C stack and
+take them off again.  This causes the objects pointed to to be marked
+dont_move at GC time, so we no longer need to without-gcing around
+many foreign calls: instead we can e.g.
+
+<pre>
+    (sb-ext::with-pointers-preserved (sockaddr)
+      (let* ((ad (sb-sys:int-sap
+		  (+ (logand (sb-kernel::get-lisp-obj-address sockaddr)
+			     (lognot 7)) 8)))
+	     (fd (sockint::accept (socket-file-descriptor socket)
+				  ad (size-of-sockaddr socket))))
+</pre>
+
+<li> after making this change and finding that the wretched thing was
+still faulting, it occurred to me at about 2am that marking a page
+dont_move doesn't stop it from being write-protected (i.e. using
+<tt>mprotect()</tt>) if it has no pointers to earlier generations.
+Although we have a SIGSEGV handler which does the necessary when we
+write to a protected page from Lisp, that's not going to help too much
+with a syscall.  So, one small hack to the GC later - currently
+rebuilding - and let's see if that helps.
+</li>
+</ul>
+<p>It should be noted that although I started writing this entry at
+whatever ungodly time it says, I finished and uploaded it at around
+midday on Monday
+
+

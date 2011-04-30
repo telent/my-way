@@ -1,0 +1,15 @@
+title: Item (2) below (logically above) turns out to be a problem in the
+author: Daniel Barlow
+date: Thu, 18 Sep 2003 16:0:44 +0000
+
+<p>Item (2) below (logically above) turns out to be a problem in the
+garbage collector and not at all a library bug.  We weren't scavenging
+signal contexts (and thus registers) when they were on alternate
+signal stacks.  Most threads don't spend a lot of time in alternate
+signal stacks, so you have to work the GC fairly hard to see this.
+Fixed now, anyway.
+
+<p>There still seems to be some bug which I haven't found, where the
+GCing thread will occasionally overcount the number of threads it's
+signalled to stop, and then sit in a loop indefinitely waiting for a
+thread that doesn't exist.

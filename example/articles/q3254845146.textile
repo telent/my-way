@@ -1,0 +1,11 @@
+title: Plan c (d
+author: Daniel Barlow
+date: Fri, 21 Feb 2003 19:39:6 +0000
+
+Plan c (d? e? I may have lost count, actually) for stream locking in
+threaded SBCL.  Let's just have a lock, and keep it in a special
+variable, and rebind the special variable when we open a listener on a
+logically different device.  Not only is this simpler, but it stands a
+reasonable chance of working no matter what kind of stream it was - 
+ttyname() doesn't know that <tt>/dev/tty</tt> is <tt>/dev/pts/4</tt>
+(for example), so it wasn't really ever going to work in any useful case.

@@ -1,0 +1,14 @@
+title: What I should be doing: hacking on CLiki to allow two cliki instances
+author: Daniel Barlow
+date: Fri, 8 Aug 2003 20:11:25 +0000
+
+<p>What I should be doing: hacking on CLiki to allow two cliki instances
+to share the same pages (and the same methods for
+search-term-relevance and the rest), so that we can have multiple
+`skins' for the same data.
+
+<p> What I'm actually doing: finishing up and committing the 
+<a href="/diary/2003/7/#24.10207">timezone/DST stuff</a> I was talking
+about the other day.  Then, probably, having a shower before going to the
+pub.
+

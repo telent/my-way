@@ -1,0 +1,33 @@
+title: On Monday I went to the 
+author: Daniel Barlow
+date: Wed, 1 May 2002 1:39:37 +0000
+
+
+<p> On Monday I went to the <a
+href="http://acmbc.soi.city.ac.uk/events/20020429EUCD/notice.htm" >
+Campaign for Digital Rights Miniconference</a> on the European
+Copyright Directive.  If you live in the UK and ever read books, or
+listen to records, or use software, you should probably be concerned.
+A lot of people are reasonably concerned about the effects of digital
+copying on their industries, but legislating that it's illegal to
+break the copy protection (even when you have a legitimate use, like
+needing to transfer software to your new computer, or lending books
+from a library, or ...) is not the Right Answer.  The software
+industry shelved copy protection a decade ago because users didn't
+like it; do we <i>have</i> to go through the same thing again?
+
+<P> Before the conference, 5pm tube travel reminded me quite
+sharply why I moved out of London.
+
+<p>After the conference, beer.  After beer, pizza.  After pizza, bus
+back from Islington to central London, and coach back to Oxford,
+arriving around 3am.
+
+<p> Today, new <a href="/cliki/asdf">asdf</a> version.  Actually
+mostly done on the coach down to London yesterday.  Also registered
+for the <a href="http://www.ukuug.org/events/linux2002/" >UKUUG Linux
+Developers' Conference</a>.  If you haven't already done likewise, you
+just missed the early rate. <i>Update: uh, no you didn't.  I was
+confused with OLS: the UKUUG early rate runs for another month yet.</i>
+
+

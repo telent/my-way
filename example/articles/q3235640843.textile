@@ -1,0 +1,75 @@
+title: More on control stack exhaustion detection, then, seeing as it pretty
+author: Daniel Barlow
+date: Sun, 14 Jul 2002 14:7:23 +0000
+
+More on control stack exhaustion detection, then, seeing as it pretty
+much works.
+
+<p>The goal is that when a (probably newbie) user evaluates an
+infinitely recursive function, we handle it safely instead of just
+running out of space for our stack frames and crashing.  In current
+SBCL releases we do this by insterting a call to
+<tt>%detect-stack-exhaustion</tt> at the start of each lambda in safe
+code, but that tends to increase the code size (internally, lambdas
+are used all over the place), and it's not very fast, and it doesn't
+work at all (it's turned off) when optimization qualities are set to
+prefer speed to safety.
+
+<p>So, why don't we do it by protecting a page near the end of the
+control stack and inserting another clause into the SIGSEGV handler 
+that notices this, presents the user with an error message and lets
+them abort the computation.  Sounds simple.
+
+<ol>
+<li> In the first attempt, I forgot that the control stack on x86
+grows downwards not upwards: protecting the <i>top</i> of the stack
+made for a really short-lived program.  Clearly I have been hacking Alpha
+and PPC for <strike>too long</strike> almost long enough.
+
+<li> The second version fixed that, but the other weirdness in the x86
+port is that the Lisp control stack uses the C stack pointer (there
+being a lack of registers on an x86 to keep pointers in, they decided
+to make %esp, %ebp do both).  So, signal handler stack frames are also
+created on this stack.  When we hit the guard page we get an infinite
+SIGSEGV recursion, because the kernel's trying to put sigcontext and
+siginfo structs onto the page to call our handler, and the page is
+still protected
+
+<li> So, sigaltstack() seems like a good thing.  All we need do is
+allocate a few pages somewhere else and make SIGSEGV handlers use it.
+Then, as our handler calls back into Lisp to give the user his aborts
+(this is scarily non-POSIX behaviour, but it works on all interesting
+platforms anyway), we'd better detect this unusual situation in the
+assembly glue that translates between C and Lisp calling conventions,
+and fix up the stack pointer to be pointing back into the usual Lisp 
+control stack.  After several attempts to write this without any
+knowledge whatsoever of x86 assembler (it turns out that <tt>jbe</tt>
+is "jump if below or equal", not "jump if bigger or equal") we
+actually have a Lisp that will detect when the stack overflows and
+drop the user into the debugger.  Note for later: it would be wise if
+the error message cautioned him not to ask for a backtrace without
+limiting the number of frames printed.  Ahem.
+
+<li> Recovery is still a problem: it seems that stack unwinding wants
+to read the guard page.  We fix this by changing the protection to
+protect against write only.  Then we need to find somewhere sensible
+to re-enable the guard page: the 'ABORT' restart looks like a good
+place to do this.  Then we need to disable the previous
+manually-performed stack checking, because it's getting in the way.
+Time for another full rebuild just to make sure it's really gone.
+
+<li> Then, I think, we're pretty much there except for cleaning the
+patch up and defining some meaningful names in parms.lisp to replace
+the ickier magic numbers we've used.  Purely to complicate the issue,
+the magic <tt>SIGSTKSZ</tt> (to which choice of name all I can say is
+<tt>ENOVWLS</tt>) is defined in <tt>&lt;signal.h></tt>, which file
+cannot be included in <tt>x86-assem.S</tt>, so we have to write a
+small C program to grab its value and print it out to a file that
+<i>can</i> be &#35;included in assembler.  
+</li>
+</ol>
+<p>Oh Intel, we love you.
+
+<p>So why am I telling you all this?  I don't know, but I felt I had
+to tell someone.
+

@@ -1,0 +1,33 @@
+title: This annoys me -
+68.74.156.60 - - [28/Feb/2003:02:08:44 +0000] "POST /edit/db-sockets HTTP/1.1" 200 164 "-" "websphinx.Crawler" www.cliki.net "-" 0 seconds
+68.74.156.60 - - [28/Feb/2003:02:09:21 +0000] "POST /edit/Graphics%20Toolkit HTTP/1.1" 200 178 "-" "websphinx.Crawler" www.cliki.net "-" 1 seconds
+68.74.156.60 - - [28/Feb/2003:02:09:48 +0000] "POST /edit/CORBA HTTP/1.1" 200 154 "-" "websphinx.Crawler" www.cliki.net "-" 1 seconds
+author: Daniel Barlow
+date: Fri, 28 Feb 2003 4:13:28 +0000
+
+This annoys me -
+<pre>
+68.74.156.60 - - [28/Feb/2003:02:08:44 +0000] "POST /edit/db-sockets HTTP/1.1" 200 164 "-" "websphinx.Crawler" www.cliki.net "-" 0 seconds
+68.74.156.60 - - [28/Feb/2003:02:09:21 +0000] "POST /edit/Graphics%20Toolkit HTTP/1.1" 200 178 "-" "websphinx.Crawler" www.cliki.net "-" 1 seconds
+68.74.156.60 - - [28/Feb/2003:02:09:48 +0000] "POST /edit/CORBA HTTP/1.1" 200 154 "-" "websphinx.Crawler" www.cliki.net "-" 1 seconds
+</pre>
+
+This lame excuse for a web crawler is <i>editing cliki pages</i>.
+Automatically.  Specifically, it's stripping out carriage returns from
+the body, which as you can imagine makes it difficult to see where the
+paragraph breaks are.
+
+<p>I don't know if the fault here is with <a
+href="http://www-2.cs.cmu.edu/~rcm/websphinx/" >WebSPHINX itself</a>
+or someone's custom crawler based on it, but if people are going to
+write software that doesn't actually work, they should not let it out
+on the internet.  Really.
+
+<p>Oh, and I might also point out that the pages in question contain
+<pre>
+&lt;meta NAME="ROBOTS" CONTENT="noindex,nofollow">&lt;/meta>
+</pre>
+
+in the head element, so robots really have no business being there
+anyway.
+

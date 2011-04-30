@@ -1,0 +1,13 @@
+title: glibc 2.3: the existing C library locale model is inadequate
+author: Daniel Barlow
+date: Sun, 7 Jul 2002 10:9:46 +0000
+
+<p><b>glibc 2.3</b>: the existing C library locale model is inadequate
+for threaded applications.  I can believe this but I'm not sure I see
+why the POSIX locale model is worth caring about anyway.  The current
+thread-local storage API is ugly, so 2.3 introduces a new
+<tt>_thread</tt> keyword to C, which has the same approximate syntax
+as <tt>register</tt> or <tt>static</tt>.  And people are using
+internal symbols (<tt>__setfpucw</tt>, anyone?) and geting broken by
+it on glibc upgrades, so from now on all the internal symbols are
+marked with the version <tt>GLIBC_PRIVATE</tt>.

@@ -1,0 +1,10 @@
+title: Is this cool, or what
+author: Daniel Barlow
+date: Sun, 29 Feb 2004 20:4:25 +0000
+
+Is <a href="http://userpages.umbc.edu/~hefner1/cmucl-apple2-port.png"
+>this</a> cool, or what?
+
+<P>No, it's not really an Apple II port of CMUCL, it's the
+xscreensaver apple2 hack.  Still cute, though.  
+

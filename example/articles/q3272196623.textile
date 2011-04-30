@@ -1,0 +1,23 @@
+title: In the last three
+author: Daniel Barlow
+date: Wed, 10 Sep 2003 16:30:23 +0000
+
+<p>In the last <a
+href="http://www.advogato.org/person/dan/diary.html?start=43" >three
+and a bit years</a> of self-employment, I have learned that I am a
+better software developer than I am a salesperson, and that the
+opportunities for contract SBCL development are too few and far
+between to make a living out of anyway.  There are those who would
+argue that I should have known both of those things three years ago,
+but, well, I feel better to have found out for certain.  And the
+(fairly interesting, but not quite my vocation) unix/web/database/etc
+work I've been doing in the meantime has funded some quite neat unpaid
+SBCL work anyway.
+
+<p>But, as I said, my motivation for sales is matched only by my aptitude
+at same, and as I don't right now have people queueing up outsde the
+door to thrust work into my laid-back, casual, and ungrateful hands, I
+think it's time to draw a line under that life episode and start
+looking for something else to do.  In other words, I've been kind of
+busy with agencies and similar stuff in the last few days.  Will Hack
+For - well, sensible amounts of money, as the saying nearly goes.

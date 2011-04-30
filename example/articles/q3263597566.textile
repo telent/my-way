@@ -1,0 +1,33 @@
+title: Because, I think, for a language to be considered truly general
+author: Daniel Barlow
+date: Tue, 3 Jun 2003 3:52:46 +0000
+
+<p>Because, I think, for a language to be considered truly general
+purpose it must be good for evil baling-wire-and-duct-tape kludges as
+<i>well</i> as for beautiful elegant robust well-engineered solutions,
+I have (minimal) pleasure in showing you <a href="/asdf-install.lisp"
+>asdf-install.lisp</a> (temporary location).
+
+<p>"Not work-viewable", as they say
+
+<p>Note in passing: the cclan <tt>&gt;(foo)</tt> and <tt>:(download
+...)</tt> tokens are both deprecated.  If you follow these rules, you
+can use the new <tt>:(package ...)</tt> syntax instead.
+
+<ol>
+
+<li> The CLiki page name must be the asdf system name, after downcasing
+
+<li> The package link is either <tt>:(package "foo.tar.gz")</tt> for
+a package in cCLan, or <tt>:(package
+"full://url/to/host/foo.tar.gz")</tt> for a package somewhere else
+
+<li> There is only one package link per page
+
+<li> It must point to a gzipped tarball of an <a
+href="http://www.cliki.net/ASDF_System" >ASDF System</a> or close approximation
+
+<li> The package must be Free according to DFSG 
+
+</li>
+</ol>

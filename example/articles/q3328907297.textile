@@ -1,0 +1,25 @@
+title: Random notes on the CLIM layout protocol, as implemented in McCLIM
+author: Daniel Barlow
+date: Tue, 28 Jun 2005 1:28:17 +0000
+
+Random notes on the CLIM layout protocol, as implemented in McCLIM.
+
+<ul>
+<li> attempting to override the size of a stream pane (by calling
+<tt>change-space-requirements</tt> on it) is probably a bad idea: at
+any rate, it doesn't work.  Let the internal clim magic work out the
+sizes of these things based on the stuff that you've printed to them,
+and if you need to constrain them to a given size, drop them in a
+scroller or (possibly, haven't tried) a restraining-pane.
+
+<li> setting the :scroll-bars option on a stream pane is not the same
+as putting it in a scroller.  Indeed, I can't see from the spec how the 
+:scroll-bars stuff is even supposed to work - do the
+:height/:width/etc keywords apply to the visible area or to the inner
+stream pane?
+
+</ul>
+
+As you may have guessed from the preceding, largely undirected climacs
+hacking continues.
+

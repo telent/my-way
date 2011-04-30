@@ -1,0 +1,20 @@
+title: Still alive
+author: Daniel Barlow
+date: Tue, 12 Mar 2002 1:9:10 +0000
+
+
+<p> Still alive.  Not entirely sure how much difference that makes.
+
+<p> I took the weekend off.  Due to a combination of friends round on
+Saturday night, Dune on Sunday night, and finding all the Philip
+Pullman books were on special offer in Borders on Friday evening, 
+I got no computer time all weekend other than a swift email check.
+On the other hand, I hoovered the carpets downstairs, which must be
+worth something.
+
+<p> Having just finished getting a bunch of work done (as referred to
+in previous entry), it might be time to look at some of that lisp
+stuff again.  I've somehow managed to page my free projects TODO list
+out of main memory, though, and can't remember what I had lined up.
+So, we'll see if anyone complains.
+

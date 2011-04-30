@@ -1,0 +1,28 @@
+title: I still can't get sound working on the blasted thing, though
+author: Daniel Barlow
+date: Fri, 10 May 2002 11:19:33 +0000
+
+
+<p> I still can't get sound working on the blasted thing, though.  I
+have vague recollections of <tt>dmasound_pmac</tt> being the
+appropriate thing on a previous kernel, but now - well, it works
+apparently perfectly in all respects except that of actually producing
+audible output.  Yes I <i>have</i> tried a mixer.
+
+<p>Score one for kernel audio drivers, though.  I then tried alsa and
+it locked the machine solid.  Hmm
+
+<p>So after that I tried my laptop, but its icky i810_audio stuff
+doesn't understand full-duplex.  The card in the Alpha does, but that
+machine is firmly ensconced in the rats nest of stuff under the desk
+and is not about to get lugged downstairs to be near the guitar.  <a
+href="http://www.griffintechnology.com/audio/imic_main.html" >This
+thing</a> looks rather slick, though.  And cheaper from the <a
+href="http://www.apple.com/uk/thestore/" >Apple Store</a> than either
+of MikroAnvika or Technomatic.  How long it'll take to arrive, though,
+I have no idea.  In the meantime I can get some software-type stuff
+written.  I'm sure it's not really necessary to drop into C just to do
+audio processing (and if it is, it's time to do some SBCL hacking to
+fix that)
+
+

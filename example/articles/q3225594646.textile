@@ -1,0 +1,27 @@
+title: lemonodor has been
+author: Daniel Barlow
+date: Wed, 20 Mar 2002 6:30:46 +0000
+
+
+<p> <a href="http://www.lemonodor.com/#000069">lemonodor</a> has been
+having trouble with multiprocessing in CMUCL, and comes to the
+conclusion that it is `just barely "production quality"'.  For the
+record, the site that served you this page is running on the pretty
+similar SBCL (you wouldn't guess) using Araneida, and doesn't even use
+MP, instead hooking into the same event loop as SBCL uses for IO at
+the top-level.  It does have Apache in front of the CL web server to
+act as a proxy, which tends to avoid most of the "slow/malicious
+client" problems.
+
+<p> Of course a lot of it comes down to traffic volume.  telent.net
+only gets 1000 hits a day or so, evenly spread through 24 hours,
+though the other site I'm using Araneida for gets maybe 2-3 times
+that, concentrated around GMT lunchtimes and evenings.  That site is 
+limited by database access speed (and some really quite suboptimal
+queries in places don't help).  ApacheBench has made it do 40-50
+requests/second without hurting, but that's not exactly a real-world
+load.
+
+<p>SBCL MP will of course solve all the problems of the world if only
+I can get as far as implementing it ...
+

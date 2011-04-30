@@ -1,0 +1,48 @@
+title: CLiki now supports editing old versions, for greater ease of
+author: Daniel Barlow
+date: Thu, 3 Jun 2004 23:0:11 +0000
+
+<p>CLiki now supports editing old versions, for greater ease of
+recovering from vandalism.  That is, it still saves a <i>new</i>
+version, but the text you start with when you press 'edit' is whatever
+version you were looking at.  So, find a version that doesn't have
+brazilian hackers(sic) or porn spam on it, edit and save.
+
+<p>That's kind of an aside, but it makes a good first sentence for the
+rss monster.  My Lisp hacking lately, what small amount of it has
+happened, has been about sbcl x86-64, or hammer or amd64 or whatever
+it's called today, with the intention of getting at least <i>some</i>
+distance further before the cmucl anon cvs repository comes back.  So
+far since last weekend -
+
+<ul>
+
+<li> The problem which had been stopping progress for, oh, months:
+turns out that we were calling alloc() with negative sizes, which
+obviously is a bad idea.  alloc() was honouring our requests too, at
+least to the extent of decrementing the free pointer and therefore
+ensuring that we got the same address space again for some later
+request.  The offending code was something to do with allocate-vector,
+but right now I'm on a tube train with no network and have entirely
+forgotten what.
+
+<li> All the floating point instructions were missing REX prefixes.
+This is, obviously, bad when you want to index off r8 and you end up
+offset from rax instead.
+
+<li> <tt>move-from-signed</tt> worked by shifting left twice and checking
+for overflow after each shift.  For a target with three bits of fixnum
+tag, this is only doing 66% of the job.
+
+<li> Thinko in <tt>movsxd</tt>
+
+</li>
+</ul>
+
+Right now we have a SIGFPE resulting from an <tt>idiv</tt>
+instruction.  I'd say something witty about this, but am prevented by
+having nothing witty to say.  But at last we've made to the end of
+<tt>MAKE-HASH-TABLE</tt>, so in the absence of humour there does at
+least seems to be some kind of forward progress.
+
+<p>Skating tomorrow!

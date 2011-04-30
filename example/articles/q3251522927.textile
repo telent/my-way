@@ -1,0 +1,19 @@
+title: I was going to send a pointer to the preceding (lexically following)
+author: Daniel Barlow
+date: Tue, 14 Jan 2003 8:48:47 +0000
+
+I was going to send a pointer to the preceding (lexically following)
+entry to <a href="http://www.dmason.net/">David Mason</a>, long-time
+Emacs user and (former?) GNOME project person.  But his web site's
+been replaced by a "coming soon" page, and his <a
+href="http://www.livejournal.com/users/dcm/">Livejournal site</a> (to
+get the url of which I had to dig his previous web site out of Google
+cache) doesn't display his email address anywhere.  I'd try his old
+Red Hat address, but I think it's a matter of principle now.  
+
+<p>On the genreal subject of hiding email addresses, ifile has now
+classified 81550 non-spam messages and 637 spam messages.  It gets
+about a couple wrong each day - almost always spam that it lets
+through into non-spam.  This is a massively better result than
+spamassassin already.  So far so good.
+

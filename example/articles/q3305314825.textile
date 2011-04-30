@@ -1,0 +1,66 @@
+title: s-expressions  for SQL
+author: Daniel Barlow
+date: Tue, 28 Sep 2004 0:0:25 +0000
+
+<b>s-expressions  for SQL</b>.
+
+<p><i>(This text also appeared on the <a
+href="http://www.caddr.com/clump/" >Clump</a> mailing list; if you
+read it here you can skip it there, or vice versa)</i></p>
+
+<p>Did you know that
+<pre>
+SELECT foo,bar 
+   from table1 
+   join (select * from table2 where some_criterion limit 10) table2
+   on table1.table2id=table2.id
+</pre>
+is (according to the postgres manual, at least) valid SQL?  After
+finding a need for such a query on Saturday, and that my existing
+fairly ad-hoc sexpr-to-sql translator wouldn't cope with having entire
+'select' statements where it was expecting table names, I set out to
+design something that would.  And that doesn't use custom reader
+macros, which I dislike (they confuse my editor, and there always
+seems to be something else that wants to redefine them incompatibly)
+
+<p>By working through the Postgres documentation and constructing nested
+forms based on the order it claimed pgsql does things in, I arrived at
+a syntax which is probably not completely unlike the parse tree that a
+SQL processor would generate.  Thus
+
+<pre>
+(select (foo bar) 
+        (join table1 
+              (alias (limit (select (*) (where table2 some-criterion))
+                            :end 10) table2)
+              :on (= table1.table2id table2.id)))
+</pre>
+will translate to the sql form above.  The immediate objective is to
+make it much easier to programmatically compose queries.
+
+<ul>
+<li>I think the . notation for qualifying a column name with its table
+  is a wart, inasmuch as it makes it more difficult for Lisp code to
+  establish whether table1.id is id or not.
+
+<li> The use of symbol names is possibly contentious: we face "the
+  package problem" encounterd by all apps that build big trees of
+  symbols: do we (a) export all the valid operators from the SEXQL
+  package and expect callers to :USE it, (b) ask callers to use
+  keywords, or (c) do as LOOP does and compare symbol names instead of
+  symbol identity?  A quick poll of #lisp irc suggested that (c) was
+  the best idea and accordingly it's the one I've adopted.
+</li>
+</ul>
+
+<p>I have provisionally called this beast SEXQL, because the name SQL has
+been taken already and SEXPQL is awkward to pronounce.  The
+implementation is still work-in-progress and I haven't been through
+the whole sql language thoroughly; I've just added the tokens I have a
+need for as I go along.
+
+<p>You can see it, such as it is, at
+<a
+href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/sexql/sexql.lisp?view=markup"
+>http://cvs.telent.net/cgi-bin/viewcvs.cgi/sexql/sexql.lisp?view=markup</a>.
+Feedback welcome, preferably on clump

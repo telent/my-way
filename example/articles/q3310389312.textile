@@ -1,0 +1,7 @@
+title: "I'm an Emperor, get me out of here"
+author: Daniel Barlow
+date: Thu, 25 Nov 2004 16:35:12 +0000
+
+"I'm an Emperor, get me out of here".
+
+<p><img src="http://cvs.telent.net/jeeves.png">

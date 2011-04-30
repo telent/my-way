@@ -1,0 +1,27 @@
+title: Despite claiming to take two-three weeks to ``build'' my iMic, I
+author: Daniel Barlow
+date: Tue, 14 May 2002 5:45:51 +0000
+
+
+<p> Despite claiming to take two-three weeks to ``build'' my iMic, I
+got email form the Apple Store the day after I ordered it saying that
+it was being dispatched.  So, maybe it will arrive for the weekend.
+
+<p> I was going to merge Tru64 support for SBCL this evening, but all
+(which is to say, both of) the useful machines at the Testdrive are
+down or at least ailing.  So instead I've started paging bits of SBCL
+MP back in.  Apart from anything else it's the realisation that it's
+most of a year ago I started hacking on the thing, and even granted
+it's been more on than off since then and that includes at least one
+90% rewrite, it's about time I had something to show for it.  So I
+spent some time thinking about queues and about arrest reasons and run
+reasons, and eventually I think I ended up with something tidier than
+I started out with
+
+<pre>
+&lt;dan_b> so technically I have no problems, but aesthetics are botyher ing me
+</pre>
+
+<p> My standard of typing on the other hand I long ago ceased to give
+a monkey's about.
+

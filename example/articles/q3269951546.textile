@@ -1,0 +1,29 @@
+title: Once again I find myself in that place where something that sounds
+author: Daniel Barlow
+date: Fri, 15 Aug 2003 16:52:26 +0000
+
+Once again I find myself in that place where something that sounds
+like a half-hour hack turns out to take all day and still doesn't
+work.  This time it's implementing <b>interrupt-thread</b>
+(traditionally called <b>process-interrupt</b>), and, being lazy, I'm
+going to point you at the <a
+href="http://article.gmane.org/gmane.lisp.steel-bank.devel/1737/"
+>sbcl-devel</a> article I wrote earlier this afternoon.  Note two
+things since that mail
+<ul>
+
+<li> It's conceivable that the context is changing around due to our
+interrupting it during a syscall: that whole pc-losering ball of wax
+
+<li> However, after replacing the <b>sleep</b> call (which calls
+<tt>select()</tt>) with a call to an infinite loop written in C,
+we still get floating-point errors reported.  So, at least there's a
+problem we can work on that doesn't involve system calls - and, who
+knows, maybe the syscall problem isn't really a problem anyway.
+Nobody <i>really</i> uses EAX for anything, do they?
+</ul>
+
+<p>Oh, and for completeness' sake, the <a href="/sigrt.c">test
+program</a>
+
+

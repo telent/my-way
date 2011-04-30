@@ -1,0 +1,7 @@
+title: cvs.telent.net: no news
+author: Daniel Barlow
+date: Thu, 9 Sep 2004 22:52:50 +0000
+
+<p>cvs.telent.net: no news.  If I get a moment tomorrow I'm going to
+get a tarball of the cvs repo off the machine and at least stick it
+on an ftp site for the time being.

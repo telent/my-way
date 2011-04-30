@@ -1,0 +1,25 @@
+title: Do not meddle in the affairs of Wizards
+author: Daniel Barlow
+date: Sat, 07 Aug 2010 17:50:20 +0100
+
+From "github":http://github.com/telent/meddle#readme
+
+<blockquote>
+A less resource-heavy way to do realistic regression tests (and
+eventually load tests) than controlling an actual web browser
+a la watir.
+
+* Interact with your web site using Firefox.
+* Capture the requests sent with Tamper Data, and export as XML
+* Replay them from the command line
+** with realistic timing
+** with SSL support
+** with a 'rewrite' step that lets you programmatically change the
+   request data before sending it (e.g. to switch hostnames from
+   production to test, or vice versa)
+** using the single-threaded low-overhead goodness of EventMachine
+</blockquote>
+
+For an event this autumn that I'm probably not allowed to tell you about, $WORK needs a web site that deals with 50x as many transactions as the current box.  Current plan is to move it into the cloud and add memcached for everything that might conceivably benefit, but step one in performance tuning is, of course, to get a baseline.
+
+And it's an excuse to learn EventMachine 

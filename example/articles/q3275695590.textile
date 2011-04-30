@@ -1,0 +1,15 @@
+title: While I'm in this "if it moves, curse it" state of mind, I may as well
+author: Daniel Barlow
+date: Tue, 21 Oct 2003 4:26:30 +0000
+
+While I'm in this "if it moves, curse it" state of mind, I may as well
+give a shout out to vmware.  I press ^L in less and it spends a minute
+repainting the screen: it's slower than windows telnet.  I
+<i>think</i> the guest system may be running in some silly framebuffer
+mode, which is probably not helping.
+
+<p>More obviously silly is their decision to supply the vmware tools
+only as a fake cdrom, so that you can't install them in a guest that's
+running a live cd image, because it always installs the cd with the
+tools as the first cdrom device. 
+

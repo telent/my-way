@@ -1,0 +1,14 @@
+title: New Year's Resolutions: 
+author: Daniel Barlow
+date: Wed, 2 Jan 2002 10:55:20 +0000
+
+
+<p>New Year's Resolutions: 
+<ol>
+<li> Pay off credit cards.
+<li> Finish more of the things I start
+</li>
+</ol>
+
+<p>Current candidates for finishing: db-sockets, asdf, sbcl ppc, sbcl alpha
+

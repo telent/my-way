@@ -1,0 +1,36 @@
+title: Merry CLIMmas everybody
+author: Daniel Barlow
+date: Tue, 28 Dec 2004 21:41:24 +0000
+
+Merry CLIMmas everybody.  I'll readily concede that <a
+href="http://loaclhost.telent.net/gpskate.png" >this</a> doesn't look
+<i>so</i> different from the one in my <a href= "/diary/2004/12/#23.55216"
+>earlier entry</a> - except for being in colour (and not being upside
+down) - but it's got most of a clim app surrounding it now instead of
+just being a one-liner that co-opts the Listener.  The argument you
+see in the interactor pane is me trying to find out why the scroll
+bars don't.
+
+<p>(The colour indicates speed, from red=stopped or very slow, though
+to violet=probably quite fast.  I don't have a good conversion from
+lat:long to metres yet, so I don't know <i>how</i> fast.  I find it
+interesting that all the little red dots show up where I stopped to
+block traffic as the skate went past - I wonder if we could find out
+more interesting stuff if it indicated the length of each stop somehow
+(progressively bigger red dots?)).
+
+<p>Planet Lisp readers will have seen the coverage four days ago when
+I started asking about which CLIM resources are worth reading: for
+reference, I got this far mostly just using the spec (which is in the
+Spec/ directory in mcclim cvs) and spare parts from my
+never-actually-happened (and no-longer-needed-now-i-have-a-real-job)
+<a href="/diary/2003/7/#17.7096" >bookkeeping app</a> from last year.
+As compared to last year, it seems moderately snappy even on the same
+hardware that I had then, and isn't suffering the refresh/hanging
+problems I apparently was labouring with then either.  Way to go,
+mcclim developers.
+
+<p>In passing, I just spent four days away from the Internet
+(Christmas with parents, who have a dialup which I was mostly avoiding
+using) and as a result no need/incentive to run a web browser.  It's
+an odd but rather nice experience.

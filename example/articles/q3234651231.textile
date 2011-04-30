@@ -1,0 +1,18 @@
+title: We have working CLiki again
+author: Daniel Barlow
+date: Wed, 3 Jul 2002 3:13:51 +0000
+
+We have working CLiki again!  Well, at least, all the bits I've
+checked so far are working again: it's not exactly been tested
+exhaustively yet.
+
+<p>I got sidetracked halfway through the afternoon staring at my four
+or five new GFs and thinking "hmm, why don't I use
+define-method-combination" until I realised that "because it provides
+no advantage that I can reasonably easily envisage and I do want to
+actually get this <i>finished</i> one day" was in fact the Correct
+Answer.
+
+<p>(For the avoidance of doubt, GF in this context stands for Generic
+Function.  If I had four or five new girlfriends I'd ... well, for a
+start I'd remember whether I had four or five)

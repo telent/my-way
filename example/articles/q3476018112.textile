@@ -1,0 +1,7 @@
+title: Musical Interludes
+author: Daniel Barlow
+date: Wed, 24 Feb 2010 16:35:12 -0000
+
+Part II of the financial thingy is on its way, along with a subjective evaluation of the merits of rspec (I quite like it), but in the meantime have a look at http://github.com/telent/pacioli which is where the work in "progress" is going.  I say "progress" because that's a daytime job and, well, something else came up at work.
+
+In the meantime, please feel free to wander across to http://telent.posterous.com/ which is where I'm describing my attempts to put an embedded "Mini2440" Linux system in the "Firebrox":http://www.coruskate.net/Firebrox pedalled sound system

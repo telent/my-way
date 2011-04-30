@@ -1,0 +1,19 @@
+title: Earlier this week I hacked up some inline allocation routines for
+author: Daniel Barlow
+date: Fri, 30 Jul 2004 10:14:49 +0000
+
+Earlier this week I hacked up some inline allocation routines for
+SBCL.  Each thread already has its own region, so Lisp code should
+be able to allocate within that region just by incrementing the
+(thread-local) free pointer, rather than calling into C for every 8
+bytes.  And now it can.
+
+<p>(For a long time pre-threading it used to be able to do this, but
+it was using a global variable to store the free pointer which was
+obviously not going to fly in an MP environment, so I ripped out that
+code when initially doing threads)
+
+<p>After a <a href="http://news.gmane.org/gmane.lisp.steel-bank.devel"
+>minor misapprehension</a> regarding whether it would make any useful
+difference (summary: 5% to 15% speedup on some consy benchmarks), I've
+merged this change (or reinstation, if you prefer) into 0.8.13.11

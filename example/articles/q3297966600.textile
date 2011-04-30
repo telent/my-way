@@ -1,0 +1,17 @@
+title: A review of my new cheap hardware MP3 player will follow (summary for
+the impatient: it was cheap)
+author: Daniel Barlow
+date: Sun, 4 Jul 2004 22:50:0 +0000
+
+A review of my new cheap hardware MP3 player will follow (summary for
+the impatient: it was cheap).  Right now I'm merely noting that it
+provided an impetus to clear some disk space on my laptop.
+
+<pre>
+:; pwd
+/home/dan/.emacs.d/auto-save-list
+:; du .
+4238340 .
+</pre>
+
+Does that seem like a lot?

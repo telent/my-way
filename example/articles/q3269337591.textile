@@ -1,0 +1,19 @@
+title: What I should be doing: hacking on CLiki to allow two cliki instances
+author: Daniel Barlow
+date: Fri, 8 Aug 2003 14:19:51 +0000
+
+<p>What I should be doing: hacking on CLiki to allow two cliki instances
+to share the same pages (and the same methods for
+search-term-relevance and the rest), so that we can have multiple
+`skins' for the same data.
+
+<P>Yes, I'm sure that's theoretically possible with CSS.  The prospect
+of making any CSS solution work on IE5 and Netscape 4 is neither warm
+nor fuzzy, though.
+
+<p>What I'm doing instead: fixing the SBCL condition-variable bugs
+that Gilbert found.  I attempt to justify this to myself by claiming
+that my productivity will take a leap when <a
+href="http://www.stud.uni-karlsruhe.de/~unk6/hemlock/" >Portable
+Hemlock</a> gets good enough to dump ILISP.
+

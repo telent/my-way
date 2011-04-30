@@ -1,0 +1,25 @@
+title: We can run two threads printing "aaaa" and "bbbb"
+author: Daniel Barlow
+date: Sat, 30 Mar 2002 1:7:50 +0000
+
+<p> We can run two threads printing "aaaa" and "bbbb".  Woo.
+
+<p> Unfortunately we can't start a third, because we're starting them
+from the toplevel, which is running in the idle thread, which is not
+getting scheduled because we're never idle because the other two
+threads are running
+
+<p>Or something.
+
+<p>Note to non-lispers: you may be used to the noun <b>process</b>
+meaning "unix process with its own address space and stuff".  Due to
+its long tradiiton of ignoring^Wdespising Unix, Lisp often uses the
+term to mean what Unix people would call a <b>thread</b>.  Neither
+side is about to give up, I suspect.  (I tend to use either depending
+on how who I'm talking to and how much sleep I've had lately)
+
+<p> Oh, got some cyling done today too: the weather was too nice not
+to.  Unfortunately I broke the mounting for my cycle computer after
+the first 18 seconds, so I have basically no idea how fast I was going
+for the rest of it.  Probably not very.
+

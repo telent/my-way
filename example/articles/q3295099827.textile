@@ -1,0 +1,9 @@
+title: Apparently there's a bug in my diary-publishing code which only
+author: Daniel Barlow
+date: Tue, 1 Jun 2004 18:30:27 +0000
+
+<p>Apparently there's a bug in my diary-publishing code which only
+exhibits when there are no entries in a given month.
+
+<p><a href="#1.63027">This</a> 
+is more in the nature of a workaround than a fix

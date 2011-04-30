@@ -1,0 +1,45 @@
+title: Cl&eacute; RIB validation
+author: Daniel Barlow
+date: Mon, 18 Oct 2004 12:59:23 +0000
+
+<b>Cl&eacute; RIB validation</b>
+
+This may not be so interesting to most of my usual readers, but is
+added here in the hope that (a) Google will find it, (b) French Google
+users will be able to understand it.  The French banking system has a
+thing called "Pr&eacute;l&eacute;vement Automatique", which is
+essentially an authority for a third party to help themselves to your
+bank account at regular intervals.  UK readers will recognise it as a
+Direct Debit; I'm sure other countried have similar things.  To to set
+this up you need 23 characters of bank codes (5 char code banque, 5
+char code guichet, 11 char numero de compte, 2 digits cl&eacute;) ,
+and it turns out that the last two of them are a checksum.  I spent a
+while looking around web pages written in languages I have no
+particularly good grasp of (French, VB, PHP, some Clipper/Foxpro
+thing) looking for details on how to calculate it, and eventually
+transliterated a PHP example to arrive at the following:
+
+<pre>
+create or replace function fr_calculate_cle(varchar,varchar,varchar) 
+returns char(2) as '
+declare
+        code_banque ALIAS FOR $1;
+        code_guichet ALIAS FOR $2;
+        num_compte ALIAS FOR $3;
+        instring TEXT;
+        cle integer;
+begin
+        instring = translate(lower($1||$2||$3),
+                             ''abcdefghijklmnopqrstuvwxyz'',
+                             ''12345678912345678912345678'');
+        cle := 62*to_number(substr(instring,1,7),''9999999'');
+        cle := cle+ 34*to_number(substr(instring,8,7),''9999999'');
+        cle := cle+ 3*to_number(substr(instring,15,7),''9999999'');
+        return substr(to_char(97-(cle % 97),''00''),2);
+end
+' language 'plpgsql';
+</pre>
+
+If there's any better way to make postgres output a 2 digit zero-padded
+number without a leading space, I want to hear about it.
+

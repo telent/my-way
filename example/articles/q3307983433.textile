@@ -1,0 +1,22 @@
+title: Since we're talking about SBCL 1.0, my 2p
+author: Daniel Barlow
+date: Thu, 28 Oct 2004 21:17:13 +0000
+
+Since we're talking about SBCL 1.0, my 2p.  This is my personal
+wishlist for things I want to make happen between now and 1.0 - or at
+least, for interfaces I am unsatisfied with and would not like to have
+to retain forever.
+
+<ol>
+<li> extensible streams and stackable stream translations
+<li> a socket layer (replacing and/or based on sb-bsd-sockets) 
+in which a stream can be a socket.
+<li> hide the sb-threads interface, recommending instead something
+that deals in the same kinds of objects as bordeaux-mp
+</ol>
+
+I'm also thinking about (or anyway, idly toying with the idea of)
+writing an extensible texinfo -> foo translator, so that we can easily
+do things like hyperspec.el for all texinfo documentation.  That could
+be done at any time really, though, and I'm not short on other stuff
+to do first.

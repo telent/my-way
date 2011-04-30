@@ -1,0 +1,9 @@
+title: For a long time I've been meaning to put the SBCL User Manual  on the web
+author: Daniel Barlow
+date: Mon, 16 Jun 2003 20:36:52 +0000
+
+For a long time I've been meaning to put the <a href=
+"http://www.xach.com/sbcl/doc/" >SBCL User Manual</a>  on the web
+somewhere that Google can find it.  So, I was quite happy to see that
+<a href="http://www.xach.com/" >Xach</a> has done it already.
+

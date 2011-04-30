@@ -1,0 +1,12 @@
+title: I'm testing bits of the cirCLe CD using Xnest
+author: Daniel Barlow
+date: Fri, 24 Oct 2003 1:48:26 +0000
+
+I'm testing bits of the <a
+href="http://web.metacircles.com/circle_cd">cirCLe CD</a> using Xnest
+and a chroot - it's a lot less painful than rebooting, and even
+somewhat less painful than compressing iso9660 images all the time to
+run vmware on.  I was mildly amused to find just now that Xnest
+has a <a href="/screensaver.png">screen saver</a>
+
+

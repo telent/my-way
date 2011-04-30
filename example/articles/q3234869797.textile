@@ -1,0 +1,47 @@
+title: Well, at least I'm here, and in a talk
+author: Daniel Barlow
+date: Fri, 5 Jul 2002 15:56:37 +0000
+
+Well, at least I'm here, and in a talk ...
+
+<p>Wireless networking aside: the university has wireless access, but ...
+
+<P>First you get a username and password from the registration desk.
+Then you wrestle with it.
+
+<pre>
+# apt-get install pppoe pptp-linux
+# vi /etc/ppp/peers/dsl-provider
+</pre>
+<i>edit "user", remove lcp-echo stuff (the network is slow enough that
+you won't want to drop your connection every time it lags a bit),
+remove defaultroute option</i>
+<pre>
+# pon dsl-provider
+</pre>
+<p><i>Bum.  authentication isn't happening</i>
+<pre>
+# vi /etc/ppp/peers/dsl-provider
+# vi /etc/ppp/peers/chap-secrets
+# pon dsl-provider
+</pre>
+<p><i>aha, that's better</i>
+<pre>
+# cat > /etc/ppp/peers/pptp
+user Gwxd962wRa
+noipdefault
+defaultroute
+
+hide-password
+lcp-echo-interval 20
+lcp-echo-failure 3
+connect /bin/true
+mtu 1412
+^D
+# route add -host 172.16.12.246 gw  172.16.10.250
+# pptp  172.16.12.246 call pptp
+</pre>
+
+
+
+

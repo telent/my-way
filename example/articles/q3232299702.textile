@@ -1,0 +1,77 @@
+title: At last I have found out how to turn disc autorepeat off in Grip
+author: Daniel Barlow
+date: Wed, 5 Jun 2002 22:1:42 +0000
+
+
+<p> At last I have found out how to turn disc autorepeat off in <a
+href="http://nostatic.org/grip/" >Grip</a>.  Now, I know that nobody
+takes my ideas on usability seriously (I admitted that I like Emacs,
+which pretty much lost me all credibility with the point-click
+brigade), but ...
+
+<ol>
+
+<li> Click the `config' tab, then the 'CD' tab of the <i>inner</i>
+tab set.  Observe no option to kill the autorepeat.
+
+<li> Check all the other tabs in case it's somewhere stupid like 'misc'
+instead.  Nope
+
+<li> Click on the Help tab, observe that all the buttons in there do
+absolutely nothing at all.  I don't have the gnome help browser
+installed, but silent failure?  The Unix Philosophy(sic) is strong in
+this one, master.
+
+<li> Um.  Guess there's no such option, then.  Return to using xmcd
+
+<li> Some months later when new version of grip available, go clicking
+very slowly on the "buttons they'd put on a real cd player if real cd players
+were designed by vcr manufacturers" section at the bottom, so that we
+can see the tooltips
+
+<ul>
+
+<li> The button marked "123" is tooltipped "Toggle play mode options"
+
+<li> When clicked, it creates two more buttons to click on, plus an
+expanse of grey space.  
+
+<li> The (right-hand) button tipped "Toggle loop play" switches
+between two fairly obvious hieroglyphs - obvious if you ever had a
+cassette tape player with "autoreverse", anyway.  Problem solved, but
+
+<li> The other button ("Rotate play mode" - yes!  let's listen to our
+cds using rotated play!  eh <i>what?</i>) cycles between "->?", "N"
+and "PL".  I'm guessing these denote any of Hyperspace Jump, Neutral
+(Natural numbers?  Could be a Dangerous Bend sign, actually) and
+Poland.  If anyone can tell me what a rotated Polish play mode is (in
+a programming context I'd guess something best implemented with an
+operand stack), answers on a postcard ...
+
+<p> In Polish mode it also changes the "random grey space we
+apparently didn't have enough buttons left to fill" into "random white
+space we apparently didn't have enough buttons left to fill".  Cool.
+Maybe it's not Polish, then.  Placard mode?  Placebo mode, could be. 
+
+</li>
+</ul></li>
+</ol>
+
+<p> I can only assume they're aspiring to the xmms user interface.
+
+<p> ("Initiate/abort DiscDB lookup"?  What's wrong with "Look up
+disc/track titles"?  If there's a lookup in progress, change the
+tooltip to "Cancel title lookup".  The icon for that one appears to be
+a picture of two petrol pumps having sex.)
+
+<p> I'm tempted also to rail about the track skip buttons (click five
+times on "next track" and it click click clicks five tracks forward,
+then suddenly skips back again four of them), the
+skip-forward-in-track button which when held down for five seconds
+goes click click click with no other audio output, then resumes play
+fifty seconds further on when released, and the
+not-always-notice-when-disc-ejected behaviour which causes the new cd,
+if longer, to stop playing before it actually gets to the end.  Some
+or all of these may be bugs in my cd player hardware, though, so it
+may not be fair to blame grip.  
+

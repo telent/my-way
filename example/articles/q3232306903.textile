@@ -1,0 +1,318 @@
+title: Try the GNU Project's Free Software
+author: Daniel Barlow
+date: Thu, 6 Jun 2002 0:1:43 +0000
+
+
+<p> Try the GNU Project's <a
+href="http://www.gnu.org/cgi-bin/license-quiz.cgi" >Free Software
+licensing quiz</a>.  For what it's worth, I got two wrong: question 6:
+offer-of-sources-for-binary-distribution (which I should have known)
+and the reverse-engineering question, about which I don't really care.
+
+<p> It suits people to claim that the GNU Licenses are overly
+restrictive and this will encourage users of proprietary software to
+carry on using that instead.  So, I'd like to offer the "typical
+proprietary software EULA licensing quiz", with approximately the same
+questions
+
+<form action="http://example.com/dummy_url" method="get">
+<input type="hidden" name="mode" value="answer" />
+
+
+<ol>
+<li>
+<p>
+
+Joan writes a web browser and releases the source code under a
+typical-proprietary-EULA on her web site.  Fred gives a CD with
+binaries of Joan's browser to his friend for her birthday.  What happens
+
+  <ol>
+
+    <li>
+    <input type="radio" name="q1" value="1" />
+
+    Joan sues Fred
+    
+    </li>
+  </ol>
+
+
+</li>
+<li>
+<p> Now Fred makes modifications to Joan's web browser, and
+distributes binaries on his web site.  What happens?
+
+  <ul>
+    <li><b>I.</b> 
+
+    Joan sues Fred (again)
+
+    </li>
+  </ul>
+
+<br>
+
+  <ol>
+    <li> <input type="radio" name="q2" value="1" />
+    
+    <b>I</b>, and nothing else.
+    
+    </li>
+
+    <li> <input type="radio" name="q2" value="2" />
+    
+    <b>I</b>, and nothing else.
+    
+    </li>
+
+    <li> <input type="radio" name="q2" value="3" />
+    
+    <b>I</b>, but nothing else
+    
+    </li>
+
+    <li> <input type="radio" name="q2" value="4" />
+    
+    Any or all of <b>I</b>, <b>I</b>,  <b>I</b>, or <b>I</b>
+    
+    </li>
+
+  </ol>
+
+ 
+
+
+</li>
+<li>
+
+<p> Fred wishes to distribute Joan's browser linked to a
+third-party module.  The third party module has the following license:
+</p>
+
+<tt><blockquote>
+This code may be freely modified, copied and distributed, so long as
+no fee is charged for it.
+</blockquote></tt>
+
+<p> 
+Would this violate the typical proprietary EULA?
+
+</p>
+
+  <ol>
+    <li>
+    <input type="radio" name="q3" value="1" /> 
+
+    
+    Yes    </li>
+
+  </ol>
+
+</li>
+<li>
+
+<p>
+Peter creates a library called LibIdo licensed under a typical
+proprietary EULA.  FooCorp distributes a modified version LibIdo
+library linked to their proprietary program Frobber.  Which of the
+following is <b>not</b> an obligation of FooCorp?
+
+</p>
+
+<ol>
+    <li>
+    <input type="radio" name="q4" value="1" />
+    
+    To lose in court
+    
+    </li>
+
+    <li>
+    <input type="radio" name="q4" value="2" />
+    
+    To settle out of court
+    
+    </li>
+ 
+</ol>
+
+
+
+</li>
+<li>
+<p>
+Joan wants to distribute copies of her browser statically linked
+to Postfix (a mail server), which is released under the <a
+href="http://oss.software.ibm.com/developerworks/opensource/license10.html">
+IBM Public License</a>, a GPL-incompatible Free Software license.
+Other than Postfix, the browser includes only code on which Joan holds the
+copyright.  Should she grant an exception to her typical proprietary
+EULA  for this?
+</p>
+  <ol>
+    <li>
+    <input type="radio" name="q5" value="1" />
+
+    
+    No, what would be the point?  People can't copy it anyway
+
+    </li>
+</ol>
+
+
+</li>
+<li>
+<p>
+FooCorp distributes binaries of Joan's web browser on CD
+without source code.  They include an offer to provide source code.
+Which of the following offers fulfills their obligations?
+</p>
+
+  <ul>
+    <li>
+    <b>I.</b>
+       "You can download the source code from our web site at
+       http://foocorp.example.com/download.html"
+    </li>
+
+    <li>
+    <b>II.</b>
+       "Everyone who buys a binary CD may order up to one source CD
+       per binary CD for $5000."  
+    </li>
+    <li>
+    <b>III.</b>
+       "Everyone may order a source CD for $5000."
+    </li>
+    <li>
+
+    <b>IV.</b>
+       "Everyone who buys a binary CD may order up to one source CD
+       per binary CD for the cost of distribution."  
+    </li>
+    <li>
+    <b>V.</b>
+       "Everyone may order a source CD for the cost of distribution."
+    </li>
+    <li>
+    <b>VI.</b>
+
+       "Everyone who buys a binary CD may order up to one source CD
+       for free."  
+    </li>
+    <li>
+    <b>VII.</b>
+       "Everyone may order a source CD for free."
+    </li>
+  </ul>
+ <ol>
+   <li>
+
+   <input type="radio" name="q6" value="1" />
+    
+    None of the above.  Redistributing Joan's program is Piracy.
+    Piracy is Theft.  Theft is Love.  Cleanliness is next to
+    Godliness.  Uh, wait ...
+       
+   </li>
+</ol>
+
+
+</li>
+<li>
+<p>
+Patty creates a library, and releases it under a typical proprietary
+EULA.  Many people make improvements to this library, and submit them
+back to Patty, who incorporates them into newer versions of the
+library.  Now Patty wants to make a proprietary version of this
+library.  She makes two claims:</p>
+
+  <ul>
+    <li><b>I.</b> 
+
+    Because the original version was under a proprietary EULA,
+    everyone who made improvements was acting in breach of the licence
+
+    </li>
+
+    <li><b>II.</b> 
+
+    Because she is the copyright holder, she can relicense the code,
+    so nobody can distribute old versions anymore.
+
+    </li>
+  </ul>
+
+<p>Are these claims true?</p>
+
+  <ol>
+   <li>
+    <input type="radio" name="q7" value="1" />
+
+        Both claims are true.  II is a bit meaningless though, as 
+        nobody could have legally distributed the old versions anyway.
+    
+   </li>
+  </ol>
+
+
+
+
+</li>
+<li>
+
+<p> FooCorp distributes Frobber linked against an unmodified version
+of LibIdo.  Does the licence of LibIdo require FooCorp to allow
+users to reverse engineer Frobber for their own use?</p>
+
+  <ol>
+   <li>
+    <input type="radio" name="q8" value="1" />
+    
+    Yes.
+    
+   </li>
+   <li>
+    <input type="radio" name="q8" value="2" />
+    
+    No, but it prevents FooCorp from doing this anyway
+    
+   </li>
+
+  </ol>
+
+
+
+
+</li>
+<li>
+
+<p>Now FooCorp modifies Joan's browser to include a technology they
+have patented.  They distribute this modified browser on CD.  Are
+there any requirements in Joan's licence on how they may license their
+applicable patent?</p>
+
+  <ol>
+   <li>
+    <input type="radio" name="q9" value="1" />
+
+    No, but it doesn't matter: they can't do this anyway
+    
+   </li>
+
+  </ol>
+</li>
+</ol>
+
+
+</form>
+
+<p><i>Hope this helps</i>
+
+
+<p> <b>grip update:</b> having turned off autorepeat, I find now that
+clicking "play" after it's already played the disc once causes it to
+start on the last track
+
+

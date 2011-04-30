@@ -1,0 +1,34 @@
+title: The ulterior motive for this recent spate of CLiki hacking can now be
+(has now been) revealed: I have to talk about it in a couple of months time
+author: Daniel Barlow
+date: Fri, 14 Jun 2002 2:8:46 +0000
+
+The ulterior motive for this recent spate of CLiki hacking can now be
+(has now been) revealed: I have to <a
+href="http://www.international-lisp-conference.org/Speakers/People/Daniel-Barlow.html"
+>talk</a> about it in a couple of months time.  Of all the projects
+they might have asked about (<a href="/sbcl-internals/">SBCL</a>
+porting, <a href="/cliki/asdf">asdf</a>, <a
+href="/cliki/vn-cclan">cCLan</a>, etc), they had to choose the one
+guaranteed to send me into apologetic fits about the quality of the
+code.  It was a weekend hack.  It shows.
+
+<p> "Plan" is possibly too strong a word, but we have intentions to
+create a shared bug database for SBCL and CMUCL, using CLiki.  This
+involves a fair bit more structured data going into the page, so that
+we can perform searches for things like "give me all the bugs more
+than a year old that have not been fixed in sbcl" or "give me all the
+bugs reported in cmucl that haven't been tested in sbcl".
+
+<p> So presently I'm practising slash-and-burn refactoring to remove
+some of the worst of the hardcoded markup rules and allow people to
+add arbitrary indices.  Who knows, maybe in the process we'll even fix
+it to pick up the page links and do the full-text indexing in the same
+pass, thereby avoiding having to reread the page <i>twice</i> after
+every edit.  And fix the current-page-appears-in-own-list-of-links
+bug.  And this also gives us an opportunity to introduce a syntax for
+"download" links other than the ill-conceived <tt>>(foo-bar.tar.gz)</tt> -
+i.e. that doesn't do bad things when people write
+<tt>&lt;code>(funcall (compile nil (lambda () (* 2
+3))))&lt;/code></tt>
+

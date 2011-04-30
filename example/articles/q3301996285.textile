@@ -1,0 +1,59 @@
+title: Vomit frame pointer
+author: Daniel Barlow
+date: Fri, 20 Aug 2004 14:11:25 +0000
+
+<b>Vomit frame pointer</b>
+
+<p>I think I've identified the (or, at least a) remaining problem with
+SBCL threading tests: frames with no frame pointer.  Here's one.
+Ignore the jump to +15; that's just errno handling and not really
+relevant.
+
+<pre>
+0x401d4550 &lt;sched_yield+0>:     mov    $0x9e,%eax
+0x401d4555 &lt;sched_yield+5>:     int    $0x80
+0x401d4557 &lt;sched_yield+7>:     cmp    $0xfffff001,%eax
+0x401d455c &lt;sched_yield+12>:    jae    0x401d455f &lt;sched_yield+15>
+0x401d455e &lt;sched_yield+14>:    ret    
+</pre>
+
+Thread interruption works by sending the thread some signal (I forget
+which exactly; one of the POSIX RT signals) using <tt>sigqueue</tt>,
+with a function pointer in the sigval argument.  The handler for this
+signal (which runs on the alternate signal stack, so as not to get in
+the way) frobs the signal context PC so that execution will continue
+with said function when the handler returns, and puts a couple of
+frames on the regular stack so that when the funct6ion returns the
+thread goes back to whatever it was doing before being sent the
+signal.  All well and good so far, and means we're not executing
+arbitrary lisp code from within a signal handler, which as we already
+know Would Be Bad.
+
+<p>The problem, I suspect, is that when we interrupt the thread during
+execution of a function which isn't using a frame pointer, the stack
+that we build on top of it is bogus-or-at-least-unusual.  This is not
+a problem usually - it's a good enough frame that we can unwind
+through it and let the original function continue working - but it
+does sometimes stop us from being able to look up the stack to find 
+things like catch tags in preceding frames.  Which is necessary to the
+implementation of,among other things, QUIT - therefore
+TERMINATE-THREAD doesn't always work that well.
+
+<p>Relevant piece of SBCL that needs grokking: SB-DI::X86-CALL-CONTEXT.
+Expectation-setting comment from sources:
+<pre>
+;;; Try to find a valid previous stack. This is complex on the x86 as
+;;; it can jump between C and Lisp frames. To help find a valid frame
+;;; it searches backwards.
+;;;
+;;; XXX Should probably check whether it has reached the bottom of the
+;;; stack.
+;;;
+;;; XXX Should handle interrupted frames, both Lisp and C. At present
+;;; it manages to find a fp trail, see linux hack below.
+</pre>
+ 
+I'm hoping there's some better way to do this in the absence of a
+sensible frame pointer; I can't help feeling that testing whether the
+return address is in lisp space or not might be a start.
+

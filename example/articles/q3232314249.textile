@@ -1,0 +1,21 @@
+title: I think I'd forgotten how to make vn-cclan packages:
+* (asdf:operate 'asdf:load-op 'cclan)
+* (dolist (s '(araneida cliki)) (cclan::cvs-tag s) (cclan::make-tar-file s))
+author: Daniel Barlow
+date: Thu, 6 Jun 2002 2:4:9 +0000
+
+
+<p> I think I'd forgotten how to make <a href="/cliki/vn-cclan"
+>vn-cclan packages</a>:
+<pre>
+* (asdf:operate 'asdf:load-op 'cclan)
+* (dolist (s '(araneida cliki)) (cclan::cvs-tag s) (cclan::make-tar-file s))
+</pre>
+
+<p>New araneida and cliki packages in your nearest vn-cclan mirror as
+soon as they propagate, then
+
+<p>In other news, SBCL for Tru64 appears not to have bitrotted, so I
+should be checking that in tomorrow.  Just want to build it with
+itself again first.
+

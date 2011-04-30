@@ -1,0 +1,25 @@
+title: I'm not sure exactly what to write here, but I feel an urge to whinge
+author: Daniel Barlow
+date: Thu, 20 Nov 2003 18:33:1 +0000
+
+I'm not sure exactly what to write here, but I feel an urge to whinge
+a bit about the IT job market in the UK right now.  Translations:
+
+<p>If they say <b>Unix</b>, they mean <b>enterprise</b> or <b>ISP</b>
+sysadmin experience: Veritas, EMC, clustering, etc.
+
+<p>If they say <b>C</b>, they mean <b>embedded</b> or they mean <b>C++</b>.
+
+<p>If they say <b>OOD</b>, they also mean <b>C++</b>.
+
+<p>If they say <b>threads</b>, they mean <b>pthreads</b>.
+
+<p>If they say <b>Java</b>, they mean <b>J2EE</b>.
+
+<p>If they say <b>Perl</b>, they mean <b>entry level</b>.
+
+<p>I don't think anyone has said <b>Lisp</b> yet, but when they do,
+they mean <b>AI</b>.
+
+<p>Do I sound bitter?  Very well, then, I sound bitter.
+

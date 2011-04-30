@@ -1,0 +1,12 @@
+title: Some pre-Christmas cheer - shameless plugs
+author: Daniel Barlow
+date: Tue, 21 Dec 2010 16:01:36 -0000
+
+At around the end of October we were going to have a whole series of posts about all the new stuff we're doing at $WORK, including 
+
+* how to build an nfsroot web server farm based on Debian and using the fine services of "Elastichosts":http://www.elastichosts.co.uk/  ,and
+* the great people at "Loadstorm":http://loadstorm.com/ and how they make web app load testing cheap and easy (TBH, not much of an article in this one even, it really _is_ easy)
+
+but due to a marginally missed deadline and then the knockon effect of coping with all the new stuff they put in at Sagepay, I've not had time to write much.  But in the meantime, suffice to say that the services linked from this post have amazed me not only by working properly (ok, in itself not that amazing) but by their swift, helpful and *clueful* email tech support to my queries.  I'd like to add "Bytemark":http://www.bytemark.co.uk/ to that list, and let it be generally known that I feel bad about the stuff there that we'll be decommissioning shortly - but hopefully we can put some business their way again in future.  
+
+Anyway, the new systems are now all up (although not actually running all the new code as yet) - maybe in the New Year I can describe in more detail the installation process.  It needs documenting somewhere, anyway...

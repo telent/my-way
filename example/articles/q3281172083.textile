@@ -1,0 +1,41 @@
+title: X-Spam-Report: Spam Filtering performed by sourceforge.net
+author: Daniel Barlow
+date: Tue, 23 Dec 2003 12:41:23 +0000
+
+<pre>
+X-Spam-Report: Spam Filtering performed by sourceforge.net.
+        See http://spamassassin.org/tag/ for more details.
+        Report problems to
+        https://sf.net/tracker/?func=add&group_id=1&atid=200001
+        1.1 MAILTO_TO_SPAM_ADDR URI: Includes a link to a likely spammer email
+</pre>
+
+The message in question is from a sourceforge-hosted mailing list.
+There are no URIs in the message itself, so which of 
+
+<pre>
+This SF.net email is sponsored by: IBM Linux Tutorials.
+Become an expert in LINUX or just sharpen your skills.  Sign up for IBM's
+Free Linux Tutorials.  Learn everything from the bash shell to sys admin.
+Click now! http://ads.osdn.com/?ad_id=1278&alloc_id=3371&op=click
+</pre>
+
+or 
+
+<pre>
+https://lists.sourceforge.net/lists/listinfo/sbcl-help
+</pre>
+
+does the "Spam Filtering performed by sourceforge.net" think is the
+likely spammer?
+
+<p>This is quite obviously the wrong place to announce it (unless
+maybe for the googlebot), but in the early hours of the morning today
+I added <a href="http://www.stargreen.com/about/syndication">RSS
+feeds</a> to the Stargreen site.  ObLisp: using Miles Egan's <a
+href="http://www.cliki.net/xmls" >xmls</a> library.  ical would be
+cooler, really, but I think that's going to wait until people are
+actually using ical clients.
+
+<P>(Hmm.  Does the iPod have calendaring?)
+

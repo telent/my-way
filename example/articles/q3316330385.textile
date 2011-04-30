@@ -1,0 +1,7 @@
+title: There has also been some AMD64/pthreads progress, btw
+author: Daniel Barlow
+date: Wed, 2 Feb 2005 10:53:5 +0000
+
+There has also been some AMD64/pthreads progress, btw.  It now gets as far as creating a core,
+and dies early in cold-init with some `4 is not a list' error that I
+haven't fully figured out yet.

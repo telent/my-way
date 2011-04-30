@@ -1,0 +1,122 @@
+title: Android G1 at six months
+author: Daniel Barlow
+date: Mon, 15 Jun 2009 14:46:04 +0100
+
+The trouble with doing long-term reviews of mobile phones is that by
+the time you've had them anything approaching a long time, they've
+been superseded already and are probably about to be discontinued.
+
+But anyway. I've owned this thing since shortly after they came out
+and having recently finally peeled off the increasingly tatty piece of
+cellophane it shipped with to protect the screen, I reckon it's time
+for an update.
+
+h2. The hardware
+
+I won't go into detail about the hardware, as the software aspects are
+going to be more interesting long-term.  The summary is "good but not
+excellent": it has not bent, broken, warped, wefted, spindled, folded
+or self-mutilated, but on the other hand its styling is still closer
+to a brick than to an Iphone.  Apart from the battery, which deserves
+its own section, the single stupidest hardware feature is the plastic
+plug which is supposed to cover the mini-usb charging/headphone
+socket. Second stupidest is probably the socket itself: although
+mini-usb is the only sensible design for power and data connections,
+the adaptor necessary to plug normal audio headphones in is wickedly
+fragile and can be had only from chinese ebay sellers
+
+I said the battery deserves its own section.  Here it comes:
+
+bq. Battery life is crap.  Recharge every night, because it will not last a second day
+
+Message ends.  I know it's an incredibly versatile device that's more
+like an ultraportable computer than a mobile phone as we know them,
+and also that by disabling all the interesting features I could
+probably get it to last two days, maybe, at a push, but that would
+kind of negate the point of having paid for the extra features in the
+first place, now wouldn't it?
+
+h2. The software
+
+It's now six months after launch and I have to concede that despite
+having upgraded to the "Cupcake" OS version 1.5, the software still
+feels unfinished in some areas.  The Google contact/calendar
+integration is a win, but it still lacks certain things that an
+ordinary phone can do without problems, like selecting a phonebook
+entry and beaming it or texting it to a friend.  And some of the
+things it does do give the strong impression of never having been
+tested on real people.  The Mail app at launch was famously bad enough
+that a third-party group of hackers forked it just to get it to a
+usable state (their fork, K-9, has since come on in leaps and bounds
+and I strongly recommend it for non-Gmail IMAP users).  My particular
+ire is reserved for the calendar, which defaults to presenting a view
+of the month with coloured blobs to indicate when things are
+happening but no clue as to what those things are.  And the camera - I
+don't know whether to blame hardware or software or both, but I could
+probably *paint* the scene in less time than it takes to focus, and
+with a better result in any setting less well-lit than an operating
+theatre.
+
+This sounds pretty negative and it's mostly not.  It's just that when
+you do get smacked by the 10% stupidity sections after the 90% (in
+most cases) that *is* there has lulled you into quiet babylike
+stuporific contentment, it smarts twice as much.  My recommended apps,
+for the record:
+
+* K-9 (unless you use Gmail)
+* ConnectBot: an ssh client
+* Twidroid: still the best twitter client I've seen
+* Greed: RSS reader syncs with Google Reader, so you can discover
+  feeds and manage subscriptions on your desktop instead of having 
+  to type the URLs in on the device keyboard
+* Ringdroid: MP3 editor and ring-tone creator
+
+
+h2. Development
+
+The phone this replaces is a Sony-Ericcson M600.  The PDA it replaces
+is a Palm TX.  The first thing to say about it, then, is that for
+openness it's light-years ahead of either.  Reasonably well
+documented, easy to get into (no need to join developer programmes or
+send your apps away to be certified) and there's a linux-hosted
+toolchain.  I haven't explored it extensively but I did without too
+much trouble write half an app that logged gpx tracks (but then My
+Tracks came along and obsoleted my effort), and poked around inside
+K-9 a bit. It's Java (practically speaking: legally it's merely
+Java-like) which language I grant you nobody ever expanded their minds
+by learning, but on the other hand has never caused anyone's brain to
+leak out through their ears in quite the same way as C++ or PL/SQL can.
+
+That sounds disturbingly - albeit quite faintly - like praise, so I
+have to add that the second thing to say is that they've tragically
+missed the point: it's still an ocean removed from hackable in any
+useful sense.  All the support is there to write your own apps is no
+use to you if you merely want to modify someone else's app, and even
+if you are starting with one of the open-source apps you still have
+the burden of maintaining your own private fork just to support your
+private hacks.
+
+It's not all bad: the use of Intents should make it possible to
+"deep-link" into other people's apps (see
+"Oilcan":http://oilcan.jsharkey.org/ for example), but it's still more
+work than, say, Emacs hacking or Amiga ReXX ever was.
+
+h2. Hacking
+
+Underneath it all, as I'm sure everyone who cares already knows, is an
+ARM chip running a slightly hacked Linux 2.6.  If you install the
+Terminal Emulator app you can get a shell prompt: if you follow
+instructions on the xda-developers forum you can get root access too.
+I did: while I'm not sure it's essential to normal use, it does open
+up a couple of bits that you can't do on the regular phone such as
+wifi tethering and a task manager to kill apps you're not using when
+the thing starts feeling sluggish.  (In theory this is unnecessary, in
+practice I'm not convinced either way but at the very least it's a
+great placebo effect)
+
+But the bottom line is that it's fun to play with, which is probably
+the major thing, and seems to be quite low risk: at least, going by the
+comparative rarity of "I bricked my phone" posts on the xda-dev forum,
+most seem to have managed it successfully. You can even install an
+entire Debian system that lives alongside Android, though I still
+can't think of a better reason to do so than bragging rights.

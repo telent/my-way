@@ -1,0 +1,20 @@
+title: Extending (or, mostly, just implementing) CL streams
+author: Daniel Barlow
+date: Thu, 16 Sep 2004 19:50:50 +0000
+
+<p>Extending (or, mostly, just implementing) CL streams.  Motivations:
+(a) Araneida's serve-event model doesn't work in a threaded SBCL with
+threaded SLIME attached (workaround is to <tt>(setf
+swank:*communication-style* :fd-handler)</tt> in
+<tt>.swank.lisp</tt>); (b) people doing Unicode in SBCL are also
+having interesting experiences with fd-streams; (c) the 
+<a href="http://common-lisp.net/pipermail/streams-standard-discuss/"
+>streams-standard-discuss/</a> list has been empty since it was set up.
+
+<p>In other news, very very cheesed off.  In a fit of transient
+stupidity I stacked on the LondonStake last night and managed to knock
+someone else over so that she fell on my leg.  Very sore: today I've
+mostly been unable to walk, let alone strap wheels to my feet.  Which
+is mostly just really really annoying coming as it does about two days
+before the inline marathon.  Unless a miracle has happened by tomorrow
+I probably won't be able to take part.

@@ -1,0 +1,26 @@
+title: My tux didn't come back from the cleaners
+author: Daniel Barlow
+date: Sun, 20 Oct 2002 23:4:25 +0000
+
+<p>My tux didn't come back from the cleaners.  An old friend came in
+from out of town.  Someone stole my car!  There was an earthquake!  A
+terrible flood!  Locusts!  It wasn't my fault!
+
+<p>Well, no.  Actually I was in Greece, without computers or network
+access.  And it was fun, and it was relaxing, and it was warm (I got
+slightly sunburnt; not seriously) and it's kind of nice to be back, in
+a way, but the weather in England is not that way.  So anyway, that's
+why no diary entries for the past week and a bit (sure, you cared) 
+nor likely to be much retrospective writing.  Oh, if you insist
+
+<blockquote>
+Lay on beach.
+</blockquote>
+
+Repeat as necessary.
+
+<p>Now I have the local food directory, entomotomy, a new
+araneida/cliki release to package, some domain name registration stuff
+to sort out, an ILC talk to do slides for, and a stack of washing, all
+by Friday.  And grand ideas for an annotating server thingy based on
+cliki, which will probably end up being an example in the ILC talk.

@@ -1,0 +1,17 @@
+title: Quiet lately
+author: Daniel Barlow
+date: Wed, 14 Aug 2002 2:0:58 +0000
+
+Quiet lately.  Writing English prose is just not as exciting as code -
+especially when it's either a conference paper or a C.V. (US: resumé)
+update.  Yes, time to find more paid stuff.
+(with-blatant-commercial-opportunism "If you're looking for contract
+programming/consultancy in a CL- or Linux-related field, <a
+href="mailto:dan@metacircles.com">send email</a>.  CV on request")
+
+<p>Last night it was pointed out to me that the lyric I'd been hearing
+for the last 4 years as "He's got an ice lolly" 
+(Propellerheads,
+Velvet Pants, <i>Decksandrumsandrockandroll</i>) probably in fact
+doesn't say that at all.  Hmm.  Still sounds like it to <i>me</i>, though.
+

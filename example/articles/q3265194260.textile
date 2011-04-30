@@ -1,0 +1,95 @@
+title: It's fashionable, I know, when speaking to an RDBMS, to write or use
+author: Daniel Barlow
+date: Sat, 21 Jun 2003 15:24:20 +0000
+
+It's fashionable, I know, when speaking to an RDBMS, to write or use
+an interface that presents an object-oriented view of the database,
+typically by mapping table rows onto objects.  I make the following
+observations mostly off the top of my head.
+
+<ol>
+
+<li> Every object 'get' typically involves a select which fetches all
+columns, even if you were only going to use one of two of them.
+Slightly inefficient.
+
+<li> It's very tempting to do something like
+<pre>
+(remove-if-not #'interesting-p (all-instances 'emp))
+</pre>
+to get a list of objects that satisfy some arbitrary interesting-p 
+criterion.  <i>Horrendously</i> inefficient.  OK, so don't do that;
+encode your selection criterion as SQL.
+
+<Li> Following a chain of object references involves multiple database
+   fetches (if done the simple way) or some probably quite complex
+   stuff to work out when a join will save time.
+
+<pre>     (emp-name (emp-manager *me*)) </pre>
+
+<li> Unless every field access does a new row fetch (or you have
+some kind of database driver that can give you unsolicited
+notifications when data changes behind your back) your object is
+always potentially slightly out of date w.r.t. the actual database
+contents.
+
+<li> Unless you keep tabs on the objects you create, it's possible to
+have two non-EQ objects that refer to the same row.  (Insofar as
+there's any concept of identity in a relational database
+<i>anyway</i>, but assume there's some kind of unique constraint on
+the table).  This is fine for read-only data, but can be icky when
+updating.
+
+<li> Links between table rows are essentially bi-directional - it's
+as easy to find the manager given an employee as it is to find the 
+employees given the manager.  The natural OO model gives each employee
+a list to his manager, or each manager a set (a list, vector,
+whatever) of employees.  Sure, you could do both.  See preceding
+point, though: you'd better be sure that you know whether
+<tt>(member *me* (car (manager-employees (emp-manager *me*))))</tt>
+or not.
+
+<li> If that was a bit weird, modelling inheritance is weirder.
+</li>
+</ol>
+
+<p>In short, it's slower than doing raw relational lookups, and has
+trouble with object identity leading to possible data consistency
+issues.  So what's the actual <i>advantage</i> of making the table
+rows look like objects?  Presumably the theory is that table rows
+correspond to domain objects, and therefore we should be able to hang
+methods on them that do useful operations.  It's my conjecture, based
+on looking at an UncommonSQL application I have here in front of me
+(bits of which are anything up to three or four years old), that
+that's not in general true: domain objects are bigger.  In relational
+terms, there's a 1:n relation between an invoice and an invoice_line,
+but in domain terms we say that the lines are part of the invoice.
+This is probably why 'invoice_line' is such a poor name: if it was a
+useful domain concept, the domain experts would have a name for it.
+
+<p>So, for a lot of less, uh, "pivotal" (sorry) tables, the only
+methods they end up with are boring little things like "print this
+line as HTML, or PDF, or something".  Even "delete this line", which
+you might suggest, is actually "remove this line from the invoice".
+And then you find (or at least, I found) that given <i>n</i> different
+circumstances where you want to print an object, in at least
+<i>n-2</i> cases you want to print different columns, or you're
+printing HTML and want the item description to be a link to some
+place, or there is some important reason that you need to embed a hunk
+of javascript into the middle of the output.  So perhaps you introduce
+a <tt>(print-instance o :short)</tt> and <tt>(print-instance o
+:full)</tt>, and then suddenly you find there are a bunch of other
+cases where you also need <tt>(print-instance o
+:link-email-address)</tt> or <tt>(print-instance o
+:two-digit-year)</tt>, and each of these is only ever called once.
+And if you put all the methods into the same file so you stand a
+chance of finding out what each of them does and reusing them for new
+output reports instead of creating new ones, <i>then</i> you find
+that you don't dare change any of them when your format requirement
+changes, because you don't know what other page or reports are using
+it.  So, wouldn't it make more sense to define the formatting at the
+point where you need it?
+
+<p>In other news, I'm attempting to train myself to use C-delete to
+delete words, because in psgml mode C-M-k doesn't.
+

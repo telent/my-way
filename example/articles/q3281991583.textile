@@ -1,0 +1,18 @@
+title: For a change I decided to google "dan_b" instead of some other
+author: Daniel Barlow
+date: Fri, 2 Jan 2004 0:19:43 +0000
+
+For a change I decided to google "dan_b" instead of some other
+variation on my name, and stumbled across (among other things) an 
+<a href="http://openirc.net/logs/esr-19980509-opensource.log"
+>irc log</a> from 1998
+
+<pre>
+&lt;lilo> it seems to me we do this for the fun of it, and for things we can use
+&lt;esr> lilo, I don't play politics and I don't spend *any* time trying to tear down or disband anybody else.  I wish 
+everybody would realises that that shit is a waste of time.
+&lt;lilo> some of us definitely do :)
+</pre>
+
+I remember watching this at the time.  I don't remember if it was
+before or after VA,  but I'm guessing it was before.

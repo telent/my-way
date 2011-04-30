@@ -1,0 +1,17 @@
+title: And another thing
+author: Daniel Barlow
+date: Thu, 14 Nov 2002 3:47:26 +0000
+
+And another thing ...
+
+<p> Sometimes the people asking for better OS integration are just so
+<a
+href="http://groups.google.com/groups?dq=&hl=en&lr=&ie=UTF-8&threadm=8gsmya4251.fsf%40galapagos.cse.psu.edu&rnum=1&prev=/groups%3Fq%3Dg:thl1556088025d%26dq%3D%26hl%3Den%26lr%3D%26ie%3DUTF-8%26selm%3D8gsmya4251.fsf%2540galapagos.cse.psu.edu"
+><i>fucking snide</i></a> - perhaps they don't mean to be, perhaps
+they're just frustrated and don't realise that some of the rest of us
+also recognise this is a suboptimal situation, but the effect is the
+same no matter what the excuse - that it's hard not to get <a
+href="http://groups.google.com/groups?dq=&hl=en&lr=&ie=UTF-8&threadm=87el9sodjt.fsf%40noetbook.telent.net&rnum=1&prev=/groups%3Fq%3Dg:thl2338492782d%26dq%3D%26hl%3Den%26lr%3D%26ie%3DUTF-8%26selm%3D87el9sodjt.fsf%2540noetbook.telent.net"
+><i>really quite pissy</i></a>.  Of course, that rarely leads to much
+sweetness and light promulgated in either direction, but in the short
+term it's quite therapeutic.

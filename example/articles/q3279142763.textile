@@ -1,0 +1,19 @@
+title: TODO:
+author: Daniel Barlow
+date: Sun, 30 Nov 2003 0:59:23 +0000
+
+TODO:
+<ul>
+<li> Some way to automatically set the optimization qualities in SBCL
+that lasts for longer than the current file.  When the current file is
+.sbclrc, that's not a very long time
+</li>
+<li> Write up what the qualities do anyway somewhere (the manual would
+be a good place) because I can never remember.
+<li> That OpenGL thing from the other day
+<li> Another bug (I think it's a PFD thing, but) that I can't remember
+<li> <a href="http://www.cliki.net/slime">SLIME</a>-over-networks 
+  (preferably sshified)
+</li>
+</ul>
+

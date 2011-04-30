@@ -1,0 +1,10 @@
+title: Broke again, now back again
+author: Daniel Barlow
+date: Wed, 05 May 2010 10:32:37 +0100
+
+Extended outage, yes.  I moved house.  That wasn't itself the problem: the problem was that the machine which runs this blog decided after the move that it didn't want to run for more than a few hours at a time without panicing randomly.  
+
+After replacing the mouse (no, really, the USB-serial interface it was plugged into seemed to be sporadically disappearing from view), hoovering out the inside of the case, reseating all the cards, and various other forms of voodoo, it seems to have been made stable by a couple of BIOS tweaks I found on overclocking forums: upping the northbridge voltage and dram voltage by 0.1V.  Apparently this is a common problem on the Asus P5Q-EM when it has all four ram slots full.
+And no, I'm not overclocking it.
+
+Anyway, I have a stable (so far) system again and blogging service will resume soon.  First up:  it must be late last year that I started playing with Ruby, so it must be about time for the 6-month review.

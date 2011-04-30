@@ -1,0 +1,86 @@
+title: If you're reading this at about the time I wrote it, some of the
+author: Daniel Barlow
+date: Thu, 31 Oct 2002 17:44:26 +0000
+
+If you're reading this at about the time I wrote it, some of the
+preceding (lexically following) diary entries are really rather short.
+Apologies for that.  I might go back and fill them in later, but in
+the meantime: the URL was written down during Duane Rettig's
+simple-streams tutorial, and should point to Paul Foley's
+simple-streams implementation for CMUCL.  The aardvark was an example
+in Nick Levine's CommonSQL tutorial.
+
+<p>The conference (I'm at the <a
+href="/cliki/International_Lisp_conference" >ILC</a>, if I'd forgotten
+to mention it before) is now about 80% done.  Noteworthy points
+
+<ul>
+
+<li> McCLIM rocks
+
+<li> I met Gary Byers, who tells me that there's a perfectly good
+reason for the trick with lowtag punning that CMUCL/ppc was doing.
+I'm going to have to reread it before I understand his point well
+enough to explain it to anyone, but it's related to (avoiding the pain
+of) interior pointers into objects
+
+<li> Roger Corman talked about native threads and how he added them to
+Corman Lisp.  The good news is that we've already been doing some of
+what he's had to do; the bad news is that without having native
+threads as a driver to make sure we get it right, we probably haven't
+been doing it particularly uniformly.
+
+<li> Open Source vs Not: Kent Pitman gave a short talk in which he
+managed to assocate the concepts `college students', `don't have to
+work for a living', and `dumping' with authors of open source
+software, but without actually at any time directly stating that said
+authors are or are doing any of the above.
+
+<li> Metadata: lots of stuff about the semantic web, with exciting
+pointy-bracket-acronyms (RDF, DAML+OIL, OWL, etc).  My opinion
+continues to be that 
+<ul>
+<li> metadata is just data, and if you don't trust the
+actal data to be true (we're talking about web pages here, so you
+certainly <i>shouldn't</i>) why would you want to trust the metadata
+either, given that it's probably been provided by the same people.  I
+choose to interpret remarks by Peter Norvig (talking about people
+trying to stuff up Google) as supporting this position
+
+<li> highly structured data (all this angle bracket soup) tends to
+lead to brittle and unadaptable systems, and this doesn't scale.  The
+virtue of the Web is that it works despite being essentially
+mob-driven.  RPG, I think, would agree with that.  In fact, RPG said
+exactly that, just not in the context of metadata.
+</li>
+</ul>
+<li> Lisp is in decline, because people in the various US Government
+departments using it are agitating for its removal.  Um.  This is a
+different belief than "because of the AI Winter", but holding it
+<i>still</i> precludes you from adding yourself to the CLiki <a
+href="/cliki/YoungLispers" >YoungLispers</a> page.  People were saying
+the same thing about Unix in 1994, I'm sure.
+
+<li> Lisp is unsuitable for Google because implementations don't cope
+with their scary scaling requirements.  More generally, of the ten or
+so pretty-much-unique advantages of Lisp ten years ago (GC,
+interactive development, native support for collections, etc etc) only
+about two are still unique.  Norvig considers the syntax to be one of
+them (if you're doing macros, it is).
+
+<p>My comment on this is that you can't yet get all of the other eight
+advantages in the <i>same</i> language.  
+
+<li>MCL 5.0 got announced
+
+<li> I appear to have volunteered to help with the ALU web site, and
+with any luck we might have some progress forthcoming soon (like, next
+week).  The plan is to turn it from a perfectly preserved museum piece
+into a living site that people actually want to visit more than
+once.</li>
+
+<li>Next year's conference (the plan is that there will be one, yes)
+is probably at about the same time of year, in New York.
+
+</ul>
+

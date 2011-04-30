@@ -1,0 +1,26 @@
+title: I think when this month ends it may be time to start a new page
+author: Daniel Barlow
+date: Wed, 27 Mar 2002 18:23:20 +0000
+
+
+<p> I think when this month ends it may be time to start a new page
+and confuse google again.
+
+<P> SBCL MP proceeds.  No more random memory corruption (it wasn't all
+that random anyway, to be honest, it just looked random), thread
+switch primitives adapted from the previous foray (in other words,
+they ought to work but bitrot may have done nasty things), a trivially
+simple scheduler which amounts to "run the next process which was
+blocked on a read() or write() call" (we actually use non-blocking IO
+and a poll() loop, so <i>would have blocked</i> is more accurate) "or
+if none, the next process in the <tt>*ready-process*</tt> list", and
+the necessary hackery in fd-streams to make processes go to sleep when
+they block instead of hooking up to the serve-event mechanism to do
+output later.  It's going to be easier to rip out serve-event and
+reimplement it using threads than it is to make threads coexist nicely
+with the present serve-event.
+
+<p><i>Testing</i> it is yet to happen.  Um, yeah...  When it again
+reaches the point of completely compiling, I can carry on hacking it
+using <tt>chill</tt> and redefining things in the running lisp.
+

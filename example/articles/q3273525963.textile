@@ -1,0 +1,10 @@
+title: Yesterday's diary entry demonstrates quite convincingly why it's
+author: Daniel Barlow
+date: Fri, 26 Sep 2003 1:46:3 +0000
+
+<p>Yesterday's diary entry demonstrates quite convincingly why it's
+not a good idea to me to write when too tired to keep my eyes open.
+"One user for every ten developers"?  "Strike that, reverse it", as
+Willy Wonka said.  Said in the film, anyway.  It's decades since I
+read the book, but I suspect he didn't say it there.
+

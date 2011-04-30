@@ -1,0 +1,42 @@
+title: There are very few Google hits for "Keito K6", so next week this entry
+author: Daniel Barlow
+date: Fri, 25 Jun 2004 11:25:46 +0000
+
+<p>There are very few Google hits for "Keito K6", so next week this entry
+will probably join them.  There's one of <a
+href="http://www.keito.com/keitok6.html" >these things</a> in my local
+supermarket; it measures weight, height and body fat percentage, and
+calculates body mass index as well.
+
+<p>Up to a point, at least.  Accurately calculating body fat mass is a
+fairly involved process, so instead it just measures the impedance
+between one hand and the other, which should be in some way related to
+water content in the body.  Muscle holds more water than fat, so based
+on that and your age and sex (which you tell it), it guesses the fat
+mass.
+
+<p> Of course, weight also varies a lot during the day with things
+like hydration, food intake, etc, so should be best done in the
+morning before doing anything else: let's just say that I have no
+intention of walking to Tescos in my dressing gown every morning - or
+even one morning a week - so forget that.
+
+<p>But height?  At least it can tell me how tall I am, surely?  No,
+apparently not.  My height as measured using a book and a pencil and
+the dorframe: 170cm.  My height as guessed last week by this Health
+Multifunctional Measuring Unit: 168cm.  As guessed last night: 165cm.
+Now, I've heard of height changes due to spinal compression (see
+e.g. <a
+href="http://rsna2003.rsna.org/rsna2003/VBK/conference/event_display.cfm?id=66601&em_id=3103199"
+>Measurement of Diurnal Variation in Intervertebral Disc Height in
+Normal Individuals</a>), but the figure quoted there is less than a
+centimetre.  Besides, my experiment with the book and the doorframe
+was conducted less than an hour after the second estimate from Keito.
+
+<p>So, not sure what my point is here, but it's probably something
+along the lines of "don't trust spurious precision".  
+
+<p>Oh, and it got the time of day on the printout wrong too ...
+
+
+

@@ -1,0 +1,27 @@
+title: Somewhere between 2.4.20-pre5-ac3 and 2.4.20-rc2-ac3, the paging
+author: Daniel Barlow
+date: Mon, 25 Nov 2002 18:37:49 +0000
+
+Somewhere between 2.4.20-pre5-ac3 and 2.4.20-rc2-ac3, the paging
+behaviour of Linux changed drastically, to the point where my 128Mb
+laptop is no longer comfortable for many of the tasks I use it for.
+Alternatively, something else I changed (I'm running Debian unstable
+and staying reasonably up to date) is being evil, but I'm reasonably
+sure I rebooted more than a few times in the days immediately before
+the new kernel (ugly ext3 errors, hence the reason for trying a new
+kernel) and didn't notice anything)
+
+<p>top(1) is reporting <i>less</i> swap used than normal, for what
+that's worth
+
+<p>New printer arrived.  I'd been quite irrationally excited about its
+imminence over the weekend - which is silly, it's not exactly the most
+interesting possible purchase ever, even in the field of computer
+hardware.  Plugged it in, turned it on, sent it postscript.  It works.
+
+<p>Also over weekend, SBCL threads hacking.  This is, uh, the third or
+possibly fourth attempt, and mostly so far consists of some messing
+about with segment selectors plus a forward port of the second
+(possibly third) attempt, so in spirit could be seen as a continuation
+of that one.  
+

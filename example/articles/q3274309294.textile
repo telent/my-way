@@ -1,0 +1,53 @@
+title: The votes for a simple ILISP setup are still coming in
+author: Daniel Barlow
+date: Sun, 5 Oct 2003 3:21:34 +0000
+
+The votes for a simple ILISP setup are still coming in.  Surprise
+surprise, yes.
+
+<p>I've been looking at Knoppix, and starting to learn enough about it
+to beat it into a shape I like.  Knoppix is an ISO9660 image, which
+contains another, compressed, ISO filesystem.  The inner filesystem is
+the root of the running system and contains about 2Gb of software.
+The outer filesystem gets mounted on /cdrom during the boot process
+and holds a few other files such as X root window images which are
+presumably put there for ease of alteration.
+
+<p>So, to hack it around you basically unpack the ISO, unpack the
+inner ISO, chroot into it and fiddle with dpkg/apt-get/whatever else,
+then pack it all back up again.  There appear to be a number of 
+graphical tools for this, but I'm using a shell script originally
+found at
+<a
+href="http://www.informatik.uni-koeln.de/ls_juenger/people/lange/software/mkmyknoppix"
+>http://www.informatik.uni-koeln.de/ls_juenger/people/lange/software/mkmyknoppix</a>
+but which is slowly mutating as I find other things I want it to
+do/not do.  
+
+<p>The repacking phase takes about 20 minutes, which makes things a
+little tedious to test.  Fortunately VMWare Workstation will boot from
+ISO images without needing to burn them first, so at least I don't
+need to add the CD writing time and cost of blank to that for every
+iteration.  Unless Bochs can do something similar (and emulate svga
+and some species of ethernet device) I can see having to pay for this
+sometime in the next 30 days.  Why is it that <i>all</i> the software
+I buy these days is for emulation?
+
+<p> So, chief concern right now is licensing; I want all the source
+code to be available in a GPL-compliant way (enough of the Knoppix
+packages are GPLed that it makes no sense to try and separate out the
+source-required packages).  So far I've managed to get the filesystem
+down to around 770MB uncompressed (no KDE, no applications) or 280Mb
+compressed.  If dpkg is not telling fibs, sources for this will be
+about 600MB: gzipped tarballs, gzipped diffs and .dsc files, so I
+don't think that's going to compress significantly further.  If I can
+find really not a lot more space it looks like we might actually be
+able to get the whole thing ona  single disc, which will make life a
+lot simpler
+
+<p>What's slightly worrying is that I just noticed a /usr/lib/j2se
+directory that dpkg -S doesn't acknowledge the existence of.  On the
+bright side, I can probably just delete it - nothing important will
+ever depend on java - but I'm concerned that there may be other stuff
+in there that the package system doesnt know about.
+

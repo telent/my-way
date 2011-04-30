@@ -1,0 +1,113 @@
+title: I see that LWN has got its predictions for what happens to Linux in
+author: Daniel Barlow
+date: Wed, 31 Dec 2003 16:56:22 +0000
+
+I see that LWN has got its predictions for what happens to Linux in
+2004 up.  Inspired by that, I'm going to make some predictions of my
+own about Lisp in 2004
+
+<ul>
+<li> 2004 will <i>not</i> be the "Year of Lisp".  When was the Year of
+Linux?  The Year of the Internet?  The Year of the LAN (remember that
+one?)  Exactly.  2004 will be the year that some number of people
+suddenly realise they can use Lisp to solve their problems, and it
+will be a bigger number than had the same realisation last year, and
+2005 will have more still.  But that doesn't make either (any) of them the
+Year of Lisp.
+
+<li> SBCL will get callback support, and threads on some non-x86
+platform (most likely PPC).  It's kind of cheating for me to make 
+SBCL predictions, though, so expect more when I've talked to
+Christophe and we've decided what we want to do.
+
+<li> Sometime after it gets its CVS repository back on the net, CMUCL
+will release 19a, which will have approximately what the current CMUCL
+CVS versions have in them.  The CMUCL project suffers hosting problems
+on an approximately two-yearly basis, so will not seriously drop off
+the net again until 2005.
+
+<li> Gary Byers will tire of the low takeup of OpenMCL 0.14
+pre-releases and will label it an official release so that users
+actually get it and start beating on the native threads support
+seriously.  No major problems will result.
+
+<li> SLIME will replace ILISP as the "default" emacs interface for
+free Lisps.  It will gain thread support.
+
+<li> MCCLIM will progress from its current status as the project that
+everyone admires and nobody actually uses, to a new position as a
+project that everyone installs to play with the Listener, but doesn't
+then use for anything serious.  This will not change until a real
+application (probably Maxima) is released that depends on it.  Lots of
+talking and approximately no hacking will be done on a CLIM-based
+editor/IDE, and a CLIM Gtk backend.
+
+<li> A "major" Linux distribution (i.e. Red Hat or SUSE) will follow
+the lead set by Debian, Gentoo and Slackware, and put a decent
+general-purpose CL system (CMUCL or SBCL) into their distribution
+
+<li> They'll screw it up by having someone do it who doesn't actually
+<i>use</i> Lisp, so it'll be (a) an old version, (b) a brand-new
+release which is missing the rushed post-release patches that actually
+make it work, (c) compiled with really dumb compilation options (SBCL
+without threads, or CMUCL with incorrect source paths, or similar), or
+(d) missing bits (like the FreeBSD SBCL port has no contrib).
+Maintainers of whichever CL it is will bemoan the fact that the distro
+fouled it up so badly.  The distro hacker will claim that he asked for
+advice on IRC/usenet but everyone was too busy arguing about politics
+and/or Norway to give him an answer.  People will look back through
+Dejanews or the IRC logs and find his question, which was written at
+the end of a 16 hour day wrestling with some out-of-date tarball from
+Sunsite and started with "Why is this stuff all so totally
+undocumented, broken, and completely fucking incomprehensible.  Lisp
+sucks" and escalated from there.  Everyone will take sides.  A bug
+will be reported in the vendor's bug reporting system, which will be
+closed with the tag 'WONTFIX' or local equivalent.
+
+<p>(Note: it doesn't <i>have</i> to go that way.  Red Hat and SUSE
+hackers are warmly invited to introduce themselves as such on the
+relevant development lists and ask for packaging advice.  We're
+friendly enough if we don't think we're being trolled, and it's in all
+our interests to get decent quality packages into the major
+distributions)
+
+<li> comp.lang.lisp will become still more offtopic and still less
+useful.  At least one defender of proprietary Lisp development and one
+prominent free Lisp hacker will blow up loudly and publicly and swear
+that he is leaving {cll, usenet, Lisp, software} forever.  Nobody will
+believe him, though many will claim to.
+
+<p>(Hmm.  How public have I been about my departure from cll?  I
+expect it's temporary until I get broadband sorted out again, but
+after an hour playing with Dejanews yesterday I have to admit I'm not
+missing it <i>much</i>.  But it's still 6 hours before 2004 as I write
+this, so you should probably look for another free Lisp hacker anyway)
+
+<li> Peter Siebel's book will be released, making many people happy
+and me jealous.
+
+<li> Sourceforge will suffer some major and long-term screwage,
+affecting many free Lisp projects.  By the time it returns to normal
+service 
+<ul>
+
+<li> SBCL and ECL will have moved elsewhere
+
+<li> CCLAN as a brand name will have been largely forgotten, but asdf
+and asdf-install will be moved to common-lisp.net.
+
+<li> ILISP probably won't have noticed.
+</ul>
+
+<li> I haven't heard anything about ILC 2004 yet; I don't know what
+the plans are.  I do know that Ray de Lacaze did an absolute ton of
+work last year and I was sorry to miss it.  Whether ILC happens or
+not this year, I predict more Lisp presence at other conferences,
+including LSM/RMLL, UKUUG, LinuxTAG etc.
+
+<li> Probable vapourware in 2004: CL-Emacs (unless Gilbert resurfaces
+or Luke Gorrie gets into it), productized cirCLe, an SMTP server with
+Bayesian spam filtering, another LispOS and another attempt at a c.l.l
+FAQ
+</li>
+</ul>

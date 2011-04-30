@@ -1,0 +1,43 @@
+title: So there's obviously a reason I'm converting Stargreen to the new
+Araneida handler model: it's because I want to upgrade the SBCL it
+author: Daniel Barlow
+date: Fri, 5 Dec 2003 4:0:6 +0000
+
+So there's obviously a reason I'm converting Stargreen to the new
+Araneida handler model: it's because I want to upgrade the SBCL it
+runs on to something recent and, frankly, I'm not sure the old one
+works any more.  But also, I'd like to add RSS feeds to it for
+forthcoming events.
+
+<p>Which witha little assistance from Miles Egan's <a
+href="http://www.cliki.net/xmls">xmls</a> library, turned out to be
+the simple bit.  Now I'm reading bits of Araneida again and thinking
+"I wonder why it does that".  The deal is: there are various
+circumstances in which we want to abort a response early - for
+example, the authentication handler decides that the user isn't, or
+the response handler sees that it was that <a
+href="/diary/2003/12/#2.13019">conditional GET</a> thing I was talking
+about two days ago, and return 'not modified' therefore saving on all
+that expensive database stuff.  We could set a flag in the request
+header (the 'request' in araneida has attribues of both http request
+and response: it's more of a 'transaction' object, I suppose) to say
+"we've finished, don't send them any more data", but then all
+subsequent stuff has to check it.  Which is silly.  If we're done
+outputting, we're (except in the case that the user's request kicks
+off some asynchronous computation that he gets the answer of some
+other way) probably done calculating too.
+
+<p>It appears that we have a signallable <b>response-sent</b> condition for
+this situation.  In fact I even seem to have documented it.  I guess I
+should probably make <b>request-send-headers</b> use it too, then.
+
+<p>Is anyone having problems with infinitely recursive errors when
+they try to retrieve pages for which there is no handler?  I was, but
+it might just be me.  The problem appears to be in handle-request
+(handler) where it attempts to request-send-error on a stream that's
+probably not there any more, but I'm loathe to commit a fix until I've
+worked out why it's also apparently pointlessly resignalling
+response-sent: I want to be able to explain or remove it.  (This is
+where I came in, yes).  Mail <a href="http://www.cliki.net/lispweb"
+>lispweb</a> if you're seeing this too.
+

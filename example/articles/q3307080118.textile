@@ -1,0 +1,27 @@
+title: I call that a successful weekend
+author: Daniel Barlow
+date: Mon, 18 Oct 2004 10:21:58 +0000
+
+I call that a successful weekend.  As previously reported, I have a
+working computer at home again.  The ubuntu default desktop lasted
+about two hours before I reverted to my old sawfish/xterm ways: I have
+a real reason and a rationalisation for this, which are respectively
+(a) it was taking over a minute to start emacs at login and I couldn't
+see why; (b) I wanted to bind the key labelled 'Ctrl' to Super,
+instead of to Caps Lock, and couldn't see an option in the
+configuration doodads.  Turns out the emacs problem was probably
+because I had localhost as 128.0.0.1 in /etc/hosts: I have no
+<i>idea</i> how that happened.
+
+<p>Still and all, I managed to dust off the sbcl amd64 port and start
+to page the details back into my brain.  Assuming I'm hacking on the
+right version, I may even have something to commit (define-instruction
+forms for various sse instructions we need, albeit currently with
+slightly dodgy^W^Wmassively broken disassemblies) today or tomorrow.
+
+<p>In other news,  I am mostly not lame any more.  Spent an hour or so
+on Sunday skating in slow gentle circles around the shallow end of 
+<a href="http://www.citiskate.co.uk/skatersmap.htm" >Serpentine
+Road</a>: as long as I don't try doing anything complicated with the
+left leg, it's manageable.
+

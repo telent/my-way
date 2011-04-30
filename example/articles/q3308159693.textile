@@ -1,0 +1,26 @@
+title: trivial-sockets 0.2
+author: Daniel Barlow
+date: Sat, 30 Oct 2004 22:14:53 +0000
+
+<a href="http://www.cliki.net/trivial-sockets">trivial-sockets 0.2</a>
+is out now.  Available on your preferred cCLan mirror if and when said
+mirror next updates from ftp.linux.org.uk (must do something about
+that one day: if you recognise a site in the list at the <a
+href="http://ww.telent.net/cclan-choose-mirror">cCLan redirector</a>
+that's under your nominal control and it doesn't have trivial-sockets
+0.2, please either rectify that or mail me and ask to be removed from
+the list), it includes client and server socket support for Allegro
+CL, CLISP, CMUCL, LispWorks, OpenMCL and SBCL, as well as client-only
+support for ABCL.
+
+<p>Some time in the near future I will compile a table containing all
+the options involved in the opening-a-socket-stream task that a user might
+reasonably want to frob, and all the various common lisp implementations
+in which they might want to frob them, and find some way to beat each of
+the various vendors around the head until their particular column
+is not full of "unimplemented in this lisp".  in the meantime, the 
+last section of the <a
+href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/trivial-sockets/trivial-sockets.texi?view=markup"
+>manual</a> should give you a pretty good idea of what I'm getting at.
+
+<p>0.3 will have timeouts.

@@ -1,0 +1,21 @@
+title: Obviously I don't already have too many projects I'm not keeping up
+author: Daniel Barlow
+date: Thu, 23 Dec 2004 15:20:16 +0000
+
+<p>Obviously I don't already have too many projects I'm not keeping up
+with.  A couple of weeks ago I joined the ranks of <a
+href="http://blog.gritch.org/">Lispers with GPSs</a>, with the
+intention of compiling free street maps of London - and learning how
+to use CLIM at the same time.
+
+<p><a href="http://loaclhost.telent.net/fns.png">This</a> is probably
+not an approved use of the McCLIM Listener, but it seems to be a
+low-effort way of getting dots on the screen.  The dots come from the
+Friday Night Skate two weeks ago, via the GPX file <a
+href="http://loaclhost.telent.net/gps/skate/">here</a> (if you don't
+have something like gpsman that'll read gpx files, there's also ps and
+pdf conversions in there which are right now prettier than my clim
+hackery anyway), courtesy of <a
+href="http://common-lisp.net/project/s-xml/">s-xml</a> and some very
+bad (incomplete) glue.
+

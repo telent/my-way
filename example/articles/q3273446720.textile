@@ -1,0 +1,53 @@
+title: Freenode #lisp denizens, and some percentage of comp.lang.lisp readers
+author: Daniel Barlow
+date: Thu, 25 Sep 2003 3:45:20 +0000
+
+<p>Freenode #lisp denizens, and some percentage of comp.lang.lisp readers
+who read the article I mistakenly posted instead of mailed privately,
+will know that earlier this year I was flirting with the possibility
+of writing a book.  'Flirting' is not really the right term: I got as
+far as producing an outline and sending it to a publisher who appeared
+to like the idea, so if we're going to stick with this general
+metaphor, I got as far as a dinner date and invitation back for coffee
+afterwards.
+
+<p>Actually, let's drop that metaphor.
+
+<p>So anyway, today I'm feeling slightly up on hearing the news that
+there were more than 100 participants in #lisp again (even if two of
+them are me), and slightly down on hearing from the prospective
+publisher, who I hope won't mind being excerpted here (this is all
+public information anyway; I wouldn't post the sensitive stuff), that
+
+<blockquote>
+According to sourceforge, the i386 rpms for [GNU CLISP] 2.3.1 have been
+downloaded 351 times since 8/31/03, and the 2.3.0 rpms have been downloaded
+2,454 times since 9/02.  The win32 archive has been downloaded 1,436 and
+11,059 times, respectively.  The other lisp projects on sourceforge have
+barely been downloaded at all. 
+</blockquote>
+
+<p>(He's basically engaged in trying to figure out the size of the
+potential market for a book aimed at teaching Lisp to users of other
+high-level languages: Perl and Python and suchlike.  Poor soul)
+
+<p>So I went to have a look, and modulo that I wouldn't trust
+sourceforge stats further than I can throw them, he's absolutely
+right.  SBCL downloads seem to average about 100 a month, though with
+enough noise to make any kind of useful analysis worthless.  That's
+one user for every ten developers.  Of course, there are probably also
+people following CVS, and the Debian packages aren't counted in that
+and may be good for a few more, but even so.  (Yes, I've looked at the
+popularity-contest figures.  No, they don't cheer me up much)
+
+<p>In fairness, I think the real reasons I'm not feeling so great
+right now are (a) I still have no idea about this stupid
+threading/GC/locking/whatever-it-is bug, which moves somewhere else
+every time I put in any kind of code that would help me track it down,
+and (b) I'm still spending too much time dealing with recruiters.  If
+I knew what I was doing on at least one of these scores, I would face
+with more grace and equinamity the knowledge that it's getting on for
+<a href="/diary/2002/11/#25.67069" >the best part of a year </a> since
+I started on the current attempt to add thread support to SBCL.
+
+

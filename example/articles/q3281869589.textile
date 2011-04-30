@@ -1,0 +1,14 @@
+title: There are people (well, there's one particular person using an RSS
+author: Daniel Barlow
+date: Wed, 31 Dec 2003 14:26:29 +0000
+
+There are people (well, there's one particular person using an RSS
+aggregator called <b>rawdog</b>) grabbing the rss feed for my rambles
+<i>every twenty minutes</i>.  Right through the night, too.  Which
+seems a trifle excessive to me, but hey, it's getting a 304 every
+time, so no big deal.
+
+<p>Means I probably should tweak the <a href="http://www.analog.cx/"
+>Analog</a> configuration, though, if I want its lovely statistics to
+be at all meaningful.
+

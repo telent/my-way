@@ -1,0 +1,198 @@
+title: Migrating Xen to KVM
+author: Daniel Barlow
+date: Wed, 03 Jun 2009 16:06:29 +0100
+
+Until very recently I ran this blog site, and a couple of others (test
+sites for work, that kind of thing) in a Xen virtual host on the pc
+sitting on my desk.  While it worked ok for that purpose, it really
+didn't coexist nicely with much else: the Xen kernels available in
+debian have a showstopper bug for running X11, are missing modules for
+e.g. cpu temperature monitoring, etc.  And the process to build ones
+own is not usefully documented.  (I apt-get sourced my kernel image,
+and it downloaded a _completely different kernel version_).  I don't
+think the stuff is unusually buggy, it probably just doesn't have
+enough eyeballs on it to find all the weird interactions with other
+components or to patch them when they do turn up.
+
+So when my four year old Athlon motherboard died recently, the
+opportunity to rejoin the mainstream and start using kvm was the
+silver lining in the "ew, hardware" cloud.
+
+h2. A hard ware is gonna fall
+
+I decided to go Intel this time despite my AMD-supporting underdog
+instincts, chiefly because I figured that (a) every Intel cpu on the
+planet should have VT support by now, (b) onboard graphics are
+well-supported in xorg, (c) everything I read about the E5300 CPU said
+it had very good price/performance ratio and overclocking it someday
+sounded like a fun project.  So basically I bought that and the first
+G45 board I found that had onboard graphics (this is the distinction
+between G45 and P45 which doesn't), three SATA ports and was made by
+someone I'd heard of.  It's the Asus P5Q-EM, and it apparently also is
+a good one for overclocking.
+
+After putting it all together, I found that it didn't work.  Important
+lesson here: for 'market segmentation' reasons - and I was certainly
+pretty cut up about it, though that may be not the kind of
+segmentation they mean - Intel only implement the necessary VT bits
+on CPUs that cost north of £100, not on the cheap and lovely E5x00
+series even though they have the (arguably equally "enterprise niche")
+64 bit support.  So, gah.  So I ended up with an E8200 as well, and a
+spare cpu+fan that is probably going on Ebay soon.
+
+h2. This walk is made for booting
+
+KVM now runs, which is a start.  Note that you need the @kvm@ module
+ *and* the @kvm-intel@ module, or it will complain that you have no CPU
+support. You may also have to fiddle with your bios settings, although
+I didn't.
+
+To convert a Xen disk image into an image that kvm understands is
+still a bit fiddly: in brief, xen images are filesystem (= partition)
+images, whereas kvm wants entire disks and they need to be bootable
+(i.e. contain grub and a kernel).  Here's how I did it, prefaced by
+the obligatory "it worked for me, but it's not my fault if it
+doesn't for you.  Back up first" caveat
+
+Obligatory caveat: it worked for me, but it's not my fault if it
+doesn't for you.  Back up first.
+
+1) Identify your disk image.  On a Debian box it will be in some place
+like @/usr/local/lib/xen/domains/vitrual.4a.telent.net/disk.img@
+
+<pre>
+ # cd /usr/local/lib/xen/domains/no.stargreen.com
+ # file disk.img 
+ disk.img: Linux rev 1.0 ext3 filesystem data, UUID=e6143cef-c3ed-4c21-94d9-32d4ba186910 (large files)
+ # ls -l disk.img 
+ -rw-r--r-- 1 root staff 4294967296 2009-06-03 14:33 disk.img
+</pre>
+Looking promising.  So let's create a qemu image.
+<pre>
+ # dd if=/dev/zero of=mbr bs=8225280 count=1
+ # cat mbr disk.img mbr | cp --sparse=always /dev/stdin qemudisk.raw
+</pre>
+Why these numbers?  It's a throwback to ancient technology: ye olde PC
+accessed disks using cylinder/head/sector technology, and the upper
+bounds on each bit are 16383, 16, 63.  In my testing, KVM ignores the
+CHS settings in the disk image and assumes  16 heads/63 sectors, so
+we're going to make it easy for ourselves by adopting that
+geometry ourselves, and since this makes each cylinder 8225280 bytes
+long we'll stick that much blank space on the front of the image for
+MBR/partition table/etc so the first partition is at cylinder 1
+
+And the additional space on the end?  In my first few attempts I ran
+into trouble with @e2fsck@ complaining that the filesystem was bigger
+than the disk image.  This is, of course, impossible, and I imagine
+was due to some kind of rounding error, but padding it out this way is
+easier than investigating.
+
+The @sparse@ flag to @cp@ might save us a bit of disk space if we have
+any great big expanses of zero in the image.  Mine didn't, as it
+turned out, but YMMV.
+
+Next up, partitioning.  @sfdisk@ accepts input on stdin and uses it to
+destroy your data, which makes it in some ways the perfect
+Unix-philosophy tool.  GNU Parted will never give you this kind of
+buzz, so be very careful here.
+
+<pre> 
+ # echo '1' | sfdisk qemudisk.raw  # DO NOT MISTYPE THIS
+ # sfdisk -l qemudisk.raw 
+ Disk qemudisk.raw: cannot get geometry
+
+ Disk qemudisk.raw: 524 cylinders, 255 heads, 63 sectors/track
+ Units = cylinders of 8225280 bytes, blocks of 1024 bytes, counting from 0
+
+   Device Boot Start     End   #cyls    #blocks   Id  System
+ qemudisk.raw1          1     523     523    4200997+  83  Linux
+ qemudisk.raw2          0       -       0          0    0  Empty
+ qemudisk.raw3          0       -       0          0    0  Empty
+ qemudisk.raw4          0       -       0          0    0  Empty
+</pre>
+
+At this point if you have a rescue cd image or something you could
+start kvm and have a poke around. 
+<pre>
+ # kvm -hda /usr/local/lib/xen/domains/no.stargreen.com/qemudisk.raw
+   -cdrom trinity-rescue-kit.3.1-build-210.iso -boot d
+</pre>
+But you still can't boot the hd image directly, because there's no
+bootloader.  So let's fix that next.  Note that your exact kernel
+package name may not be the same as mine.
+<pre>
+ # mount qemudisk.raw /mnt -t ext2 -o loop,offset=8225280
+ # chroot /mnt apt-get update
+ # chroot /mnt apt-get linux-image-2.6.26-2-amd64 grub  
+ # mkdir -p /mnt/boot/grub
+ # cp /mnt/usr/lib/grub/x86_64-pc/* /mnt/boot/grub/
+ # cat | grub --device-map=/dev/null
+ device (hd0) qemudisk.raw 
+ root (hd0,0)
+ setup (hd0)
+ # cat > /mnt/boot/grub/menu.lst
+ title           Debian GNU/Linux, kernel 2.6.26-2-amd64
+ root            (hd0,0)
+ kernel          /boot/vmlinuz-2.6.26-2-amd64 root=/dev/hda1 
+ initrd          /boot/initrd.img-2.6.26-2-amd64
+</pre>
+apt-get may complain about having no initrd set up and ask if you want
+to to abort.  I said "no", which works for me.  We install grub by
+hand because @grub-install@ doesn't work so well in this situation.
+Obviously you will need to muck about with pathnames in my minimal
+menu.lst if your system is not quite like mine.
+
+That's basically it as far as getting a bootable image is concerned.
+You can start kvm with this image: I would probably suggest running
+@update-grub@ inside it to replace this minimal config with all the
+Debian grub goodness
+
+h2. Take me to the bridge: networking
+
+The kvm networking default is 'user' networking, which is in summary
+dead convenient if all you want to do in the virtual host is run
+clients, but a little bit slow and a little bit weird.  If you want to
+run servers on your kvm instance, you will probably instead want to bridge its
+network with your real host so the outside world can see it.  
+
+I previously had a statically addressed eth0, now I have a statically
+addressed br0 which bridges that and a couple of tap devices (you will
+need one per kvm virtual host).  The necessary debs are
+@bridge-utils@ and @vde2@, and your @/etc/network/interfaces@ stanza,
+on the real host, is something like this
+
+<pre>
+ # The primary network interface
+iface br0 inet static
+    address 192.168.1.2
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    pre-up /usr/bin/vde_tunctl -u www-data -t tap0
+    pre-up /usr/bin/vde_tunctl -u www-data -t tap1
+    pre-up ifconfig tap0 up
+    pre-up ifconfig tap1 up
+    bridge_ports all tap0 tap1
+    post-down ifconfig tap0 down
+    post-down ifconfig tap1 down
+    post-down tunctl -d tap0 tap1
+</pre>
+
+and then I start kvm with 
+<pre>
+ # kvm -hda qemudisk.raw -net nic -net tap,ifname=tap0,script=no
+</pre>
+
+And there it is.  Write yourself some fancy startup scripts: I invoke
+kvm with -daemonize and -vnc options so that it doesn't need to open a
+window, but there are plenty of different ways to do that.  You will
+probably want to play with other options too: for example to change
+the kvm instances ram allocations or to give them a second disk image
+suitable for swapping on.  If you have lots of kvm instances all
+running at once you should maybe also look into VDE networking rather
+than the tun/tap devices, but I haven't spent the time to work that
+out yet.
+
+If you go googling to solve your own problems: you probably know this already ,but it bears repeating: KVM is in some sense a fork/branch/derivative of QEMU, and the two systems have largely or maybe even entirely common code in this area.  So a lot of what you see about qemu booting is directly applicable to kvm too.
+
+If you found this useful, feel free to get in touch.  If I've left
+any step out, tell me that too and I'll edit it.

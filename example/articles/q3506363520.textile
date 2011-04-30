@@ -1,0 +1,78 @@
+title: Backing up a workgroup server with rsnapshot
+author: Daniel Barlow
+date: Thu, 10 Feb 2011 21:52:00 -0000
+
+
+Lately I have been changing the way that $WORK backs up their office
+server.  It should be pretty simple, right?  Removeable USB drive they
+can take home at night, @rsnapshot@, win.
+
+Almost.  The problem is user-proofing.
+
+h2. The disk should not be mounted when not in use
+
+Really, I don't want end-users unplugging a mounted drive.  So
+automounting on drive plugging is a non-starter.
+
+h2. The disk has to be mounted before doing the backup
+
+You'd think you could use @cmd_preexec@ in @rsnapshot.conf@ for this.
+No.  If @cmd_preexec@ fails (e.g. because the disk is not plugged in),
+rsnapshot prints a warning (which nobody will read) and then goes on
+and does the backup anyway.
+
+There is a neat option @no_create_root@ which you'd think was designed
+for this: "rsnapshot will not automatically create the snapshot_root
+directory. This is particularly useful if you are backing up to
+removable media, such as a FireWire or USB drive".  However, it does
+this test before running @cmd_preexec@, which is entirely the wrong
+order of events for our purposes
+
+h2. The disk must be idle before being unplugged
+
+Well, there's not really any physical way to stop people unplugging it
+during a backup, but we could at least give ourselves a sporting
+chance by telling them when the backup's happening.
+
+There are several parts to this: first we spend an inordinate amount
+of time fighting with zenity to make it do something "vaguely
+sane":http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=612683 before
+giving up and creating a workaround that lets it do what it wants
+instead.  The result looks a lot like
+"rsync-wait.sh":https://gist.github.com/820990 in which, if your
+external HDD is not called Fred, feel free to amend the text messages.
+If you're one of the vanishingly small number of people who has to use
+GNOME but isn't on a Linux kernel or for some other reason don't have
+@inotify@, you'll have to replace @inotifywait@ with e.g @sleep 10@
+
+We want this to be run for every user, because they all have physical
+access to the server and any of them might be charged with taking the
+disk home.  So we need a way of launching this script on login and
+stopping it on logout - surprisingly the latter is harder.  If you
+write an X client program in a real language it will probably
+eventually notice (or just die with @SIGPIPE@) when its X server
+socket closes, but a shell script doesn't necessarily have a
+persistent X connection open - so if we start the script from
+@Xsession.d@ or similar and if you log out and in again the process
+won't die, and you end up with two copies running at once.  Double
+bubble trouble.
+
+To save you the afternoon that this took me to figure out, the
+simplest answer is "start it from @xterm@".  So, create a @.desktop@
+file and drop it in @/etc/xdg/autostart@ directory
+
+<pre>
+dan@carnaby:~$ cat /etc/xdg/autostart/rsync-wait.desktop 
+[Desktop Entry]
+Encoding=UTF-8
+Name=Backup Disk notifier
+Comment=System tray icon for notifying rsnapshot running
+Exec=/usr/bin/xterm -iconic -e /usr/local/bin/rsync-wait.sh
+Terminal=false
+Type=Application
+NotShowIn=KDE;
+StartupNotify=false
+Categories=GTK;Monitor;System;
+</pre>
+
+So far, this is working.  I think. 

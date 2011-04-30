@@ -1,0 +1,31 @@
+title: Replacement cpu is here
+author: Daniel Barlow
+date: Sun, 17 Oct 2004 0:36:12 +0000
+
+<p> Replacement cpu is here.  After a short some inspection of the various
+bits of computer I'd managed to order, I realised that (a) no fan, and
+(b) motherboard too large to fit the case in which I was planning to
+install it.  Rectified this situation with short trip down Tottenhan
+Court Road.  Put everything together.  Worked first time too, good grief.
+
+<p> After reading a little on the difficulty of installing debian
+amd64 with debootstrap (seems you need to be running a 64 bit kernel
+to do it successfully) I decided that if I was going to write an ISO I
+might as well take the opportunity to install Ubuntu.
+
+<p>First impressions, then: installs from a single CD.  After a fairly
+non-taxing text-mode installation (involves one reboot) which
+automatically found my graphics card, mouse, network and audio, it
+boots straight up into some form of graphical login screen with <a
+href= "http://www.ubuntulinux.org/login.png" >a picture</a> (taken
+from above) of two attractive women and a bloke with no chest hair and
+better abs than mine.  Admittedly, as I have none to speak of that's
+not really a great description, but they're the kind that would
+naturally draw the eye if it weren't already being drawn down the tops
+of the two ladies.  After logging in, you get some kind of Gnome
+desktop with Firefox as default browser.  I'm not sure how long I'll
+stick with it (I'll at least be finding the focus-follows-mouse option
+if it has one, and installing a real xterm toot sweet) but we'll see
+how it goes.  Expect to see various comments on particularly good/bad
+aspects in forthcoming days, if it has any, but it does seem pretty
+slick so far.

@@ -1,0 +1,25 @@
+title: Editing on both CLiki and the ALU Wiki is temporarily disabled
+author: Daniel Barlow
+date: Wed, 10 Dec 2003 15:7:16 +0000
+
+<p>Editing on both CLiki and the ALU Wiki is <a
+href="http://www.cliki.net/CLiki_News">temporarily disabled</a>.
+There's not a lot to say about the combination of intelligence and
+social skills that must be involved in defacing a world-writable web
+site, so I'll let it rest.
+
+<p>Not a lot of free stuff hacking lately.  I've been working on
+Stargreen and <a href="http://thread.gmane.org/gmane.lisp.web/292"
+>thinking about testing</a>.  Which developed into thinking about
+completely redesigning the underneath of Araneida to separate
+<b>request</b> and <b>response</b> so that it could sensibly support
+an HTTP client as well as a server.   Which stopped developing when I
+realised that most of it is presently, right now, YAGNI.  
+
+<p>Then yesterday was divided more or less equally between travelling
+to Manchester and travelling back from Manchester; the intervening
+period spent doing a written Perl test (and swearing at MS Word, which
+is not my idea of the world's best Perl editor, really).  Manchester
+quite nice but not a lot of free time to explore - spent most of it in
+Waterstones reading about truss rods.
+

@@ -1,0 +1,43 @@
+title: Because I would rather be in bed than blogging, here is a very short
+author: Daniel Barlow
+date: Fri, 26 Mar 2004 5:46:34 +0000
+
+Because I would rather be in bed than blogging, here is a very short
+entry
+
+<ul>
+
+<li> now cycling to work.  leytonstone->old street, this morning: 10km
+old street ->leytonstone, this evening: 20km.  I missed a turning or
+several somewhere.
+
+<li> I think I have a plan for new per-thread dynamic variable
+behaviour in sbcl (summary: it's going to look a bit like the
+Lispworks scheme but simpler), which I shall be expounding at the
+scheme-uk meeting on Wednesday week.  Why there instead of uk-lispers?
+Because we meet in a pub and they meet in an office with projectors
+and whiteboards and suchlike: any insights we gain as a result are
+more likely to be remembered afterwards.
+
+<li> I just wrote another object-relational layer in Perl (day job
+task).  I'm still trying to figure out why there are some things I
+prefer working in Perl for, given that it's not the library support
+(pg.lisp would have done that bit nicely) or the syntax (give me sexps
+any day) or the editor support (which in perl consists of 80% correct
+indentation, and 90% correct angry-fruit-salad syntax highlighting).
+I think it's something to do with the way errors are presented: quite
+often by the time the system has worked out there's a problem I
+already realised that and mentally fixed it, and I would rather
+correct it and hit 'run that again' than have my train of thought
+interrupted by a debugger.  Perhaps it'd be worth experimenting with a
+debugger interface that doesn't cut in until you ask it to (or maybe a
+repl with a "re-evaluate the last expression read" restart, or
+something similar), anathema though this may be to traditional
+lispers.  Perhaps I'm too tired to think about this cogently.
+
+</ul>
+
+After a moment's contemplation I realise that I <i>am</i> in bed while
+writing this, and should have expressed a preference for what I really
+want to be.  Which is, right now, asleep.  Good night, then
+

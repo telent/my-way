@@ -1,0 +1,18 @@
+title: Mailing lists continued to not work for a couple of days, until I
+author: Daniel Barlow
+date: Sat, 13 Mar 2004 16:47:20 +0000
+
+Mailing lists continued to not work for a couple of days, until I
+noticed and restarted cron.  <I>Now</i> I think it's all working
+again. 
+
+<p>I have little time for hacking this weekend because in observance
+of my New Years Resolution of <a
+href="http://ww.telent.net/diary/2002/1/#7.47171" >2002</a> I must
+spend the next few days abusing solvents.  That's right, I need to
+clean the house.
+
+<p>The spray-on shower cleaner comes with instructions that say "for
+best results, use on a clean shower".  Can't help wondering why I
+bothered buying that, then.
+

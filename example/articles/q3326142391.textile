@@ -1,0 +1,23 @@
+title: The darcs side called
+author: Daniel Barlow
+date: Fri, 27 May 2005 1:26:31 +0000
+
+The darcs side called.  It left a message.  The message is 
+<ul>
+<li> <a
+href="http://verisons.telent.net/cgi-bin/darcs.cgi">http://verisons.telent.net/cgi-bin/darcs.cgi</a>
+- pointyclicky stuff
+<li> darcs get http://verisons.telent.net/<i>repository</i>
+</ul>
+
+Note that (1) for reasons I don't feel much like figuring out at this
+time of night, at time of writing my secondary dns doesn't seem to
+believe verisons.telent.net exists, (2) I am not aware of any way
+except through the cgi that you can find out what repositories exist
+yet - as I write this, the answer is "clx", but tomorrow I'll add
+cliki-related projects and the rest.
+
+<p>First impression, btw, is that the cgi thing is probably not going
+to be available for long, as xsltproc eats machine resources like,
+well, like something designed by XML users.
+

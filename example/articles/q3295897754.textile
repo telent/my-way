@@ -1,0 +1,31 @@
+title: The other thing I decided fairly recently that I need to work on is my
+author: Daniel Barlow
+date: Fri, 11 Jun 2004 0:9:14 +0000
+
+The other thing I decided fairly recently that I need to work on is my
+skating.  Comparing myself against "skill level" charts, I find that
+I'm, well, all over the chart.  I've been skating for everyday
+transport and regular street skates for most of the year, but never
+had any proper lessons, and don't spend a lot of time on them
+otherwise.  So, demonstrating ably the ancient wisdom that "training
+to do X will make you very good at X but do nothing for your abilities
+at W or Y": I can go, I can stop, I can turn, I can surf tree roots,
+loose gravel, drain covers, white paint and small holes with
+flail^Wflair and style, and I can skate 12 miles on a Friday and
+<i>still</i> get to the pub before my friends (who have also skated 12
+miles, don't start thinking I'm superhuman here).  But: I'm entirely
+crap at the usual array of tricks (crossovers, spins, t-stops,
+backwards skating, jumps, slalom, etc etc) that would usually go along
+with that.  So, I am resolved to spend at least some time each week
+practising this stuff, and not just the 20 minutes before the Friday
+Night Skate because that always turns out to be more like 5 minutes
+plus 15 minutes standing around talking to people.  This is of course
+made a whole lot more palatable by having fixx0red my skates so they
+no longer make my the lump around my ankle bone swell up to twice its
+normal size.
+
+<p>I had feedback that my notcon blog was "good but totally out of
+character".  It seemed pretty normal to me (though not about Lisp,
+granted), except possibly that I seem to have been getting all
+touchy-feely and confessional lately.  Blame it on the weather: normal
+service will resume as soon as the novelty wears off.

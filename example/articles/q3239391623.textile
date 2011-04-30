@@ -1,0 +1,82 @@
+title: The CL pathname system is mostly pretty neat
+author: Daniel Barlow
+date: Tue, 27 Aug 2002 0:0:23 +0000
+
+<p> The CL pathname system is mostly pretty neat.  Rather than
+representing pathnames as strings, we parse them into pathname objects
+with accessors to get at the various bits
+<pre>
+* (defvar *my-path* (parse-namestring "/etc/init.d/apache"))
+*MY-PATH*
+* (describe *my-path*)
+
+#P"/etc/init.d/apache"
+is an instance of class #&lt;SB-PCL::STRUCTURE-CLASS PATHNAME>.
+The following slots have :INSTANCE allocation:
+ HOST         #&lt;SB-IMPL::UNIX-HOST {5010EB9}>
+ DEVICE       NIL
+ DIRECTORY    (:ABSOLUTE "etc" "init.d")
+ NAME         "apache"
+ TYPE         NIL
+ VERSION      :NEWEST
+* (pathname-directory *my-path*)
+(:ABSOLUTE "etc" "init.d")
+</pre>
+
+<p>Not all of the slots are useful on all possible systems: most
+Unix-based Lisps don't understand about any host other than the local
+one, for example.   device is a bit useless on Unix too.  But that's
+ok, it's there for when you need to manipulate pathnames on VMS boxen.
+Plus Unix doesn't <i>really</i> have file types as such; the <tt>foo.bar</tt>
+convention really is just a convention, so it's pretty much
+non-obvious what <tt>(pathname-type #p"foo.bar.baz")</tt> is without
+referring to your implementation.  But overall it's a nifty facility 
+that easily beats doing your own tokenizing for "/" characters. 
+
+<p>Problem is, flushed with their success in providing mostly-useful
+pathnames, the ANSI people got a bit carried away and went on to
+invent these things called logical pathnames.  At first sight these
+look really useful.  Logical pathnames get their own hosts, and when
+you try to open them go they through a pattern-matching exercise to
+get mapped to customizable places in the real filesystem.  For example
+
+<pre>
+* (translate-logical-pathname #p"cl-library:infix;infix.lisp")
+#P"/usr/share/common-lisp/source/infix/infix.lisp"
+* (translate-logical-pathname #p"cl-library:infix;infix.fasl")
+#P"/usr/lib/common-lisp/sbcl/infix/infix.fasl"
+</pre>
+
+<p> Note how the different file types (extensions) have caused it to go to
+two different places.  Cool, huh?
+
+<p> Actually, No.  Not very cool at all, when you start trying to
+actually use them.  Let me just explain the rules which govern when
+you can use logical pathnames without getting very surprised thirty
+minutes later:
+
+<ul>
+<li> When all of the files will be created by the same Lisp
+implementation and only ever accessed using that Lisp implementation
+<li> and you can name them all using only uppercase letters, digits
+and the hyphen (<tt>-</tt>)
+<li> and you don't care too much about how they're represented in the 
+underlying file system
+</li>
+</ul>
+
+<p>That's about it: pretend that you've got a filesystem image
+loopback mounted at that point that only Lisp can look inside, and your
+expectations will be approximately correct.
+
+<p>Example: the <i>only</i> reason that it looks like I've accessed lowercase
+files using this is that (a) lowercase names in LPNs are silently
+folded to uppercase, (b) the translation process to physical pathnames
+on Unix does case inversion.
+
+<pre>
+* (translate-logical-pathname #p"cl-library:src;SomeJavaClass.java")
+#P"/usr/lib/common-lisp/sbcl/src/somejavaclass.java"
+</pre>
+
+<p>Cool, huh?

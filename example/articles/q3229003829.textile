@@ -1,0 +1,28 @@
+title: Do you ever get angry
+author: Daniel Barlow
+date: Sun, 28 Apr 2002 18:30:29 +0000
+
+
+<p> <b>Do you ever get angry?</b>
+
+<p> Do you ever get so angry that sometimes your face reddens, your
+fists involuntarily clench, your stomach tightens, the vein on your
+forehead starts throbbing, your pupils narrow, and a small pool of
+blood wells up in your eye socket and trickles down your cheek?
+
+<p> If so, <i>seek professional help</i>.  Especially about the bit
+with the blood.  That's just gross.
+
+<p> The rest of you can take this short test:
+
+<ol>
+<li> Think of an integer between 0 and 100 inclusive
+<li> Double it and add 7
+<li> Shut your eyes
+<li> If you can still read step 4, you're probably cheating
+</ol>
+
+<p>Users of text-to-speech systems, Braille interfaces, and other
+web interfaces that don't involve the usual photon stuff are exempt
+from this diagnosis.
+

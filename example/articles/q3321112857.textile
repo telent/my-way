@@ -1,0 +1,96 @@
+title: Another laptop, another attempt at configuring outgoing email
+author: Daniel Barlow
+date: Tue, 29 Mar 2005 20:20:57 +0000
+
+Another laptop, another attempt at configuring outgoing email.  That
+is, it's the same laptop as last week, but I'd been putting off this
+task.  
+
+<p>Requirements:
+
+<ul>
+
+<li> Doesn't require me to stop using Gnus
+
+<li> Works wherever I can find reasonable connectivity - does not
+require me to be on a specific IP address or network, or able to send 
+SMTP directly to servers around the world.
+
+<li> Can queue mail when I'm not connected to any such network.
+
+<li> Reasonably secure: certainly nothing involving open relays
+
+<li> Doesn't involve half a day learning about SASL or SMTP AUTH or
+stuff like that
+
+<li> Ideally, no need for lots of silly small scripts littering <tt>~/bin/</tt>
+
+</ul>
+
+<p>Available:  a shell host that I have ssh access to.
+
+<p>Solution: harness the awesome power of smtpmail.el
+
+<pre>
+(require 'smtpmail)
+(defun ssh-smtpmail-send-it ()
+  (let* ((smtpmail-smtp-server "localhost")
+	 (smtpmail-smtp-service 2525)
+	 (smtp-local-domain "telent.net")
+	 (smtp-sendto-domain "telent.net")
+	 (sendmail (start-process "ssh-smtp" nil
+				  "/usr/bin/ssh"
+				  "-L" "2525:localhost:25"
+				  "loaclhost.telent.net"
+				  "cat"))
+	 (ready-p nil))
+    (labels ((filter (p s)
+		     (if (string-match "tunnel is ready" s)
+			 (setq ready-p t)
+		       (message "Received from SSH connection: %s" s))))
+      (unwind-protect
+	  (progn
+	    (set-process-filter sendmail 'filter)
+	    (process-send-string sendmail "tunnel is ready\n")
+	    (while (not ready-p)
+	      (accept-process-output sendmail))
+	    (message "")
+	    (smtpmail-send-it))
+	(process-send-eof sendmail) ; ask it nicely first
+	(kill-process sendmail))))); if that does nothing, inhume it forcefully
+
+(setq send-mail-function 'ssh-smtpmail-send-it)
+(setq message-send-mail-function 'ssh-smtpmail-send-it)
+</pre>
+
+Needs to be able to connect to the shell host (yes, really, it is
+called <tt>loaclhost</tt>) without a password, which is what ssh-agent
+was invented for.  Needs no configuration changes on the shell host
+(nor even root access, though it happens that I have that anyway).
+How it works: (1) opens an ssh connection to the shell host and runs
+cat, additionally with a tunnel connecting port 2525 on my laptop to
+25(smtp) on the shell machine; (2) prints something to the cat process
+and waits for it to come back - by this time the tunnel should also be
+ready for use; (3) calls smtpmail-send-it, (4) cleans up.  This is, I
+feel, marginally less tacky than <tt>sleep <i>n</i></tt> where
+<i>n</i> is chosen experimentally to be (a) greater than the
+connection/tunnel setup time, (b) less than would drive me mad while
+waiting.
+
+<p>Incoming mail, if you were wondering, is delivered to a maildir on
+loaclhost then synced with the notebook using <a
+href="http://packages.debian.org/unstable/mail/maildirsync" >maildirsync</a>
+
+<p>In other laptop-related news: still can't get ACPI S3 suspend to
+work.  swsuspend2 doesn't like my pcmcia wireless card (it's an Atmel
+thing).  APM suspend does work, but running with no ACPI causes the
+fan to spin constantly which is annoying in a quiet environment and
+probably shortening battery life.  But: I may be able to dispense with
+the PCMCIA wireless card as I have a mini-pci card arriving tomorrow
+from <a href="http://www.solwise.co.uk/wireless-mini-pci-agere.htm"
+>Solwise</a>.  It's not yet certain whether that will give me any
+better PM support, but it can use the laptop's builtin antenna so
+maybe it'll at least give me better reception.  Will see.  It would be
+nice also if I can get it to distinguish more of the pointer buttons
+from each other (four physical buttons but X only sees two) so that I
+can have a proper middle button again.

@@ -1,0 +1,26 @@
+title: We have another vn-cclan mirror: ftp://www.aarg.net/pub/cclan/
+author: Daniel Barlow
+date: Fri, 7 Jun 2002 0:6:5 +0000
+
+
+<p> We have another vn-cclan mirror: <a
+href="ftp://www.aarg.net/pub/cclan/" >ftp://www.aarg.net/pub/cclan/</a>.
+Prompted by this encouraging result and the hope that it presages more
+to come, I hacked at telent.net's 
+<a href="/cclan-choose-mirror">CCLAN redirector</a> so that now you
+can get rid of your earlier choice and select another without having
+to fiddle around with cookies.txt or something
+
+<p> I found something that I'm reasonably convinced is an actual SBCL
+bug while rebuilding on OSF/1.  <tt>interrupt_maybe_gc</tt>
+establishes that the gc trigger has been hit.  It clears the trigger,
+calls the Lisp function <tt>MAYBE-GC</tt>.  <tt>MAYBE-GC</tt> calls
+<tt>SUB-GC</tt>, which if <tt>*GC-INHIBIT*</tt> is set, returns
+immediately without resetting the trigger - which it would have done
+had it actually GCed.  So, after that we cons until we run straight
+off the end of dynamic space.  I fixed it by making
+<tt>interrupt_maybe_gc</tt> check whether a GC had happened, and  
+resetting the trigger itself if it hadn't, but I think that's probably
+more of a kludge than a fix.
+
+

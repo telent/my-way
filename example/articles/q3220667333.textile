@@ -1,0 +1,14 @@
+title: It Moves
+author: Daniel Barlow
+date: Tue, 22 Jan 2002 5:48:53 +0000
+
+<p> It Moves!  SBCL PPC now gets as far as the <a
+href="http://www.geocrawler.com/lists/3/SourceForge/1663/0/7615215/"
+>first prompt</a>
+
+<p>Later today (i.e. when the shops open) I need to buy some more
+memory for my poor iMac, and a guitar.  And get my mobile fixed - or
+at least take it in for repair and see how long it will take.
+
+<p>I'm still thinking about a new accounts system.
+

@@ -1,0 +1,35 @@
+title: OSSes for Courses
+author: Daniel Barlow
+date: Mon, 11 Jan 2010 18:30:54 -0000
+
+I'd like to talk today about the state of audio output APIs that are
+implemented on Linux and accessible to Ruby, but there aren't any.
+
+That's an oversimplification, I know.  Oliver is now quite happily
+streaming PCM data to my headphones, so it's not even a good
+oversimplification.  But whereas any of portaudio, pulseaudio, jack or
+alsa are the conventionally accepted routes to getting the speakers to
+squeak, what did I end up using?  OSS.  Yes, that's right, the Evil!
+Bad! Wrong! Deprecated! API invented by proprietary coders and left
+unmaintained for years that doesn't even support AC3-encoded 7.1 HDMI
+audio with reverse-phased channels and unlimited software mixing.
+Because ... well, because it Just Works.  Open a file, send it a few
+ioctls for sample format and rate, and for the all-important "we don't
+care about latency that much" switch that lets interpreted code keep
+up without stuttering, then just chuck PCM data at it until we're out
+of PCM data.  And it's quite well documented, and because it's all
+file-based it plays nice with Ruby's green threads: I just set
+the dsp stream to non-blocking mode and the audio keeps on going even
+while it's serving HTML and doing JSON calls.
+
+Let me know when the massive ALSA DLL - or any of the plethora of
+other Modern audio libraries - becomes that simple to use (and
+preferably becomes usable without resorting to C), and I might give
+them another go.  Yes, I am aware that under the hood the OSS API is
+implemented using ALSA drivers: how ironic.
+
+Oh well.  This isn't supposed to be the computer contrarian's blog,
+but some days it just feels like it.
+
+http://www.googlefight.com/index.php?lang=en_GB&word1=alsa+audio&word2=oss+audio
+

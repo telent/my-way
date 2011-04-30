@@ -1,0 +1,34 @@
+title: Last Monday (i.e two days following the previous entry here) I had
+author: Daniel Barlow
+date: Wed, 20 Feb 2002 11:21:25 +0000
+
+
+<p> Last Monday (i.e two days following the previous entry here) I had
+a sufficiently unpleasant experience trying to port a package with a
+homebrew system definition utility that I vowed to finish <a
+href="/cliki/asdf" >asdf</a> - or at least, to get it to the point
+where it actually does anything useful.  A week and a bit later, and
+here we almost are.  It has a (minimal) test suite and everything.
+Look also at my proposed <a href="/cliki/ASDF+System" >ASDF System</a>
+standard, which I'm trying to get the <a href="/cliki/cCLan"
+>cCLan</a> guys to adopt for the next version of cCLan.  It uses tar
+files!  It's not Debian-specific!  It's really good!
+
+<p> The only real system it's been tried with is db-sockets, which is
+probably not the simplest system ever to have started with (foreign
+objects and some weird pre-processing needed).  But it appears that
+pretty much everything I've written in CL that actually <i>works</i>
+requires db-sockets, so there wasn't a lot of option.
+
+<p> What else?  Not a lot.  Christophe got SPARC SBCL working and Bill
+Newman got it merged, so I'm lagging there as PPC is still
+0.6.13-based and still has whatever that odd build problem was.  
+Also haven't sent patches for the Alpha fp fixes yet.  If anyone
+other than me is actually using SBCL on an Alpha, this would be a good
+time for him/her to apply peer pressure.
+
+<p> Oh, and Araneida in fact <i>didn't</i> have a file descriptor
+leak.  The leak in that application turned out to be in the cheesy SMTP
+client code it also uses.  Yay.  Don't need to restart that every
+three weeks any more, then.
+

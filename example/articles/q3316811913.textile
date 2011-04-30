@@ -1,0 +1,11 @@
+title: NO MORE EVIL RECURSIVE BUSTUP
+author: Daniel Barlow
+date: Tue, 8 Feb 2005 0:38:33 +0000
+
+NO MORE EVIL RECURSIVE BUSTUP.  Problem was due to calling <a href=
+"http://www.opengroup.org/onlinepubs/007908799/xsh/pthread_getspecific.html"
+>pthread_getspecific</a> in call_into_lisp without first saving some
+registers it wanted to trash.  Juho helpfully <a href=
+"http://paste.lisp.org/display/5647" >pointed out another
+crappy-editing-induced potential bug</a>, too.  Obviously it's bedtime.
+

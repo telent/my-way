@@ -1,0 +1,21 @@
+title: There are two reasons I'm showing you this screenshot
+author: Daniel Barlow
+date: Sat, 13 Dec 2003 14:51:42 +0000
+
+There are two reasons I'm showing you <a
+href="/mcclim-no-cpu.png">this screenshot</a>.  The other one (besides
+that the McCLIM Listener looks really cool and any excuse to take
+pictures of it is a good one) is that it's (i) running in SBCL, (ii)
+running usably fast, (iii) not eating all the CPU in an idle loop.
+
+<p> Ingredients: an SBCL that understands SB-FUTEX, running on a
+Linux kernel that supports futexes.  A McCLIM patched with 
+<a href="http://clim.mikemac.com/mail/0307/2575.html">this patch</a>
+(and see <a href="http://clim.mikemac.com/mail/0307/2574.html" >this
+message</a> as well for the context).  Some random frobbing.
+
+<p> I sort of wrote a condition variable implementation for CMUCL as
+well, but it's utterly untested - and frankly, unlikely to work, given
+that despite lying in bed this morning for three hours carefully doing
+nothing I still didn't actually get any sleep.
+

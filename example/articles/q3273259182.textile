@@ -1,0 +1,30 @@
+title: Half the known world have probably linked to this already:
+author: Daniel Barlow
+date: Mon, 22 Sep 2003 23:39:42 +0000
+
+Half the known world have probably linked to this already:
+
+<blockquote>
+Some people read it as a personal endorsement of PHP, VB, and other
+semi-baked programming languages.  Actually my personal preference is
+a much darker, uglier, and more shameful secret: Common Lisp, CLOS,
+plus an ML-like type inferencing compiler/error checker (with some
+things done in a sublanguage with Haskell semantics and Lisp syntax).
+Common Lisp dates from around 1982 and ML from 1984.
+
+<p>I try to keep this preference concealed from young people who've been
+raised on a diet of C, Java, C#, Perl, etc.  They just wouldn't find
+it credible that 20-year-old systems and ideas are actually better
+than the latest and greatest from Microsoft and Sun.
+</blockquote>
+<div align=right>
+<a href="http://blogs.law.harvard.edu/philg/2003/09/22">philg</a>
+</div>
+
+To be honest, I find his protestations a little unconvincing.  Just
+like <a
+href="http://www.livejournal.com/users/jwz/257602.html?thread=2035266#t2035266"
+>jwz</a>, the Unix-Haters "I wish I was still using Lisp" sentiment
+seems to shine through in almost everything he writes.
+
+

@@ -1,0 +1,27 @@
+title: Complete lack of diary entries for the past week demonstrates
+author: Daniel Barlow
+date: Thu, 13 Dec 2001 18:43:45 +0000
+
+
+<p> Complete lack of diary entries for the past week demonstrates
+quite clearly that I've not been on trains much recently.
+
+<p> Sunbury project finished for the year.  Lisp web project (the
+thing I needed UncommonSQL for) also substantially finished and
+waiting for installation 'at risk' time to be scheduled.  Time to do
+some free software again, and this time it's SBCL PPC.
+
+<p>Convinced myself that the <a href="/sbcl-internals/pseudo-atomic"
+>pseudo-atomic</a> mechanism does work after all.  Unusually, it uses
+two registers: ALLOC says whether we're in a PA section, NL3 says
+whether it was interrupted.  At end of PA section, we add NL3 (which
+is a big number) to ALLOC, then conditionally trap to the
+run-pending-signal code if ALLOC is big enough to be negative.  Don't
+yet see <i>why</i> we need two registers, though.  Don't know what
+happens if we get a signal in foreign code either, but I doubt that's
+allowed inside a PA section.  NL3 is $6, ALLOC is $17
+
+<p>Which is nice to know, but doesn't get us any closer to solving the
+actual bug we're currently seeing.
+
+

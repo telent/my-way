@@ -1,0 +1,18 @@
+title: How to write error messages, part n: when reporting
+author: Daniel Barlow
+date: Thu, 22 Nov 2001 13:53:36 +0000
+
+
+<p>How to write error messages, part <i>n</i>: when reporting
+filesystem errors, include the pathname of the associated file. 
+We take our example, as usual, from Oracle.
+
+<pre>
+ORA-00443: background process "PMON" did not start
+ORA-09922: Can't spawn process - background log directory not created properly
+Intel SVR4 UNIX Error: 2: No such file or directory
+</pre>
+
+<p>Which is to say, not like that.
+
+

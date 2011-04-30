@@ -1,0 +1,39 @@
+title: Today (Friday) was cold
+author: Daniel Barlow
+date: Sat, 24 Nov 2001 2:12:5 +0000
+
+
+<p> Today (Friday) was cold.  In fact, it still is - I have four
+computers turned on in this roughly single-bedroom-sized room and I'm
+still having to wear a jumper.  I could maybe turn the Mac back on.
+
+<p> I know it's cold because I spent half an hour this evening
+standing outside Milton Keynes Central railway station waiting for a
+bus.  Still, an hour each way by coach beats the train journey I've
+been doing for most of the last three weeks.
+
+<p>An hour this evening playing with the guitar.  My neighbours must
+love me.  I <i>think</i> I'm actually getting better at it, though I
+have no doubt that an objective observer would still
+be pretty rude.
+
+<p>Three hours reading the Alpha arch ref manual to find out whether
+atomic_dec_and_set is a sensible thing to want to do, and if so, a
+possible thing to do.  Seems kind of plausible so far.
+
+<p>For some reason I seem to be getting a lot of mail lately from
+orinoco_plx users (including some from people for whom it actually
+works, which is tremendously gratifying, because it never actually did
+for me in any useful way).  Perhaps it recently got merged into a
+-linus kernel, or something.  orinoco_plx is for Linux users
+unfortunate enough to want/need to use PLX9052-based PCI/PCMCIA
+adaptors with PrismII wireless lan cards - e.g. the Netgear MA301.  My
+advice to any such people still in a position to do so remains "go
+back to the shop and trade it in for something that actually works".
+Especially if you want to do ad-hoc; prismii cards seem to have ad-hoc
+problems.
+
+<p>Either my laptop is developing hardware problems, or my local
+Debian mirror is corrupting packages on the fly as it serves them to
+me.  Neither situation is desirable, really.
+

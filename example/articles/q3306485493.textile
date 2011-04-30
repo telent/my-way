@@ -1,0 +1,40 @@
+title: Alan Cox on writing better software is a good read; even going so
+author: Daniel Barlow
+date: Mon, 11 Oct 2004 13:11:33 +0000
+
+<a
+href="http://www.pingwales.co.uk/software/cox-on-better-software.html"
+>Alan Cox on writing better software</a> is a good read; even going so
+far as to recommend the use of modern languages (GC, type safety,
+etc).  Probably doesn't tell you anything you don't already know, but
+comes as a refreshing change after some of Linus's more widely quoted
+"you have to be a Real Programmer to hack on Linux" comments.
+
+<blockquote>
+An example of this is, with locking, instead of having one function
+for taking a lock and another function for releasing the lock, which
+inevitably means that someone always has an error handling or an
+unusual case where they forget, you have a single function which calls
+another function locked; it takes the lock, calls the function, and
+drops the lock. 
+</blockquote>
+
+<p>Unless the function performs some kind of non-local exit, at least.
+Makes you glad to have UNWIND-PROTECT (that's <tt>finally</tt> in
+Java, for any readers I have left that don't speak Lisp) - and of
+course WITH-LOCK-HELD.  C++ has that whole
+resource-acquitision-is-initialization pattern thing instead, which
+probbaly does the job just as well.
+
+<p>(I'm so mellow today.  I think I'm sickening for something)
+
+<p>Discuss: what relation does taint checking have to type
+checking/inferencing?  Both are about carrying attributes of an object
+around with that object, and in operations involving that object,
+combining the object attributes in some way (some fairly trivial way,
+if it's just a single bit that says 'tainted') to get the attributes
+of the result.  It might (though I'm not sure it's necessary) be
+desirable to `untain' an object in-place, whereas it's rare to want to
+change its type (although even then I can think of several systems
+I've used CHANGE-CLASS in).
+

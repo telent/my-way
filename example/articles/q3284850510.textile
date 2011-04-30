@@ -1,0 +1,19 @@
+title: 2^8 files compiled
+author: Daniel Barlow
+date: Wed, 4 Feb 2004 2:28:30 +0000
+
+2^8 files compiled
+
+<pre>
+dan@pup:~> find ~/src/sourceforge/sbcl/obj/from-xc/ -type f |wc -l
+    256
+
+</pre>
+
+Currently wondering whether we can rewrite the ALLOCATION function and
+friends so that OAOOM is less of a concern.  At present it involves lots of
+cut &amp; pasted x86 assembler functions with names matching
+<tt>alloc_{8_,16_,}to_e{ax,bx,cd,dx,si,di}</tt>), and if I
+<i>can't</i> then I need to copy and paste the code another eight
+times to cater for r8-r15.
+

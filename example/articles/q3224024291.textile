@@ -1,0 +1,20 @@
+title: Araneida works with asdf
+author: Daniel Barlow
+date: Sat, 2 Mar 2002 2:18:11 +0000
+
+
+<p> Araneida works with asdf.  Total porting time required: about ten
+ minutes (I had to do other fixes to make it work with sbcl 0.7 as
+ well, but they needed doing anyway).
+
+<p> Created an experimental non-vendor-aligned cClan archive network.
+See <a
+href="http://www.geocrawler.com/lists/3/SourceForge/12820/0/7981131/"
+>mail to cclan-list</a> and <a
+href="http://cclan.sourceforge.net/debian/experimental/cclan/doc/NEW-NODE"
+>node creation instructions</a>.  So far it has one and a half sites
+(ftp.linux.org.uk and sourceforge, the latter in a client-only role) and dummy
+files, but we'll get some content up soon.  Probably
+db-sockets/araneida/cliki, at a guess ...
+
+

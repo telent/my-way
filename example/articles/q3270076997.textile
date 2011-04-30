@@ -1,0 +1,25 @@
+title: The syscall problem indeed wasn't the problem - or even a
+author: Daniel Barlow
+date: Sun, 17 Aug 2003 3:43:17 +0000
+
+The syscall problem indeed wasn't the problem - or even <i>a</i>
+problem.
+
+<p>The real problem was that we weren't saving/restoring a pile of
+stuff (most immediately obvious gap: floating point modes) that we
+should have been.  This was fixed by calling
+<tt>call_into_lisp(function)</tt> instead of <tt>function</tt>
+directly.  And a certain amount of messing around with our fake stack
+to make it both correct and intelligible to SBCL's backtrace
+
+<p>The non-problem was that during an interrupted <tt>select()</tt> 
+call, eax was changing from -514 (as seen by ptrace when the signal
+went off) to -4 (as seen in the signal handler).  The former is
+-ERESTARTNOHAND, the latter is -EINTR.  It's kind of interesting that
+ptrace() gets to see (what as far as I can tell is) the
+kernel-internal value of eax, but I can't right now think of any way
+this might be exploited, so oh well.
+
+<p>return_to_lisp_function (soon to be renamed
+arrange_return_to_lisp_function) is now in CVS.
+

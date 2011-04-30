@@ -1,0 +1,105 @@
+title: Streaming XHR with Ruby and Mongrel
+author: Daniel Barlow
+date: Wed, 13 Jan 2010 10:56:29 -0000
+
+An entirely pun-free post title today, and still it sounds like something you'd see a vet about.  Hey ho.
+
+Suppose you are writing a web app in which the server needs to update the client when things change, and you don't want to do it by polling.  It turns out there is a technique for this that is probably more than two years old: you make the client do an XMLHttpRequest (aside: that name is almost as bad as its capitalization) to the server, and then the server sends its response v e r y &nbsp; s l o w l y.  The clients XmLhTtPReQuEst object will get an onreadystatechange event every time a new packet arrives, and just has to pull the new data out of xhr.responseText and decide what to do with it.
+
+Well, that's the theory.  There are a variety of more-or-less-documented bugs and pitfalls to do with browser compatibility, as there always are (google "Comet", there are lots of resources and none of them I have the personal experience to recommend), but the new wrinkle I observed when doing this yesterday was a quarter-of-a-second lag between the server sending and the client receiving.  Odd.  Ruby can't be _that_ slow, can it?
+
+Wel, no,  it's not.  After monkeying with wget and netcat and wireshark and mostly failing to find out what was going on, I did
+@ strace -e setsockopt ruby server.rb @ and connected to it, and lo, what should I find but that something in Ruby or something in Mongrel was setting the @TCP_CORK@ socket option
+
+<pre>
+setsockopt(5, SOL_TCP, TCP_CORK, [1], 4) = 0
+</pre>
+
+<dl>
+<dt>       TCP_CORK (since Linux 2.2)</dt
+<dd>              If set, don't send  out  partial  frames.   All  queued  partial
+              frames  are sent when the option is cleared again.  This is use‐
+              ful for prepending headers before calling  sendfile(2),  or  for
+              throughput  optimization.   As currently implemented, there is a
+              200 millisecond ceiling on the time for which output  is  corked
+              by  TCP_CORK.   If  this ceiling is reached, then queued data is
+              automatically transmitted.  This option  can  be  combined  with
+              TCP_NODELAY  only since Linux 2.5.71.  This option should not be
+              used in code intended to be portable.</dd></dl>
+
+
+
+Now I don't know where it's being set - a cursory grep of the mongrel sources says probably not there, but it's simple enough to unset again.  So, here's one I made earlier.  Note that you can't use the 
+@response.start@ method (or at least, I don't see how) - you have to reach a little deeper into Mongrel::HttpResponse
+<pre>
+class StatusHandler < Mongrel::HttpHandler
+  def process(request, response)
+    fh=nil
+    response.status=200
+    response.send_status(nil)
+    response.header['Content-Type'] = "application/x-www-form-urlencoded"
+    response.send_header
+    # something inside Ruby or inside Mongrel is setting TCP_CORK,
+    # which is bad for latency.  I suspect Ruby C code, because 
+    # the interpreter complains there is no definition for Socket::TCP_CORK
+    # <linux/tcp.h>:#define TCP_CORK 3 /* Never send partially complete segments */
+    response.socket.setsockopt(Socket::SOL_TCP, 3, 0)
+    response.socket.setsockopt(Socket::SOL_TCP, Socket::TCP_NODELAY, 1)
+    response.write("# gubbins for webkit bug "+("." * 256)+ "\n");
+    response.write("# stuff follows\n");
+
+    300.times.each do
+      response.write("stuff\n")
+      response.socket.flush
+      sleep 30
+    end   
+    response.done
+  end  
+end
+</pre>
+
+We limit the response to 300 lines in case of browser timeout or connection interruption or just to stop the client-side memory going up unboundedly as @responseText@ grows without let or limit.  It's simple for the javascript to kick off another handler when this one dies.
+
+For completeness, here's some client-side code to go with it
+<pre>
+// XXX we made the_req global just so that we can look at 
+// what's going on in firebug.  It's not required in normal use
+var the_req;
+function json_watch_stream(url,callback) {
+    var req =new XMLHttpRequest();
+    the_req = req;
+    req.open("GET",url,true);
+    req.last_seen=0;
+    req.onreadystatechange = function() {
+	if(req.responseText) {
+	    callback(req.readyState,req.status,
+		     req.responseText.substr(req.last_seen))
+	    req.last_seen=req.responseText.length;
+	}
+    };
+    req.send(null);
+}
+function json_start_status_receiver (){
+    json_watch_stream
+	('/status',
+	 function(ready,status,text) {
+	    if(ready==4) {
+		// server response concluded, need to start again
+		json_start_status_receiver ();
+	    }
+	    text.split("\n").map(function(line) {
+		    if(!line) { return; };
+		    var data=line.substr(1);
+		    switch(line[0]) {
+		    case '#': break;
+		    case 'O': update_track_timer(data); break;
+		    case 'P': update_track_number(data); break;
+		    case 'S': stop_track_timer(); break;
+		    default: 
+			console.log("status stream: unrecognised flag ",
+				    line[0],data);
+		    }
+		});
+	});
+}
+</pre>

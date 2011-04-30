@@ -1,0 +1,10 @@
+title: The last few days have been spent on SBCL MP
+author: Daniel Barlow
+date: Sat, 23 Mar 2002 17:16:49 +0000
+
+
+<p> The last few days have been spent on SBCL <a
+href="/sbcl-internals/Threading" >MP</a>.  So far I've managed to
+build a runtime which (a) still only has one thread, and (b) suffers
+random memory corruption.  Way to go...
+

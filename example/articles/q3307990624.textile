@@ -1,0 +1,21 @@
+title: MORE TRIVIAL
+author: Daniel Barlow
+date: Thu, 28 Oct 2004 23:17:4 +0000
+
+MORE TRIVIAL!
+
+<pre>
+(with-server (s (:port 8913 :reuse-address t))
+   (loop
+    (with-open-stream (c (accept-connection s)) 
+        (read-line c)
+        (format c "This is a compliant though pointless implementation 
+of the finger protocol~%"))))
+</pre>
+
+<p>Presently only implemented for SBCL, and doesn't handle errors yet.
+I'm going to sleep now, so please feel free to grab it from CVS and
+fix either or both of these omissions before I next get a chance.
+
+<p>The first sentence of this entry is in the nature of a #lisp
+in-joke.  If you're not a channel regular, I apologise.

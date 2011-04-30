@@ -1,0 +1,14 @@
+title: Bah
+author: Daniel Barlow
+date: Wed, 5 Dec 2001 8:39:59 +0000
+
+
+<p> Bah.  I have five copies of <a href="/cliki/UncommonSQL"
+>UncommonSQL</a> lying around the place, and none of them sufficiently
+recent to work with the application I actually want to use with it.
+At times like these one wishes for competitively priced pervasive
+wireless coverage across the UK rail network.
+
+<p> If, perhaps, less fervently than one wishes for competitively
+priced rail tickets.
+

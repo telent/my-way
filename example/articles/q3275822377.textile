@@ -1,0 +1,118 @@
+title: Knoppix anatomy in 60 seconds
+author: Daniel Barlow
+date: Wed, 22 Oct 2003 15:39:37 +0000
+
+
+<p><b>Knoppix anatomy in 60 seconds</b>.  You are not expected to
+remember this.
+
+<ol>
+<li>It's a CDROM.  It contains an ISO filesystem
+<li>The ISO filesystem contains
+<ul>
+<li>A "compressed loop image" in KNOPPIX/KNOPPIX
+<li>A boot.img file, which is an bootable floppy disk image.  This is what
+actually boots when someone tries to boot off the CD.  It contains
+<ul>
+<li>SYSLINUX and stuff like that
+<li>A kernel
+<li>An initrd image.  This is a gzipped ext2 filesystem, containing
+<ul>
+<li> Some modules (mostly for scsi controllers)
+<li> a shell script /linuxrc
+<li> various binaries that /linuxrc needs to call
+</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li> So, when you boot, SYSLINUX runs, starts the kernel with
+appropriate initrd options.  
+<li> The kernel unzips and loads the initrd, then runs /linuxrc.  
+<li> /linuxrc finds the appropriate scsi modules for the cdrom 
+(which might be the ide-scsi driver)
+<li> /linuxrc mounts /cdrom, then loop mounts /cdrom/KNOPPIX/KNOPPIX
+as /KNOPPIX
+<li> Given sufficient memory, /linuxrc adds a tmpfs ramdisk and puts
+some stuff in it.  In either case, it populates the root fs with stuff
+and symlinks
+<li> This is the bit I don't understand too well: /linuxrc appears to 
+use the obsolete <tt>/proc/sys/kernel/real-root-dev</tt>
+("change_root") mechanism to change to the ramdisk that it's already
+got as root (no, not to the tmpfs ramdisk).
+<li> /sbin/init runs.  By symlink wizardry, this is actually on the
+compressed loop fs
+<li> The system comes up
+</li>
+</ol>
+
+<p><b>Recipe for a happy life</b>
+
+<p>This is the rough order I did things in.  The end result is
+Makefile-driven and completely repeatable (except for some questions
+from debconf that I haven't provided answers for yet, so are still
+being asked interactively)
+
+<ol>
+<li> set up apt-proxy.  You're probably going to be doing a lot of
+apt-get
+<li> debootstrap.  doen't seem to work on sid, so debootstrap woody
+then chroot apt-get dist-upgrade.  I <i>warned</i> you you wanted apt-proxy
+<li> chroot apt-get install lots more stuff
+<li> exciting messing around with debconf for xserver-xfree86 and
+etherconf to remove fake answers on the build machine
+<li> mkisofs, create_compressed_fs
+<li> loopback mount a knoppix iso, copy its contents into a scratch area,
+drop the fs from the previous step in as KNOPPIX/KNOPPIX, mkisofs it
+all back together
+<li> boot it
+<li> fiddle around some more with debconf and attempting to run
+/var/lib/dpkg/info/foo.config scripts directly.  Observe that a lot of
+stuff is read-only.  So, it's time to properly sort out what should 
+be on the cloop image and what should be in RAM
+<li> which is easy enough.  create a file listing all the directories
+that we don't mind being read-only (/usr, /etc/X11, /bin, /lib, ...),
+use tar magic to produce a root_fs.tgz that excludes this, and mkisofs magic
+to produce an iso9660 image that includes only this
+<li> add a symlink from /etc/X11/XF86Config -> /var so this can be
+written after the cd boots
+<li> Hack up /linuxrc significantly.  Now instead of creating a
+zillion symlinks on the fly into the current root then change_rooting
+to it, it creates a tmpfs on /ramdisk, untars the root_fs.tgz 
+(which we can store on the outer iso9660 image) into it, then
+pivot_roots to it
+<li> Swear a bit because linuxrc doesn't run as pid 1, so when we
+start the real init it thinks it's being run as telinit.  Pass the
+--init option to make it reconsider.  Frankly, this sucks, but it'll
+do for now.
+<li>Cope with random fallout occasioned by "when do we mount /proc" 
+and similar questions.
+</li>
+</ol>
+
+Right now I am staring at a freshly booted (in vmware) cd image.  It
+seems to have found my ethernet card, sound (not that Common Music is
+on the shortlist for cirCLe just yet, but eventually this'll be fun to
+play with), network, and usb card.  If I run my cobbled together
+script for X configuration, I have a working X server.  If I run my
+cobbled together script for ethernet configuration, it runs a dhcp
+client.  I'm not <i>overly</i> impressed by etherconf, though.  I
+think something ought to be able to dhcp <i>first</i> and set the default
+hostname/domain name based on what comes back. It's been years since I
+last ran a debian install from scratch, but I'm pretty sure it did
+this.
+
+<p>Next, write proper init.d scripts to do this detection, start X,
+run a session/window manager, and stuff.  Next also, replace some more
+of the remaining bits of Knoppix: at the moment, we're copying
+/lib/modules straight out of the knoppix cloop fs, which is kind of
+cheesy - would much prefer to have (or at least know) the sources that
+correspond to our installed kernel.
+
+<p>Was this all a good idea?  I think so, probably.  We've lost some
+of the fabled Knoppix detect-all-hardware-on-the-planet juice (no
+support for isdn or pppoe any longer, nor for graphics cards that
+XFree86 4.2 doesn't support), but the whole thing is a lot more
+understandable, and (after we get our own kernel) runs from a Makefile
+with no need to start by untarring someone else's ISO image and
+changing it incrementally.
+

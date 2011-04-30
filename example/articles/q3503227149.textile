@@ -1,0 +1,90 @@
+title: Hating on HATEOAS
+author: Daniel Barlow
+date: Wed, 05 Jan 2011 14:39:09 -0000
+
+In 2011 I will not start blog posts with the word "so".
+
+Lately I've been thinking about RESTfulness again.  An
+observation that has been widely made is that Roy T. Fielding's
+definition of REST differs wildly from what most of the 
+"rest (sorry) of the world thinks it
+is":http://intridea.com/2010/4/29/rest-isnt-what-you-think-it-is
+ - while all people with taste and discrimination must surely
+agree that the trend from evil-tasting SOAPy stuff back to simple
+HTTP-based APIs is a Good Thing, the "discoverability"
+and "hypertext" aspects of Canonical REST are apparently not
+so widely considered as important for practical use.  
+
+My own small contribution to this debate is that the reason
+people are not trying to do
+"HATEOAS":http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven 
+is that they've been told that the web at large - the large
+part of the WWW that's mediated through ordinary web browsers
+under the direction of human brains - is an example of how it
+works.  And the more I think about it the more I think that the
+example is rubbish and unhelpful.
+
+It's a rubbish example because the browsers through which we're
+viewing these resources have very limited support for most of the
+HTTP verbs and HTTP response codes that REST requires, hence
+silly workarounds like tunnelling PUT inside POST using
+@_method=put@.  In a way that's a trivial complaint because the workarounds
+do exist, but it's still a mess.  (Note for purists: I
+write "REST requires" when what I really mean is "HTTP defines",
+but you don't qualify for the "RESTful" badge if you're misusing
+HTTP, and there's little social cachet in describing an API
+as "consensual
+HTTP":http://www.tbray.org/ongoing/When/200x/2008/08/18/On-REST )
+
+It's also a rubbish example because humans tend to expect a multi-stage "workflow" or "wizard" interaction, but HTML has lousy support for
+updating state and indicating a transition at the same time.  A
+representation of a resource might include a Form to update the
+state of that resource, but it says nothing about what you can do
+when it's been updated.  Alternatively (or additionally) it might
+include a navigation link to another resource, but that will be
+fetched with a GET and won't change anything server-side.  Let's
+take a typical shopping cart as example: a form with two buttons
+for "update quantity" and "go to checkout" - whichever button you
+press, the resource that gets POSTed to is the same in either
+case, and any application state transition that might happen
+after you click is driven by the server sending a redirect (or
+not) - in effect, the data sent by the client smooshes together both the
+updated resource state _and_ the navigation, which doesn't smell
+to me like hypertext.  And as a side note, we may yet decide to
+ignore the client's indication of where it wants to go next if
+the data supplied is not valid for the current state of the
+resource, and instead send another copy of the shopping cart page
+prefixed with a pretty red box that says "sorry, you can't have
+3.2j widgets" - and in all probability send it with a "200 OK"
+response code because there's no point sending any fancy kind of
+40x when you don't know whether the browser will display it or
+will substitute with its own error page.
+
+And thirdly it's a rubbish example because of the browser history
+stack and the defensive server-side programming that becomes
+necessary when your users start to treat your story as
+a "Choose Your Own
+Adventure":http://en.wikipedia.org/wiki/Choose_Your_Own_Adventure 
+game.  The set of state transitions available to the user is in
+practice not just the ones in the document you're showing him,
+but also all the other ones you've shown him in any of n previous
+documents: some of them may still be allowed, but
+others (changing the order details after you've charged his card)
+may not.  Sending him "409 conflict" in these situations is
+probably not going to make him any wiser - you're going to have
+to think about the intention behind his navigational meander and
+do something that makes sense for the <span title="if any">mental
+model you think he has</span>.  Once the user has hit the Back button and desynced the
+application state from the server-side resource state, you're
+running to catch up.
+
+To summarise, a web application designed for humans needs to
+support human-friendly navigation and validation in ways which
+current browsers can't while keeping true to the intended uses of
+HTML and HTTP and RESTful style in general.  This doesn't mean I
+think HATEOAS is bad as a concept - I just think we should be
+looking elsewhere than the human-driven web for an example of
+where it's good (and I haven't really found a compelling one
+yet).
+
+I have a nasty feeling that the comments on this site are presently broken, but responses by email (dan @ telent.net) are welcome - please say if you want your email published or not.

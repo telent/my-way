@@ -1,0 +1,12 @@
+title: This week, Jakob Nielsen's 
+author: Daniel Barlow
+date: Mon, 11 Aug 2003 17:30:0 +0000
+
+This week, Jakob Nielsen's 
+<a href="http://www.useit.com/alertbox/20030811.html">Alertbox</a> says
+<blockquote>
+Excessive word count and worthless details are making it harder for
+people to extract useful information. The more you say, the more
+people tune out your message.
+</blockquote>
+then goes on to prove the point with another 500 words.

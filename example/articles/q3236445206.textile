@@ -1,0 +1,28 @@
+title: ICanCAD is a GPLed
+author: Daniel Barlow
+date: Tue, 23 Jul 2002 21:33:26 +0000
+
+<p> <a href="http://rgrjr.dyndns.org/icancad/" >ICanCAD</a> is a GPLed
+CAD editor for analog(ue) and mixed-mode signals.  It's built using
+Allegro CL and their CLIM, which unfortunately makes it difficult for
+anyone else to hack on it unless they have the full Allegro system -
+CLIM doesn't come with the eval version.  But you can download the
+ICanCAD Linux/x86 binary and play with it for yourself, which makes it
+kind of rare as CLIM apps go.  Requires Motif 2, which is in Debian -
+albeit in non-free.  Here's a <a href="/icancad.png">completely
+unattractive screenshot</a> of ten minutes wild flailing around.
+
+<p> What was it I said the other day?  Oh, yeah, ``<a
+href="/diary/2002/7/#14.56545" >CLIM Rocks</a>''.  Well, um.  it could
+rock even harder if they didn't all want to use that ugly Courier font
+all the time.  Does Not Make For Pretty Pictures.  Contrast with, say,
+<a href="http://www-jcsu.jesus.cam.ac.uk/~csr21/closure-tex.png"
+>Closure</a> (that's from McCLIM, probably quite a recent snapshot of)
+and you'll see what I mean.  Come on guys, give us stuff we can make
+<a href="http://ww.telent.net/cliki/Screenshots" >screenshots</a>
+from.
+
+<p> SBCL 0.7.6 is out, doesn't include my stack checking fixes.  SBCL
+0.7.6.2 is in CVS, and does.  And I even built it on PPC to check they
+work there too.
+

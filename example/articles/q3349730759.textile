@@ -1,0 +1,61 @@
+title: (proclaim '(inline skates))
+author: Daniel Barlow
+date: Fri, 24 Feb 2006 0:45:59 +0000
+
+(proclaim '(inline skates))
+
+<p>Not my joke (Marty Hall's old .signature, iirc) but somehow
+appropriate. If you want to read about the skating it's in my other
+blog which this is not the place to plug.  (But oh well, what the
+hell.  It's at <a
+href="http://coruskate.blogspot.com/">coruskate.blogspot.com</a> and
+lately it's mostly about my ankles.)
+
+<p>I have been making sort of halfhearted efforts to get some Lisp
+done lately, but they been mired by the compound effects of having
+forgot a fair amount of stuff, not really having <i>quite</i> enough
+time to get it all back in short-term memory, and indecisiveness.  So
+here's a slightly handwavey question which may inspire debate,
+motivated by my recent $dayjob experiences hacking Perl.  
+
+<p>One of the advantages of Lisp (and of rapid prototyping generally),
+it's often said, is about the ability to defer decisions (like "what
+is the best machine representation for this variable?") until they
+become important - which quite often is not at all.  Which is true.
+
+<p>But here I am trying to design some CLOS stuff and finding that I
+don't want to start writing any code at all until I know exactly what
+it'll look like.  And I certainly don't have the same trouble in Perl
+(it's fair to say, I think, that I've used the two languages about
+equally much, though I daresay my CL is a little rustier right now).
+What's the difference?  I'm not sure, but I think it's <i>naming</i>.
+Or, perhaps, <i>namespacing</i>.  It seems more difficult than it
+needs to be to defer decisions about naming things, because the scope
+of a name is a package - which is conventionally quite big - whereas
+the whatever-it-is that name refers to may actually be quite small.
+Say, a method on an object somewhere: whereas in Perl I can define a
+method to be called as <tt>$book->bind</tt> without needing to worry
+about whether I will later want <tt>$hand->bind; $foot->bind</tt> and
+if so, is it conceptually the same thing (so should be the same GF and
+requires the same argument list) or is it something else entirely (in
+which case it will need naming differently).  In CL I am having to
+anticipate the likely future direction of the system to make decisions
+that in another language I could make with reference only to what I
+currently know.  XP devotees will tell you that's wrong, and I'd tend
+to agree.
+
+<p>I should note, before I get a pile of mail telling me I've missed the
+point, that I <i>know</i> the goal is protocol-based design.  I think
+that's a good thing.  I just wish the language made it a little easier
+to do useful work in the early days before it's obvious what the
+protocols are going to be.  I don't mind a language that makes me
+think - I just don't like it when I have to <i>have thought</i> before
+I even start to write code.  How is that supposed to fit with "rapid
+prototyping"?
+
+<p>(There is a style of CLOS programming that never hits these
+problems, because everything gets named with a <tt>classname-</tt>
+prefix.  I don't think it's a win.  Tim Moore wrote a very good
+article about that in <a
+href="http://cybertiggyr.com/gene/80-closminded/" >The Magazine^WWeb
+Site That Used To Have A Silly Name</a>.)

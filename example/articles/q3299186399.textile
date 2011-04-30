@@ -1,0 +1,22 @@
+title: Thread bug 3 identified
+author: Daniel Barlow
+date: Mon, 19 Jul 2004 1:39:59 +0000
+
+Thread bug 3 identified.  Background: gc_stop_the_world is called from
+within a WITHOUT-INTERRUPTS form.  WITHOUT-INTERRUPTS doesn't actually
+mask signals at the kernel level, but does set a flag that the C-level
+signal handlers check when deciding whether to defer a signal.
+SIG_THREAD_EXIT (the RT signal that the parent thread is sent when a
+child thread dies, a la SIGCHLD for traditional processes) is on the
+deferrable list (because it calls Lisp code), so if a thread dies between
+the start of WITHOUT-INTERRUPTS and the world getting stopped, there's
+nothing available to wait() for it.  Thus it becomes a zombie and will
+never react to requests to suspend itself for GC.
+
+<p>Alternate strategy: make thread_exit_handler just wait() and then
+set thread-&gt;state=STATE_DEAD, so the GC can see the thread's no
+more, then do the Lisp-level stuff and destroy_thread at some later
+time.  Now we can remove SIG_THREAD_EXIT from the deferrable list.
+Pretty arbitrarily, we've decided that at "after a GC" would be
+a reasonable later time; so now if you disable GC you have also
+disabled dead thread collection.  

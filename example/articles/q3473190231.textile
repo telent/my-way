@@ -1,0 +1,7 @@
+title: Oh.  Ouch,  Sorry
+author: Daniel Barlow
+date: Fri, 22 Jan 2010 23:03:51 -0000
+
+I've only just spotted this host didn't come back cleanly after last night's power-cut-induced outage.  Well, here it is now
+
+In the meantime, I have found the stunningly attractive "Ruby FFI gem":http://wiki.github.com/ffi/ffi/ and written some "rather gross code":http://pastebin.com/f49cb8a6b to play music through PortAudio with it.  Unfortunately it turns out that PortAudio's @Pa_OpenDefaultStream@ function is "buggy":http://www.portaudio.com/trac/ticket/49 (either the code or the spec) and it defaults to OSS anyway.  Still, a step closer

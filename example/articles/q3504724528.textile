@@ -1,0 +1,168 @@
+title: How to create a diskless elastichosts node
+author: Daniel Barlow
+date: Sat, 22 Jan 2011 22:35:28 -0000
+
+"Elastichosts":http://www.elastichosts.com is a PAYG (or monthly contract) "cloud" virtual server
+provider based on the Linux kvm technology.  At $WORK we use it to
+provide a horizontally scalable app service, and we need to be able to
+add new app servers in less time than it takes to copy a complete
+working Debian system.  Also we want to be running the same version of
+the same software on every server (think "security updates") and we
+don't want to be paying for another 3GB of Debian that we don't really
+need on each box.  So, we need that stuff to be shared.
+
+Elastichosts don't directly support kvm snapshots (or they didn't when
+I asked them about it) which leaves us looking for alternative ways to
+do the same thing.  This blog entry describes one such approach: we
+use a read-only CD image for the root filesystem and then mount /usr
+and /home over NFS and a ramdisk (populated at boot) on /var.  It's
+all done using standard Debian tools and Debian setup as of the
+"squeeze" 6.0 release.
+
+The finished thing is on github at
+https://github.com/telent/squeeze-cd-nfsroot/ .  To use, basically you
+clone the repo into @/usr/local/client@, edit the files, and run @make@.  Slightly less
+basically, you almost certainly need to know what edits to make to
+which files, and you may also want to know how it works anyway.  So
+read on ...
+
+(Yes, you should be able to clone it elsewhere because I shouldn't have hardcoded that directory name into the Makefile.  This may be fixed in a future version if I ever find the need to install it somewhere else myself.  Or see the 'conclusion' section if you want to fix it yourself)
+
+h2. How the client boots
+
+# the client boots off a CD (ISO9660) image created by
+"initramfs-tools":http://packages.debian.org/squeeze/initramfs-tools 
+which is configured to look for an nfsroot directory.  This directory
+is created on the server by a Makefile rule that copies the server's root
+dir and the replaces, renames and changes a bunch of stuff in /etc
+
+# it then mounts a ramdisk on /tmp and another on /var.  There is an
+initscript @populate_var@ which creates all the empty directories that
+daemons will expect when they start up.  Note that these directories
+are entirely ephemeral, which means for example that syslog must be
+configured to log remotely
+
+# it mounts /usr and /home (readonly) directly from the server.  This
+means that most of the packages on the server are available
+immediately on the clients - unless they include config files in
+@/etc@, in which case they aren't until you rerun the Makefile that
+creates the nfsroot (after, possibly, adjusting the config
+appropriately for the client)
+
+h2. A short guide to customising the system
+
+These files are copied to the client - you may want to review their contents
+
+* template/etc/fstab needs to have the right hostname for your NFS server
+* template/etc/initramfs-tools/initramfs.conf - check DEVICE and NFSROOT settings
+* template/etc/network/interfaces may need tweaking
+* template/etc/resolv.conf is set up for our network, not yours
+* template/etc/init.d/populate_var might need directories added or @chown@ invocations removed, depending on what packages you have installed
+* template/etc/rsyslog.conf needs editing for the syslog server's IP address
+
+And also
+
+* insserv calls in Makefile may need adjusting if you have other services on the server that you don't want to also run on the client
+
+And on the server
+
+* you'll need to be exporting the @nfsroot/@ directory as NFS, ditto @/home@ and @/usr@.  My @/etc/exports@ looks something like this
+<pre>
+/usr/local/client/nfsroot 10.0.0.0/24(ro,no_root_squash,no_subtree_check)
+/home 10.0.0.0/24(ro,no_root_squash,no_subtree_check)
+/usr 10.0.0.0/24(ro,no_root_squash,no_subtree_check)
+</pre>
+
+* you need to run a dhcp server (I use "dnsmasq", which also provides DNS service).  Make sure this is only running on your vlan address: I don't know whether elastichosts will filter out rogue DHCP servers running on their network or will just come around and break your fingers for trying, but either way it's not a good idea.
+
+* If you want the clients able to syslog, you need to configure the syslog server to accept syslog messages from them.  rsyslogd seems to be standard in Debian these days - I mention this because it does remote syslogging over TCP not the traditional UDP, so make sure both ends are speaking the same protocol and you don't have iptables rules between them that are dropping your messages on the floor. 
+
+h2. How we build the files
+
+h3. The nfsroot
+
+Creating the nfsroot is done by the "Makefile rootfs target":https://github.com/telent/squeeze-cd-nfsroot/blob/master/Makefile#L12
+
+It starts by rsyncing the real root into @nfsroot/@ with a whole bunch
+of exclusions, then copies files from @template/@ over the copied
+files to cater for the bits that need a different configuration on the
+client than they do on the server, then does some other fiddling
+around.  Most notable:
+
+* we have to copy libcrypto and libz into /usr because the dhcp client
+needs those libraries and it runs before /usr is mounted (see
+http://bugs.debian.org/592361 - though according to that page this bug
+is now fixed)
+
+* we blat the generated files @etc/udev/rules.d/*persistent*@ which
+  are correct for the server but not for the client.
+
+* Debian will run better with no @/etc/hostname@ than it will with the wrong one
+
+* Debian squeeze uses a slightly exciting parallelising
+dependency-based system for running init scripts, so we can't just
+copy files into init.d, we need to run @insserv@ to make it see then.
+(As a long-time Unix user who doesn't pay enough attention when these
+kinds of changes are made, this took ages to work out).  Similarly to
+disable daemons that run only on the server, we use @insserv -r@.  
+
+* a couple of files need to be writable, so we replace them with symlinks
+** @/etc/network/run@ is pointed to  @/lib/init/rw@
+** @/etc/mtab@ is pointed to @/proc/mounts@
+
+* We create our own @etc/resolv.conf@.  Our elastichosts clients
+  generally have a public (dynamically allocated) IP address assigned
+  to eth0 and a vlan attached to eth1. DHCP gets exciting here: the
+  client boots off eth1 and gets the address of that interface using
+  boot-time kernel code, then runs the user-space @dhclient@ tool to
+  get an eth0 address, and we'd rather one rely on the conjunction of all
+  that to get @/etc/resolv.conf@ right
+
+* "populate_var":https://github.com/telent/squeeze-cd-nfsroot/blob/master/template/etc/init.d/populate_var pretty much does what it says on the tin but might need more directories adding/removing depending on what you have installed
+
+h3. The initramfs
+
+The "Makefile ramfs.img
+target":https://github.com/telent/squeeze-cd-nfsroot/blob/master/Makefile#L47 
+makes an initramfs image which knows how to mount root on nfs.  This
+particular magic is built into Debian and the only particular point of
+note here is that we use @nfsroot/etc/initramfs-tools@ as the config
+directory so we know we're generating a config for the client without
+treading on the server's usual initramfs config (which it might need
+when it boots itself).  In our setup the only file that's actually
+changed is @template/etc/initramfs-tools/initramfs.conf@ which has
+settings for BOOT, DEVICE, NFSROOT that probably differ from what the
+server wants for itself
+
+h3. Creating the cd image
+
+This is pretty straightforward too.  The "Makefile boot_cd.iso
+target":https://github.com/telent/squeeze-cd-nfsroot/blob/master/Makefile#L59 
+runs mkisofs to generate a CD image using the initramfs image and
+other files taken from isolinux.
+
+h3. Uploading it
+
+We had to slightly patch the @elastichost-upload@ script to add the
+ability to create shared images as well as exclusive ones.  This is
+controlled by the api key @claim:type@, which the "elastichosts API
+docs":http://www.elastichosts.com/cloud-hosting/api describe as
+follows: "either 'exclusive' (the default) or 'shared' to allow
+multiple servers to access a drive simultaneously"
+
+The patched version is in the git repo, accompanied by the "patch":https://github.com/telent/squeeze-cd-nfsroot/blob/master/bin/elastichosts-upload.diff
+
+Once you've uploaded the first one you can uncomment the DRIVE_UUID
+param at the top of Makefile so that subsequent attempts update the
+same drive instead of creating a new one every time.
+
+h2. Conclusion
+
+There you have it.  It's certainly a bit rough and ready right now and
+requires editing a few too many files to be completely turnkey, but
+hopefully it will save someone somewhere some time.  If you have bug
+fixes, send me patches (or fork it on github and send me pull
+requests); if you have suggestions, my inbox is open; if you know you
+need something like this but can't understand what I'm writing about,
+my consulting rates are reasonable ;-)
+

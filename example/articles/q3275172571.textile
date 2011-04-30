@@ -1,0 +1,25 @@
+title: No slime today, because I haven't been working on it
+author: Daniel Barlow
+date: Wed, 15 Oct 2003 3:9:31 +0000
+
+No slime today, because I haven't been working on it.  No slime on
+sourceforge, and no explanation for its continued missingness.  No
+slime on savannah: they rejected the application because the cvs
+tarball didn't have the 
+<a href="http://mail.gnu.org/archive/html/savannah-hackers/2003-10/msg00367.html
+"
+>right number of copyright messages</a>.  Not that we could have added
+them after the project had been created, or anything.  No, they
+definitely need to be in place at project creation time.
+
+
+<p>For the record, I'm not at all sure that the requirement to include
+a copy of the GPL is appropriate in this case.  The cited reason is
+that the user may not have one already; however, we are talking about
+Emacs lisp here - slime would be pretty useless without Emacs, which
+package tends as a rule to come with a GPL copy of its own.
+
+<p>The good news is that I think I've fixed the longstanding cliki bug
+with page names that have % or . or + or similar exciting characters
+in them.  No, don't go and test it, I haven't released the new version
+or upgraded any of the public sites yet.

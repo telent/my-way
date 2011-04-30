@@ -1,0 +1,37 @@
+title: For the past few years I've been sneering at PHP
+author: Daniel Barlow
+date: Wed, 14 Apr 2004 18:6:20 +0000
+
+For the past few years I've been sneering at <a
+href="http://www.ukuug.org/events/linux2002/papers/html/php/" >PHP</a>
+based mostly on little more than a cursory glance back in the late
+1990s sometime.  As I recall, after realising it had different
+database glue functions for each kind of supported database - instead
+of using some kind of switch a la Perl's DBI - I fairly swiftly
+decided it wasn't for me.  That impression has since been reinforced
+by Aaron Crane's UKUUG presentation (link above) and <a href=
+"http://www.advogato.org/article/574.html#1" >Rasmus Lerdorf's
+infamous comment</a> on compiler technologies.
+
+<p>Well, for one reason and another (day job) it's time to revisit
+that decision, so expect bits of PHP to be littering this diary in
+future days.  The rules are that I will only be commenting on things
+which I find either significantly clever or apparently stupid, but I
+reserve the right to demonstrate apparent stupidity to the world
+without having first investigating whether said stupidity vests in PHP
+or in me.  So, first up is this entry in php.ini:
+
+<pre>
+; When floats &amp; doubles are serialized store serialize_precision significant
+; digits after the floating point. The default value ensures that when
+; are decoded with unserialize, the data will remain the same.
+serialize_precision = 100
+</pre>
+
+Even supposing that there's some reason the numbers have to be
+serialised readably and you can't just save the bits (unless PHP is
+expected to run on non-IEEE systems, I think this is unlikely), it
+still only takes 
+<a
+href="http://www.google.com/search?q=printing+floating+point+numbers"
+>two minutes with Google</a> to find a better approach.

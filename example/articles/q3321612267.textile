@@ -1,0 +1,61 @@
+title: SBCL 0.8.21, as announced on cl.l
+author: Daniel Barlow
+date: Mon, 4 Apr 2005 15:4:27 +0000
+
+SBCL 0.8.21, as announced on cl.l. last Friday.  Emphasis added since:
+
+<pre>
+
+The Steel Bank Common Lisp development team is proud to announce the
+release of SBCL 0.8.21.  This release marks the beginning of a period
+of stabilisation towards 0.9 and eventually 1.0, as well as the usual
+crop of bug fixes (some of them quite long-standing, <b>notably the PROG2
+issue which has been with us seemingly forever</b>)
+
+SBCL is an Open Source compiler and runtime system for ANSI Common
+Lisp. It provides an interactive environment including an integrated
+native compiler, a debugger, and many extensions.
+
+
+* Notable changes
+
+** Now possible to set global optimization policy, startup package,
+   readtable, etc, in startup files, as they're read with READ and
+   EVAL instead of LOAD as before
+
+** debugger changes
+  - less mess in backtraces
+  - removed redundant TOPLEVEL restart 
+  - many kinds of functions have more legible printed representation
+    and are more amenable INSPECT.
+  - SIGSEGV in foreign code handled more gracefully on x86 and x86-64
+  
+** Improved SB-INTROSPECT for needs of SLIME
+
+** thread support for non-NPTL systems has been removed - locking
+   is buggy and unreliable.  A threaded SBCL build will now warn at
+   startup and refuse to create new threads, unless futex support 
+   is detected in the kernel
+
+** Updates to the x86-64 backend
+
+** Many bug fixes
+
+  - <b>PROG2 returns the primary value of its first argument, as per ANSI</b>
+  - (TYPEP X '(MEMBER ...)) no longer returns a list in compiled code
+  - LOAD binds *LOAD-PATHNAME* to the merged pathname
+  - more bugs revealed by Paul Dietz' test suite: check the NEWS file
+    for details
+
+* For more information and downloads
+
+   http://www.sbcl.org/platform-table.html
+
+The sources will compile under almost any sufficiently-ANSI CL, or you
+can wait for binaries which are currently being uploaded for various
+platforms.
+
+</pre>
+
+A total of one person spotted this and thought it unusual enough to
+ask about.  Next year our April Fool will be less subtle, I promise.

@@ -1,0 +1,100 @@
+title: Language shapes the way we think
+author: Daniel Barlow
+date: Sat, 10 Aug 2002 14:53:0 +0000
+
+<p>Language shapes the way we think.  This is easy to believe after
+several days reading and writing x86 assembler.
+
+<p>So we're talking about the new <tt>bind</tt> vop and related bits.
+The issue here is dynamic variable bindings: please skip the next two
+paras if you feel like it.
+
+<p> In Common Lisp - as in most languages, variables are usually
+lexically bound.  That is, they're declared in the current function,
+or in the function textually enclosing it, or in that function's
+enclosing that, ad global.  The alternative, dynamic binding, is that
+when a variable is not found in the current environment, we look at
+the environment of the caller, and if we can't find it there we work
+our way up the call stack.  Lexical bindings make it a whole lot
+easier to see statically what's going on (your function behaves the
+same no matter who called it) which is generally considered better for
+everyone concerned (humans and compilers)
+
+<p>Which is not to say that dynamic binding is pointless.  If you want
+to do something like pretty-print a tree using a recursive function,
+you might have a whole bunch of variables describing where to draw the
+next subtree (left edge, right edge, scaling factor, etc etc) which
+change as you descend a branch and which you need to restore as you
+unwind back up the tree.  Dynamic binding gives you this behaviour For
+Free (as does using lots and lots of function arguments, but that gets
+kind of unwieldy when you realise you need to add another argument at
+every call site).  So, CL (like Perl, in fact) provides both kinds of
+variable in the language .  For historical reasons, we call the
+dynamic variables <i>specials</i>, and usually we mark their names
+with asterisks (<tt>*like-so*</tt>) to alert the programmer to what's
+going on.  All clear?
+
+<p>OK, break over.  Settle down, class.
+
+<p>If we want to implement dynamic binding in a fashion that makes
+variable lookup reasonably fast, we do it with a slot in each symbol
+that stores the current value, and a stack of (variable -> previous value)
+pairs.  To rebind the variable (this is what the <tt>bind</tt> vop is
+for) we push the current value on the stack.  To unbind, we pop the
+stack and set the value slot to whatever it was.  That's <tt>unbind</tt>.
+
+<p>For a single-thread implementation this is great.  You can code
+symbol value lookup as 
+<pre>
+(storew value symbol symbol-value-slot other-pointer-lowtag)
+</pre>
+
+which translates to something dead simple like "store <tt>value</tt>
+in the location given by <tt>symbol+5</tt>" (FSVO 5 equal to
+symbol-value-slot*4+other-pointer-lowtag).
+
+<p>Obviously this doesn't work when you have many threads all wanting
+to bind the same symbols.  If you have userland threads you can make
+the thread switch unwind and rewind the binding stack.  If the kernel
+is doing the context switch you can't really make it do this for you,
+though.  If the machine is SMP, there may not even be a context switch
+to happen: you could actually have two cpus executing lisp code
+simultaneously.  So, you need some kind of per-thread storage area
+and a slot in the symbol to store an offset into this area
+
+<p>So, we have three options
+
+<ul>
+
+<li> Use a register to point to the bottom of a thread-local storage
+area, and index off it.  Downside:the x86 doesn't really have any
+spare registers
+
+<li> We know that the stack pointer (and frame pointer) are different
+in every frame.  Use stacks aligned to some known boundary, stick the
+TLS base at some known offset from the stack base, then we can mask
+the stack pointer to get to TLS and play with that.  Downside:
+practically every VOP which accesses the TLS now needs an extra
+scratch register to do the mask-and-add stuff, which is (a) a lot of
+typing, (b) badly integrated with the register packing (if we do it
+all with VOPs, anyway) : every time we calculate this address it comes
+out to the same answer, so really we'd like to be able to reuse the
+register if we'd already done the calculation before.
+
+<li> Use a segment register.  This is simply a matter of
+<ul>
+<li>using modify_ldt (I think) to set up the segment register ->
+base address mapping on thread creation
+<li>extending the assembler to know how to output them
+<li>and the disassembler to understand them
+<li>making each symbol reference indirect though %gs:something
+</li>
+</ul>Downside: see above.
+</li>
+</ul>
+<p>Now I have to stop writing x86 assembler for a while, and start writing
+English prose - or some approximation thereto, anyway.  The 
+<a href="http://www.international-lisp-conference.org/" >ILC</a> people
+are probably expecting a paper some time between now and Thursday
+
+

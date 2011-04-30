@@ -1,0 +1,64 @@
+title: I thought I'd try mucking around with some audio stuff
+author: Daniel Barlow
+date: Thu, 10 Mar 2005 2:45:26 +0000
+
+<p>I thought I'd try mucking around with some audio stuff.  Chiefly I'd
+like to be able to put mixes together for the FNS music bike; it
+remains to be seen whether I actually can <i>do</i> this - or whether
+anyone likes my (lack of) music taste - but first I needed software.
+My findings, summarised and leaving out a lot of blind alleys:
+
+<ol>
+<li> The Linux MP3-HOWTO is woefully out of date.  Of the two
+plausible-sounding apps it lists, emixer has disappeared from the
+planet, and GDAM (a) doesn't build without some slight hacking up
+
+<pre>
+GDAM_ARG_DOUBLE_ARRAY(arg).array[0] = spatial->##prefix##_x;
+</pre>
+
+and (b) after fixing this, segfaults on starting due (I think) to some
+problem with missing or incorrect XML files.
+
+<li><a href="http://mixxx.sourceforge.net/">Mixxx</a> seems like it
+ought to work, and even compiles (after installing a stack of
+libraries that I've hitherto not had the need for, but fair enough).
+But it needs a soundcard with a second output for cueing - although it
+can be told to use Left for cue and Right for speakers, my motherboard
+audio (VIA VT8237) allegedly can do six channels, so why not go for two
+stereo outputs?
+
+<li>(It also complains at startup about not having hardware GL, then
+incessantly thereafter about GLXBadLargeRequest, but for the moment I
+am choosing to deal with this by redirecting stderr.  The claimed
+workaround of disabling waveform display actually causes it to segfault)
+
+<li>The ALSA fun starts here.  With the aid of the motherboard manual
+I figured that the microphone jack doubles as rear speaker output;
+with a combination of <tt>amixer</tt> (which has a command-line
+interface that actually lets you see what's going on, not some crappy
+curses thing) and <tt>speaker-test -Dsurround40 -c4</tt> I found
+correct mixer settings to get front channels coming through speakers
+and rear channels through the headphones plugged into the mic jack.
+Look out especially for <tt>Spread Front to Surround and Center/LFE</tt>
+and <tt>Surround Jack as Input</tt>, both of which should be disabled.
+
+<li>This is the <a
+href="http://www.sabi.co.uk/Notes/linuxSoundALSA.html" >best ALSA
+documentation I have ever read</a>, and also the thing that gave me a
+pointer to <a
+href="http://alsa.opensrc.org/index.php?page=SurroundSound" >Using
+surroundXX PCMs with JACK</a>.  With that and with
+<pre>
+jackd -d alsa -S -d jack40 -n3 --inchannels 2 --outchannels 4
+</pre>
+(less than 3 periods and I get enough "xrun" spewage that 
+xterm's scrolling shows up in top(1)) all that remains is to tell 
+mixxx's preference screeen to use alsa_pcm:playback_[1234] in that
+order for each channel it wants to send stuff down.
+</ol>
+
+<p>For my next trick I'm almost tempted to configure GL after all.
+The video card (Voodoo 3 PCI) is old enough that it probably
+<i>ought</i> to have Linux drivers by now, after all.
+

@@ -1,0 +1,27 @@
+title: :; whois cliki.net
+author: Daniel Barlow
+date: Wed, 21 Nov 2001 15:5:41 +0000
+
+<pre>
+:; whois cliki.net
+[...]
+domain:       cliki.net
+status:       production
+origin-c:     dan@metacircles.com#0
+owner:        Daniel Barlow
+</pre>
+
+Bagged cliki.org and cclan.org likewise, though still need to point
+them at some nameservers with actual records in them.  Current plan is
+to host multiple cliki sites on www.cliki.net,
+sbcl-internals.cliki.net, diary.cliki.net, etc
+
+<p>The Jargon File now has an entry for "muggle".  I thought I
+remembered a time when it actually was a guide to hacker culture and
+not just a list of everything Eric Raymond thinks is cool.  Which is
+not to say that I didn't enjoy the Harry Potter books - or the film -
+but that so did everyone else in the known universe, and should we
+expect entries for "chair", "window pane", "tuberculosis" and
+"derailleur gear" next because sometimes hackers have some of those as
+well.
+

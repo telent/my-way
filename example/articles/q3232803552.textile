@@ -1,0 +1,18 @@
+title: Well, that'd explain it
+author: Daniel Barlow
+date: Tue, 11 Jun 2002 17:59:12 +0000
+
+<p>Well, that'd explain it.  Mail from the Userland people to say that
+the aggregator is no longer running.  A note to that effect on the web
+site would have been <i>nice</i>, but never mind.
+
+<p>I was pointed to Meerket at O'Reilly, but it doesn't actually have
+any "submit your rss url here" option of its own, it relies on
+grovelling the userland and xmltree.com databases.  Given that one of
+these no longer exists and the other is some lameass hierarchical
+thing ...  Enough.  If/when the RSS advocates get their collective act
+together, I'll have another look.  Until then, back it goes in the box
+with SET, Java applets, "wallets", and VRML.  Sorry.
+
+
+

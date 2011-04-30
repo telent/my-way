@@ -1,0 +1,94 @@
+title: By the time you read this I'll be back home again after the
+author: Daniel Barlow
+date: Sun, 3 Aug 2003 22:0:33 +0000
+
+<p> By the time you read this I'll be back home again after the
+UKUUG's Linux 2003 summer conference, at which I was speaking on
+"Native threads for SBCL".  The paper is at <a
+href="http://www.linux.org.uk/~dan/linux2003/"
+>http://www.linux.org.uk/~dan/linux2003/</a>; I'm told it's also on
+the conference CD and may also end up on the UKUUG web site
+eventually.
+
+<p> And the slides.  Well ...
+
+<p> On Wednesday I roughed out how many slides I should do (one for
+every two minutes) and the titles.  By mid-afternoon on Friday I'd
+more or less decided on the body content too.  This was all in a text
+file, so should be easy to turn it into a presentation, were it not
+for some fairly strange requirements I have for a usable presentation
+graphics tool.
+
+<ul>
+
+<li> Able to run happily on my laptop (only 128Mb RAM, much of
+which is already used by Emacs and Mozilla Firebird).  This makes
+OpenOffice and the like a non-starter.
+
+<li> Easy to use without a mouse, because I only have the touchpoint
+mouse substitute.  Which works perfectly for most of my mouse use
+(window focus) but starts to get tedious for any work demanding more
+accuracy than clicking on web links.
+
+<li> You're thinking that magicpoint fits the bill, right.  Well, it
+would do, but, please, God, don't make me have to use magicpoint
+again.  It has that strange m4-like property of making the easy things
+easy and the slightly more difficult things (like, say, switching to
+typewriter font and back on the same slide without <i>either</i>
+breaking my carefully indented code or putting the following bullet
+point somewhere utterly weird) nightmarishly awkward.  And the
+documentation is kind of iffy.
+
+</li>
+</ul>
+
+<p> So, after the Scottish Buffet (a Scottish Buffet, it appears, is
+what we in England call a "sit-down meal", although no less tasty for
+all that) on Friday evening I headed back to my room, paged through
+the slide text for a few minutes, and when I next looked up it was
+early on Saturday morning and I'd written the bare bones of a
+presentation graphics program using CL - my first CLX program, too.
+(Yes, that's right, I maintain(sic) a CLX port for SBCL despite never
+yet having written anything that uses it)
+
+<p> Matters arising, in no particular order
+<ul>
+
+<li> There's a <a
+href="http://clozure.com/pipermail/portable-clx-devel/20030802/000059.html"
+>bug in CLX's <b>with-gcontext</b></a> macro.  Or at least, it
+certainly doesn't do as I ask
+
+<li> I need to add a word-wrap algorithm.  Eventually (I also had a
+conference to attend while developing it, so there was limited
+concentrated hacking time available) I had to stop fiddling with it
+and just add line breaks to the source file.  Newlines are kind of
+dodgy, too, and I also need to find a less blocky title font.
+
+<li> I used it for the presentation.  It worked, and didn't crash.
+The screensaver leapt into action a couple of times - I should add an
+onscreen "you have lingered on this slide too long" indication,
+because having the whole thing turn black is a bit unsubtle
+
+<li> CLX programming is surprisingly painless, at least given the
+manual.  The next version of telent clx will include such a thing,
+based on the <a
+href="http://www.stud.uni-karlsruhe.de/~unk6/clxman/contents.html"
+>manual at Gilbert Baumann's site</a>
+
+<li> That URL again: <a href="http://www.linux.org.uk/~dan/linux2003/"
+>http://www.linux.org.uk/~dan/linux2003/</a>.  If you want to play
+with the presentation thing, <tt>viewer.lisp</tt> is the appropriate
+file.  Needs SBCL CLX for <b>open-default-display</b>, which you could
+easily replace with open-display cruft if you're running some other
+Lisp.
+
+<li> It may be subjected to more hacking in future: all depends on how
+often i find I need to give presentations.  The observant will note
+from the defpackage form that I've called it Acclaim.
+
+</li>
+</ul>
+
+<p>More about the conference itself later.
+

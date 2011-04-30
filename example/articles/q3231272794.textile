@@ -1,0 +1,25 @@
+title: SBCL 0.7.4 released (I didn't do it, I merely report these things)
+author: Daniel Barlow
+date: Sat, 25 May 2002 0:46:34 +0000
+
+
+<p> SBCL 0.7.4 <a
+href="http://www.geocrawler.com/lists/3/SourceForge/1663/0/8752313/"
+>released</a> (I didn't do it, I merely report these things).
+
+<p>From the feature list it doesn't sound like <i>major</i> news, but
+when there are bug fixes involved it's better by far to get the new
+versions out regularly anyway.  Otherwise you end up in ILISP country,
+where they're still telling everyone who uses Emacs 21 to get the CVS
+version.
+
+<p>(They're gearing up for a new release soon, too, which will be
+welcome)
+
+<p><a href="http://www.aa-uk.org.uk/publications/areyou.htm" >Are You
+An Alcoholic?</a>.  ``If you have answered YES to three or more, you
+are definitely an alcoholic''.  When it asks "Has your efficiency
+decreased since drinking?", I have to guess it doesn't really mean
+"since 9 o'clock this evening", though
+
+

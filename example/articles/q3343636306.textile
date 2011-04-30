@@ -1,0 +1,32 @@
+title: Once upon a time I had an online diary thing here
+author: Daniel Barlow
+date: Thu, 15 Dec 2005 11:51:46 +0000
+
+<p>Once upon a time I had an online diary thing here.  I used to write
+about stuff I was doing, which for several years was mostly related to
+Lisp.  After a while my blog became part of <a
+href="http://planet.lisp.org/" >Planet Lisp</a>.  For the last couple
+of years, though, I've had a job that mostly involves Perl, and
+leisure pursuits that mostly involve strapping eight wheels to my feet
+and taunting taxis, and while from time to time I might say something
+that Planet Lisp is interested in, it's not a regular occurrence.  And,
+following the general principle that off-topic noise is tolerated in
+proportion to the amount of signal that also emanates from the same
+source, in the absence of actual Lisp content to write about I found I
+was even less likely to write about anything else here.  But well,
+I've not totally given up on the Lisp thing and it's nice to be
+aggregated when I <i>do</i> have something relevant to say.
+
+<p>So, if you are reading this entry (whether aggregated somehow or
+directly) and want to continue seeing sporadic Lisp-related posts from
+me, do nothing and it will probably happen.  If you wanted everything
+else as well, see instead the forthcoming <a
+href="http://coruskate.blogspot.com/"
+>http://coruskate.blogspot.com/</a> which will shortly fill up with
+entertaining "A funny thing happened to me on the way to the <a
+href="http://www.lfns.co.uk/">LFNS</a>" stories and rants about
+instructions to "unlock the power of gravity" and how that relates
+to the law of conservation of energy (short form: it doesn't).
+
+<p><b>ObLisp</b>: I have a week off work early next year for hacking
+time.  

@@ -1,0 +1,38 @@
+title: Having had the same email address since sometime in 1996, and being a
+author: Daniel Barlow
+date: Wed, 6 Aug 2003 20:9:37 +0000
+
+<p>Having had the same email address since sometime in 1996, and being a
+fairly frequent poster on usenet, I get a lot of spam.  Enough in
+fact, that I can delete it by hand faster and more accurately than 
+spamassassin can, even just looking at the subject/sender name.  (Yes,
+that's right, I got annoyed with my spam filters and turned them off again)
+
+<p>Anyway, I thought this one was funny:
+
+<pre>
+Envelope-to: webmaster@telent.net
+Subject: telent.net
+To: webmaster@telent.net
+From: Leslie Oneal&lt;leslieoneal@link-builder.com>
+
+I am contacting you about cross linking. I am interested in telent.net because
++it looks like it's relevant to a site that I am the link manager for. The site
++is about search engine optimization research and technology for top search
++engine placement.
+
+I keep the web address confidential and will send it to you only if you give me 
++permission to do so. Just let me know if it's OK, and I'll send you the web   
++address for your review. If you approve of the site, then we'll exchange links.
+[---]
+</pre>
+
+<p> Now, I'm no more of an expert in "search engine optimization" than
+the next man, tending to believe that you can get some pretty good
+rankings on search engines simply by providing useful or interesting
+content that people want to link to, but even <i>I</i> know that
+omitting to tell people the address of your site is not the best way
+to increase traffic to it.
+
+<p> So I guess the question is: exactly how gullible does one have to
+be to fall for this rubbish?

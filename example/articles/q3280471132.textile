@@ -1,0 +1,62 @@
+title: New Araneida, CLiki, and detachtty packages, though
+author: Daniel Barlow
+date: Mon, 15 Dec 2003 9:58:52 +0000
+
+New <a href="http://www.cliki.net/Araneida">Araneida</a>, <a
+href="http://www.cliki.net/CLiki">CLiki</a>, and <a
+href="http://www.cliki.net/detachtty">detachtty</a> packages, though
+nothing particualrly earth-shattering in any of them.
+<pre>
+To: lispweb@red-bean.com, clump@caddr.com
+Subject: ANN: new Araneida, CLiki (again)
+From: Daniel Barlow
+Date: Mon, 15 Dec 2003 09:58:38 +0000
+--text follows this line--
+
+Mostly bug fixes and other small changes prompted by the recent
+defacing of the CLiki front pages by some wazzock from Brazil
+
+* CLiki now depends on Miles Egan's xmls library as well as everything
+  else
+
+* Araneida has better support for conditional GET (may save you some
+  bandwidth; may even save you some cpu or database time, especially
+  if you're using it behind a caching reverse proxy)
+
+New in Araneida 0.83
+
+* Clear up RESPONSE-SENT so that it works as described.
+
+* Convenient support for conditional GET requests: the new keyword
+  argument :CONDITIONAL T to REQUEST-SEND-HEADERS will cause it to
+  compare the last-modified date in the response with the
+  if-modified-since date in the request, sending a 304 response
+  and then signalling RESPONSE-SENT when appropriate.
+
+* REDIRECT-HANDLER may now take a relative urlstring for :LOCATION,
+  which is merged against the handler's base url
+
+* Cleared up a lot (but not all) of the compilation warnings and
+  style-warnings
+
+
+New in CLiki 0.4.2
+
+* Now depends on xmls package for rss generation (stop complaining at
+  the back there: it's small, it's asdf-installable if you ignore the
+  lack of GPG key, and it decruftifies the code noticeably)
+
+* Tweaked the feature that allows users to collapse multiple edits to
+  the same page such that they only show on Recent Changes once.  Now
+  it only works if the two edits happened within ten minutes of each
+  other.
+
+* Update README to include web address for lispweb list
+
+* 'Create new page' link to site root, and other links in the default
+  HTML stuff fixed (pointed out by Erik Enge, patch from Ivan Toshkov,
+  thanks both)
+
+* example.lisp package name changed to something less clashable
+
+</pre>

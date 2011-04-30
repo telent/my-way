@@ -1,0 +1,12 @@
+title: Yes, it was related
+author: Daniel Barlow
+date: Sun, 16 Dec 2001 4:45:5 +0000
+
+
+<p> Yes, it was related.  Not only do we need to jump to the right
+address, but we need to set r19 (reg_Code) to the Function object for
+that address.  Now, owing to really bad address punning on the part of
+the CMUCL PPC port, we can actually use the Function object as a place
+to jump to.  We just weren't - instead we were using the raw-address
+slot in the Fdefn object.  This stuff is non-obvious to me, really.
+

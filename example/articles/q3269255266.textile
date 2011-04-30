@@ -1,0 +1,9 @@
+title: http://www.function-pointer.org/
+author: Daniel Barlow
+date: Thu, 7 Aug 2003 15:27:46 +0000
+
+<a href="http://www.function-pointer.org/">
+http://www.function-pointer.org/</a>.  Can you say 
+<a href="http://philip.greenspun.com/research/">
+"Greenspun's Tenth Rule of Programming"</a>?
+

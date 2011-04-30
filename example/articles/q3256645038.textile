@@ -1,0 +1,12 @@
+title: Wheee
+author: Daniel Barlow
+date: Fri, 14 Mar 2003 15:37:18 +0000
+
+Wheee!
+
+<p> SBCL threads now runs (or perhaps, walks) <a
+href="http://www.stud.uni-karlsruhe.de/~unk6/closure/">Closure</a>.
+A <a href="/closure.png">screenshot</a>, for the unbelievers
+
+<p> Now I need to scatter patches and things around the place so that
+anyone else can run it too.

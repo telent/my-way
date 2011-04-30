@@ -1,0 +1,9 @@
+title: I think we're nearly there
+author: Daniel Barlow
+date: Wed, 19 Jun 2002 4:38:31 +0000
+
+I think we're nearly there.  Just need to touch up the search handling
+a bit, and then I'm ready to release a new cliki onto the world.  New
+Improved CLiki with <i>Almost No User-Visible Changes</i>.  Rock.
+
+<p>I'm going to go to bed first, mind.

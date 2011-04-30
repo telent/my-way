@@ -1,0 +1,43 @@
+title: Sourceforge is just so awesome
+author: Daniel Barlow
+date: Wed, 8 Oct 2003 21:9:34 +0000
+
+<p>Sourceforge is just so awesome.
+
+<p>There's a project called SLIME, the Superior Lisp Interaction Mode
+(Enhanced).  It's existed for about <a
+href="http://lemonodor.com/archives/000552.html" >a month or so</a>,
+and reportedly seeing a lot of hacking.  Observe this <a
+href="http://news.gmane.org/gmane.lisp.slime.devel">mailing list
+archive</a>, for example.  Note several posts per day, and obvious
+evidence of <a
+href="http://article.gmane.org/gmane.lisp.slime.devel/19" >ongoing
+development</a>.
+
+<p>Now see that it all stops suddenly on 29th September.  What
+possible reason might there be for this?  Why, it was <a
+href="https://sourceforge.net/tracker/?func=detail&atid=200001&aid=820064&group_id=1"
+>due to inactivity</a>, of course.  Sourceforge knows all.
+
+<p>On further investigation it turns out to be <a
+href="https://sourceforge.net/search/?type_of_search=artifact&exact=1&forum_id=1&group_id=1&atid=200001&words=slime">a
+little more complicated</a>.  Back in 2000 there was an unrelated
+project on sourceforge called Slime, which the author at the time
+decided to <a
+href="https://sourceforge.net/tracker/?group_id=1&atid=200001&func=detail&aid=309492"
+>delete</a>.  Three years later, after the project name had been <a
+href="https://sourceforge.net/tracker/?group_id=1&atid=200001&func=detail&aid=799150"
+>taken over</a> by the current crew, Sourceforge presumably decide
+that this would be a good time to implement the deletion.  
+
+<p>I'm semi-impressed that the same member of Sourceforge staff can
+forget what's going on in the week between <a href=
+"https://sourceforge.net/tracker/?group_id=1&atid=200001&func=detail&aid=815334"
+>Luke Gorrie's request</a> to restore it and <a
+href="https://sourceforge.net/tracker/?func=detail&atid=200001&aid=820064&group_id=1"
+>mine</a> asking where it had gone.  Although, I guess, they deal with
+too many projects to remember, and if the interface that SF staff use
+to search their support database is the same one as we the public have
+to put up with, I can quite understand their not wanting to touch it any
+more than they can get away with.  I wouldn't.
+

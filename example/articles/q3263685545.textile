@@ -1,0 +1,18 @@
+title: OK, it now also checks PGP signatures, which I think makes it
+author: Daniel Barlow
+date: Wed, 4 Jun 2003 4:19:5 +0000
+
+<p>OK, it now also checks PGP signatures, which I think makes it
+sufficiently complicated that any change could just as easily break it
+as improve it, so it's time to start using CVS.
+
+<ul>
+
+<li> <a href="http://article.gmane.org/gmane.lisp.cclan.general/168"
+>Message to cclan-list</a> describing this latest abuse of
+their sourceforge cvs space
+
+<li> <a
+href="http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/cclan/asdf/asdf-install.lisp?rev=HEAD&content-type=text/vnd.viewcvs-markup">The
+file itself</a></li>
+</ul>

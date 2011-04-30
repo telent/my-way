@@ -1,0 +1,21 @@
+title: One of my ambitions w.r.t Lisp packaging is to make the ancient
+author: Daniel Barlow
+date: Sun, 10 Aug 2003 20:48:20 +0000
+
+<p>One of my ambitions w.r.t Lisp packaging is to make the ancient
+<a href="/lisp/howto.html">CMU Common Lisp on Linux</a> document
+obsolete.
+
+<p>OK, so I could achieve that (and in fact, have) just by leaving it
+three years without an update, so perhaps I should restate that goal
+more clearly: I want to make this document (and others like it)
+<i>unnecessary</i>.
+
+<p>Anyway, another step further down that road today, with the release
+of <a href="http://www.cliki.net/asdf-install">asdf-install</a> into
+an unsuspecting SBCL CVS tree.  Now we can download and install CCLAN
+modules from the command line (or from inside a running Lisp)
+
+
+
+

@@ -1,0 +1,26 @@
+title: There is one and only one aspect in which doing low-level stuff on an
+x86 is appealing: hardware watchpoints
+author: Daniel Barlow
+date: Tue, 3 Dec 2002 23:1:41 +0000
+
+There is one and only one aspect in which doing low-level stuff on an
+x86 is appealing: hardware watchpoints.
+
+<p> After spending a lot of time today tracing through the disassembly
+for the <tt>note-undefined-reference</tt> function to find out how it
+was getting <tt>(0 . 0)</tt> into <tt>*undefined-warnings*</tt> -
+supposedly a list - I put a watchpoint on that memory location and
+reran.  The value subsequently changed in
+<tt>get-output-stream-string</tt>, which is a perfectly normal library
+function that has nothing to do with the compiler and certainly no
+references to <tt>*undefined-warnings*</tt>.  After seeing that it was
+the work of mere minutes (although, I concede, entirely too many of
+them) to realise that things would probably work a Whole Lot Better if
+GC were allowed to see the thread-local value vectors so it could
+update pointers when the objects move.  Sigh.
+
+<p>Now we're back to a system that actually gets all the way through
+cold-init and PCL compilation to produce a usable Lisp.  Admittedly,
+still not one that lets the user actually create threads (not much
+point adding thread creation primitives until consing is thread-safe,
+after all), but it's a start.

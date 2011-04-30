@@ -1,0 +1,41 @@
+title: Bought two new ATX power supplies; one for my usual desktop box,
+author: Daniel Barlow
+date: Tue, 30 Mar 2004 4:47:25 +0000
+
+<p>Bought two new ATX power supplies; one for my usual desktop box,
+and the other for the Alpha.  In principle this means I now have a
+comfortable machine to resume hacking sbcl amd64 on, and I have a new
+(old) loaclhost.telent.net which will host telent cvs (clx, araneida,
+cliki, etc).  The plan is that <a href="http://www.clara.net/">my
+wonderful employers</a> put it on their
+freebie-hosting-for-employee-boxen network.
+
+<p>Slowly rewriting the threading section of the SBCL Manual.  (a) in
+texinfo, to see what it's like; (b) in English, so that other people
+may see what it's like
+
+<p>Suffering from cold-type-thing on Friday: sore throat, headache,
+etc, so took tube home instead of riding.  Feeling better by Sunday,
+so went skating.  Much fun, albeit at a
+slightly slower pace than I'd been commuting in previous weeks.  So,
+I'm going to try at least the first half of the <a
+href="http://www.lfns.co.uk/" >Friday Night Skate</a> this week.  (If
+you're reading this and likely to be there on Friday or Sunday, drop
+me an email and I'll wear something distinctive like my purple SICP
+tshirt).
+
+<p>Lost again on way home from work today.  Careful examination of the
+junction where I should have turned right, if I were riding my morning
+route in reverse, revealed that it was a one-way street.  So, wandered
+a little further up the road, found another right turn, rode aimlessly
+for a while.  Eventually pointed myself in the right direction with
+the aid of a couple of maps in convenient bus shelters.  Less lost
+than Thursday, but extra time with an A-Z will still be required
+
+<p>It's now 0:26am.  If this entry comes out dated at 5am, blame the
+rtc/apm handling in Linux 2.6, which has a nasty intermittent tendency 
+to decide that it can get through two seconds in as long as it takes
+the wall clock to dispatch just one.  In the fact of that kind of
+drift, ntp just curls into a foetal position and whimpers.
+
+

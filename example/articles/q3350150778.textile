@@ -1,0 +1,22 @@
+title: The new version of trivial-sockets is almost exactly like the previous
+author: Daniel Barlow
+date: Tue, 28 Feb 2006 21:26:18 +0000
+
+The new version of trivial-sockets is almost exactly like the previous
+one.  In fact the only differences are 
+<ul>
+<li> in SBCL it now has declares its dependency on sb-bsd-sockets
+<li> it's signed using a GPG key that I haven't revoked
+<li> and the version number is larger by 0.1
+</ul>
+I was going to do some more stuff to it: I looked at the patches on <a
+href="http://www.cliki.net/trivial-sockets?v=18"
+>http://www.cliki.net/trivial-sockets?v=18</a> and found that one of
+them involves an API change and the other doesn't work (at least,
+ext:accept-tcp-connection doesn't work on udp sockets on <i>my</i>
+cmucl installation, and I don't expect it would generally).  So, as
+this is all a distraction from what I'm actually supposed to be doing
+anyway, I put them aside for another time.
+
+<p>The package will appear on cclan nodes as soon as I remember how to
+do that packaging thang.

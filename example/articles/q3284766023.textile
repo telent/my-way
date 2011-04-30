@@ -1,0 +1,19 @@
+title: Another number you weren't interested in: up from 50 to
+author: Daniel Barlow
+date: Tue, 3 Feb 2004 3:0:23 +0000
+
+Another number you weren't interested in: up from 50 to 
+
+<pre>
+dan@pup:~> find ~/src/sourceforge/sbcl/obj/from-xc/ -type f |wc -l
+    196
+</pre>
+
+object files built by the cross-compiler.
+
+A convenient x86 tree of approximately the same vintage has 284
+object files in it, so by some arbitrary metric we're about two thirds
+of the way through.  On the way we have however left undone more than
+a few of the things which we ought to have done, so it's quite
+reaonable to suppose that there is no health in this.
+

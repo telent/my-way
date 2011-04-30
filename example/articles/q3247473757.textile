@@ -1,0 +1,127 @@
+title: On a train, on the way back from Alan &amp Telsa's, after my
+author: Daniel Barlow
+date: Thu, 28 Nov 2002 12:2:37 +0000
+
+<p>On a train, on the way back from Alan &amp Telsa's, after my
+spur-of-the-moment decision to go to the SWLUG meeting last night.  A
+more informal gathering than OxLUG, held in a caf&eacute; then moved
+to the pub next door when it became obvious that there were more
+people present than would fit.  Fun.  Back to railway station for what
+is apparently fairly normal confusion over the timetable: "where's
+this train going?" "the board says `terminates'" "ok, where's
+Terminates, then?" -- got on a train that showed some sign of wanting
+to head in the right direction, and after it pulled out, the train
+manager walked through with a notepad polling the passengers for where
+they wanted to go.  OK, possibly just for the entirely prosaic reason
+that some of the stops en route are basically request stops, but I
+think that explanation is less entertaining.
+
+
+
+<p>Today, tour of Swansea ("here's the castle, here's the sheep shop,
+here's the market, here's the marina, this is the beach") and
+introduction to Welshcakes.  These can be approximately described as
+half-height dense scones, dusted with sugar
+
+<p>A few words about the progress of threading for SBCL, after my
+vague hints on <a href="/diary/2002/11/#25.67069">Monday</a>:
+<ul>
+
+<li>Native threads, initially for x86 Linux, using clone() directly
+instead of pthreads
+
+<li> LinuxThreads is a non-starter: it does evil things with signals
+(like catch them in one thread and resignal them to others) that
+don't mesh nicely with the evil things that SBCL wants to do with
+signals
+
+<li> The exciting new threading stuff in Red Hat 8 is, well, only in
+Red Hat 8
+
+<li> ... and besides, all the interesting stuff it does with
+e.g. thread-local storage is built into gcc and binutils and so on: if
+you're not using them, it isn't helping you much
+
+</li>
+</ul>
+
+<p>So far ...
+
+<ol>
+<li> CL has dynamically scoped variables.  Not, thank goodness, by
+default, but available.  The semantics we've adopted are that (1) a
+symbol's global value can be set and is visible in all threads, and
+(2) it can also be dynamically bound: the dynamic binding is visible
+in only the thread that it was bound in.  Other threads running
+concurrently still see and may also change the global value, but the
+thread that's bound the variable won't see those changes.
+
+<li> This requires thread-local storage of some kind for the symbol
+values.  On x86, we point to this with a segment register
+(<tt>%gs</tt>) as we're already using all the real registers.  Each
+thread has a vector of values, and each symbol gains a
+<tt>tls-index</tt> slot which has its index <tt>symbol-value</tt>.
+
+<li>Spent much of the weekend fiddling with <tt>modify_ldt</tt>,
+and teaching the sbcl assembler how to assemble instructions with
+segment override prefixes (in fact, I still need to go back to it and
+teach it how to disassemble them again)
+
+<li>On Monday, I looked through the diffs from the previous round of
+hacking and forward-ported them - or at least, the bits that still
+made sense - into the current version.  This was for formerly-global
+variables which are actually supposed to be per-thread (stack pointers
+and the like)
+
+<li>On Tuesday, I had other unrelated work to do for, which I actually
+get paid (note to interested readers: if you would like to see a
+threaded SBCL sooner rather than later, I am available to implement
+this and other SBCL/CMUCL enhancements on a contract basis.  <a
+href="mailto:dan@metacircles.com">Email me</a> for details).  Spent a
+couple of hours on various kinds of public transport thinking about
+symbol binding and unbinding
+
+<li>Wednesday (yesterday) and today I wrote bind, unbind, set and
+symbol-value vops, and equivalent functionality in C (following a
+variation of the Extreme Programming methodologists' Once And Only
+Once principle known as "Once And Only Once More") for the bits of C
+code that need to do these things in situations where not enough of
+Lisp is running to use the normal vops.  Then I debugged it.  This is
+mostly a question of rebuilding, watching it segmentation fault,
+attaching gdb, disassembling, cursing, <tt> set disassemble
+intel</tt>, disassembling again, and scratching head.  With
+intermissions for previously noted LUG meeting in Cardiff, and tour of
+Swansea.
+
+<pre>
+&lt;dan_b> straw poll: how many special variables do we think that sbcl binds during cold init?
+&lt;dan_b> I think 4096 sounds like a lot
+&lt;Krystof> I'd have been surprised to find that we had 4096 distinct special variables
+&lt;Krystof> * (length (apropos-list "*"))
+&lt;Krystof> 1055
+&lt;dan_b> hmm
+[...]
+&lt;dan_b> aha.  got it, i think
+&lt;dan_b>       (storew tls-index symbol symbol-tls-index-slot other-pointer-lowtag)
+&lt;dan_b> having assigned a new tls index for the symbol, it would help if we actually stored it in the symbol strcuture for next time
+</pre>
+
+<p>Right now work is paused, because recompiling takes an hour and
+eats battery life, and I'm on a train.  So, time out to write diary
+and plan the next bit.
+
+<p>(The next bit will actually be integration with the allocator and
+garbage collector, given that right now it would be completely unsafe
+for two threads to cons at once)
+
+<p>Ext3 errors continue (though no panics today yet, at least) even
+with the new kernel, so that's not the problem.  Would blame hardware
+except that there's none of the usual scary messages from the ide
+driver.  Maybe a filesystem integrity problem caused (I'm guessing
+here) by apm forced shutdown when battery low, at a time that the disk
+was being written to, and not fully fixed by subsequent fscks.
+Tempted to try mkfs and reinstall (it's the root disk, not /home or
+anything important), and see if that helps.  I probably have a lot of
+old config files, orphaned library packages and other similar stuff
+anyway, and it would be nice to get rid of them.
+

@@ -1,0 +1,44 @@
+title: I don't think I've mentioned skating yet all year
+author: Daniel Barlow
+date: Tue, 8 Feb 2005 0:58:28 +0000
+
+<p>I don't think I've mentioned skating yet all year.  Well, I've been
+skating.  Lots.  Um.  I joined the <a
+href="http://www.londonspeedskaters.com/" >Londonskaters Speed
+Team</a>, so some of that skating could even be dignified with the
+name "training".
+
+<p>Here, in case you cared, are two graphs derived (by gpsman: I
+haven't resuscitated gpskate yet as I want to get a working threaded
+sbcl on my dekstop for it first) from my gps data on evenings last
+week:
+
+<p><img src="http://ww.telent.net/loop20050204.png"><br> This is a
+so-called "Long Slow Skate" from last Wednesday: ten laps of a loop
+concentrating on different aspects of technique on each lap.  You only
+see 9 and a half here as the gps is slow to get a fix while moving,
+and it was too cold to stop.
+
+<p><img src="http://ww.telent.net/fns20050204.png"><br>
+This is the log from marshalling the <a href="http://www.lfns.co.uk"
+>Friday Night Skate</a> two days later.  
+
+<p>You will observe 
+<ul>
+
+<li> that something is putting these in the wrong timezone, as both
+started at 20:00, not 21:00.  Doesn't seem to be a problem with the
+data at least as far as the gpx file goes: maybe gpsman thinks it's in
+France.
+
+<li> the effect of skating on roads with tall buildings both sides -
+the signal drops out in places, and there are some odd spikes in
+others.  The big triangular section at 20:45 on Friday was probably
+the half time break.
+
+<li> that most of marshalling a street skate is a matter of repeatedly
+overtaking the skate, blocking a side road or junction, waiting for
+the skate to go past, and repeating.  Stop go stop go stop go.
+
+</ul>
+

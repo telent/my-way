@@ -1,0 +1,47 @@
+title: If you get an error updating cliki, this is intentional
+author: Daniel Barlow
+date: Wed, 28 Apr 2004 22:22:29 +0000
+
+If you get an error updating cliki, this is intentional.  I've
+temporarily set it read-only, due to the actions of some pubescent
+wannabee who replaced upwards of twenty pages with pornographic
+images.  Will reenable it as soon as something shiny distracts him and
+he pisses off elsewhere.
+
+<pre>
+68.118.158.222 - - [28/Apr/2004:21:40:59 +0100] "POST /edit/index HTTP/1.1" 200 1716 "http://www.cliki.net/edit/index" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:43:23 +0100] "POST /edit/index HTTP/1.1" 200 1716 "http://www.cliki.net/edit/index" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:44:35 +0100] "POST /edit/index HTTP/1.1" 200 1716 "http://www.cliki.net/edit/index" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:44:56 +0100] "POST /edit/index HTTP/1.1" 500 1672 "http://www.cliki.net/edit/index" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:45:41 +0100] "POST /edit/Anthology HTTP/1.1" 200 1724 "http://www.cliki.net/edit/Anthology" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:46:00 +0100] "POST /edit/ACL HTTP/1.1" 200 1712 "http://www.cliki.net/edit/ACL" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:46:14 +0100] "POST /edit/Sourceforge HTTP/1.1" 200 1728 "http://www.cliki.net/edit/Sourceforge" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:46:24 +0100] "POST /edit/Make%20Old%20CMUCL%20CLX%20Work%20With%20Magic%20Cookies HTTP/1.1" 200 1804 "http://www.cliki.net/edit/Make%20Old%20CMUCL%20CLX%20Work%20With%20Magic%20Cookies" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:46:39 +0100] "POST /edit/Graphics%20library HTTP/1.1" 200 1740 "http://www.cliki.net/edit/Graphics%20library" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:46:52 +0100] "POST /edit/Portable%20Hemlock HTTP/1.1" 200 1740 "http://www.cliki.net/edit/Portable%20Hemlock" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:47:06 +0100] "POST /edit/Development HTTP/1.1" 200 1728 "http://www.cliki.net/edit/Development" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:47:16 +0100] "POST /edit/Matthew%20Danish HTTP/1.1" 200 1736 "http://www.cliki.net/edit/Matthew%20Danish" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:47:30 +0100] "POST /edit/CLiki HTTP/1.1" 200 1716 "http://www.cliki.net/edit/CLiki" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 1 seconds
+68.118.158.222 - - [28/Apr/2004:21:48:05 +0100] "POST /edit/Text%20Formatting HTTP/1.1" 200 1738 "http://www.cliki.net/edit/Text%20Formatting" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:48:14 +0100] "POST /edit/LispWorks HTTP/1.1" 200 1724 "http://www.cliki.net/edit/LispWorks" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:48:26 +0100] "POST /edit/Mathematics HTTP/1.1" 200 1728 "http://www.cliki.net/edit/Mathematics" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:48:37 +0100] "POST /edit/GTK%20binding HTTP/1.1" 200 1730 "http://www.cliki.net/edit/GTK%20binding" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:48:54 +0100] "POST /edit/edit/The%20RtLS%20by%20Road HTTP/1.1" 200 1749 "http://www.cliki.net/edit/edit/The%20RtLS%20by%20Road" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:49:07 +0100] "POST /edit/org-davep-dictrepl HTTP/1.1" 200 1742 "http://www.cliki.net/edit/org-davep-dictrepl" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:49:26 +0100] "POST /edit/XML HTTP/1.1" 200 1712 "http://www.cliki.net/edit/XML" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:49:38 +0100] "POST /edit/CL-SDL HTTP/1.1" 200 1718 "http://www.cliki.net/edit/CL-SDL" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:50:01 +0100] "POST /edit/Proposed%20ANSI%20Revisions%20and%20Clarifications HTTP/1.1" 200 1798 "http://www.cliki.net/edit/Proposed%20ANSI%20Revisions%20and%20Clarifications" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:50:10 +0100] "POST /edit/Recent%20Changes HTTP/1.1" 200 1736 "http://www.cliki.net/edit/Recent%20Changes" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:50:33 +0100] "POST /edit/Recent%20Changes HTTP/1.1" 200 1736 "http://www.cliki.net/edit/Recent%20Changes" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:51:00 +0100] "POST /edit/CLUE HTTP/1.1" 200 1714 "http://www.cliki.net/edit/CLUE" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:51:13 +0100] "POST /edit/Glade HTTP/1.1" 200 1716 "http://www.cliki.net/edit/Glade" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:51:22 +0100] "POST /edit/CORBA HTTP/1.1" 200 1716 "http://www.cliki.net/edit/CORBA" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+68.118.158.222 - - [28/Apr/2004:21:51:36 +0100] "POST /edit/pornpicture HTTP/1.1" 200 1728 "http://www.cliki.net/edit/pornpicture" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322; Alexa Toolbar)" www.cliki.net:80 "-" 0 seconds
+</pre>
+
+The good news is that apparently there is no bone damage in my
+shoulder (got it x-rayed today).  The bad news is that even soft
+tissue damage may take 6-8 weeks to heal, and in the meantime every
+time I raise my arm above shoulder I get a stab of pain the likes of
+which I wouldn't wish on anyone except possibly wiki vandals.  So not,
+really, in a very good mood.

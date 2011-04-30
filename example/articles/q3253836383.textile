@@ -1,0 +1,17 @@
+title: Time I was in bed
+author: Daniel Barlow
+date: Mon, 10 Feb 2003 3:26:23 +0000
+
+Time I was in bed.
+
+<p>Further to yesterday's portable CLX news, here's a <a
+href="http://ftp.linux.org.uk/pub/lisp/sbcl/" >unportable CLX</a> for
+SBCL users.  Will be more use, right now, if you're tracking SBCL in
+CVS, but there's a new release due at the end of the month, so it's
+not long for the rest of the world to wait.  It includes all the
+patches that I posted to the portable CLX list yesterday
+
+<p>After uploading that, I spent a couple of hours fiddling with
+Portable Hemlock.  That runs in SBCL now too (patches are on their way
+back to Gilbert).
+

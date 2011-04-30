@@ -1,0 +1,18 @@
+title: Another SLIME screenshot, with my trademark
+author: Daniel Barlow
+date: Sat, 11 Oct 2003 17:2:41 +0000
+
+<p>Another <a href="/slime2.png">SLIME screenshot</a>, with my trademark
+gimped arrows to add gratuitous colour.  I don't think it's actually
+<i>doing</i> anything that it wasn't last time, but more of it's moved
+into sb-introspect now.
+
+<p>Ok, maybe magic spacebar isn't that exciting.  In fact, I turned it
+off in ILISP because it's nigh-impossible to recover from if it goes
+wrong - which, when it has to access internal functionality, it will
+tend to.  That's not a problem any more, right?  The emacs-like
+apropos is cute though - and <i>not my work</i>, I must emphasize.
+All I'm doing is the SBCL glue.
+
+<P>Right, so let's see what's with the debugger, then.  And add a
+slime command to load asdf systems.

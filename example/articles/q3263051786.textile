@@ -1,0 +1,17 @@
+title: Installed Firebird 0.6, and it seems to have fixed the weird problem with
+author: Daniel Barlow
+date: Tue, 27 May 2003 20:16:26 +0000
+
+Installed <a
+href="http://lists.debian.org/debian-devel/2003/debian-devel-200305/msg01423.html"
+>Firebird 0.6</a>, and it seems to have fixed the weird problem with
+hyphens and apostrophes that (on some but not all web pages) would
+cause 0.5'
+<br> irritating, but I never found out whether it was a
+phoenix problem, a mozilla problem, a debian packaging problem, a font
+problem, a locale problem, or frankly, what.  Which is why, if anyone
+associated with the mozilla project is reading this, i didn't report
+it to them.  Anyway, if anyone else on the planet was suffering that
+one, 0.6 is the cure.  Now I can read <a
+href="http://off.net/~shaver/diary/" >Mike Shaver's diary</a> again.
+

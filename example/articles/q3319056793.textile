@@ -1,0 +1,38 @@
+title: There is one thing more that needs doing for SBCL/pthreads: futex
+author: Daniel Barlow
+date: Sun, 6 Mar 2005 0:13:13 +0000
+
+There is one thing more that needs doing for SBCL/pthreads: futex
+removal.  It looks like we can almost replace them with POSIX 1003.1b
+semaphores, but for one small problem
+
+<blockquote>
+&lt;dan-b> I feel a sudden need to say ARGH ARGH ARGH <br>
+&lt;dan-b> I wonder what happens if GC moves a waitqueue struct while threads
+are waiting on it <br>
+&lt;pfdietz> 'Bad Things'? <br>
+&lt;dan-b> I can think of no reason for that not to be the case, certainly <br>
+&lt;dan-b> maybe it just never happens because there's a reference to
+the struct on the stack of one or more of the participating threads  <br>
+&lt;dan-b> from the arglist to get-mutex or whatever <br>
+&lt;dan-b> actually I could believe that <br>
+&lt;dan-b> | Only sem itself may be used for performing synchronisation. The
+result of referring to copies of sem in calls to sem_wait(),
+sem_trywait(), sem_post(), and sem_destroy(), is undefined <br>
+&lt;dan-b> looks like pthreads is going to have bigger problems, though <br>
+&lt;dan-b> even unlocked semaphores are now immovable <br>
+</blockquote>
+
+(quote is from the <a href=
+"http://www.opengroup.org/onlinepubs/007908799/xsh/sem_init.html"
+>sem_init</a> specification)
+
+<p>
+waitqueue was a perfectly ordinary struct.  I think I'm going to have
+to make it a primitive object so that I can teach GC how to move it
+safely (sem_destroy, move, sem_init in new location).  Sigh.  Or keep
+the semaphores in not-lisp-memory, and account for them by hand.  Or
+initialise them when first needed (when something wants to wait) and
+destroy them again as soon as all threads are no longer waiting.  Or
+go to bed and see if any better ideas occur to me tomorrow.
+

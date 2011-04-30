@@ -1,0 +1,45 @@
+title: 
+author: Daniel Barlow
+date: Sun, 16 Apr 2006 20:19:50 +0100
+
+"Design" is a very strong word.  From time to time when writing Lisp
+(rare enough in itself, I know) I factor out stuff that seems like the
+nucleus of a good idea and potentially even reusable code - <a
+href="http://ww.telent.net/diary/2004/9/#27.82825">sexql</a> is one
+example you might have come across, and <b>dbs</b> is another that you
+(I hope) won't - because it doesn't exist anywhere other than my
+laptop and in a few backup locations.  (Unless you're the swine that
+stole my last laptop, anyway)
+
+<p>I'm never quite sure what to do about release-engineering for this
+kind of stuff.  It's not finished enough that I feel <i>good</i> about
+reserving part of the global CL namespace to refer to it (especially
+on days when I'm not feeling imaginative and so give it a really
+generic name), but it's often still potentially useful to other people
+and just sitting on it - or posting it to an unindexed "transient"
+forum like small-cl-src - seems also suboptimal.
+
+<p>With that in mind, here's an announcement of the first available
+version of Text-Template: a poor rip-off of Mark Jason Dominus'
+Text::Template Perl module, for Lisp.
+
+<h2>Example</h2>
+
+<p>Suppose a file <tt>test-template</tt> with the following contents:
+</p><pre>here is some text
+#<(side-effect) (* 2 3)>#
+and some more text #<t># here
+</pre>
+we do
+<pre>TEXT-TEMPLATE> (with-open-file (i "test-template") 
+                    (make-instance 'text-template :stream i))
+<font color="red">#<TEXT-TEMPLATE {9A54AA1}></font>
+
+TEXT-TEMPLATE> (fill-in * *standard-output*)
+here is some text
+6
+and some more text T here
+<font color="red">NIL</font>
+</pre>
+
+For more information, see http://www.cliki.net/text-template

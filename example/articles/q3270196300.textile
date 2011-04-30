@@ -1,0 +1,42 @@
+title: Having successfully thought myself back into the role of SBCL
+author: Daniel Barlow
+date: Mon, 18 Aug 2003 12:51:40 +0000
+
+Having successfully thought myself back into the role of SBCL
+maintainer on Saturday, I decided it would be nice to fix the
+longstanding (well, few-months-old) bug that finalisers don't.  This
+is actually a symptom of a more general problem: that I removed all
+the GC hooks completely because the way we were running them wasn't
+thread-safe.
+
+<pre>
+  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  Command           
+17849 dan        9   0  150m  72m  896 S  0.0 58.5  10:17.89 gdb               
+
+(gdb) info bre
+Num Type           Disp Enb Address    What
+9   hw watchpoint  keep y              *(int *) 1079316548
+(gdb) cont
+Continuing.
+Error evaluating expression for watchpoint 9
+Error accessing memory address 0x40551044: No such process.
+Watchpoint 9 deleted.
+Couldn't write debug register: No such process.
+(gdb) <b>^D</b>
+A debugging session is active.
+Do you still want to close the debugger?(y or n) y
+Detaching from program: /home/dan/src/sourceforge/sbcl/src/runtime/sbcl, process 17967
+ptrace: No such process.
+(gdb) 
+</pre>
+
+<p>It kind of works.  It works up until the point that the
+pseudo-atomic-interrupted flag mysteriously sets itself without saving
+the handler/signal/siginfo etc that is supposed to be saved when a PA
+section is interrupted, so we jump to zero and go boom.
+
+<p>But now it really really is time to return to my assault on CLiki
+and related stuff, and then investigate programmatic interfaces to <a
+href="http://www.streetmap.co.uk" >Streetmap</a> (which I think may
+involve XML somewhere).
+

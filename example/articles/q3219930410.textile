@@ -1,0 +1,20 @@
+title: Spring is here, tra la la
+author: Daniel Barlow
+date: Sun, 13 Jan 2002 17:6:50 +0000
+
+<p> Spring is here, tra la la.
+
+<p> Well, near enough.  When I stepped outside at 2pm, the temperature
+was above zero, and it was not raining.  So, first bike ride of the
+year.  <p> I am <i>so</i> out of condition.  Average 27km/h (down from
+32 last summer) and now it feels like there is a big hole in my chest
+where my lungs used to be.  So, it can only get better from here.  It
+had better.
+
+<p> Some SBCL progress yesterday, but more staring at PPC assembler
+still needed.  After a certain amount of it, I gave up, cooked dinner,
+and reread the fourth Harry Potter book.  Ho hum.
+
+<p> And the days are getting longer again.  It's still light at 16:30
+now.  
+

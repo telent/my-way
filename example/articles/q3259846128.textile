@@ -1,0 +1,14 @@
+title: Sigh
+author: Daniel Barlow
+date: Sun, 20 Apr 2003 17:48:48 +0000
+
+Sigh.  I checked my mail this afternoon to find that judging by the
+number of bounces in it, someone is spamming with my name in the From
+address.  If you have mail from me that doesn't look like something I
+would typically have sent, look at the headers.  Unless it was sent
+from 81.103.195.118 or 64.49.254.81, it probably wasn't anything I
+wrote.
+
+<p>I guess it's time to start routinely GPG-signing all the email I
+send.  1024 bit DSA key, id 75908913, accept no substitutes.
+

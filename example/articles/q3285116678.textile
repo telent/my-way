@@ -1,0 +1,60 @@
+title: Welcome to sigtrap_handler - please drive carefully
+author: Daniel Barlow
+date: Sat, 7 Feb 2004 4:24:38 +0000
+
+Welcome to sigtrap_handler - please drive carefully.  When I left you
+last time we'd got as far as genesis - the process that generates the
+initial core file.  Since then
+
+<ol>
+
+<li> rewrote bits of <tt>call_into_lisp</tt> (assembler thing that
+calls the first lisp function) to expect its arguments passed in
+registers and returned in other registers a la x86-64 calling
+convention.  Then it jumped into lisp and executed 4 instructions or
+so
+
+<li> before hitting a RIP-relative move instruction which I don't
+remember writing.  Ah, so there are bits of the addressing mode that
+have been stolen for this and I need a SIB byte if I want the previous
+behahiour
+
+<li> and, because I am thick, I was encoding the register number mod 8
+instead of mod 16, so using rax when I wanted rbp (uh, really.  The
+sbcl x86-64 assembler inherits the cmucl x86 assembler's decision to
+represent registers as 0,2,4,6... instead of 0,1,2,3... apparently
+because it makes the al+ah=ax overlap easier to deal with).
+
+<li> observed that there were sequences of 0 bytes in random places.
+Eventually realised I was writing 64 bit immediate constants out for
+opcodes that only want 32 bit immediates (which is almost all the
+instructions that take immediates at all, in fact).  So, restored 
+the fixup vector to 32 bits in width
+
+<li> which turned up a bunch of other places that I'd unthinkingly
+widened to 64 bits but which really shouldn't be: many VOPs with the /C
+(constant) modifier are using <tt>unsigned-num</tt> as an argument
+type, which causes the backend to attempt to use them for anything up
+to 64 bits even though the instructions they use can only cope with 32.
+So, fixed lots of those
+
+<li> fixed up some of the iffier code for accessing ucontexts in the
+runtime
+</li>
+</ol>
+<pre>
+This is SBCL 0.8.7.25, an implementation of ANSI Common Lisp.
+
+More information about SBCL is available at &lt;http://www.sbcl.org/>.
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+internal error #31
+    SC: 14, Offset: 22            0x7fbfffef60: even fixnum: 137170516952
+fatal error encountered in SBCL pid 8253:
+internal error too early in init, can't recover
+</pre>
+
+Internal error 31 is apparently "UNKNOWN_KEY_ARG_ERROR", which I must
+admit is not what I was expecting.  Usually it's "object is not type foo".

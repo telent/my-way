@@ -1,0 +1,18 @@
+title: Pet peeve right now: packages (or distribution packaging policies,
+author: Daniel Barlow
+date: Thu, 20 Feb 2003 17:31:12 +0000
+
+Pet peeve right now: packages (or distribution packaging policies,
+where applicable) that don't include the documentation.  This is the
+kind of thing you only really find the need for when away from the Net
+(like now, on a coach).  Surely Debian could include a
+"documentation-package-for" as one of its package dependency types,
+then I could put something in my apt configuration to say "always grab
+the docs as well".  I can see some kind of (steadily weakening)
+argument for not making it the default, but for most people it's not
+as if disk is a scarce commodity any longer.
+
+<p>Oh well.  I spent rather a long time already today on recompiling
+CLX - think my battery is about to go flat anyway.  Now that still
+<i>is</i> a scarce commodity.
+

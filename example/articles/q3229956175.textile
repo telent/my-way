@@ -1,0 +1,16 @@
+title: Looking at the price of guitar effects pedals
+author: Daniel Barlow
+date: Thu, 9 May 2002 19:2:55 +0000
+
+
+<p> Looking at the price of guitar <a
+href="http://www.line6.com/Main/Products/productgroups/ProductGroup_Knows.cfm?GroupID=5&CFID=648765&CFTOKEN=72348717"
+>effects pedals</a>.  £220 for a nice modelling delay pedal, same
+again for distortion ...  Alternatively, £500 for another computer and
+a soundcard and <a href="http://www-ccrma.stanford.edu/software/clm/"
+>CLM</a> or <a href=" http://www.lakewoodsound.com/csound/"
+>csound</a> or similar, maybe £40 for a broken pedal from ebay to gut
+for the user interface, I get to design my own effects (I'm not yet
+sure if this is a good thing, though clearly it's the deciding
+factor), and I can probably watch DVDs on it too.  Hmm.
+

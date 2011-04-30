@@ -1,0 +1,28 @@
+title: I recently got the Stargreen update installed and running (not that
+author: Daniel Barlow
+date: Fri, 11 Jul 2003 11:23:8 +0000
+
+I recently got the Stargreen update installed and running (not that
+you can tell the difference; it's all backend stuff), so in theory I
+have some more free time to write here.  As soon as I have everything
+else done that I've been putting off while I finished that (UKUUG
+paper, another article, a proposal) I'll have more time to write this
+anyway.
+
+<p>In the meantime, continuing the theme of objectful vs relational
+operations:
+
+<blockquote>
+  The reaction at the time was that [the relational model]'s going to be inefficient, and it's going to use more instructions and more disk I/Os than IBM's Information Management System (IMS), the first commercial hierarchical, structured database management system. In addition, the industry was moving from batch-transaction processing that dealt with sets of records to online transaction processing that dealt with individual records ("give me that bank account").
+
+<p>Ted's ideas were extremely controversial. The core issues were about how computers would be used in the future and what was important to optimize. This was not a PC world. This was a mainframe world of business data processing.
+
+<p><b>DP</b> The controversy was whether anybody would pay for such inefficient use of the computer?
+
+<p><b>JG</b> Right, and whether we were headed toward a world of online transaction processing where nobody actually wanted to go through all the records. Everything was going to be online, everything was going to be incremental, and there wouldn't be this need for batch reporting.
+
+</blockquote>
+
+From <a
+href="http://www.acmqueue.org/modules.php?name=Content&pa=showpage&pid=43"
+>A Conversation with Jim Gray</a>

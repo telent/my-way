@@ -1,0 +1,38 @@
+title: I have a new-found enthusiasm for automating my job away
+author: Daniel Barlow
+date: Thu, 10 Jun 2004 23:45:58 +0000
+
+<p>I have a new-found enthusiasm for automating my job away.  Yes, this
+is more overspill from "Life Hacks" at NotCon.
+
+<p>When I was a student and had nothing better^Wmore interesting to
+do, I'd spend ages messing with my computer trying to get an optimal
+environment together.  Without any clear idea of what I was optimizing
+<i>for</i>, this was destined to be an infinitely deep time sink - or
+at least, one I only recovered from when I got a Real Job and had to
+start making decisions that involved some balance between "is this the
+Right Thing" and "can I ever finish it?".  So, since then I've been
+kind of wary - and perhaps even overcautious - about spending time on
+anything that doesn't solve a fairly immediate problem.  The classic
+example is my use of Sawfish - it's the first window manager I've used
+for more than a few months that has (what I believe to be) a competent
+scripting/extension language, and also the first that I simply haven't
+bothered configuring - in the four or five years I've been using it I
+haven't written more than a couple of lines of rep.
+
+<p>(Previous WMs have included [v]twm, fvwm, ctwm, and brief forays
+into scwm - which had possibly-guile-related 64 bit issues at the time
+I was using an Alpha on the desktop - and gwm, but that wasn't real
+lisp anyway)
+
+<p>This Must End.  Or at least, I'm going to start getting a lot less
+hardline about it than I've tended to be in the past.  I'm not sure if
+task #1 should be the TODO list, or whether I'm falling into the usual
+"making a list of stuff to do as an excuse to avoid doing any of it"
+symptom.  A text file and an editor has actually worked pretty well,
+but it turns out to be n text files (per-project lists, multiple
+machines, etc) plus I need some way to cope with RT tickets as well.
+From the documentation it doesn't look like RT is exactly extensible
+"out the wazoo" (technical term) unless possibly you're the server
+admin.  An RT-RSS gateway is one possibility.
+

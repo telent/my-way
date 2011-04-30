@@ -1,0 +1,33 @@
+title: OK, it looks like that was half the problem
+author: Daniel Barlow
+date: Tue, 30 Sep 2003 12:36:40 +0000
+
+OK, it looks like that was half the problem.   Or, at least, one of
+the two problems.  
+
+<p>Allocation is done in pseduo-atomic sections.  When
+<tt>alloc()</tt> decides that it's time to GC, it uses the same
+deferred handler mechanism as an interrupt received during
+pseudo-atomic to schedule a collection as soon as the allocation
+itself is done.  Problem is that it doesn't (didn't, anyway) check
+whether there was already a deferred handler to run, so the message
+that said "stop for another thread to gc us" got whapped by a message
+saying "now do a gc".  It wouldn't break us to call gc from two
+threads at once - appropriate locking mechanisms are in place - 
+but it doe hurt to not stop when people are waiting.
+
+<p>So, one down.  The other one is that sometimes threads don't seem
+to wake up _after_ gc, so after a few minutes of running, all our
+threads quietly come to rest waiting for a signal.
+
+<p> <a href="#28.5880">Earlier</a> we asked "What would block SIGTRAP
+and SIG_DEQUEUE?".  <b>wait-on-queue</b> blocks SIG_DEQUEUE
+temporarily while it frobs the waitqueue data before it can go to
+sleep.  run_deferred_handler is called from the sigtrap_handler, and
+although we unblock the usual culprits before calling into Lisp,
+SIGTRAP is (along with SIGSEGV) not in that set.  
+
+<p> I've added the good parts of this experimentation (without, I
+hope, the debugging cruft) to CVS under the tag <tt>atropos-branch</tt>.
+If you can deal with the shear abhorrence of all these signals, you're
+welcome to take a look.

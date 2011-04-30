@@ -1,0 +1,53 @@
+title: Ray de Lacaze
+author: Daniel Barlow
+date: Tue, 22 Jun 2004 18:57:0 +0000
+
+<p><a href="http://lemonodor.com/archives/000835.html">Ray de Lacaze
+resigns as ALU president</a>.  If you read Lemonodor you'll have
+picked this up already; if you read Planet Lisp, likewise but you'll
+have missed the comments, which I hope will shortly become an
+interesting debate about wat the ALU's role should be anyway.  ILC02
+was immense fun for me: not only the formal presentations, but also
+just hanging out and discussing ideas with people I'd only previously
+met online.  But then, LSM was pretty cool too: you don't <i>have</i>
+to spend megabucks and an ulcer to get interesting people together in
+the same place (as witness NotCon).
+
+<p>Lisp news from me personally: not much.  One of the ideas being
+thrown around for <a href=
+"http://www.cliki.net/Libre%20Software%20Meeting%202004" >LSM</a> this
+year is that between, around and during the formal presentations (but
+only during the boring ones) we attempt less formal "lightning"
+presentations of 5-10 minutes to explain to the assembled masses what
+we're doing or what we think they should be doing, or where we have
+points of issue to give everyone the necessary background to debate it
+meaningfully.  The current list has me down to explain why you should
+package your projects with asdf and asdf-install, and Rudi Schlatte
+talking about simple-streams; I think we'll also be trying to co-opt
+Tim Moore to explain enough of CLIM to the world that we can
+brainstorm what should happen when there are multiple apps in one
+image, and I'm pretty sure Christophe Rhodes wanted to argue with
+someone about floating point.
+
+<p>My "hack hemlock" idea there seems to have veered off track a bit;
+the more I thought about it the more fun it seemed it would be to
+start from scratch and then start stealing and retrofitting code from
+Hemlock and other places <i>after</i> I had a basic set of sensible
+abstractions to fit them into.  And I know that any project that
+starts with Hemlock is going to be subject to Robert Strandh asking
+"why aren't you using flexichains", whereas with a from-scratch design
+I can just leave the buffer abstraction, well, abstract.  For the
+moment.  Anyway, you heard it here first: <b>r</b>inse <b>i</b>s
+<b>n</b>o <b>s</b>ubstitute for <b>e</b>macs.  Not now and quite
+possibly not ever, even if I do get it to a usable state; I'm
+designing an editor I want to use, and if nobody else likes it, too
+bad.  There's no code yet, but it'll be in telent cvs as soon as there
+is.
+
+<P>Non-Lisp news: last weekend I went on an "introduction to climbing"
+course at the local climbing wall, thus demonstrating beyond all doubt
+that my shoulder is better.  Yesterday it was not aching any more than
+my other shoulder, back or forearms were, and the bruising has finally
+disappeared too.  So, sometime in the next few days I need to wander
+back to Mile End and spend some more time hanging onto things by my
+fingertips (and upside down from the ceiling).

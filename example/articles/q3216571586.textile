@@ -1,0 +1,12 @@
+title: Double bah
+author: Daniel Barlow
+date: Wed, 5 Dec 2001 20:6:26 +0000
+
+
+<p> Double bah.  I thought I'd grabbed a working uncommonsql, but it
+turns out to be the one with really dodgy MySQL alien declarations in
+it that only really work on Alpha.  Between the API and the
+permissions system (it's flexible, just like jelly is flexible) I
+really am thinking about moving this stuff to Postgres.  UncommonSQL
+is rather better set up with Postgres too, which would be a bonus.
+

@@ -1,0 +1,21 @@
+title: MORE CONSUMERISM
+author: Daniel Barlow
+date: Thu, 12 May 2005 14:7:43 +0000
+
+MORE CONSUMERISM.  
+
+<p>The headphones work a lot better with the large earbuds instead of the
+default medium-sized ones, though still require some fiddling to get
+them placed so that the sound isn't muffled and isn't tinny either.
+They do reduce external noise significantly too, but they're a long
+way from letting me walk around in blissful silence: I can still hear
+traffic and stuff.  Which I think is probably good.
+
+<p>I can find no way of getting pictures off my phone over the USB
+cable, without forking out for a piece of Windows software (which I'd
+then have to run under Wine or something).  I thought I read something
+that indicated it would do OBEX over the USB connection if fed the
+appropriate AT commands to put it into obex mode, but despite
+extensive searching I can't find that page any more so I might have
+imagined it.  Gah.
+

@@ -1,0 +1,52 @@
+title: cirCLe CD update,
+author: Daniel Barlow
+date: Mon, 27 Oct 2003 0:21:41 +0000
+
+<a href="http://web.metacircles.com/circle_cd">cirCLe CD</a> update,
+for everyone wondering.  I'll probably make an announcement on the
+mailing list this week as well.
+
+<p>Having decided to <b>ditch Knoppix</b> I find that I can get a
+working Linux (running X, apache, sawfish, mozilla-firebird and emacs,
+which is more or less what's needed) into ~120Mb after compression.
+The sources for this lot weigh in at around 380Mb, so it's looking for
+the moment as if I can get the whole thing on a <b>single disc</b>.
+Some sacrifices have had to be made in the process: we autodetect your
+ethernet card, sound card (not that we use it for anything), mouse,
+video, etc, but if you have some more exotic hardware (usb cablemodem,
+isdn, pppoe thingy) we don't support that out of the box.  I'd like to
+add support for wireless ethernet at least; we'll see how it goes.
+
+<p>Contrary to the initial announcement, it will use <b>SLIME</b>, not ILISP.  
+
+<p>If you install it on a real system (as I hope that most serious
+users eventually will), the package names are chosen to <b>avoid
+conflict with existing packages</b> (unless you have existing packages
+whose names start <tt>circle-</tt>, in which case you still face
+problems), and it all goes into /opt/circle-2003-1, so in the worst
+case you can still dispose of it pretty easily with <tt>rm</tt>.
+There are actually only a couple of "vendor" packages in there: most
+of it is installed from source with asdf-install.
+
+<p>I've been playing with Linux USB storage support recently, and
+although it works most of the time I'm not altogether confident about
+its stability (yesterday's highlight: I managed to get a Zip disk and
+a USB floppy both pretending to be scsi1 at the same time).  There
+will be some way from the live CD to mount existing filesystems and
+<b>save work/preferences/settings</b>, but depending on your hardware, the
+phase of the moon, etc, you may have to approach this with some degree
+of caution.
+
+<p>Current status: <b>CD works</b> and boots on my hardware.  Packages
+created for <b>sbcl</b>, <b>araneida</b>, <b>cl-ppcre</b>,
+<b>cliki</b>, <b>clx</b>, <b>detachtty</b>, and <b>split</b>-sequence.
+None of them tested (some of them known to break, in fact).  An
+optimistic timetable would be "end of November", a more realistic one
+would be "2004".
+
+<p>Oh, for the curious, I stopped using xnest after attempting to
+start it over a non-local connection.  Now using <b>VNC</b> instead.
+This is basically for my own development purposes, but I'm very much
+tempted to leave it in on the finished CD (in a completely unsupported
+and undocumented fashion) just because I think it's kind of neat.  All
+sotware has Easter eggs, right?

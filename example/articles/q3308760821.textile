@@ -1,0 +1,7 @@
+title: Update: I'm not sure when or whether Planet Lisp reloads old diary
+author: Daniel Barlow
+date: Sat, 6 Nov 2004 20:13:41 +0000
+
+Update: I'm not sure when or whether Planet Lisp reloads old diary
+entries, so if the previous entry still says to use <tt>require</tt>,
+don't.  (a) it's unnecessary; (b) it doesn't work

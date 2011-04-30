@@ -1,0 +1,9 @@
+title: bash-2.03$ strings /opt/bo/webi26/Server/WebIntelligence2.5/http-server/bin/aphwi.so | grep empty
+author: Daniel Barlow
+date: Fri, 15 Nov 2002 17:20:33 +0000
+
+<pre>
+bash-2.03$ strings /opt/bo/webi26/Server/WebIntelligence2.5/http-server/bin/aphwi.so | grep empty
+&lt;HTML>&lt;BODY bgcolor=white>&lt;CENTER>&lt;B>&lt;BLINK>This page is empty (WI0100)&lt;/BLINK>&lt;/B>&lt;/CENTER>&lt;/BODY>&lt;/HTML>
+&lt;HTML>&lt;BODY bgcolor=white>&lt;CENTER>&lt;B>&lt;BLINK>This page is empty (WI0100)&lt;/BLINK>&lt;/B>&lt;/CENTER>&lt;/BODY>&lt;/HTML>
+</pre>

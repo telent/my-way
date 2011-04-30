@@ -1,0 +1,9 @@
+title: That's the last time I turn computers off when I go away
+author: Daniel Barlow
+date: Tue, 30 Dec 2003 11:57:56 +0000
+
+That's the last time I turn computers off when I go away.  The PSU in
+the Alpha appears to be dead, and the PSU fan in the x86 desktop was
+sticking as it went round.  It seems to be better now it's warmed up a
+little, though.  For the moment I've pulled the disk out of the Alpha
+to regain access to some CVS repositories, 

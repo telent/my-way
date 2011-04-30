@@ -1,0 +1,16 @@
+title: "The suspend is killing me", said Arthur testily
+author: Daniel Barlow
+date: Fri, 19 Aug 2005 16:48:9 +0000
+
+<p>"The suspend is killing me", said Arthur testily.
+
+<p>Actually, the suspend is a lot better than it was.  It seems that
+the good bits of Suspend 2 are supposed to be being read by other
+people and slowly merged into the less-featureful swsusp code in the
+baseline kernel.  So I decided to try that and see how far it's got,
+and it already works better than suspend2 did.  My usb phone is still
+broken, but after <a
+href="http://bugzilla.kernel.org/show_bug.cgi?id=5093" >some
+investigation</a> and a fairly brutal patch I have suspendable
+wireless at least.
+

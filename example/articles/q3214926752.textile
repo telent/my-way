@@ -1,0 +1,47 @@
+title: Back on the train, gang
+author: Daniel Barlow
+date: Fri, 16 Nov 2001 19:12:32 +0000
+
+<p> Back on the train, gang
+
+<p> The other day I had a look at <a href="/lisp/sockets.html"
+>db-sockets</a> again.  This is a fairly low-level interface to BSD sockets
+for <a href="http://sbcl.sourceforge.net/">SBCL</a> that I started
+about two years ago and then never really revisited - I wrote a couple
+of other things layered on top of it (Araneida and CLiki) but only the
+bits of socket implementation than I actually needed ever happened.
+And nobody else (that I know of) ever used it either - probably either
+because they wanted something more abstract, or because they wanted
+something CMUCL-compatible (or indeed both).
+
+<p>Writing db-sockets the first time around convinced me that Unix
+APIs are pretty damn sucky in places.  I'd mostly forgotten about
+this, but it's starting to come back to me now.  The other thing I
+hadn't realised at the time, though, is just how sucky db-sockets also
+is.  Was.  Whichever.  Garbage collecting
+objects-which-represent-file-descriptors is so horribly the wrong
+thing that I don't want to think about it.
+
+<p>New db-sockets will probably be even more low-level.  It will deal
+in file descriptors, will use Lisp memory for the sockaddr and other
+structures lying around the place, will have suitable macrology for
+managing fds so that we don't leave them lying around open until the
+next time the user happens to GC, and will, we hope, be a sensible
+target to port net.sbcl.sockets to, so that people who want
+cmucl-compatible stuff can have it as well without feeling they're
+getting two of everything.  <i>Then</i> I will sort out Araneida, and
+<i>then</i> I will fix CLiki.  And hopefully someone will package CLX
+for SBCL so that - actually, I'm not sure it would be so cool for that
+to happen because then I'd probably start hacking on <a
+href="/cliki/Eclipse" >Eclipse</a> again.  And that's a time sink.
+
+<pre>
+** WARNING **: GConf error:
+  Object Activation Framework error:
+ OAF problem description: 'Nothing matched the requirements.'
+</pre>
+
+<p>Repeat x20.  I love gnome error messages too
+
+<p>Right.
+

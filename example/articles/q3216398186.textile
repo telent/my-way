@@ -1,0 +1,18 @@
+title: Some anonymous contributor linked to the preview release of FTX13
+author: Daniel Barlow
+date: Mon, 3 Dec 2001 19:56:26 +0000
+
+
+<p> Some anonymous contributor linked to the preview release of FTX13
+from the relevant CLiki page.  The only reason I hadn't was that I
+forgot to, so I think that's reasonable.  Wish they'd left their name,
+though.
+
+<p> BSM (whose web site I will not link to, because it's useless) tell
+me that I'm going to have to pay for tomorrow's driving lesson even
+though I attempted to ring on Saturday to cancel it (there was nobody
+there).  Not entirely happy about that.
+
+<p> Still using emacs 21.  Still haven't got as far as trying ilisp
+with it yet.
+

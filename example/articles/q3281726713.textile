@@ -1,0 +1,7 @@
+title: Happy Christmas
+author: Daniel Barlow
+date: Mon, 29 Dec 2003 22:45:13 +0000
+
+<p>Happy Christmas
+
+<p>Currently playing with: versioning in CLiki and RSS in this diary

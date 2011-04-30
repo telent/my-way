@@ -1,0 +1,30 @@
+title: Do POSIX subcommittees ever look at each others' work
+author: Daniel Barlow
+date: Thu, 24 Feb 2005 21:31:53 +0000
+
+Do POSIX subcommittees ever look at each others' work?  The
+implementation of <b>interrupt-thread</b> is made more complicated by
+it not being possible to <a
+href="http://www.opengroup.org/onlinepubs/007908799/xsh/sigqueue.html"
+><tt>sigqueue</tt></a> a thread, and likewise not being possible to <a
+href="http://www.opengroup.org/onlinepubs/007908799/xsh/pthread_kill.html"
+><tt>pthread_kill</tt></a> and pass any data to the thread being
+signalled.  So, we need something held per-thread to indicate what
+code to interrupt it with, and then some stupid locking regime so that it
+can be interrupted from two other threads at once without something
+weird happening.  OK, it's not rocket science, and scalability
+arguments probably don't matter too much as we don't really expect
+interrupt-thread to be used in expected-to-be-fast code anyway.  It's
+still annoying, though.
+
+<p>I still haven't bought a new laptop; I'm still trying to figure out
+whether I actually need one or not: so far, the only requirement I've
+identified is to be able to IRC in front of the TV from time to time,
+and that's not pressing really.  I did also wonder for a while whether
+I could use a PDA, but after thinking a while longer, maybe I can get
+away with a <a href="/dates.html">text file</a> instead.
+
+
+
+
+

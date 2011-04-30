@@ -1,0 +1,62 @@
+title: Paolo commented on comp.lang.lisp the other day that CLiki had just had its second birthday
+author: Daniel Barlow
+date: Mon, 3 Jun 2002 0:53:12 +0000
+
+
+<p> Paolo commented on comp.lang.lisp the other day that <a
+href="/cliki/">CLiki</a> had just had its second birthday.  I believe
+him, but I can't actually remember, myself.  The first cut at CLiki
+sort of sat around being an undirected wiki-type thing; the second
+version was very briefly a resource list for the then-new <a
+href="http://www.red-bean.com/lispweb/" >lispweb</a> mailing list
+("Some things NOT on topic: LispOS mental masturbation"), then a
+couple of days later I decided that I really didn't care very much
+about Scheme and that it should concentrate on the stuff I personally
+find interesting: Common Lisp stuff on Unix.  At or around that point
+I <a
+href="http://www.red-bean.com/pipermail/lispweb/2000-May/000093.html"
+>posted</a> to lispweb, so I guess I could reasonably consider that
+the formal opening.  
+
+<p> My suspicion is that the focus is what's made it successful.  I
+don't think it's the only possible focus that would have been a
+success, but to make anything that even pretends to be a community
+site these days I think you have to find people with some degree of
+common goals.  This is my rationalization for adding
+things like the dreaded <a href="/cliki/non-free">non-free</a> tag or
+my comments on the <a href="/cliki/JavaScript">JavaScript</a> page -
+it's not because I'm violently opposed to these things, but because
+they're off-topic for CLiki.
+
+<p> (The astute reader will already have observed that I side-stepped
+the question of whether I am violently opposed to these things or not.
+Even if Shaver's <i>not</i> reading this, i know from the referer(sic)
+logs that many other people who read his <a
+href="http://off.net/~shaver/diary/" >diary</a> are)
+
+<p> After some more digging around for early CLiki references, I find
+my <a href="http://www.advogato.org/person/dan/diary.html?start=39"
+>old diary entries</a>.  For comparison, as of right now it's had 36
+POSTs since 26th May - so, no significant change there in two years,
+then.  The number of GETs has gone up an <i>awful</i> lot, admittedly:
+<a href="http://ww.telent.net/lisp/cliki/report.html" >analog</a>
+gives current values, as well as a strong indication that most of them
+were probably search engine robots.
+
+<p> ILISP 5.12.0
+<a href="http://www.geocrawler.com/lists/3/SourceForge/7477/0/8826052/"
+>happened</a>, which indicates that I may be getting better at
+predicting software releases than I was in the bad old days of <a
+href=
+"http://lemonodor.com/archives/000114.html" >ftx13</a> 
+
+<p>I know I keep saying this (although, apparently, not in this diary: must
+be an IRC thing) but you should expect a couple of new cliki features
+in the very near future.  According to my TODO list, all the obvious 
+prerequisites for upgrading (it needs, among other things, a new SBCL
+version on my <a href="http://www.rackspace.com/">shell host</a>,
+which tends to imply a pile of other stuff needing testing too) are
+satisfied, so now I'm just waiting for a slack time to do the actual
+upgrade.  This would be one, except that right now I'm going to go to
+bed instead.
+

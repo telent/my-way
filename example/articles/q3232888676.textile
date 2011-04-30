@@ -1,0 +1,19 @@
+title: This entry exists for two reasons:
+author: Daniel Barlow
+date: Wed, 12 Jun 2002 17:37:56 +0000
+
+This entry exists for two reasons:
+
+<ol>
+
+<li> To counter <a
+href="http://www.neilvandyke.org/weblog/#12-jun-2002" >Neil's
+claim</a> that my <a href="/diary/2002/6#11.54534">use of an external
+process</a> to generate seconds-since-1900 was an attempt to bait
+him.  In fact, it was simply a lack of success with emacs apropos
+facility.
+
+<li> To remind me that my permalink format sucks when there are
+multiple entries on any given day.  That needs fixing.
+</li>
+</ol>

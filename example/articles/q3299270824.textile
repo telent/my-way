@@ -1,0 +1,50 @@
+title: Bcc: dan
+To: sbcl-devel &lt;at&gt; lists.sourceforge.net
+Subject: Re: [Sbcl-devel] Status of native thread support
+author: Daniel Barlow
+date: Tue, 20 Jul 2004 1:7:4 +0000
+
+<pre>
+Bcc: dan
+To: sbcl-devel &lt;at&gt; lists.sourceforge.net
+Subject: Re: [Sbcl-devel] Status of native thread support?
+
+Edi Weitz writes:
+
+> FWIW, I just tried the threaded CL-PPCRE tests again (I had an email
+> exchange with Cristophe about this some months ago) and they still
+> fail with SBCL 0.8.12 on Debian unstable. (Kernel is 2.6.6.) They run
+> fine with Lispworks' green threads and they used to run fine with
+> Scieneer's native threads when I had access to their 1.1 trial
+> version.
+
+The CL-PPCRE thread tests seem to work quite nicely as a test of
+thread creation/exiting, which had a number of exciting race
+conditions.  You may (and everyone else using or wanting to use
+threaded SBCL may also) want to check out 0.8.12.42 which fixes at
+least three of these and seems to run the threaded tests in cl-ppcre
+0.7.9 quite happily.
+
+This also fixes the thundering herd at thread gc rather more cleanly
+than inserting sched_yields around the place: thanks to Juho Snellman
+and Christophe Rhodes on #lisp for pointing this stuff out.
+
+So, unless Bill advises to the contrary, SBCL will shortly be going
+into code-mostly-freeze for the 0.8.13 release.  Therefore it would be
+a really good thing if people would test their threaded stuff for
+regressions /now/ instead of leaving it a week: then any bugs can be
+fixed in time for this month instead of next.
+
+(Incidentally, your threaded-scan function seems to be doing incf of
+a shared variable COUNTER without the aid of a lock; this is probably
+not guaranteed to work everywhere.  I think it happens to work in SBCL
+(if so, mostly because it happens to work on x86), but you probably
+want to have some kind of atomic-incf there, or protect it with a
+mutex)
+
+
+-dan
+
+-- 
+"please make sure that the person is your friend before you confirm"
+</pre>

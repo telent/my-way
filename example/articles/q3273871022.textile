@@ -1,0 +1,16 @@
+title: 6043 calling sub-gc
+author: Daniel Barlow
+date: Tue, 30 Sep 2003 1:37:2 +0000
+
+<pre>
+6043 calling sub-gc
+6040 stopping for gc
+6041 deferred stop for gc
+6041 calling sub-gc
+6042 stopping for gc
+<i>There was a terrible ghastly silence</i>
+</pre>
+
+Deadlock.  Boom.  I'm going to go to bed now, but I think in the
+morning, or reasonable analogue thereto, we can have this GC problem
+fixed.

@@ -1,0 +1,28 @@
+title: I've been playing with Google Maps
+author: Daniel Barlow
+date: Fri, 12 Aug 2005 13:21:50 +0000
+
+I've been playing with <a
+href="http://maps.telent.net/rs-20050814.html" >Google Maps</a>.  The
+link you see there is notable less for what you can see (though the
+satellite view is kind of neat) as what you would be able to see if
+you - for example - were to type 'javascript:showMarkers()' into the
+url bar immediately after visiting it.  Probably only works in
+Mozilla-derived browsers, or at least has not been tested in anything
+else.
+
+<p>Anyway, that's where I'll be leading 100-odd skaters (some odder
+than others, I have no doubt) on Sunday afternoon.
+
+<p>In the process I noted quite a lot of one-way streets that are
+incorrectly marked in Google Maps, which is a shame as it does rather
+reduce the usefulness of said tool for skate route planning of this
+kind.
+
+<p>It would be nice if it measured distance: that will be forthcoming.
+Yes, I do know about the gmap pedometer, but that only allows the last
+point to be edited, whereas this thing allows intermediate points to
+be moved/inserted/deleted - and is a bit easier to get the data out of
+in useful format.
+
+

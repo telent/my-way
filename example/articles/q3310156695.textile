@@ -1,0 +1,15 @@
+title: Pet peeve (skating-related): use of the phrase
+author: Daniel Barlow
+date: Mon, 22 Nov 2004 23:58:15 -0000
+
+Pet peeve (skating-related): use of the phrase "concrete jungle".
+It's not a jungle and shares very few characteristics with same, and
+it's mostly not even concrete.  It's lazy writing.  Stop it.
+
+<p>(If you thought I was going to talk about the rash of legal threats
+that seem to be buzzing around the London skating scene lately, well,
+you're wrong.  Apart from anything else I am still not fully unhalt,
+and that makes me cranky, easily irritated, and prone to spend time
+picking fights in online forums, none of which contributes to sensible
+and dispassionate discussion.  So, I'll carry on annoying people on #lisp instead)
+

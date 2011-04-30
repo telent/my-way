@@ -1,0 +1,24 @@
+title: Anhedonic Android
+author: Daniel Barlow
+date: Thu, 16 Sep 2010 11:39:36 +0100
+
+I'm having another go at Android development: this happens every so often when the memories of Java verbosity are sufficiently dulled by distance that I start thinking "it can't have been that bad, can it?".  And of course, it turns out every time that yes, it can.
+
+Anyway, should you be doing Android programming and getting a runtime error of the form <tt>Your content must have a TabHost whose id attribute is 'android.R.id.tabhost'</tt> when your latest changes shouldn't have involved a tabhost anyway, my advice is not to spend too long looking for the cause until *after* you have run @ant clean@ and reinstalled on the target device or emulator.  Because my experience is that the error then usually goes away with no code changes required.
+
+Another tip to lessen the monkey-clicking: use the @am@ command to launch your app automatically after a successful build/install.  I don't know @ant@ nor do I want to learn it right now (include XML rant by reference here) so I've added to the creaking edifice witha small Makefile
+<pre>
+PATH:=/usr/local/lib/android/tools:$(PATH)
+
+bin/onelouder-debug.apk: $(shell find src -name \&#42;.java)  $(shell find res -name \&#42;.xml )
+	ant debug
+
+go: bin/onelouder-debug.apk
+	adb -e install -r  bin/onelouder-debug.apk
+	adb -e shell "am start -a android.intent.action.MAIN -n fm.onelouder.player/.Onelouder"
+
+clean:
+	rm -rf bin gen
+	ant clean
+</pre>
+

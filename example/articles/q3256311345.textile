@@ -1,0 +1,49 @@
+title: To those of my readers who don't as a matter of course go on and check
+author: Daniel Barlow
+date: Mon, 10 Mar 2003 18:55:45 +0000
+
+To those of my readers who don't as a matter of course go on and check
+Shaver's diary and links therefrom
+
+<ul>
+
+<li><a href="http://off.net/~shaver/diary/2003/03/#20030309">
+http://off.net/~shaver/diary/2003/03/#20030309</a>
+
+<li><a href="http://neon.polkaroo.net/~mhoye/blarg/#objectification">
+http://neon.polkaroo.net/~mhoye/blarg/#objectification</a>
+
+<li><a
+href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&threadm=350D92F5.DB56C233%40netscape.com&rnum=1&prev=/groups%3Fselm%3D350D92F5.DB56C233%2540netscape.com">
+http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&threadm=350D92F5.DB56C233%40netscape.com&rnum=1&prev=/groups%3Fselm%3D350D92F5.DB56C233%2540netscape.com</a>
+
+
+<li> and Lisp, of course, has an agenda here too - 
+<a href="http://www.nhplace.com/kent/PS/Name.html">
+http://www.nhplace.com/kent/PS/Name.html</a>
+
+</li>
+</ul>
+
+I might add that pervasive use of getters/setters feels a lot less
+ugly in a language where the syntax to update an attribute looks just
+like a method call anyway -
+
+<pre>
+(creditcard-number my-card) => "4123412341234129" ; a slot read
+(creditcard-type my-card) => "VISA"               ; a function call
+(setf (creditcard-number my-card) "5455555555555555") ; a slot write
+(setf (creditcard-type my-card) "mastercard")     ; an error
+;;; ... but, oh, look
+(creditcard-type my-card) => "Mastercard"         ; it already knew
+</pre>
+
+Actually, I lied.  The particular system I took those examples from
+uses MOPpery to store all its data in a Postgres database anyway, so
+<i>none</i> of the above is necessarily a straightforward assignment
+under the covers.
+
+<p>Actually, I lied twice.  Those aren't my (or, as far as I know,
+anybody's) real credit card numbers either.  Sorry, folks.
+
+

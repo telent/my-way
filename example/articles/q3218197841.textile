@@ -1,0 +1,15 @@
+title: Twas the day before Christmas &amp;amp;c &amp;amp;c
+author: Daniel Barlow
+date: Mon, 24 Dec 2001 15:50:41 +0000
+
+<p> Twas the day before Christmas &amp;amp;c &amp;amp;c ...
+
+<p> Postgres seems to have improved radically since I last used it.
+Back in the 6.x days it had a knack for blowing up, usually at
+inconvenient times like Friday nights just as we were about to leave
+for the pub.  Today, though, It's tolerably fast, it has manual pages,
+and its UncommonSQL bindings actually work out of the box.  Admittedly
+UncommonSQL doesn't itself work out of the box with SBCL, but the
+necessary patches are fairly obvious and will be going back to
+OnshoreD as soon as I'm Back.
+

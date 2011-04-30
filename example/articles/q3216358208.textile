@@ -1,0 +1,24 @@
+title: I fell asleep in the bath last night; so much of the natural oil
+author: Daniel Barlow
+date: Mon, 3 Dec 2001 8:50:8 +0000
+
+
+<p>I fell asleep in the bath last night; so much of the natural oil
+in my skin has leached out that I suspect I'm no longer waterproof.
+Memo to self: avoid going out in rain.
+
+<p> At Didcot station they now have an automated system to apologise
+for the late running of trains.  It apologised for the late running of
+this particular train approximately every three minutes until the
+train had stopped at the platform, so some two-bit computer somewhere
+is clearly feeling extremely repentant.
+
+<p> They also have payphones with small LCDs displaying "BT PAYPHONE
+WELCOME".  Welcome what?  Careful drivers?
+
+<p> 30 minutes of laptop use and it's down to 65% battery remaining,
+which is moderately suboptimal.  Turns out to be the fault of pump(8),
+which is spinning on the CPU because I took its network card away.
+Sigh.  If I wanted to have to run programs before removing PCMCIA
+cards, I'd run Windows.
+

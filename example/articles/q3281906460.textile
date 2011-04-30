@@ -1,0 +1,13 @@
+title: I don't know if this is something that Livejournal users can tell
+already for themselves, but just in case it's useful: I see
+http://www.livejournal.com/users/dan_b_feed/ in my referrer
+author: Daniel Barlow
+date: Thu, 1 Jan 2004 0:41:0 +0000
+
+I don't know if this is something that Livejournal users can tell
+already for themselves, but just in case it's useful: I see
+<tt>http://www.livejournal.com/users/dan_b_feed/</tt> in my referrer
+log.  If this helps you with "friends lists" or however that stuff
+works, please feel free.
+
+

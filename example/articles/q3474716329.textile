@@ -1,0 +1,265 @@
+title: The Programmer's Guide to Financial Book-keeping, Part I
+author: Daniel Barlow
+date: Tue, 09 Feb 2010 14:58:49 -0000
+
+Once upon a time I knew enough about bookkeeping to implement a a
+rudimentary accounting system for the consulting business I was
+running at the time.  Then I got a real job, and after that I forgot
+most of it.  Recently I've had to relearn it all, and as the
+accountancy/bookkeeping web pages that I've found on the Internet are
+decidedly mixed (an honourable mention here
+for the Gnucash manual, which is actually quite good), this time I'm
+writing it down.
+
+The intended audience for this is chiefly me and people like me:
+computer programmer types who have to make their systems talk to
+accounts departments and accountants.  If you are looking for more
+information on bookkeeping or accountancy from a professional
+perspective, it is less likely to be useful.
+
+It should not be necessary - though it probably is - to state that *I
+hold no professional qualifications and have had no training in the
+field*, and if you want proper advice you'll have to pay for it from
+someone entitled to give it.  *This information is offered as-is, and
+no warranties as to its correctness, usefulness or completeness are
+offered*.
+
+Feedback welcome - see the page footer for details.
+
+
+h2. Definition
+
+Let us define *bookkeeping* as: the collection and processing of
+financial records for an entity, with the object that interested
+parties can learn (1) as of a specified time, how much money (and
+other valuable stuff) it owns, against how much it owes to other
+entities; (2) over a specified period of time, how much has come in
+and how much has gone out.  Bookkeeping deals not just with money but
+with all kinds of valuable stuff: cash, shares, financial instruments,
+land, saleable equipment, stock in trade, etc etc - in the rest of
+this post I'll be lumping it all together as "value".
+
+h2. End results
+
+In the UK, the end processes of bookkeeping/accountancy for a company
+or other trading entity are usually produced annually -
+
+* the *Balance Sheet* - a document of type (1), which lists the assets
+(stuff we've got) and liabilities (stuff we owe) broken down by
+category, at the end of the trading year.  We start with assets,
+listed in order from most liquid (e.g. money at hand or in the bank)
+to least liquid (things we own that would be complicated to sell),
+then we subtract liabilities (usually ordered from short-term to
+long-term), then the bottom line is what we're worth.  This is often
+referred to as the *Accounting Equation*: <center> Assets - Liabilities = Equity </center>
+
+Some people will say that Equity is _really_ what the company owes its owners (e.g. the shareholders) so the equity will appear as a liability account and the equation is "Assets = Liabilities".  Mathematically it makes no difference.
+
+* the *Profit and Loss account*, or P&L - also known in the US as 
+the *Income Statement*.  This is a document of type (2) which lists what's
+come in and what's gone out over the course of the year.
+
+We probably also want quarterly reports for *VAT* (that's "Sales Tax"
+in other countries), and ad-hoc reports for credit control (we need to
+know who owes us money so we can chase them) and management
+accounting.
+
+h2. Drilling down
+
+Obviously, if your trading entity is you and you alone and there's no
+regulatory requirement on you to show anyone else the figures, you can
+choose any categories you like.  But for most of us, there are
+accepted rules about the breakdown that people want to see, what
+you're allowed to assign to which categories (is that purchase an expense or an asset?  what about depreciation?), and what you'd actually *want* to assign to which categories (which might be a question with different answers depending on whether you're trying e.g. to maximise profit for the investors or minimise it for the taxman).  This kind of decision is what you have an *accountant* for: keeping the numbers is what you have a bookkeeper for.  So, look on the difference between those two roles as a policy/mechanism distinction (and a big difference in hourly rate: don't pay an accountant to do a bookkeeper's job)
+
+h2. Accounts and transactions
+
+So, with the aid of an accountant we can establish how we need to
+categorise our assets and liabilities for the reports we need to
+produce.  Each category (or sub-category, or sub-sub-category) is an *account*: each transfer of value from one account to another is a *transaction*.  A transaction is usually associated with a *source
+document* (for example, a purchase order, or an invoice, or a receipt)
+- the so-called *paper trail* is not necessarily kept on actual carbon
+laminate these days, but it's still important.  In essence, what we do is 
+record the transactions.
+
+h2. Credit and Debit
+
+We record each financial transaction as a flow of value from one (or
+several) accounts into another (or several others).  Historically,
+bookkeepers don't get on with the concept of negative numbers - this
+is possibly because it can be confusing to have your "Income" account
+get steadily more negative as the year goes on (we'll come back to why
+this happens), or maybe just because the principles of double-entry
+bookkeeping were invented in a time and place (Renaissance Italy) that
+hadn't really yet heard of negative numbers.  Whatever.  But the
+upshot is that they made their own words up instead: the account that
+loses value is said to be *"credited"*; the account which gains value
+is *"debited"*.  
+
+This is, of course, completely bass-ackwards from the perspective of
+normal people, though it has been claimed that the problem is that *we're* backwards.  When the bank send you your statement of account
+it's printed from their point of view, not yours.  So, if you deposit
+£50 in the Royal NatMid, in their eyes that creates a liability to you
+(after all, it's money they have but you own).  The more money you
+give them the more they can transfer (debit) to Assets/BranchSafe or
+Assets/Vault or Assets/SubPrimeMortgages, but they have to credit that
+transaction to Liabilties/AP/YourNameHere.  So the effect is that we
+perceive being in credit with the bank as a good thing: they see it as
+a bad thing.  It's just a matter of perspective.
+
+(I am slightly suspicious of this explanation.  "Credit" and "Debit"
+are both from Latin roots: /creditum/: "a loan, thing entrusted to
+another", and /debilitum/: "thing owed," neut pp. of /debere/ "to
+owe".  In the end they're just words, but it's still confusing enough to be just more fuel for my
+scepticism towards the claim that negative numbers are avoided because
+they cause confusion.  Maybe that's just me.)
+
+h2. Double-entry
+
+The principle of double-entry accounting is that *the value credited
+in a transaction must equal the value debited* - value cannot be
+created or destroyed.  The name comes from paper-based systems: if we
+have two accounts affected by a transaction, we must enter the
+transaction details into both.  Using a computer, of course, we can
+enter it once and it will appear in both, but that's not the point.
+We are interested in the principle of "conservation of value", not so
+much in the mechanism of how we achieved that in the old days.
+
+A simple example: our shop runs out of float in the till, so on Monday
+we must visit the bank and get some more cash.  We record this as a
+transfer from the bank account (which is credited) to the till account
+(which is debited).
+
+Here we're moving value between two asset accounts: they both
+represent monies that we own - just in different places.  So it's
+pretty easy to see that "conservation of value" holds true.  But the
+principle of double-entry bookkeeping is that the debits and credits
+in _any_ transaction must balance, so the astute reader will
+now be wondering how we do that for a transaction that actually makes
+the company money. For example, if we do some work and get paid, then
+the value in the transaction is clearly going into the bank account,
+but where is it coming _from_?
+
+h2. Income and expenses
+
+The answer is that we create "Income" accounts which serve as a proxy
+for the outside world as it affects our company.  So, if we get $200
+for configuring Joe's web server, our bank account is debited $200, and the outside world, as represented by our Income (or Income/Sales, or
+whatever subcategorisation we want to use) account, is credited $200.
+Expenses accounts serve a similar but opposite role: we pay for stuff
+(like stationery, utilities, salaries) that makes us poorer (our
+assets are credited) and the outside world richer (our expenses are debited).
+
+Income and Expense accounts are key to the P&L statement that we will
+produce at the end of the year, because they act as summaries of our
+interactions with the world - which is what P&L is all about.  The
+USAnian name for them "Income statement" hints as much.
+
+
+h2. Accruals
+
+Another key concept is *accruals*.  In most businesses there is a
+delay between when we provide something of value (e.g. do some work)
+and when we actually get paid: there is also often a delay between
+when we receive something of value and when we have to pay for it.  In
+a cash accounting system there's nothing we can do about that, but in
+an accruals system we can create "accounts receivable" and "accounts
+payable" for these sums which we are expecting but don't yet have.  This allows our accounts to say that we are worth $4000 because we have that amount
+expected to come in from Michael next week, even though we haven't got
+it in the bank yet.  So, this makes payment a two-stage process: first
+we send an invoice and transfer $4000 from Income/Sales to
+Assets/AR/Michael, then when he pays it four weeks later (or perhaps
+four months later if he's a public sector body) we transfer $4000 from
+Assets/AR/Michael to Assets/Bank.  We haven't actually made any new
+money in that second transaction, but at least it now exists in the
+bank and not just on paper.
+
+Accounts Payable is similar but opposite.  We order office furniture
+on account, it gets sent with an invoice, and we log that transaction
+as a transfer from Liabilities/AP/IKEA to Assets/Furniture.  When the
+invoice is due (or three weeks after the invoice is due, if you have really good credit
+control) we send them a cheque and we do another transaction from
+(crediting) Assets/Bank to (debiting) Liabilities/AP/IKEA, which
+hopefully reduces the balance of the latter account to zero.
+
+Most of the examples later in this post ignore accruals in much the
+same way and for the same reason as Kernighan and Ritchie ignore error
+checking: it slightly obscures the pedagogical point, but that doesn't
+mean you won't do it for real.
+
+h2. Sale of goods
+
+If you're selling services, the transaction is cr. Income/Sales = dr. Assets/Bank.  That's simple.  If you're selling goods,
+though, (1) you have to buy them first
+
+£6 cr. Assets/Bank = dr. Assets/Inventory/Widgets
+
+and then (2) when you sell them you are selling at a different price. 
+
+£10 cr. Income/Sales = dr. Assets/Bank<br>
+£6 cr. Assets/Inventory/Widgets = dr. Expenses/Cost of sales
+
+The net effect is to increase Income by a tenner and Expenses by an
+unwell cephalopod (that's "sick quid" to you.  Sorry).  Thus both
+effects of the transaction - then "in" and the "out" - will be represented on the appropriate P&L rows.
+
+
+h2. VAT / Sales Tax
+
+VAT in the UK is not really ever money we have earnt, it's just money
+we are collecting on behalf of the nice people at HMRC.  So, if we are
+registered for VAT we must collect it on each sale into a holding account 
+which we send them later, but it's not "ours" and doesn't show in Sales.
+
+£20 cr. Income/Sales + 3.50 cr. Liabilities/VAT = 23.50 dr. Assets/Bank
+
+Watch out for the credit/debits in that transaction.  We should end up
+with cash in the bank (a debit), some of which is owed to the VAT man
+(credit).  If they don't sum to zero, you've done something wrong.
+
+Similarly we can also claim back VAT on purchases from our
+VAT-registered suppliers
+
+11.75 cr. Assets/Bank = 10.00 dr. Assets/Inventory + 1.75 dr. Assets/Input_VAT
+
+At the end of the quarter, we pay HMRC what we owe them, less what
+they owe us
+
+1.75 cr. Assets/Input_VAT + 1.75 cr. Assets/Bank = 3.50 dr. Liabilities/VAT 
+
+Note that this is not reflected in any Expense account - it shouldn't
+be, because it wasn't in an Income account to start with
+
+
+h2. Year end
+
+We've already talked about producing the Balance Sheet and P&L.  The
+other action we take at end of year is to close the accounts: in the
+case of Income and Expenses, we will want to start the following year
+with a clean sheet.  How to do this: after producing the end-of-year
+reports, move the entire contents of Income and Expenses accounts into a summary "Retained Earnings" account, debiting and crediting as appropriate.  Some accounting systems have a fictitious "month 13" for this purpose so that they can carry on doing business right up until the end of the year and the accounts can be closed after that but before the next year starts.
+
+
+h2. Contingent concepts
+
+We have not talked about: journals, day books, cash books, general
+ledgers, T accounts, and trial balances.  Most of these are historical
+practices that are necessary in manual systems either because the
+latency of entering everything directly in double-entry form is high
+(so transactions are initially recorded elsewhere instead), or because
+there is no automatic checking that the accounts are in balance, or
+because obtaining summaries of groups of accounts (answering queries
+like "what's the total AP for _all_ suppliers") isn't a trivial bit of
+SQL.
+
+
+h2. Where next?
+
+This is Part I of a two-part series.  In the second part I'm going to
+write about my experience implementing all this in Ruby, but that will
+have to wait until I've done the actual implementation.
+
+Hopefully though, this post should provide you with a view of the
+principles such that you can google for anything else you see and you
+have a framework to hang it on.
+

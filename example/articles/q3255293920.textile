@@ -1,0 +1,15 @@
+title: For the record, I should add that in the following (chronologically
+author: Daniel Barlow
+date: Thu, 27 Feb 2003 0:18:40 +0000
+
+For the record, I should add that in the following (chronologically
+preceding) entry, I was not making fun of "bziki__"'s typing.  (My
+typing is, I freely admit, too bad for me to be able to do that to
+anyone else).  I was making fun of the <i>content</i>.
+
+<p>SBCL 0.7.13 is out (or at least, tagged.  Not sure if it's been
+announced outside of sbcl-devel yet).  SBCL 0.7.13.{1-3,5} contain
+various fixes and refactorings made during the course of thread
+development, and now it's time to fork another thread branch from
+0.7.13.5 and carry on.
+

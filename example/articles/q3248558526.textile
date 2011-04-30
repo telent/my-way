@@ -1,0 +1,34 @@
+title: So, it looks like I write these entries once per CVS commit - or at
+author: Daniel Barlow
+date: Wed, 11 Dec 2002 1:22:6 +0000
+
+So, it looks like I write these entries once per CVS commit - or at
+least, once per version of sbcl/threads that I believe represents some
+kind of advance on the previous state.  
+
+<P>GENCGC (the GENerational Conservative GC that we use on the SBCL
+x86 port) already has support for `allocation regions'.  These are
+small areas (typically a couple of pages each) within which consing
+can be done very cheaply: by bumping a free pointer and returning its
+old value.  If we hit the end of the area, we have to stop and
+allocate another, which doesn't have to be contiguous.  So, all we
+really need for parallelisable allocation is to have one of these areas
+open per thread.  When any thread runs out of open region it can stop
+and get a lock from somewhere before updating gory gc details, but
+doing that once every two pages (arbitrary number which in any case we
+can tune) has got to be better than every cons (8 bytes).
+
+<p>So this is what I spent <i>all week</i> doing.  Although the
+<i>code</i> was there, my guess is that it was several years old and
+had cerainly never been tested with multiple regions open at once.  On
+my first attempt it gave me two overlapping regions, so I added in
+some stuff to stop it allocating from apparently-empty-but-still-open
+regions, so in retaliation it blew its mind and spent the next several
+days randomly blowing up with the kind of memory corruption bugs that
+I love tracking down more than anything.  So, I know substantially
+more about the operation of gencgc than I used to, and I've managed to
+get a spot of unrelated tidying up in there too.  Which is mostly just
+as applicable to the base (unthreaded) SBCL and I might even backport,
+depending on how much easier/harder I think it might make the eventual
+merge.
+

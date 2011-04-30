@@ -1,0 +1,55 @@
+title: Turns out that my multidimensional plist goop is perhaps not as useful as it could
+be: because it accepts the keys as a &rest argument, it needs
+author: Daniel Barlow
+date: Mon, 9 May 2005 14:10:43 +0000
+
+<p>Turns out that my <a href="http://ww.telent.net/diary/2005/2/#19.7584"
+>multidimensional plist goop</a> is perhaps not as useful as it could
+be: because it accepts the keys as a <tt>&rest</tt> argument, it needs
+to be used with <tt>apply</tt> whenever you have a list of keys
+generated at runtime.  Problem:
+
+<blockquote>
+ The following situations involving <B>setf</B> of <B>apply</B> must
+ be supported: <P>
+<P><DL><DT>*  <TT>(setf (apply #'aref </TT><I>array</I><TT>
+</TT><I>subscript</I><TT></TT><B>*</B><TT>
+</TT><I>more-subscripts</I><TT>) </TT><I>new-element</I><TT>)</TT>
+<DD><DT>*  <TT>(setf (apply #'bit </TT><I>array</I><TT>
+</TT><I>subscript</I><TT></TT><B>*</B><TT>
+</TT><I>more-subscripts</I><TT>) </TT><I>new-element</I><TT>)</TT>
+<DD><DT>*  <TT>(setf (apply #'sbit </TT><I>array</I><TT>
+</TT><I>subscript</I><TT></TT><B>*</B><TT>
+</TT><I>more-subscripts</I><TT>) </TT><I>new-element</I><TT>)</TT>
+<P><DD></DL><P>
+No other standardized function is required to be supported, but an implementation may define such support. An implementation may also define support for implementation-defined operators.
+</blockquote>
+<p align=right><a
+href="http://www.lisp.org/HyperSpec/Body/sec_5-1-2-5.html"
+>CLHS 5.1.2.5</a>
+
+<p>Maybe I should rethink the API a little.  Shame.  I quite liked it.
+
+<p>Yes, I'm still playing with non-OO database APIs. 
+<pre>
+ (dbs:with-query (q (*database-handle* "select * from blah where thing"))
+    (loop
+      (let ((row (dbs:get-row *database-handle* q)))
+        (unless row (return))
+	(destructuring-bind (&key ticket artist promoter venue) row
+           (format t "ticket ~S artist ~S promoter ~S venue ~S~~%"
+	   	   ticket artist promoter venue)))))
+
+ (dbs:insert-row *database-handle* 'employee 
+		 '(:empid 22 :forename "John" :lastname "Smith"
+		   :managerid 3 :salary 25000))
+
+ (dbs:update-row *database-handle* 'employee 
+		 '(:salary (* 1.2 salary)) 
+		 '(= :empid 22))
+</pre>
+
+<p>I might hack the with-query macro around a little so it doesn't
+need both a database name /and/ a cursor; one should be sufficient.
+The parenthesized prefix notation stuff is done with <a href=
+"http://ww.telent.net/diary/2004/9/#27.82825">sexql</a>.

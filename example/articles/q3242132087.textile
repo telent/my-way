@@ -1,0 +1,71 @@
+title: It appears that I wrote half of and then forgot about a September 15th
+author: Daniel Barlow
+date: Fri, 27 Sep 2002 17:14:47 +0000
+
+It appears that I wrote half of and then forgot about a September 15th
+entry, which subsequently posted itself when I rsynced the htdocs
+directory for some other reason.  Oh well.  I'll fix it up at some point
+
+<p>
+I guess from context that "The Bourne Identity" is a film.  Given that
+every time I read the title my first instinct is to assume it's an
+<tt>sh</tt> function that returns its argument, there is probably no
+hope for me.  Um.
+
+<p>
+At last I have wireless at home (and in the back yard, and in the
+street behind that about as far back as the corner of the block).  The
+PLX thing that I'd wasted 
+
+<a href="http://ww.telent.net/diary/2001/11/#24.7925">so</a>
+<a href="http://www.advogato.org/person/dan/diary.html?start=68">much</a>
+<a href="http://www.advogato.org/person/dan/diary.html?start=67">time</a>
+
+trying to get working on and off over the past year is now in the bin,
+after I happened into PC World yesterday and saw they were selling
+real PCI-PCMCIA adaptors for £25 (compares with £21.74 mailorder from
+dabs.com, so not an unreasonable instant-gratification-tax)
+
+<p>(All indications are that the PLX stuff does work for other people;
+the most likely explanation for why mine doesn't is that the hardware
+itself was b0rked)
+
+<p>Stuff happening lately:
+
+<ul>
+<li> <a href="http://www.stargreen.com/">Stargreen Box Office</a>
+visual makeover: now substantially less ugly
+
+<li> <a href="http://test.ox.telent.net/entomotomy">Entomotomy</a>
+(temporary URL, wrong side of cable modem, unreliable) initial site,
+running.  Further hacking, ongoing.  
+<a href="http://test.ox.telent.net/entomotomy/TODO">TODO list</a>,
+shortening slowly.
+
+<li> It's required remarkably little hacking of <a
+href="/cliki/asdf">asdf</a> to get the Debian <a
+href="http://packages.debian.org/unstable/devel/common-lisp-controller.html"
+>Common Lisp Controller</a> to work with it.  It's required, as far as
+I can tell from <a href="http://www.b9.com/">Kevin</a>'s commit
+messages, substantially more work to CLC itself, none of which I did.
+My involvement is mostly to sit on <a href="/cliki/IRC">IRC</a> and
+say "it already does that", or sometimes "no, I won't make it do that"
+
+<li> The Local Food Directory (placeholder page at <a
+href="http://www.buyitlocally.org.uk/"
+>http://www.buyitlocally.org.uk/</a>) is substantially finished except
+for not working at all in a few key respects.  It turned out to be
+most conveniently implemented as another CLiki application.
+
+</li>
+<li>That's all I can remember right now.
+</ul>
+
+<p>I got email from a friend asking about book recommendations for
+Knowledge-Based Systems.  It's not exactly my area of expertise (OK,
+so I'm a Lisp programmer.  That doesn't <i>have</i> to mean I know
+anything much about AI) so I spent a few minutes with Google and found
+(among other, more relevant things) this <a
+href="http://www.satirewire.com/features/satire-jeevesinterview.shtml"
+>interview with Ask Jeeves</a>
+

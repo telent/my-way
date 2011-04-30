@@ -1,0 +1,7 @@
+title: SLIME and Araneida: screenshot here and 
+author: Daniel Barlow
+date: Sat, 29 Nov 2003 22:39:28 +0000
+
+SLIME and Araneida: <a href="/slime-araneida.png">screenshot here</a> and 
+<a href="http://article.gmane.org/gmane.lisp.clump/321">announcement
+here</a>

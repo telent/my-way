@@ -1,0 +1,19 @@
+title: You're all wondering how it went, I know
+author: Daniel Barlow
+date: Thu, 3 Jul 2003 2:5:20 +0000
+
+<p> You're all wondering how it went, I know.  I compromised.  Current
+thinking: it's still sometimes convenient to pass rows around from one
+function to another, and this might just as well be in an object of
+some kind as a property list or similar ad hoc structure - because
+then we don't have to rewrite all those silly methods to format it
+into silly functions to format it.  I am still convinced, however,
+that trying to do anything with the identity of these objects, or
+keeping them for any length of time, is Wrong.  All <i>trace</i> of
+object caching is gone.
+
+<p> In the process I've spent a fair amount of time staring at bits of
+SQL and running queries through the analyser; changing types here,
+adding indices there, etc etc.  (Why is my creditcard issue number a
+bignum?  I find it hard to imagine that'd get often get much byond 9,
+never mind <tt>(ash 1 31)</tt>).  So, the overall impact is good.

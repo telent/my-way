@@ -1,0 +1,39 @@
+title: I've been lax updating this thing given the amount of stuff I
+author: Daniel Barlow
+date: Fri, 12 Jul 2002 15:9:22 +0000
+
+I've been lax updating this thing given the amount of stuff I
+potentially could have been saying in it lately.  So, where are we?
+
+We are at the <a href="http://lsm.abul.org/">Libre Software Meeting
+2002</a>, in the <a href="http://lsm.abul.org/program/topic01/" >Very
+high-level languages for writing applications</a> topic.  The
+rationale here, according to the programme - look, if you would only
+go and read the programme, it would save me from having to paraphrase
+it like this - is that the kernel is done, so now we need to write
+applications, and we need these very high-level languages if we're
+going to finish the job in timescales that the human brain can relate
+to.  Just ask any Mozilla developer.
+
+<p>In fact (as you can reasonably infer from the schedule) it's all a
+thinly-veiled plot to get many free Common Lisp developers together in
+the same place.  Works For Me.  So we've spent the last few days
+discussing things like garbage collection, coping with special (a.k.a
+dynamically-bound) variables during multithreading, packaging, bug
+tracking, etc etc).  And, as is often the case where two or more lisp
+implementors are gathered in the same room, the very high-level
+languages we've actually ended up <i>using</i> are C and x86
+assembler.  Yeah.  Um.  Christophe is sitting next to me working on
+floating point trap handling (see also the <a
+href="http://ww.telent.net/diary/2002/3/#14.13604" >previous
+attempts</a> to tackle this), Eric Marsden was - until an hour ago
+when he went to catch his train - poring over trace files to figure
+out why his CMUCL "small" images no longer worked, and I am watching
+SBCL build with a new design of non-invasive stack overflow handling.
+Currently it can non-invasively detect stack overflow, but it can't
+actually <i>recover</i> from same, which makes it a bit useless.
+Cargo cult programming is not a sane or sensible way to write x86
+assembler glue.
+
+<p> And we've had some talks too, of which more some other time.  
+

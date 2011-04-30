@@ -1,0 +1,36 @@
+title: Happy New Year
+author: Daniel Barlow
+date: Tue, 7 Jan 2003 17:48:13 +0000
+
+Happy New Year.  Probably.
+
+<p>Much shuffling of web site stuff around
+
+<ul>
+
+<li> the Local Food Directory got another round of hacking - a
+side-effect of which is that other <a
+href="http://www.cliki.net/">Cliki</a>-based sites get summaries
+showing the matched text in <a
+href="http://www.cliki.net/admin/search?words=barlow" >search result
+pages</a>
+
+<li> <a href="http://web.metacircles.com/" >metacircles</a> got
+vigorously spring-cleaned, to the point that I'm no longer
+<i>completely</i> ashamed of it
+
+<li> and <a href="http://www.cliki.net/CLiki%20News" >cliki
+changes</a> too: the long-requested "create a new page unlinked from
+anywhere" button.  Needs javascript, because I'm too lazy to do it
+server-side
+</li>
+</ul>
+
+<p>The good news is that I got a call today from Carphone Warehouse to
+say that my phone is back from having been <a href=
+"http://ww.telent.net/diary/2002/12/#19.4622">away to get fixed</a>.
+I haven't picked it up yet, though.  I hope this time they've actually
+repaired it properly.
+
+<p>Current TODO: VAT return, and release new packages of cliki and all
+its dependent stuff.

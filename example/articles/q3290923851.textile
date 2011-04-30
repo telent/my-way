@@ -1,0 +1,23 @@
+title: I'm mobile again
+author: Daniel Barlow
+date: Wed, 14 Apr 2004 10:30:51 +0000
+
+I'm mobile again.  My new laptop battery and PSU arrived yesterday
+just as I was leaving for work, so after a complete charge and
+discharge last night (more to find out how long it would go for -
+about three hours - than out of any real deep-seated belief that the
+battery technology demands it), I now have wireless power along with
+my wireless networking.  Spent a little too much time last night
+wandering around the house saying "yay!  no wires!" when I should
+instead have been grovelling over amd64 stack frames.
+
+<p>The stack frame in question (for %MAKE-HASH-TABLE) actually
+seems to have little or nothing wrong with it; at least, after I fixed
+MOVS to output appropriate REX prefixes (prefices?  prefaces?) where
+needed.  Somewhere in the middle of it, though, I'm getting a pointer
+to the middle of some vector where I should be getting the boxed float
+1.5.  This is probably a fault in floating point (which is directly
+lifted from x86) or in the allocator.  I hope it's the allocator.  I
+know how that works already.
+
+

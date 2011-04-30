@@ -1,0 +1,55 @@
+title: So, do you want the good news or the - no wait, good news is all
+author: Daniel Barlow
+date: Sat, 16 Mar 2002 4:7:34 +0000
+
+
+<p> So, do you want the good news or the - no wait, good news is all
+there is right now.  Good news or no news, I guess.  Sorry.
+
+<P>SBCL PPC forward port progressed, uh, forwards.  Most of it was
+renaming, and most of the renaming had already been done (thanks,
+Christophe).  The only part requiring actual thought was that it
+wouldn't compile branches to targets more than 32k away.
+Disturbingly, this looks like a problem shared by CMUCL in its PPC and
+MIPS backends, unless they've done something magic I don't understand.
+Mail to cmucl-imp called for, tomorrow.  Granted, it's not a bug that
+shows often, I expect - it's rare that a single function has a branch
+target more than 32k distant.  Anyway, there's now additional magic in
+<tt>emit-conditional-branch</tt>: instead of emit-back-patch (which
+emits variable numbers but a fixed length of instructions) it has to
+emit-chooser.  This lets us have different forms for when the branch
+is short and when it exceeds 32k, in which case we code a
+one-instruction jump with an inversion of the test condition, then an
+unconditional branch to the proper target: we turn
+
+<pre>
+beq .far_away
+stuff
+.far_away
+</pre>
+
+into
+
+<pre>
+bne .skip
+b .far_away
+.skip
+stuff
+.far_away
+</pre>
+
+<P> and ditto for other conditions.  I just looked in on the progress
+of the native compilation and it had got all the way to second
+genesis.  Admittedly at that point it had crashed with a segmentation
+fault, but it looks like it had simply run out of memory.  64Mb is not
+enough for anyone.  So, edited some numbers and I need to crosscompile
+again in the morning.
+
+<p>All being well, this means I have to start trying to remember what
+state I left my MP efforts in.  Or time out and play with asdf for a
+while longer, but I seem to be on an SBCL roll right now and might as
+well get on with it.
+
+
+<p>Non-geek activities: ahh, that'd be the no news, I guess
+

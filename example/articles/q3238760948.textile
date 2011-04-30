@@ -1,0 +1,70 @@
+title: Yesterday was Bletchley Park
+author: Daniel Barlow
+date: Mon, 19 Aug 2002 16:49:8 +0000
+
+<p>Yesterday was Bletchley Park.  35 miles is slightly over twice as
+far as anywhere I've cycled in that past two or three years, so I was
+quite pleased to get there in around two hours twenty minutes,
+especially as it turned out to be 40 miles including getting lost.
+18 mph average is, I think, fairly respectable.
+
+<p>The Bletchley Park Computer Museum was kind of neat, but they would
+benefit (well, <i>I</i> would have benefitted) from the addition of a
+LispM or several.
+
+<p> Eventually it was time to leave, and at some point around here the
+realization that the return journey was likely to be significantly
+slower hit me.  <i>Three</i> hours twenty, for an average speed
+slightly less than 13mph, and it didn't help to run out of water
+halfway back either.  On getting to the outskirts of civilization
+(Headington) I found an open off-licence which would sell me a bottle
+of water and a Twix bar: thus rehydrated the final two miles were
+easy.  Of course, most of them were downhill too, which didn't hurt.
+
+<p>Yesterday evening I had planned to go to the pub, but found I was
+basically too tired and went to bed in fairly short order after a
+really odd experience where someone sent me an encoded message I
+couldn't break, which sounded <i>exactly like my phone ringing</i>.
+Current working hypothesis is that perhaps it was actually just the
+phone ringing, and my brain had it been present would have been
+telling me I was already half-asleep and should turn the lights off
+and so forth.
+
+<p>Feeling remarkably well today, anyway.  Mildly sunburnt, but
+surprisingly at least not stiff and aching all over.  Maybe that
+happens tomorrow.
+
+<p>Today is deal-with-NTL day.  NTL cable modems work fine until they
+go wrong.  When they go wrong, trying to get a human being on the
+telephone can take most of a day.  To <i>fully</i> express my feelings
+on the matter of the NTL customer service voicemail system would
+require the invention of several new words, but in the meantime,
+imagine circular voicemail systems, "your call is valuable to us",
+"all our operators are busy, please ring back" (after ten minutes
+navigating voicemail options, lovely), and enough slightly-out-of-sync
+customer databases that every time I ring them I learn about the
+existence of another one.  Today I found I was in the Cable Modem
+technical support database with the correct postcode, but didn't show
+up when they did a postcode search.  Or, for that matter, a search on
+subscriber name.  My modem was in there and showed up perfectly
+normally on a MAC address search, but there was no link between it and
+me.  I thought the purpose of takeovers and mergers was supposed to be
+to increase profit by <i>integrating</i> systems, not just amassing
+large numbers of disparate ones?
+
+<p>Anyway, the internet is b0rken, has been since some time on
+Sunday morning, and probably will be until someone at the NTL local
+office (which may or may not exist, because every attempt I've made to
+call it has been met with "number not recognized" or forwarded into
+the national system) gets a message to phone me back to arrange an
+engineer to visit.  Not holding out much hope here, it must be said.
+If you send me email, expect to receive answers a little more slowly
+than usual:  I've had to dust off the old analogue modem
+
+<p>Today is also, it happens, my birthday, not that I have any
+particular plans to celebrate being another year closer to death.  But
+anyway, spoils of war so far: teatowels, set of torture^Wbarbecue
+implements, sundry cards, and volume 3 of the IA32 Intel Architecture
+Software Developer's Manual.  I think that was sent without any
+particular reference to the time of year, but thank you anyway Mr
+Intel.

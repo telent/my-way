@@ -1,0 +1,28 @@
+title: I'm finding more SBCL threading bugs: so far, the count is three bugs
+author: Daniel Barlow
+date: Fri, 16 Jul 2004 1:12:31 +0000
+
+I'm finding more SBCL threading bugs: so far, the count is three bugs
+and two fixes.
+
+Edi Weitz <a href=
+"http://www.caddr.com/macho/archives/sbcl-devel/2004-7/3706.html"
+>pointed out</a> recently that his cl-ppcre libarry comes with a test
+suite whose threading tests fail when run under SBCL, so I've been
+working on that.  So far
+
+<ol>
+<li> Bad header file ordering in the runtime was causing the
+non-threaded versions of spinlock get/release inline functions to be
+compiled in some places even on a threaded build.  (Fixed)
+
+<li> SIGCHLD will call destroy_thread, which is fair enough, but not if
+you're holding all_threads_lock already because it wants to acquire
+it.  (Fixed)
+
+<li> After beating on the threading for long enough it's still somehow
+possible to get into a state where GC wants to stop a thread so that
+it can collect the heap, but the thread has disappeared.  Not fixed
+
+</li>
+</ol>

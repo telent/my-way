@@ -1,0 +1,68 @@
+title: So I'm here in the big bad city
+author: Daniel Barlow
+date: Sun, 21 Mar 2004 21:11:15 +0000
+
+So I'm here in the big bad city.  The move was successful insofar as I
+arrived safely with all my possessions, most of which are still
+working, and only minor injuries.  Things I'd do the same way again:
+
+<ul>
+
+<li> The van.  I am very glad I got the Transit instead of the smaller
+Escort van I was half-thinking I could get away with, because I
+managed to mostly fill it.
+
+<li> The van again: driving it was a lot of fun.  It's just like a car
+except bigger, torquier, is far more susceptible to sidewinds, needed
+a small amount of coaxing heading fully-laden up the Chilterns, and
+has no rearward visibility other than anything you can see through the
+mirrors.
+
+</ul>
+
+Some of it could have been done better:
+
+<ul>
+
+<li> I could have taken two days off work instead of just the one
+
+<li> I could have packed <i>everything</i> into boxes before hiring
+the van, thus probably needing it for only one day not two.
+
+<li> Before starting to pack, locate tools necessary for dismantling
+stuff that needs dismantling.  The Allen key was in fact in the small
+under-saddle bag on my bicycle; presumably it's the size for adjusting
+SPDs.  The cross-head screwdriver I still haven't found
+
+<li> it probably wasn't such a great idea to go outside and bring the
+van round for the second lot of loading at 11:30pm.  Well, it would
+have been a better idea if I'd taken the house keys with me and hadn't
+locked myself out.  Luckily I'd foolishly earlier left the back door
+unlocked, so I was able to scale the wall at the back of the garden
+and get in that way.  In the process managed to scrape enough skin off
+my left forearm to make it look like I was getting rather more
+frustrated with the whole deal than was in fact the case.
+
+<li> I could have paid someone to do it all for me.  I might have
+been a few quid worse off, but at least I'd have had a full night's
+sleep on Thursday
+
+</ul>
+
+Casualties so far: various cuts and abrasions, sore upper arms from
+carrying large boxes of books up four flights of stairs, and the PSU
+in my desktop, which doesn't any more.  The fan doesn't go round even
+when prodded: I think I need a new one.  That's the second PSU to die
+on me this year.  Laptop works fine, wireless router, stereo and
+guitar ditto, haven't tried the imac yet.  And I've lost my wireless
+network card, which is especially annoying as I didn't even /pack/ it,
+just removed it from my laptop to temporarily use a wired network card
+and put it down somewhere.
+
+<p>Still haven't had time to do anything about Havoc Pennington's
+Linux Desktop article, but between <a
+href="http://london.pm.org/pipermail/london.pm/Week-of-Mon-20040315/025430.html"
+>http://london.pm.org/pipermail/london.pm/Week-of-Mon-20040315/025430.html</a>
+and my previously disseminated mutterings about habitable software and
+user extensibility, it should be pretty straightforward to guess what
+it was going to say.

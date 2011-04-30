@@ -1,0 +1,52 @@
+title: Last October at ILC I foolishly volunteered, along with a bunch of
+author: Daniel Barlow
+date: Mon, 3 Feb 2003 22:42:27 +0000
+
+Last October at ILC I foolishly volunteered, along with a bunch of
+other community-minded people, to do something about the <a
+href="http://www.lisp.org/table/about.htm#new" >state of the ALU web
+site</a>.  Since then, we've argued a little on the mailing list,
+agreed a plan of action (management types may wish to add "going
+forward" here), and then kinda sorta run out of momentum, as far as I
+can tell.  Ah well.
+
+<p>So last week I proposed a change in project scope -
+
+<ul>
+<li>The Official Site now becomes a site containing only Official
+Information (ALU board members, mailing list archives, constitution,
+minutes etc).
+
+<li>The CLiki site that we were using internally to prototype the new
+site now becomes public.  Because of this it won't contain the
+Official Information (see above), but will feature (new updated
+versions of) all of the incredibly useful but ever-so-slightly
+outdated information on the rest of the old ALU site.
+</li>
+</ul>
+
+<p>This suggestion seems so far to have had more positive feedback
+(some) than negative (none, yet), which I am choosing to view as a
+mandate from the ALU to go ahead.
+
+<p style="background-color: #bbbbff"><a
+href="http://alu.cliki.net/"><b>ALU.CLiki.net</b></a> is the actually-not-new
+new site, which presently is both ugly and missing large chunks.  But
+that can be fixed.  Go and fix it.
+
+<p>Expected-to-be-FA Q #1: how does this relate to the official CLiki?
+CLiki is a place for "links to and resources for free software
+implemented in Common Lisp and available on Unix-like systems": the
+ALU site is for everything else.  Clear?  Some tolerable scheme for
+inter-cliki linking is on my TODO list, along with everything else.
+
+<p>Some of the existing CLiki content (documents, tutorials, lisp
+success stories, prospective de facto standard discussion, etc) is
+expected to be moved across as time allows.  
+
+<p>On the general subject of CLiki, the <a
+href="http://www.tunes.org/" >TUNES</a> project are now using it, and
+have hacked in some neat-looking features like a <a
+href="http://cliki.tunes.org:8000/history/index" >per-page edit
+history</a>.  Hope to get those changes marged back into baseline soon.
+

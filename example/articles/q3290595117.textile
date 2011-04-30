@@ -1,0 +1,17 @@
+title: I have nothing to do this weekend
+author: Daniel Barlow
+date: Sat, 10 Apr 2004 15:11:57 +0000
+
+I have nothing to do this weekend.  That's not actually true; there
+are lots of things I could be doing, and I'm ignoring all of them in
+favour of a mostly unbroken 4-day sbcl amd64 hacking stint.
+
+<p>(Took break for skating on Friday; stopping also for skating again
+on Sunday afternoon, and possibly later this afternoon for cleaning
+the bearings in the skates if I can figure out how to get them out of
+the wheels)
+
+<p>In the meantime, no real news yet.  Spent the first day and a half
+of my four day hackathon trying to figure out whatstate I'd laft the
+tree in last time.
+

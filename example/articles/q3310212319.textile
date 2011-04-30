@@ -1,0 +1,14 @@
+title: I've added a couple of detachtty patches as bugs in the Debian BTS
+author: Daniel Barlow
+date: Tue, 23 Nov 2004 15:25:19 +0000
+
+I've added a couple of detachtty patches as <a
+href="http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=detachtty"
+>bugs in the Debian BTS</a>.  Both are proposed to solve similar
+problems, which a third person has now also asked about, so as
+detachtty is a debian native package (even though I'm not an official
+debian developer) it seems easiest to put them up there until I look
+at them.  Then at least anyone else who wants this functionality
+doesn't have to go ahead and develop it independently in a vacuum
+while I sit around being lazy.
+

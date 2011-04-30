@@ -1,0 +1,108 @@
+title: Notes on McCLIM : day 1
+author: Daniel Barlow
+date: Thu, 17 Jul 2003 2:58:16 +0000
+
+Notes on McCLIM : day 1
+
+<p> I'm using SBCL approximately-0.8.1, telent CLX (CVS version, but
+it's near enough the current release) and McCLIM anon-cvs of
+approximately whenever this diary entry is made.  SBCL is compiled
+with the :sb-thread feature.  The assumptions I've made so far may be
+horribly horribly wrong, but it seems to be working.  I probably
+<i>won't</i> come back and revise this at a later date as I find out
+more, so do be sure to read later diary entries if you stumble across
+this significantly later than I'm writing it and are expecting to
+depend on anything you learn here.
+
+<p> To build McCLIM, <tt>(load "system")</tt> then <tt>(asdf:operate
+'asdf:load-op :clim-clx)</tt>.  Don't bother installing  mk-defsystem,
+someone's passed this way with asdf already.  OK, that might have
+been me in an earlier life
+
+<p> It's visibly faster than it used to be.
+
+<p> The first two chapters of the manual (in McCLIM Doc/) have a
+worked example, which is worth looking at.  Note that the output from
+the <tt>parity</tt> command is only displayed <i>very very
+briefly</i>.  If you'd like to actually see it, add the option
+<pre>
+          :display-time nil
+</pre>
+to the define-application-frame / :panes / app form.  This stops the
+default refresh stuff from blanking it out as soon as it's rendered.
+
+<p> Some layout monkeying was needed, in define-application-frame.
+Note that
+
+<ul>
+<li> the modus operandi seems to be that (1) the interesting panes get
+named in the :panes clause, then (2) the :layouts clause describes one
+or more arrangements for how to fit them together.  In this case we
+have a single layout called <tt>default</tt>. The layouts clause
+actually introduces more panes for layout control, but they don't get
+names.  <tt>vertically</tt> and suchlike are actually macros that
+expand into calls to <tt>(make-pane 'some-pane-type ...)</tt>:
+although it looks fairly declarative at the front, that's just a
+front.
+
+<li> we've chosen a non-Courier font.  This is Required :-)
+
+<li> <tt>scrolling</tt> in the layout puts a scroller-pane around our
+journal - i.e we now have scroll bars.  We disable the scrollbar for
+the inner journal (there was only a vertical scrollbar to start with)
+because it was always coming out with the thumb the same size as
+the pane, so no actual scrolling movement was available from it.
+</ul>
+
+<p> Our goal here is a new frontend for the metacircles bookkeeping
+system (actually, the real goal is just to print out a couple of
+invoices, this whole clim thing is so much sidetrack.  But anyway)
+so we really want most of the application pane to be showing
+the same thing most of the time, instead of being dribbled into by
+various commands.  So, remove <tt>:display-time</tt> again and replace with 
+<tt>:display-function 'display-journal</tt>.  Now we just have to
+write a <tt>display-journal</tt> method that does the business.
+
+<p> <tt>display-journal</tt> depends quite heavily on some kludgey
+macros I wrote a couple of weeks ago to sit atop Eric Marsden's
+pg.lisp.  You don't see them here, and they aren't yet available
+anywhere else (though will be, someday, when they're cleaner).
+Regardless, it should be fairly obvious what they do.
+
+<p> Look at the presentation types!  I don't know if this is actually
+a sensible use for them: I haven't worked out how to get these not to
+be higlighted when moused-over yet; I thought the <tt>:single-box
+nil</tt> ould do that, but it doesn't.  In the meantime, notice that
+you need to define a presentation type, then a bunch of methods on it
+to tell the system how to present it and how to input it.  We've only
+done the <tt>present</tt> method for these so far.
+
+<p> Fell into a what-strange-thing-is-clim-doing-now trap for too
+long, before realising that the problem was pg (or, just as likely,
+my glue for it) catching errors and throwing them away without telling
+me something had gone wrong.  This made it difficult to work out why
+it had suddenly stopped wanting to print anything other than the
+column titles.
+
+<p> If you really care you can have a gander at the <a
+href="/clim-20020716.lisp">current source</a> and/or the <a
+href="/thyme.png" >screenshot</a>.  Should note that it's not being
+entered for any artistic prizes, but at least it's not Courier.
+
+<p> There is a problem with the queuing/refresh.  This manifests in
+two ways
+
+<ul>
+<li>First, refresh doesn't always happen until the next time the
+application gets some events (mouse movement or keys or suchlike)
+
+<li>Second, more rarely, something iffy in the bowels of SBCL or CLX
+makes it hang every so often (not usually all that often, but it
+varies).  <tt>killall -CONT sbcl</tt> from the command line tends to
+unstick it in those cases.
+</ul>
+
+<p> Ok, that's enough for one evening.
+
+
+

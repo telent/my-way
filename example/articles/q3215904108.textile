@@ -1,0 +1,29 @@
+title: The Oxford Byzantine
+author: Daniel Barlow
+date: Wed, 28 Nov 2001 2:41:48 +0000
+
+
+<p> The <a href="http://users.ox.ac.uk/~byzance/">Oxford Byzantine
+Society</a> were showing slides of their visit to Constantinople this
+September; trotted along on the promise of wine and mince pies.  Given
+that this is an English November, it may be excusable that the
+impression I took away was mostly of sunlight and blue skies.
+
+<p> We (not the society; a bunch of friends) went to Istanbul back in
+April, so I recognized some of the pictures.  It would be nice to be
+outdoors again.  At a cafe, with a coffee, by the Hippodrome,
+listening to the muezzins call the faithful to prayer.
+
+<p> After slides and a post-slides beer, it was time to stick pizza in
+the oven and "Crouching Tiger, Hidden Dragon" in the VCR.  Awesome.  I
+wish <i>I</i> could fly like that.  &lt;/orville&gt;
+
+<p> Also today, read Paul Graham's proposal for <a
+href="http://www.paulgraham.com/arc.html">Arc</a>, a new Lisp.  Has
+some interesting ideas, but I can't help wondering if a new language
+designed to run server-side applications is not, like, several years
+too late to get really enthusiastic about.  More on this later when
+I've thought about it.
+
+<p>Day 3 with emacs 21.  Still haven't tried to start ILISP, though.
+

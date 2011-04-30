@@ -1,0 +1,50 @@
+title: Did I say "restored when the handler returns"
+author: Daniel Barlow
+date: Mon, 5 Aug 2002 11:46:57 +0000
+
+Did I say "restored when the handler returns"?  What doesn't get
+restored when the handler returns - no matter how the return is done,
+or longjmped past, or ignoreed completely, or whatever, are the
+floating point trap bits themselves.  This behaviour is common to at
+least x86, ppc32, and ppc64, and the kernel people think it's the
+right thing to do.  So, we may as well get used to it.
+
+<p>Not that I have any pressing wish to do anything about it
+immediately, because the MSR-frobbing aspect still needs a
+conventional(sic) return from the signal handler to set up right, which we
+don't do at present, so probbaly we need to do some more control stack
+frobbing stuff.
+
+<p>So, instead I turned my attention to threading.  After some
+discussion at the LSM we decided that co-op userland threads were just
+going to be not nearly as exciting as "proper" threads.  General
+consensus regarding pthreads was also fairly rapidly arrived at
+("let's not go there"), so lately I've been thinking about using
+<tt>clone()</tt>.  This presents a number of issues
+
+<ul>
+<li>thread safety is suddenly really important 
+
+<li>stopping other threads from running is going to involve signals 
+
+<li><tt>without-preemption</tt> (as a general available-to-the-user
+construct that he can wrap around arbitrary forms) is hard, slow,
+messy and a bad idea.
+
+<li>dynamically bound symbols need something other than their current
+implementation if they're going to work usefully.
+
+<li> my evil slow handwavey <a
+href="http://ww.telent.net/sbcl-internals/Threading">mmap trick</a> is
+not going to sowrk when we (a) don't control the scheduler, and (b)
+are sharing the memory map (including the protections) between all
+threads.  This <a
+href="http://marc.theaimsgroup.com/?l=linux-kernel&m=102823322303543&w=2"
+>linux-kernel</a> article looks potentially interesting in that
+respect, though I suspect that it would still be easier to use
+<tt>PTRACE_ATTACH</tt>.
+
+</li>
+</ul>
+
+

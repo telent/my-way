@@ -1,0 +1,50 @@
+title: Some notes about importing existing SSL certificates into Oracle
+Wallet Manager:
+author: Daniel Barlow
+date: Tue, 3 Sep 2002 17:8:7 +0000
+
+Some notes about importing existing SSL certificates into Oracle
+Wallet Manager:
+
+<ul> 
+
+<li> Importing a site certificate as a trusted certificate will appear
+to work, but the Oracle HTTP Server (a.k.a. binary-only-Apache minus
+the perectly good mod_ssl, plus mod_ossl which is dumb,
+underdocumented and ... oh, never mind.  That was an aside) won't
+actually work with it.  Instead it will send you some corrupted mush
+which according to ethereal is a zero-length certificate.
+
+<li> You can't import a site certificate as a user certificate,
+because it won't let you import certificates that it doesn't have CSRs
+for.
+
+<li> You can't import your old CSR even if you have kept it, because
+it doesn't have the option for that either
+
+<li> But the so-called wallets are in fact (fairly) standard PKCS#12
+files, which can be created by OpenSSL: if you create a pkcs12 file
+using a third-party tool you just have to call it <tt>ewallet.12</tt>
+(you can only point owm at directories, not actual filenames).
+
+<li> You need to put the CA cert in the wallet as well as the
+site cert, otherwise it complains that your password is incorrect.
+The cry goes up: Yay Oracle error messages!
+
+</li>
+</ul>
+So in our particular case, 
+<ol>
+<li> Download the Thawte CA cert from <a
+href="http://www.thawte.com/serverbasic.crt" >
+http://www.thawte.com/serverbasic.crt</a>
+<li> Convert to PEM: <tt>  openssl x509 -inform der -in
+~/serverbasic.crt -outform pem -out thawte.crt.pem</tt></li>
+<li> Make a wallet: <tt>openssl pkcs12 -noiter -nodes -export -certfile ~/serverbasic.crt  -inkey  ../ssl.key/www.foo.com.key -in ../ssl.crt/www.foo.com.crt -name 'friendly name' -nodes -noiter -out /tmp/e1/ewallet.p12 </tt></li>
+</ol>
+
+Most of the time spent finding this out was actually in translating
+the "incorrect password" error message into "I can't load this wallet
+because it doesn't include the CA cert".  Obvious in retrospect.  Sure
+
+

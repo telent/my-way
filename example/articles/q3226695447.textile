@@ -1,0 +1,35 @@
+title: I keep opening up this file to write something related to the
+author: Daniel Barlow
+date: Tue, 2 Apr 2002 1:17:27 +0000
+
+
+<p> I keep opening up this file to write something related to the
+ongoing comp.lang.lisp thread(s) on free^WFree software, then my will
+deserts me again.  I've just got through reading (more accurately,
+skimming) all the stuff that happened over the weekend, so let's try again.
+
+<p> Free software may destroy the market for proprietary software.  It
+would be unfortunate if that happened insofar as employees and owners
+of proprietary software companies would have to find something else to
+do.  It's unfortunate that companies leveraging the expressiveness and
+flexibility of Lisp are adversely affecting the owners and employees
+of companies trying to do the same thing in 8080 assembler.  It's
+unfortunate that the invention and subsequent production of the spade
+caused all the people previously employed to dig holes with their bare
+hands to go out of business.
+
+<p>So it's not just a free software problem, it's a technology
+problem.  The technologies that were supposed to increase our leisure
+time have actually managed to increase the leisure time of some people
+to <i>all</i> of the time, and left other people working 80 hour
+weeks.
+
+<p>What can we do?  We can pretend the whole thing will go away if we
+ignore it.  We can decide that some people (e.g. Lisp vendors) are
+more valuable than others (hot metal press operators) and therefore
+only some jobs are worth safeguarding.   Or what else?  Work less?
+(Suits me, anyway ;-)
+
+<p>Ideas?
+
+

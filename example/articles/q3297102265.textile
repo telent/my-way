@@ -1,0 +1,63 @@
+title: I'm sorry about this, I really am
+author: Daniel Barlow
+date: Thu, 24 Jun 2004 22:44:25 +0000
+
+I'm sorry about this, I really am.  I try as far as possible not to do
+vapourware, but I can't help mentioning stuff about <b>rinse</b> on
+#lisp from time to time, and people keep asking questions.  Therefore,
+in the hope of saving myself some time later I will now run through
+the FAQ list (where A stands for Anticipated as much as it does
+Asked):
+
+<ol>
+<li> There is no code yet.
+
+<li> It's not an emacs clone.  It won't run elisp.  If you want to run
+gnus, run it in emacs.
+
+<li> Initially I plan to use raw CLX, but the display backend should
+be reasonably loosely coupled.
+
+<li> We expect the Lisp implementation to convert from external
+streams to characters, so it'll do Unicode to the same extent as 
+the Lisp does
+
+<li> But with that in mind, I'm using SBCL to develop, so "8 bit
+clean" is about the best you can hope for for the moment.
+
+<li> It's not a structure editor per se - input files are streams of
+characters - but let's recognise that most files most of the time are
+conventionally treated as though they have more structure than this (I
+hear the usual term is "parsed" ;-) and provide structure-sensitive
+operations.  But allow the user to do structure-violating operations
+(deleting close parentheses, etc) without immediately going ape.
+
+<li> Some kind of free license (undecided yet).  Would like to avoid
+anything contagious to other unrelated stuff in the same image, and
+ideally even to allow people to write non-free extensions on the
+"rinse platform" ("washboard?") but if there's any way despite that to
+prevent people from taking the whole thing and turning it into their
+proprietary Lisp development environment without sending "core"
+enhancements back (a la Hemlock => LW IDE) I'm all ears.  Well, at
+least I'm vaguely interested; it's not a <i>pressing</i> concern and I
+may well just end up with ye trusty MIT-style do-what-thou-wilt
+licence.
+
+<li> Intending to port the SLIME frontend so that all the stuff in SWANK
+is available for debugging/developing user code in a second image. 
+
+<li> Working (and crash-proof, unlike Emacs or anything else using
+xlib) support for popping up windows on more than one display at once.
+
+<li> Better attention paid to the social niceties of X than FSF Emacs
+does.  Yesterday I found myself having to paste from Emacs into xterm
+into Mozilla, because for some reason I couldn't transfer accented
+characters from Emacs to Mozilla directly.
+
+<li> There is no code yet.
+
+<li> I amn writing this instead of rectifying that omission.
+
+<li> Therefore I should stop.
+</li>
+</ol>

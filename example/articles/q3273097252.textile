@@ -1,0 +1,33 @@
+title: I discovered last night that gpg has an alternate output mode which is intended to be
+author: Daniel Barlow
+date: Sun, 21 Sep 2003 2:40:52 +0000
+
+
+<p> I discovered last night that <a href="http://www.gnupg.org/"
+>gpg</a> has an alternate output mode which is intended to be
+machine-parseable, so I've just committed some exciting new breakage
+to SBCL's <a href="http://www.cliki.net/asdf-install"
+>asdf-install</a> contrib to make it a bit smarter about checking GPG
+signatures.  It now attempts to check signatures for all packages no
+matter where they've come from, but there are restarts to bypass most
+of the checks.
+
+<p>A package may
+
+<ul>
+<li> have no gpg signature at all
+<li> be signed by a gpg key you don't have on your keyring
+<li> be signed by a key on your keyring but which you don't have a trust
+   relationship with (i.e. nobody you know has signed it)
+<li> be signed by a trusted key, but not be on the list of package
+   suppliers (after all, just because you trust someone is who they say they
+   are, you might not want to install their lisp software)
+</li>
+</ul>
+
+<p>The first two of these are presently terminal errors, the third can
+be ignored, and the fourth has a restart that lets you add the
+packager to your package supplier list.  The package supplier list is
+stored between sessions in <tt>~/.sbcl/trusted-uids.lisp</tt>
+
+<p> This is an incompatible change: cue evil laughter.

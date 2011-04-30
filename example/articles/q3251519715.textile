@@ -1,0 +1,169 @@
+title: [ updated for elisp syntax error, 13:01:52 GMT ]
+author: Daniel Barlow
+date: Tue, 14 Jan 2003 7:55:15 +0000
+
+<b>[ updated for elisp syntax error, 13:01:52 GMT ]</b>
+
+<p><i>This</i> is what I mean by a scriptable user interface...
+
+<p>So, it's not completely unheard of for me to write "Please find
+attached ..." in an email message, then forget to actually attach the
+file.  Apparently I'm not the <a
+href="http://article.gmane.org/gmane.lisp.steel-bank.devel/773" >only
+person</a> this happens to, either.  SO, the other day I decided to
+sit down and sort it out.
+
+<p>I use Gnus for my email and news reading.  Gnus, I happen to know,
+uses the default message composer in Emacs, which is known as Message.
+What I want is for something to run when I attempt to send mail, that
+warns me when I send a mail using the word "attach" if I haven't
+actually added an attachment.
+
+<ol>
+
+<li>Enter The Dragon^W*scratch* buffer
+
+<li> Emacs has hooks everywhere.  Probability is that there's a hook
+that runs just before a message is sent.  We can find out with
+<tt>apropos</tt>: 
+
+<pre>
+(apropos "message.+hook") <i>C-j</i>
+...
+<b>message-send-hook</b>
+  <i>Variable:</i> Hook run before sending messages.
+  <i>Plist:</i> standard-value variable-documentation custom-options custom-type custom-requests
+</pre>
+
+Looks good to me
+
+<li> Middle-clicking on <i>Variable</i> tells me I can customize
+this.  Middle-clicking on that gets me the Customize buffer.  There's
+nothing on the hook at the moment, but apparently I could add
+ispell-message if I wanted to.  Putting the cursor on ispell-message
+and pressing C-h f (describe function) tells me
+
+<pre>
+Check the spelling of a mail message or news post.
+Don't check spelling of message headers except the Subject field.
+Don't check included messages.
+
+To abort spell checking of a message region and send the message anyway,
+use the `x' command.  (Any subsequent regions will be checked.)
+The `X' command aborts the message send so that you can edit the buffer.
+</pre>
+
+<li> Not exactly what I want to do, but close enough that I can be
+pretty sure that what I do want to do (check for the string "attach",
+check for an attachment, query whether to send if a but not b found,
+abort sending if user says no) is implementable.  
+
+<li> Following the link to "ispell" takes me directly to the
+function's source code.  Now, let's play with it.  Copy and paste the
+entire ispell-message function into *scratch*, change its name to,
+say, check-attachments-attached, and start hacking it about a bit.
+Here's what I ended up with
+
+<pre>
+(defun check-attachments-attached ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (let* (
+           ;; Nil when message came from outside (eg calling emacs as editor)
+           ;; Non-nil marker of end of headers.
+           (internal-messagep
+            (re-search-forward
+             (concat "^" (regexp-quote mail-header-separator) "$") nil t))
+           (end-of-headers              ; Start of body.
+            (copy-marker
+             (or internal-messagep
+                 (re-search-forward "^$" nil t)
+                 (point-min))))
+           (limit 
+            (or (re-search-forward "^-- $" nil t) 
+                (point-max)))              
+           (old-case-fold-search case-fold-search))
+      (unwind-protect
+          (progn
+            (goto-char end-of-headers)
+            (when (search-forward "attach" limit t)
+              (goto-char end-of-headers)
+              ;; the word 'attach' has been used, can we find an
+              ;; attachment?
+              (unless 
+                  (or (re-search-forward "^&lt;#/" limit t)
+                      (y-or-n-p
+                       "Found the word `attach' but no MIME attachment: send anyway?"
+                      )
+                     (error "Aborted send")))))
+        (set-marker end-of-headers nil)))))
+</pre>
+
+<li> and add it to the hook:
+<pre>
+(add-hook 'message-send-hook 'check-attachments-attached)
+</pre>
+</li>
+</ol>
+
+<p>Points of note - 
+
+<p>First off, we didn't need to restart emacs.  In fact, we didn't
+even need to load any files.  All of this was done on the fly.
+Second, we didn't at any point have to read an info manual, fiddle
+around in the filesystem, or search a web site to get to the
+documentation for anything.  We had a little help from customize to
+tell us that ispell-message was a suitable function for this hook, but
+aside from that, all we needed to know was in function and variable
+docstrings.  And when we went to look for the source code to
+ispell-message, there it was, one mouse-click away.  No cvs trees to
+check out, no source packages to download and puzzle over the
+autobreak incantations for.
+
+<p>The function is a hack.  That's the difference between scripting
+and programming.  If I were doing it properly, then instead of looking
+for that funny <tt>&lt;#/</tt> string I'd read the appropriate bits of
+whatever MIME attachment stuff I'm using (that's right, I don't
+actually know) and find out what <i>it</i> does to detect the presence
+of attachments.
+
+<p>The whole exercise took under an hour.  Although I consider myself
+a competent Lisp programmer, that's Common Lisp, not elisp.  I touch
+emacs customization about once a year on average - I may have a head
+start over someone whose programming experience is entirely with, say,
+C or Perl, but I'm by no means a guru.
+
+<p><i>This</i> is what I mean by a scriptable user interface.  This is
+the opportunity that GNOME (as far as I can determine) missed.  This
+is the opportunity that Mozilla, as far as I can see, missed.  (This
+is the opportunity that presently-mythical-environment-based-on-McCLIM
+had damned well better <i>not</i> miss).
+
+<p>People believe they're being funny when they compare Emacs to an
+operating system.  Frankly, they're nearer the truth than they think:
+it may not have a pre-emptive scheduler, but it's still a better
+desktop environment than anything else I've used.
+
+<pre>
+:; cu -l /dev/ttyUSB0
+Connected.
+AT+CLIP?
++CLIP: 0,1
+
+OK
+AT+CLIP=1
+OK
+
+RING
+
++CLIP: "01865423320",129
+
+RING
+
++CLIP: "01865423320",129
+</pre>
+
+Next up, maybe, mobile phone book/BBDB integration, with caller id on
+incoming calls.
+

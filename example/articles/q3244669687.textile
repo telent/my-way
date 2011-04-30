@@ -1,0 +1,31 @@
+title: I don't wear a watch (the strap fell off it about five years agon, and
+author: Daniel Barlow
+date: Sun, 27 Oct 2002 1:8:7 +0000
+
+I don't wear a watch (the strap fell off it about five years agon, and
+i never got around to getting it fixed).  Instead I use my cellphone
+to tell the time - I carry it basically everywhere and it's turned on
+pretty much all the time, so really I'm only inconvenienced on planes
+and in churches.  Anyway, It's 2:09am according to said phone.
+Confusingly, it's still light outside - local time is 18:09.  Double
+confusingly, it's 1:08am according to emacs, which obviously knows
+more about the BST->GMT shift (that's the UK equivalent of daylight
+savings time) than my cellphone does.
+
+<p>I can't believe that there's no UTC time signal on the GSM network
+that cellphones could set themselves to.  I suspect there is, and my
+phone's inability to use it is just typical consumer electronics
+design lossage.
+
+<p>So I'm in Starbucks.  I wouldn't usually, but dim recollection
+suggested that they had wireless access in most or all branches, and
+indeed they do.  For the knockdown rate of only $2.99/15 minutes - not
+only is this about double what internet cafes cost in 1996, but back
+then the cafes actually had to provide the hardware too.  Do I feel
+ripped off?  Yes, but only for $2.99, as I now have some useful AP
+detection tools installed which I am sure I can use to find a more
+friendly service provider.  On the standard friendliness scale that
+has, say, "your dog" at one end and "your bank manager" at the other,
+Starbucks is on current showing somewhere out in "loan shark
+collection agent" territory, so this really should be Not Too Hard.
+

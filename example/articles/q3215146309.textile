@@ -1,0 +1,10 @@
+title: On the train again, and realising that the new SBCL checkout on my
+author: Daniel Barlow
+date: Mon, 19 Nov 2001 8:11:49 +0000
+
+
+<p> On the train again, and realising that the new SBCL checkout on my
+laptop is from the HEAD, whereas all my recent work is on the
+'threads' branch.  What I <i>should</i> be doing, then, is asdf.  What
+I'm actually going to do is lean my head against the window and doze.
+

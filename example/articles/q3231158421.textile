@@ -1,0 +1,27 @@
+title: Lately we've been playing the exciting game called "hey, how about
+author: Daniel Barlow
+date: Thu, 23 May 2002 17:0:21 +0000
+
+
+<p> Lately we've been playing the exciting game called "hey, how about
+actually <i>reading</i> the specs".  
+
+<p> Last night I found out that the cookie handling in <a
+href="/cliki/">CLiki</a> was putting spaces in cookie data (it
+shouldn't).  Anyone who has mysterious \ characters appended to their
+username probably wants to delete their cookies for ww.telent.net and
+try again.  It seems to only show up with reasonably recent Galeon and
+Mozilla browsers, which conveniently enough are the ones that you can
+delete cookies in without farting around editing cookies.txt by hand.
+So, good.
+
+<p>This afternoon I found that net.telent.date's so-called
+UNIVERSAL-TIME-TO-RFC-DATE function isn't, because it should be
+printing a timezone (it's guaranteed to be GMT, but apparently needs
+to be printed anyway).  Having made that change (though not in the
+released version, for which I still need to do other stuff first), the
+Apache proxy actually starts caching as God intended, and suddenly the
+pages/second count as seen by apachebench doubles (99 requests/second
+on a 4k document on my was-once-cool-but-now-obsolete 500MHz laptop).
+Cool beans.
+

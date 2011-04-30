@@ -1,0 +1,19 @@
+title: As an aside I would like to insert a warning to those who identify the
+author: Daniel Barlow
+date: Thu, 19 Dec 2002 19:32:21 +0000
+
+<blockquote>
+As an aside I would like to insert a warning to those who identify the
+difficulty of the programming task with the struggle against the
+inadequacies of our current tools, because they might conclude that,
+once our tools will be much more adequate, programming will no longer
+be a problem.  Programming will remain very difficult, because once we
+have freed ourselves from the circumstantial cumbersomeness, we will
+find ourselves free to tackle the problems that are now well beyond
+our programming capacity.
+</blockquote>
+<div align=right>Edsger W Dijkstra, EWD340</div>
+
+<p>When he says it, it sounds credible.  When I say it, it sounds like
+I'm whining.
+

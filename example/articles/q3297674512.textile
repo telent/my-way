@@ -1,0 +1,34 @@
+title: To pacify the end-of-month bug, here is another placeholder
+author: Daniel Barlow
+date: Thu, 1 Jul 2004 13:41:52 +0000
+
+To pacify the end-of-month bug, here is another placeholder.  Without
+going into any particularly interesting details, this one says that
+
+<ul>
+<li> There's enough of a mess in the SBCL AMD64 backend regarding
+floating point (mostly to do with object sizes and alignment) that
+it'd be quicker and more reliable to actually go over it carefully and
+check it all at once instead of fixing bugs as they happen.  That
+being so, this would be a great opportunity to rewrite it to use XMM
+registers and the "128 bit media instructions" instead of the x87.
+AMD claims that they run faster,there are 16 random-access registers
+instead of the slightly weird x87 stack thing, and it has perfectly
+normal IEEE single and double precision (none of this 80 bit nonsense)
+so we might even get less freaky results too.
+
+<li> I've decided to enter the London Inline Marathon in September, so
+am now skating to work three days a week (or so; depends on weather
+etc).  There was a tube (metro train system) strike here in London
+yesterday; so I ended up skating to work, across town to the <a
+href="http://www.londonskate.com/start.php?uid=21" >Londonskate</a> (a
+and less confusingly k.a the Wednesday Night Skate), did the skate
+itself, and then, finding that the tube was still closed after the pub
+shut, skated back across town to Liverpool St station from where I got
+a surface rail train to Stratford (the one in East London, not the one
+where Shakespeare lived) and skated home from there.  Probably around
+20-22 miles in all, I guess, and must admit that today I am just a
+little tired.
+
+</li>
+</ul>

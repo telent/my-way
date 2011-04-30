@@ -1,0 +1,13 @@
+title: I realise there's an ambiguity in the last-but-one entry
+author: Daniel Barlow
+date: Sun, 18 Nov 2001 15:44:14 +0000
+
+
+<p> I realise there's an ambiguity in the last-but-one entry.
+Yesterday I started to clean the house.  I did not however start to 
+clean the visitors.  OK.
+
+<p> Threads lead to queues and queues lead to locking, and before we
+know where we are, we have the alpha asm reference open again to look
+at how LDQ_L and STQ_C work.  Cool.
+

@@ -1,0 +1,18 @@
+title: Cool stuff:
+author: Daniel Barlow
+date: Sun, 9 Feb 2003 5:1:35 +0000
+
+Cool stuff:
+
+<ul>
+<li> <a
+href="http://www.stud.uni-karlsruhe.de/~unk6/export/hemlock.README"
+>Portable Hemlock</a> (with <a
+href="http://lispm.dyndns.org/lisp/hemlock.jpg"
+>screenshot</a>)
+</li>
+<li> <a
+href="http://clozure.com/cgi-bin/mailman/listinfo/portable-clx-devel"
+>Portable CLX</a>
+</li>
+</ul>

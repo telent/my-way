@@ -1,0 +1,89 @@
+title: I feel compelled to share this, just because it took so long
+author: Daniel Barlow
+date: Sat, 19 Feb 2005 2:6:24 +0000
+
+<p>I feel compelled to share this, just because it took so long.  It
+may yet prove to be utterly useless.
+
+<p>I remarked in my previous entry that I was playing with database
+APIs in an attempt to avoid Perl: this is related.  If you look at the
+Perl Cookbook, or even read a lot of Perl code written by people who
+have, you find that over half the recipes basically read incoming data
+(from a database query or a file or something), whack it into a hash
+or hash of hashes, then when they've collected everything they iterate
+over or otherwise traverse the hash contents to get the data out in a
+more useful format.  The classic example is finding the n most common
+words in a file: for each word we read we look it up in the hash and
+either add it with value 1 if not found, or increment the value if it
+was.  At the end of the file we have a hash of word frequencies we can
+easily iterate over, sort or whatever.
+
+<p>You could do that in CL with hash tables but, well, try it and
+you'll see it ends up being a lot more verbose - especially if you
+want to have "multidimensional" tables - hashes inside hashes.
+<pre>(gethash "quux" (gethash "bar" (gethash "foo" *table*)))</pre>
+and that's without checking that the intermediate values exist.  And
+hashtables don't print in readable format either.  And there's no
+relationship between the order you put elements in and the order thay
+come out in - not even a dependable
+happens-to-work-this-way-but-the-same-way-<i>everywhere</i>
+relationship as Perl gives you.
+
+<p>Plists are nice, though.  They're readably printable.  I happen to
+like that they have fewer parens than alists.  They don't randomly
+shuffle themselves around when you're not looking.  You can use
+destructuring-bind to pick them apart conveniently, too (perhaps this
+is a more compelling advantage than some of the previous).  So, I
+wanted nestable plists.  And as it's now 2:33AM I can't be bothered to
+relate the whole epic voyage of define-setf-expander discovery (some
+other time, perhaps) so I skip straight to the answers.  First, an example
+
+<pre>
+DBS&gt; (let ((l (list :foo 1 :bar 2)))
+  (setf (ref l :foo :ban :barry) 17)
+  (setf (ref l :boz) 14)
+  (format t "-= ~A ~%" (ref l :foo :ban))
+  l)
+
+-= (BARRY 17)
+(:BOZ 14 :FOO (:BAN (:BARRY 17)) :BAR 2)
+</pre>
+
+and here's the code.  Some of the hard bits were taken from SBCL's
+define-setf-expander form for getf.
+
+<pre>
+(defun ref (plist &rest keys)
+  (reduce #'getf keys :initial-value plist))
+
+(defun %put-ref (new-value plist key &rest more-keys)
+  ;; not quite Perl-style autovivification, but we do create
+  ;; appropriate list structure for intermediate keys that can't be found
+  (unless (listp plist) (setf plist nil))
+  (let* ((sub (getf plist key))
+         (val (if more-keys
+                  (apply #'%put-ref new-value sub more-keys)
+                new-value)))
+    (if sub
+        (progn (setf (getf plist key) val) plist)
+      (list* key val plist))))
+
+(define-setf-expander ref (place &rest props
+                                  &environment env)
+  ;; %put-ref may cons new structure or mutate its argument.
+  ;; all this magic is just so that we can
+  ;; (let ((l nil)) (setf (ref l :foo :bar) t))
+  (multiple-value-bind (temps values stores set get)
+      (get-setf-expansion place env)
+    (let ((newval (gensym))
+          (ptemps (loop for i in props collect (gensym))))
+      (values `(,@temps ,@ptemps )
+              `(,@values ,@props )
+              `(,newval)
+              `(let ((,(car stores) (%put-ref ,newval ,get ,@ptemps)))
+                 ,set
+                 ,newval)
+              `(ref ,get ,@ptemps)))))
+</pre>
+
+

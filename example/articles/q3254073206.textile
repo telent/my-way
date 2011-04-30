@@ -1,0 +1,15 @@
+title: &lt;lemonodor> thanks for not notifying me about my dns service expiring,
+author: Daniel Barlow
+date: Wed, 12 Feb 2003 21:13:26 +0000
+
+<pre>
+&lt;lemonodor> thanks for not notifying me about my dns service expiring,
+dotster.
+&lt;lemonodor> so anyway, if lemonodor.com doesn't work there's
+<a href="http://heavymeta.dyndns.org/">heavymeta.dyndns.org</a> as a fallback
+</pre>
+
+I'll write some more text that's not PRE-formatted soon, I promise.
+In the meantime, this has been a public service announcement for
+whatever portion of the Lisp screenshot pr0n audience also read my
+SBCL ramblings.  Spread the news.

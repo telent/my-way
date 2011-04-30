@@ -1,0 +1,29 @@
+title: Remember all those antics last month with alternate signal stacks and SIGSTKSZ and the rest
+author: Daniel Barlow
+date: Wed, 7 Aug 2002 1:43:38 +0000
+
+Remember all those antics <a href="http://ww.telent.net/diary/2002/7/#14.47243"
+>last month</a> with alternate signal stacks and SIGSTKSZ and the rest
+of it?
+
+<pre>
+       starting address and size  of  the  stack.   The  constant
+       SIGSTKSZ  is defined to be large enough to cover the usual
+       size requirements for an alternate signal stack,  and  the
+       constant  MINSIGSTKSZ defines the minimum size required to
+       execute a signal handler.
+</pre>
+
+<p>SIGSTKSZ on x86 linux with whatever version of glibc I have
+installed here (2.2?  whatever debian unstable has in it last month),
+is not actually big enough to call <tt>printf</tt>.  Granted this is
+in general not a completely great idea anyway as printf is probably
+not reentrant, but it is somewhat disconcerting to switch on the
+"debug cold init by spewing messages to stderr" switch and get a whole
+different (and rather faster) failure mode.
+
+<p>We do <i>entire garbage collections</i> inside signal handlers
+(admittedly not on x86, so this specific problem doesn't arise
+there).  Why do I feel queasy about this?
+
+

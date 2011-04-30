@@ -1,0 +1,18 @@
+title: ILISP is working again (maybe)
+author: Daniel Barlow
+date: Thu, 24 Oct 2002 1:11:52 +0000
+
+<blockquote>
+ILISP is working again (maybe)
+</blockquote>
+
+Trying to use <a href="/cliki/detachtty">detachtty</a> as an inferior
+lisp in <a href="http://sf.net/projects/ilisp">ilisp</a>.  Superficially it
+works, but had trouble deciding what state the lisp process is in
+until I told it to "repair connection", after which I got the message
+above.  Seems better, anyway
+
+<p>Of course, running ilisp on a machine with no access to the sources
+I actually want to edit is probably not such a really great idea
+anyway.  Oh well.
+

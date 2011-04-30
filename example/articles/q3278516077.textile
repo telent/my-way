@@ -1,0 +1,12 @@
+title: Quick note:  the futex problem is not actually futex-related
+author: Daniel Barlow
+date: Sat, 22 Nov 2003 18:54:37 +0000
+
+<p>Quick note:  the futex problem is not actually futex-related.  Linux
+2.6 behaves differently to 2.4 in what it does when <tt>int 3</tt>
+happens while a SIGTRAP is masked.
+
+<p>Quick note 2: Araneida 0.81 (bug fixes only) to start happening
+tonight when I get back from dinner.  I need a better test suite for
+that thing.
+

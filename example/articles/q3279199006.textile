@@ -1,0 +1,29 @@
+title: OK, in principle we have working SLIME
+author: Daniel Barlow
+date: Sun, 30 Nov 2003 16:36:46 +0000
+
+OK, in principle we have working <a href="/slime-over-ssh.png">SLIME
+over SSH</a>, using the client side of attachtty/detachtty.  We tell
+slime to <tt>attachtty hostname:/path/to/socket</tt> instead of
+connecting over the network, then we hack up swank a little to accept
+connections on a local socket instead of a TCP socket.
+
+<p>Why a local socket?  To cater for the situation that the remote
+host may have more than one user.  Access to unix sockets can be
+controlled by filesystem permissions, which saves us from having to
+come up with some authentication protocol in slime.
+
+<p>Still a fair amount of cleanup to be done (slime-disconnect tends
+to kill the lisp, which could be considered a Bad Thing), but I'll see
+if I can get committage some time soon.
+
+<p>Not impressed by: emacs apparently wiring together stdout and
+stderr of subprocesses even when you've said you want a pipe not a tty.
+Does this look silly to anyone else?
+
+<pre>
+  (setq slime-net-process
+        (let ((process-connection-type nil)) ; pipe
+          (start-process-shell-command "SLIME Lisp" nil "attachtty" path "2>/dev/null")))
+</pre>
+

@@ -1,0 +1,28 @@
+title: One more meaningless milestone to share:
+author: Daniel Barlow
+date: Wed, 4 Feb 2004 6:25:28 +0000
+
+One more meaningless milestone to share:
+
+<pre>
+//doing warm init
+This is SBCL 0.8.7.25, an implementation of ANSI Common Lisp.
+
+More information about SBCL is available at &lt;http://www.sbcl.org/>.
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+fatal error encountered in SBCL pid 19288:
+unknown core file entry: 0
+There's no LDB in this build; exiting.
+dan@pup:~/src/sourceforge/sbcl> ls -l output/cold-sbcl.core 
+-rw-r--r--    1 dan      users    62128128 2004-02-03 21:44 output/cold-sbcl.core
+</pre>
+
+I guess I forgot some stuff for the target-features list.  The next
+step, after I've been to bed for a few hours, is to rewrite the
+assembler glue that I copied from x86 - and probably quite a lot of
+the c-call lisp glue which I obtained in similar fashion - for x86-64
+calling conventions.  This thing has registers, and it uses quite a
+lot of them for passing arguments and return values to/from functions.

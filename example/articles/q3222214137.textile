@@ -1,0 +1,25 @@
+title: Well, let's see
+author: Daniel Barlow
+date: Sat, 9 Feb 2002 3:28:57 +0000
+
+
+<p> Well, let's see.  Now we're using the software fp_control
+register, with ffi calls to read and write it using
+<tt>ieee_[sg]et_fp_control()</tt>.  We've lost the ability to set the
+rounding mode, but the evidence so far available suggests that only
+insane people want to do that anyway.  The rest appears to be working,
+except that in sigfpe-handler we're using the current fp_control
+instead of the one in the sigcontext.  This is because (according to
+grep *.[chS], anyway) the kernel appears not to ever fill in the
+sc_fp_control slot in the sigcontext.  The one I looked at certainly
+didn't seem to contain the right answer.
+
+<P> OK, so we have more-working-than-it-was Alpha floating point, at
+least.  In fact, as we actually look up which trap went off when we
+get a SIGFPE, we presently have more featured fp support on Alpha than
+we do on x86.  Someone who cares can fix up x86 equivalently.
+
+<p> The <a
+href="http://www.picturehouse-cinemas.co.uk/site/cinemas/Oxford/local.htm"
+>Phoenix</a> was showing Spinal Tap last night.  Definitely worth watching
+

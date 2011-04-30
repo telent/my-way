@@ -1,0 +1,33 @@
+title: I think I actually spent most of the weekend, and of Monday, in
+author: Daniel Barlow
+date: Wed, 19 Dec 2001 8:25:5 +0000
+
+
+<p> I think I actually spent most of the weekend, and of Monday, in
+bed.  There was no really good reason for this; I just didn't feel
+that I wanted to get up.  By Monday night I'd changed my mind and got
+up, and it was Tuesday evening before I next slept.  So, I woke up
+today at 5am, which means I get to see daylight today.  Definite
+improvement.
+
+<p> More SBCL raw address fun: I checked what CMUCL did, and on PPC it
+does in fact store the Function address in the Fdefn raw-address slot 
+- so requires none of the alterations to jump instruction sequences
+we've been having to do.  So we could potentially even revert them.
+This also fixes the make-random-state bug that I'd previously kludged
+my way past.
+
+<p>Current issues:
+
+<ul>
+<li> <a href="http://www.geocrawler.com/lists/3/SourceForge/1663/0/7348688/"
+>def!struct/csubtypep</a>
+<li> After printing <tt>/about to SETF GETHASH SB-NAMES in
+DEFINE-STORAGE-BASE</tt> it jumps to some random address that doesn't
+appear in the map file, which contains a relative jump instruction
+with offset 0 - infinite loop
+</li>
+</ul>
+
+
+

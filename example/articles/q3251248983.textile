@@ -1,0 +1,40 @@
+title: I started writing this entry the other day, but it was killed due to a
+author: Daniel Barlow
+date: Sat, 11 Jan 2003 4:43:3 +0000
+
+I started writing this entry the other day, but it was killed due to a
+kernel problem.  
+
+<p>My phone didn't come back, as such.  Instead they gave me a new
+one, so that really ought to fix the problem.  Thank you, Botley Road
+Oxford branch of Carphone Warehouse
+
+<p>All things considered, less done this week than I might have hoped
+to do.  Having got the phone back, I obviously needed to get the
+numbers back into it - having cut and pasted the first two into cu, I
+decided to write a short perl program to do the rest automatically.
+Whee.  Flashing caps lock light time.  OK, let's do (almost) what I
+should have done instead and write it in lisp (I say "almost" because
+it's actually a shell script starting <tt>#!/usr/bin/clisp</tt>).
+Flash bang wallop #2.  Hmm.  Some poking around reveals that the
+device objects to having close() called, but as the oops is actually a
+full-blown kernel panic (in sched.c) and even stuff like magic sysrq
+only just about works, it's not going to be easy to get a log for.
+
+<p>(Some IRC people did recommend a serial console.  Well, yes, but .
+If I had a serial port, I'd have plugged the phone in there in the
+first place and wouldn't <i>need</i> to be screwing around with USB.)
+
+<p>So I (forward ported to 2.4.21-pre3, wrote debian init scripts for,
+and) installed <a href="http://lkcd.sf.net/" >LKCD</a> to get some
+kind of crash dump I could actually use.  That seems to fixed things
+all by itself - at least, now I cannot replicate the problem.
+
+<p>The upside of all this is that 2.4.21-pre3 has some kind of sane
+memory usage patterns and once again I have a laptop that doesn't
+thrash itself for tens of seconds at a time on simple operations.  My
+spies tell me that these days -ac kernels are using some variant of
+the rmap VM, and non-ac kernels are not.  So, probably going to blame
+rmap.  Maybe it's badly tuned.  I still have LKCD installed for
+when I <i>do</i> manage to crash the machine using USB serial, but
+let's upload this diary entry first, shall we?

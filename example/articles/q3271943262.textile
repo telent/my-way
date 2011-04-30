@@ -1,0 +1,9 @@
+title: Latest hack (yesterday's): IPC using X properties and SendMessage
+author: Daniel Barlow
+date: Sun, 7 Sep 2003 18:7:42 +0000
+
+Latest hack (yesterday's): IPC using X properties and SendMessage.
+Details <a
+	href="http://www.caddr.com/archives/lists/clump/2003-9/158.html"
+>here</a>, <a href="http://cvs.telent.net/cgi-bin/viewcvs.cgi/sexp-ipc/"
+>here</a>, and <a href="http://ww.telent.net/sexp-ipc.png">here</a>.

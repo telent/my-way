@@ -1,0 +1,46 @@
+title: YAY
+author: Daniel Barlow
+date: Thu, 12 Dec 2002 3:52:13 +0000
+
+YAY
+
+<pre>
+* (defvar *foo* nil)
+
+*FOO*
+* (defun thread-nnop () (loop (setf *foo* (not *foo*)) (sleep 1)))
+
+THREAD-NNOP
+* (make-thread #'thread-nnop)
+child pid is 15070
+
+#&lt;SB-ALIEN-INTERNALS:ALIEN-VALUE :SAP #X4095F000>
+* /pausing 15070 before entering funcall0(0x9269615)
+/entering funcall0(0x9269615)
+9
+
+9
+* 1
+
+1
+* *foo*
+
+NIL
+* *foo*
+
+T
+* *foo*
+
+T
+* *foo*
+
+NIL
+* *foo*
+
+T
+* *foo*
+
+NIL
+</pre>
+
+The answer, in case you were wondering, is "extremely cool"

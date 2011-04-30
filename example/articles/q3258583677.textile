@@ -1,0 +1,32 @@
+title: And another thing
+author: Daniel Barlow
+date: Sun, 6 Apr 2003 3:7:57 +0000
+
+<p> And another thing ...
+
+<p> While I'm grousing, I should add that I'm still not convinced the
+<a href="http://alu.cliki.net/">ALU cliki</a> has developed any kind
+of identity independent of <a href="http://www.cliki.net/">CLiki
+itself</a>, and I'm really beginning to wonder why I bothered.
+
+<p> Perhaps I should have countered the people who said "CLiki is
+restricted to free-software projects, and this is a bad thing; there
+should be a more general forum for all kinds of Lisp users" by saying "so
+go and make one".  You can't advertise <a
+href="http://www.xanalys.com/">Xanalys</a> LispWorks on <a href=
+"http://www.franz.com/" >www.franz.com</a>, why should you expect to
+be able to advertise Allegro CL on CLiki?
+
+<p> (I should add here that I don't have either of Franz or Xanalys in
+mind when I say "these people" - they're just the first two
+proprietary Lisp vendors that come to mind)
+
+<blockquote>
+Lispers love to talk about their work and their favorite language, to
+help students, and to give away stuff. 
+<br>
+-- <a href="http://www.lisp.org/table/community.htm" >http://www.lisp.org/table/community.htm</a>
+</blockquote>
+
+Ho Fscking Ho.
+

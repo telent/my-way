@@ -1,0 +1,65 @@
+title: That was very nearly the right answer
+author: Daniel Barlow
+date: Mon, 1 Sep 2003 21:22:14 +0000
+
+That was very nearly the right answer.  In fact
+
+<ul>
+<li> there are a couple of places that write-protect pages, so both
+need to check the <tt>dont_move</tt> bit
+
+<li> GC wipes out <tt>dont_move</tt> on all pages at the start of GC,
+before running <tt>preserve_pointers()</tt>.
+<tt>preserve_pointers</tt> only looks at the 'from' space (after all,
+we're not moving objects anyway unless they're in in fromspace), so
+when we see these pages again later we no longer have them specially
+marked, so we write-protect them as normal.  Wrong.  Having realised
+the problem, the solution is simple: only reset <tt>dont_move</tt> on
+fromspace pages instead of on all pages.
+</li>
+</ul>
+
+<pre>
+:; /usr/sbin/ab -c5 -n10000 http://xxxxxxxxxxxxxxxxxxx:8009/Welcome
+[...]
+Server Software:        Araneida/0.74                                      
+Server Hostname:        xxxxxxxxxxxxxxxxxxx
+Server Port:            8009
+
+Document Path:          /Welcome
+Document Length:        2796 bytes
+
+Concurrency Level:      5
+Time taken for tests:   190.112 seconds
+Complete requests:      10000
+Failed requests:        0
+Broken pipe errors:     0
+Total transferred:      29582958 bytes
+HTML transferred:       27962796 bytes
+Requests per second:    52.60 [#/sec] (mean)
+Time per request:       95.06 [ms] (mean)
+Time per request:       19.01 [ms] (mean, across all concurrent requests)
+Transfer rate:          155.61 [Kbytes/sec] received
+
+Connnection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      -10     0   12.0      0   848
+Processing:     7    42  104.7     17  1998
+Waiting:        0    41  104.1     16  1998
+Total:          7    42  105.9     17  1998
+
+Percentage of the requests served within a certain time (ms)
+  50%     17
+  66%     25
+  75%     34
+  80%     42
+  90%     66
+  95%    105
+  98%    285
+  99%    665
+ 100%   1998 (last request)
+</pre>
+
+<p>10000 requests later with no problems, and i think we've got this
+nailed. 
+

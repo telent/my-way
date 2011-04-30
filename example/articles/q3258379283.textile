@@ -1,0 +1,26 @@
+title: I feel like I should be feeling happier about this than I am, but
+it's worth noting anyway: SBCL  thread support has
+author: Daniel Barlow
+date: Thu, 3 Apr 2003 18:21:23 +0000
+
+<p>I feel like I should be feeling happier about this than I am, but
+it's worth noting anyway: SBCL <a href=
+"http://sbcl-internals.cliki.net/Threading"> thread support</a> has
+landed in CVS HEAD.  It's not enabled by default: you have to
+create/edit a customize-target-features.lisp file before building
+<pre>
+:; cat customize-target-features.lisp
+(LAMBDA (LIST) (cons :sb-thread list)) 
+</pre>
+
+<p>In the process I broken all the non-x86 ports, but a further commit
+fixing the worst of that will be forthcoming as soon as the PPC has
+finished building it.
+
+<p>I don't know why it feels like a complete anticlimax though.  Maybe
+I need more coffee.
+
+<p> Anyway, feedback (preferably accompanied by bug fixes) to 
+<a href="http://sourceforge.net/mailarchive/forum.php?forum_id=4134"
+>sbcl-devel</a> grudgingly accepted.
+

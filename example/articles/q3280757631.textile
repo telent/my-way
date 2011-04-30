@@ -1,0 +1,33 @@
+title: The PostgreSQL documentation claims that the range of an 'interval'
+author: Daniel Barlow
+date: Thu, 18 Dec 2003 17:33:51 +0000
+
+
+The PostgreSQL documentation claims that the range of an 'interval'
+type is +/- 178000000 years.  So why do I get this?
+
+<pre>
+stargreen=> select interval '3280756607 second' ;
+      interval       
+---------------------
+ 24855 days 03:14:07
+(1 row)
+</pre>
+
+Does that answer look familiar?  It should
+
+<pre>
+CL-USER> (+ (* 3 3600) (* 14 60) 7 (* 86400 24855))
+2147483647
+</pre>
+
+So, there must be some other way to make Postgres convert from CL
+universal time to its own time format
+<pre>
+stargreen=> select timestamp with time zone '1901-01-01 0:0:0' + interval '3280756607 second' ;
+        ?column?        
+------------------------
+ 1969-01-19 04:14:07+01
+(1 row)
+</pre>
+because the obvious solution isn't one.

@@ -1,0 +1,21 @@
+title: I am the world's biggest plist fan
+author: Daniel Barlow
+date: Tue, 28 Feb 2006 22:12:29 +0000
+
+I am the world's biggest plist fan.  Possibly.  Anyway, as part of the
+same tidying up process that led to the release of trivial-sockets
+0.3, also new to the world but not to me is net-telent-date 0.42,
+which has the additional function decode-universal-time/plist.  Just
+because I can't always remember the order of the values in a decoded
+universal-time (and sometimes you just want the month and year
+anyway).
+<pre>
+(let ((dt (net.telent.date:decode-universal-time/plist (get-universal-time))))
+  (format nil "~2,'0D:~2,'0D:~2,'0D ~D/~D/~D"
+	  (<a href="http://ww.telent.net/diary/2005/2/#19.7584">ref</a> dt :hour) (ref dt :minute) (ref dt :second)
+	  (ref dt :year) (ref dt :month) (ref dt :day)))
+=> "22:19:16 2006/2/28"
+</pre>
+[ Please see also my <a
+		     href="http://ww.telent.net/diary/2003/8/#24.5260">previous
+		     apology</a> for the name of this package ]

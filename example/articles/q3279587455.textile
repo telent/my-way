@@ -1,0 +1,12 @@
+title: Next year's New Years Resolutions, exclusive preview:
+author: Daniel Barlow
+date: Fri, 5 Dec 2003 4:30:55 +0000
+
+Next year's New Years Resolutions, exclusive preview:
+
+<ul>
+<li> Find some other word than 'So' to start diary entries with.
+I'm predicting that enforcing this may involve small elisp hacks.
+<li> Eat something more closely resembling a balanced diet.
+</li>
+</ul>

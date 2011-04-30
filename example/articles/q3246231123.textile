@@ -1,0 +1,23 @@
+title: Courtesy of lemonodor: Tim Converse
+author: Daniel Barlow
+date: Thu, 14 Nov 2002 2:52:3 +0000
+
+Courtesy of lemonodor: <a
+href="http://www.troutworks.com/Timlog/timlog.php" >Tim Converse</a>
+on <a href="http://www.troutworks.com/Timlog/timlog.php?y=2002&m=11&d=12">
+Lisp advocates</a>.
+
+<p>I don't really believe that Lisp advocates aren't significantly
+worse than any other subculture that considers "you just don't
+<i>get</i> it" as a winning move in a debate (ok ok, I'm also a
+cyclist, a free software hacker, a linux user and a former amiga user,
+so hardly in a position to criticise), but the article is a good read
+nonetheless.
+
+<p>I will readily concede that the `solipsist' point is well-made, and
+in my defence offer that <a href="/cliki/circle" >cirCLe</a> was
+originally titled <a href="/cliki/play+nice+with+unix" >Play Nice With
+Unix</a>.  There is no need to be "to be any more isolationist than,
+say, Emacs is" after all.
+
+

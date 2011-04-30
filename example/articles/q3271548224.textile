@@ -1,0 +1,27 @@
+title: Owing to an accounting screwup (which may actually have been my fault,
+author: Daniel Barlow
+date: Wed, 3 Sep 2003 4:23:44 +0000
+
+Owing to an accounting screwup (which may actually have been my fault,
+for a change), my cablemodem service stopped at around 2pm today, NTL
+obviously preferring to switch everything off than to e.g. attempt to
+contact the customer in such circumstances.  Having resolving this in
+the space of about half an hour - most of it in various kinds of
+queues, 14 hours later my service has still not been reconnected.
+"By the end of the day", they said.  Ha.
+
+<p>Apparently the customer service people (who have the authority to
+reconnect) don't have access to the same computer systems as the
+technical support department (who actually have the ability) and have
+to send <i>email</i> to effect this.  My guess is that the email in
+question is stuck behind a zillion bounces and a virus checking
+bottleneck, and I should plan for the return of my The Infinite
+Distraction That Is Internet service sometime on Friday.  In the
+meantime I'm reduced to 56k modem on a noisy (and pay-per-minute)
+analogue line, so for the most part not on irc.
+
+<p>I <i>think</i> I got more work done without net than I typically
+(or at least, often) do with it.  But on the other hand, anyone who
+wanted to look at cvs.telent.net couldn't.  Bad luck, anyone.
+
+

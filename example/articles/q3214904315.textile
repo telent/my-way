@@ -1,0 +1,18 @@
+title: ERROR:
+ORA-00600: internal error code, arguments: [17090], [], [], [], [], [], [], []
+author: Daniel Barlow
+date: Fri, 16 Nov 2001 12:58:35 +0000
+
+<p> 
+<pre>
+ERROR:
+ORA-00600: internal error code, arguments: [17090], [], [], [], [], [], [], []
+</pre>
+<blockquote>
+"Each argument has a specific meaning which can only be interpreted by an Oracle support analyst. The arguments may also change meaning from version to version therefore customers are not advised to memorize them."
+</blockquote>
+
+<p>"Not advised to memorize them"?  Why would I even want to when I
+could just write it down somewhere?  Clearly there is an orac?le?
+tradition here that I'm missing the cultural context for.
+

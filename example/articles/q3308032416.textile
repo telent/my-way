@@ -1,0 +1,18 @@
+title: Charles Stewart has CLRFI Snippets
+author: Daniel Barlow
+date: Fri, 29 Oct 2004 10:53:36 +0000
+
+Charles Stewart has <a
+href="http://www.advogato.org/person/chalst/diary.html?start=130"
+>CLRFI Snippets</a>.  I think it's good that the CLRFI process has
+visibility (i.e. that people are saying "this should be a CLRFI"
+instead of "this should be in the next revision of the standard"), but
+writing a decent proposal is a lot more work than simply suggesting
+one should be written, and even getting constructive feedback has been
+a battle.  My previous experience has been - to paraphrase Ghandhi's
+oft-quoted saying - that <a
+href="http://groups.google.com/groups?selm=87u1d2h220.fsf%40noetbook.telent.net&rnum=3"
+>first they argue with you about the package name</a>, <a
+href="http://groups.google.com/groups?selm=87adcklr4f.fsf%40noetbook.telent.net&rnum=2"
+>then they take your text and use it without attribution</a>.  If
+stage 3 is "then you win", we haven't reached that just yet.

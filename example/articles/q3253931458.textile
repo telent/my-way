@@ -1,0 +1,82 @@
+title: Newsgroups: comp.lang.lisp
+Subject: Re: NYC LOCAL: Tuesday 11 February 2003 Lisp in New York City: Lispers gather to eat and drink
+References:       
+From: Daniel Barlow 
+Date: Tue, 11 Feb 2003 05:50:11 +0000
+Message-ID: 
+User-Agent: Gnus/5.090005 (Oort Gnus v0.05) Emacs/21.2 (i386-debian-linux-gnu)
+Cancel-Lock: sha1:ncgGPtz9RG9Poh/XpT/kAVQnZik=
+In-Reply-To:  (Gabe Garza's message of "Tue, 11 Feb 2003 02:23:58 GMT")
+Gabe Garza  writes:
+author: Daniel Barlow
+date: Tue, 11 Feb 2003 5:50:58 +0000
+
+<pre>
+Newsgroups: comp.lang.lisp
+Subject: Re: NYC LOCAL: Tuesday 11 February 2003 Lisp in New York City: Lispers gather to eat and drink
+References: <b254kl$6on$1@panix2.panix.com> <3E4689E1.708@nyc.rr.com> <m3vfztdx96.fsf@localhost.localdomain> <3e47332d.120992159@netnews.attbi.com> <zKycnb95RN1JwNqjXTWc-w@speakeasy.net> <877kc7n90s.fsf@noetbook.telent.net> <877kc7blda.fsf@ix.netcom.com>
+From: Daniel Barlow <dan@telent.net>
+Date: Tue, 11 Feb 2003 05:50:11 +0000
+Message-ID: <87znp3l624.fsf@noetbook.telent.net>
+User-Agent: Gnus/5.090005 (Oort Gnus v0.05) Emacs/21.2 (i386-debian-linux-gnu)
+Cancel-Lock: sha1:ncgGPtz9RG9Poh/XpT/kAVQnZik=
+In-Reply-To: <877kc7blda.fsf@ix.netcom.com> (Gabe Garza's message of "Tue, 11 Feb 2003 02:23:58 GMT")
+--text follows this line--
+Gabe Garza <g_garza@ix.netcom.com> writes:
+
+>> CLiki is a Wiki1 - there is only one namespace.  So, your name is
+>> guaranteed unique.  If you change the name, put a note on the old page
+>> and I'll go round and garbage collect eventually.
+>
+> If the ALU web site--or part of it--is going to be a subset of CLiki, 
+> is CLiki's mission statement going to be changed to to accomodate 
+> commercial Lisp's and non-Unix Lisps's?
+
+Good question.  The term "CLiki" is overloaded, which is probably
+going to get confusing
+
+* CLiki as a piece of software (which you can download and,
+  eventually, after much cursing, install on your own servers) is
+  freely usable for any purpose
+
+* The CLiki installation at www.cliki.net continues to be for "free
+  software implemented in Common Lisp and available on Unix-like
+  systems"
+
+* The CLiki installation at alu.cliki.net, on the other hand, is
+  "produced by the ALU with and on behalf of the Common Lisp users and
+  vendors community".  Yes, that includes commercial Lisps.
+
+In short, they're two completely different sites.  You can tell by the
+ghastly background colour (replacement suggestions welcome, btw).
+They don't don't share pages.  Eventually I hope that the ALU one will
+shift to the new ALU web server, when that's running.  So in that
+sense, no change in the direction of CLiki is required.
+
+What I expect to see happen is that some of the information currently
+on www.cliki.net will start moving to the ALU site.  For example, many
+of the documents referenced on www.cliki.net are non-free(sic) and
+would be better off on the ALU site - likewise some of the news about
+commercial or Windows implementations is not really relevant to
+www.cliki.net either, and can migrate across.  Some past attempts at
+"community standards" have been made on www.cliki.net, which again
+might be better off in a place where people don't feel they need to buy
+into some ideology to participate.
+
+I don't yet know exactly what this is going to do to www.cliki.net in
+the long term[*].  It may live on independently, or it may fizzle, or
+it may end up as a view onto the ALU site showing only the pages with
+a tick against "bruce perens says you won't go to hell for reading
+this".  I have my own plans (which don't involve it dying off just
+yet), but mostly it depends on where the contributors want to take it.
+
+
+[*] OK, medium term.  In the long term I'm really hoping that we won't
+need to be using Unix any more.
+
+-dan
+
+-- 
+
+   http://www.cliki.net/ - Link farm for free CL-on-Unix resources 
+</pre>

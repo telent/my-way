@@ -1,0 +1,60 @@
+title: cl-ppcre is a portable CL
+author: Daniel Barlow
+date: Sun, 24 Aug 2003 7:16:35 +0000
+
+<a href="http://www.cliki.net/cl-ppcre" >cl-ppcre</a> is a portable CL
+package providing perl-compatible regexps.  There are two things I'd
+like to say about it on the basis of ten minutes use
+
+<ol>
+<li> It's asdf-packaged.  Although it's not in cclan, which means I
+can't download it with asdf-install because I haven't got a trust
+relationship with Edi Wietz' PGP key, I can download it from the page
+and then painlessly install it from local disk.
+<pre>
+* (asdf-install:install "/home/dan/cl-ppcre.tgz")
+Install where?
+1) System-wide install: 
+   System in #P"/usr/local/lib/sbcl/site-systems/"
+   Files in #P"/usr/local/lib/sbcl/site/" 
+2) Personal installation: 
+   System in #P"/home/dan/.sbcl/systems/"
+   Files in #P"/home/dan/.sbcl/site/" 
+ --> 2
+Installing /home/dan/cl-ppcre.tgz in #P"/home/dan/.sbcl/site/",#P"/home/dan/.sbcl/systems/"
+cl-ppcre-0.5.7/
+[ ... and so it goes ]
+</pre>
+
+</li>
+<li> Although billed as perl-compatible, that doesn't mean you have to
+use the Perl syntax: you can also write regexes as trees.  For example
+
+<pre>
+(defparameter *postcode-p*
+  (let ((a '(:CHAR-CLASS (:RANGE #\a #\z)))
+	(n :digit-class)
+	(s '(:GREEDY-REPETITION 0 NIL :WHITESPACE-CHAR-CLASS)))
+    (cl-ppcre:create-scanner
+     `(:alternation
+       (:sequence ,a ,n       ,s  ,N ,A ,A)
+       (:sequence ,A ,N ,N    ,s  ,N ,A ,A)
+       (:sequence ,A ,A ,N    ,s  ,N ,A ,A)
+       (:sequence ,A ,A ,N ,N ,s  ,N ,A ,A)
+       (:sequence ,A ,N ,A    ,s  ,N ,A ,A)
+       (:sequence ,A ,A ,N ,A ,s  ,N ,A ,A)))))
+
+* (cl-ppcre:scan *postcode-p* "w1y 1ha")
+0
+7
+#()
+#()
+* 
+</pre>
+
+That's a regex for UK postcodes (actually, not quite.  I should add
+the special case for GIR 0AA, which apparently is Alliance &amp;
+Leicester Girobank Plc in Bootle).  Isn't it just much easier to see
+what it does as a tree?
+</li>
+</ol>

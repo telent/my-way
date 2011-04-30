@@ -1,0 +1,15 @@
+title: OK, No more PHP whinging
+author: Daniel Barlow
+date: Mon, 19 Apr 2004 12:24:59 +0000
+
+OK, No more PHP whinging.  After three days of reading PHP references
+followed by a relaxing(sic) weekend spent staring at x86-64 assembly,
+I'm starting to see why it is the way it is; at some future date I
+will regale you all with my opinions, but in the meantime I'm still
+thinking.
+
+<P>(Which is not to say that I think it's that way for <i>good</i>
+reasons, just that I don't have quite thw same expectations as I
+started out with)
+
+

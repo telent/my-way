@@ -1,0 +1,30 @@
+title: I've not been writing much lately, because I haven't had much (a) to
+author: Daniel Barlow
+date: Tue, 3 Sep 2002 13:11:42 +0000
+
+<p>
+I've not been writing much lately, because I haven't had much (a) to
+write about, (b) time to write it in.  More (b) than (a), in fact.
+
+<p>Oracle error messages, <i>n</i> in a series of
+<tt>most-positive-fixnum</tt>:
+<pre>
+:; owm      
+Exiting
+java.lang.NullPointerException
+        at oracle.ewt.lwAWT.BufferedApplet.&lt;init>(Compiled Code)
+        at oracle.sysman.emSDK.client.appContainer.WebApplication.&lt;init>(Compiled Code)
+        at oracle.security.admin.wltmgr.owma.OwmaApp.&lt;init>(Compiled Code)
+        at oracle.sysman.emSDK.client.appContainer.WebApplication.main(Compiled Code)
+Done.
+</pre>
+
+<p>The error message actually means "cannot connect to X server".
+Isn't it <i>obvious</i>?  It also means "we don't accept any of the
+standard toolkit options", of course.  
+
+<p>It turns out that we actually want to be using the Oracle
+Enterprise Login Assistant for this instead anyway.  It has basically
+the same deficiency but doesn't insist on displaying a splash screen,
+so can actually map its window and get on with answering requests
+without user input.
