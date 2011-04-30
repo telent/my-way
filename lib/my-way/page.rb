@@ -60,6 +60,10 @@ var twitterCallback2 =function(C)
           text "I'm Daniel Barlow.  This blog contains geeky stuff about what I do, and in the older entries, what I used to do.  Ruby, Linux, Lisp, Android, thoughts about software development and matters arising.  For my other personality (tech--, skating++), see "
           a "Coruskate", :href=>"http://www.coruskate.net"
         end
+        div :class=>:adsense_box do
+          rawtext Adsense::Box_ad
+        end
+
         div :id=>:twitter_div do
           h2 do
             a "twitter @telent_net",:href=>"https://twitter.com/telent_net",

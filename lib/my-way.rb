@@ -180,6 +180,9 @@ class Myway
       recent.reverse.each do |art|
         widget entry(request,art,:comment_link)
       end
+      div :class=>:adsense_banner do
+        rawtext Adsense::Thin_ad
+      end
       div :class=>:entry do
         h2 "Older posts"
         ul do

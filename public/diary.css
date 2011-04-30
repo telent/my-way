@@ -181,3 +181,15 @@ div.content li {
     margin-left: 1em;
     margin-bottom: 0.5em;
 }
+
+div.adsense_banner {
+    margin: 1em 0px;
+    text-align: center;
+}
+
+div.adsense_box {
+    margin: 1em 0px ;
+    padding: 0;
+    border: none;
+}
+
