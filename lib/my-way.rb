@@ -5,6 +5,9 @@ require 'redcloth'
 require 'eventmachine'
 require 'thin'
 require 'builder'
+require 'htmlentities'
+require 'flickraw'
+load "config.rb"
 
 class Myway < Sinatra::Base;end
 require 'my-way/page'
@@ -22,6 +25,13 @@ class Myway
     def initialize(string)
       @string=string
     end
+    def flickr_link(id,attr)
+      info=flickr.photos.getInfo(:photo_id=>id)
+      link=FlickRaw.url_photopage(info)
+      src=FlickRaw.url_m(info)
+      %Q{<a href="#{link}"><img #{attr} class="flickr" src="#{src}" /></a>}
+    end
+
   end
 
   class Formatter::Markdown < Formatter
@@ -31,7 +41,17 @@ class Myway
   end
   class Formatter::Textile < Formatter
     def to_html
-      rc=::RedCloth.new(@string)
+      string=@string.gsub(/!F([<>]?)(.*?)!/) { |txt|
+        case $1
+        when ?> then float="style='float: right'" ; txt=txt[1..-1].strip
+        when ?< then float="style='float: left'" ; txt=txt[1..-1].strip
+        else float=''
+        end
+        id=($2 || $1).to_i
+        flickr_link(id,float)
+      }
+      
+      rc=::RedCloth.new(string)
       rc.hard_breaks=false;
       rc.to_html
     end
