@@ -1,0 +1,30 @@
+title: What I miss most about Lisp
+author: Daniel Barlow
+date: Sat Apr 30 23:23:33 2011
+
+It's been three months since I wrote anything longer than one line in
+Lisp, and over a year since I wrote more than a screenful of the
+stuff.  
+
+What I miss most is not CLOS or the REPL or even macros (per se,
+anyway).  It's 
+
+* the distinction between READ and EVAL: a sane syntax for
+  constructing complex data structures that look like code, but
+  without actually having the data structures in question interpreted
+
+* and backtraces with the values of function parameters in them.  When
+  you're doing the same thing 1000 times to different database rows or
+  objects in a collection, and one of them has a @nil@ in it
+  somewhere, it would be really nie to know *which* one.
+
+And maybe the REPL (although irb does most of that).  And kinda sorta
+Defsystem, but I seem to be in the process of "reimplementing that":https://github.com/telent/projectr ...
+
+But I hope soon to get Rubinius installed, just because I still have
+the irrational opinion that a grown-up programming language ought to
+be able to implemet itself (and I have a /thing/ for native code) so
+project 1 there is to see if I can hack the backtrace thingy at least
+into it.
+
+
