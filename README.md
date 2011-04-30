@@ -1,5 +1,6 @@
 # My Way
 
+
 Well, what else would you call a personal blogging engine based on
 Sinatra?
 
