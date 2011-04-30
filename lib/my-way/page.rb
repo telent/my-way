@@ -7,6 +7,12 @@ class Myway::Page < Erector::Widgets::Page
     "#{@title} - diary at Telent Netowrks"
   end
 
+  def head_content
+    super
+    link :rel=>:alternate,:type=>"application/rss+xml",:title=>"RSS Feed",
+    :href=>"/news.rss"
+  end
+
   depends_on :css, "/diary.css"
   depends_on :script,%q{
   var _gaq = _gaq || [];

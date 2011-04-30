@@ -7,6 +7,7 @@ require 'thin'
 require 'builder'
 require 'htmlentities'
 require 'flickraw'
+require 'rss/maker'
 load "config.rb"
 
 class Myway < Sinatra::Base;end
@@ -140,6 +141,36 @@ class Myway
       end    
     end
   end
+
+  get '/news.rss' do
+    content_type 'application/rss+xml', :charset=>'utf-8'
+    recent = @blog.articles
+    if recent.length> 10 then recent=recent[-10..-1] end
+    feed=RSS::Maker.make("2.0") do |m|
+      m.channel.title = "diary at Telent Netowrks"
+      m.channel.link = "http://ww.telent.net/"
+      m.channel.description = "Geeky stuff about what I do.  By Daniel Barlow"
+      m.items.do_sort = true # sort items by date
+
+      recent.each do |a|
+        i = m.items.new_item
+        i.title = a.subject
+        i.link = url(a.url)
+        i.guid.content = url(a.url)
+        
+        i.description=Erector.inline do
+          File.open(a.filename) do |fd|
+            fd.seek(a.content_offset)
+            rawtext a.markup.new(fd.read).to_html
+          end
+        end.to_html
+        i.author='Daniel Barlow'
+        i.date = a.date
+      end
+    end
+    feed.to_s
+  end
+
 
   get '/' do
     articles= @blog.articles 
