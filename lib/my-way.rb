@@ -2,8 +2,8 @@ require 'time'
 require 'kramdown'
 require 'sinatra/base'
 require 'redcloth'
-require 'eventmachine'
 require 'thin'
+require 'thin/prefork'
 require 'builder'
 require 'htmlentities'
 require 'flickraw'
@@ -115,6 +115,9 @@ class Myway
 
   enable :static
   set :public, File.join(Dir.pwd,'public')
+  set :run, false
+  set :show_exceptions, false
+  attr_accessor :blog
 
   helpers do
     def entry(request,art,comments=false)
@@ -276,4 +279,19 @@ class Myway
 
 end
 
-Myway.run!
+class Worker < Thin::Prefork::Worker
+  def reload!
+    @app.blog.rescan
+    super
+  end
+end
+
+master=Thin::Prefork.new :app=>Myway.new,:worker_class=>Worker,:num_workers=>2,
+:host=>"0.0.0.0",:port=>4567,:stderr=>$stderr,:pid_file=>"/tmp/my-way.pid"
+
+Signal.trap("HUP") do
+  warn "reloading"
+  master.reload!
+end
+
+master.run!
