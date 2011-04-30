@@ -16,14 +16,14 @@ anyway).  It's
 * and backtraces with the values of function parameters in them.  When
   you're doing the same thing 1000 times to different database rows or
   objects in a collection, and one of them has a @nil@ in it
-  somewhere, it would be really nie to know *which* one.
+  somewhere, it would be really nice to know *which* one.
 
 And maybe the REPL (although irb does most of that).  And kinda sorta
 Defsystem, but I seem to be in the process of "reimplementing that":https://github.com/telent/projectr ...
 
 But I hope soon to get Rubinius installed, just because I still have
 the irrational opinion that a grown-up programming language ought to
-be able to implemet itself (and I have a /thing/ for native code) so
+be able to implement itself (and I have a /thing/ for native code) so
 project 1 there is to see if I can hack the backtrace thingy at least
 into it.
 
