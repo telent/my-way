@@ -25,7 +25,7 @@ break, then why test them?"
 
 The problem comes when you adopt the mindset typified by BDD that "the
 test examples are actually your executable specification", because in that
-case _how do you specify that the object has an accessor_?  This is
+case _how do you specify that the object has an accessor?_  This is
 not an unreasonable demand.  Suppose we have objects whose purpose is
 to store structured data that will be used by client code - for
 example, @User@ has an @age@ property.  Jbrains - which must surely be
