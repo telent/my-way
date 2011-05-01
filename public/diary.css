@@ -154,15 +154,15 @@ div.content p {
     padding-bottom: 1em;
 }
 div.content pre,code {
-    line-height: 110%;
+    /*  monospace fonts always look bigger at the same point size */
     background-color: #eef;
+    font-size: 90%;
     font-family: monospace;
-    padding: 8px 0;
-    margin: 4px 0;
 }
 div.content pre {
-    /*  monospace fonts always look bigger at the same point size */
-    font-size: 90%;
+    line-height: 110%;
+    padding: 8px 0;
+    margin: 4px 0;
 }
 
 h2.subject {
