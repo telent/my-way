@@ -24,7 +24,7 @@ Defsystem, but I seem to be in the process of
 
 But I hope soon to get Rubinius installed, just because I still have
 the irrational opinion that a grown-up programming language ought to
-be able to implement itself (and I have a /thing/ for native code) so
+be able to implement itself (and I have a _thing_ for native code) so
 project 1 there is to see if I can hack the backtrace thingy at least
 into it.
 
