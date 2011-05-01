@@ -114,6 +114,7 @@ buzz, so be very careful here.
 
 At this point if you have a rescue cd image or something you could
 start kvm and have a poke around. 
+
 <pre>
  # kvm -hda /usr/local/lib/xen/domains/no.stargreen.com/qemudisk.raw
    -cdrom trinity-rescue-kit.3.1-build-210.iso -boot d
@@ -121,6 +122,7 @@ start kvm and have a poke around.
 But you still can't boot the hd image directly, because there's no
 bootloader.  So let's fix that next.  Note that your exact kernel
 package name may not be the same as mine.
+
 <pre>
  # mount qemudisk.raw /mnt -t ext2 -o loop,offset=8225280
  # chroot /mnt apt-get update
@@ -137,6 +139,7 @@ package name may not be the same as mine.
  kernel          /boot/vmlinuz-2.6.26-2-amd64 root=/dev/hda1 
  initrd          /boot/initrd.img-2.6.26-2-amd64
 </pre>
+
 apt-get may complain about having no initrd set up and ask if you want
 to to abort.  I said "no", which works for me.  We install grub by
 hand because @grub-install@ doesn't work so well in this situation.
@@ -179,6 +182,7 @@ iface br0 inet static
 </pre>
 
 and then I start kvm with 
+
 <pre>
  # kvm -hda qemudisk.raw -net nic -net tap,ifname=tap0,script=no
 </pre>
