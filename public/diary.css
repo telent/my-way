@@ -180,6 +180,11 @@ div.tweet {
     padding-right: 0.5em;
     font-size: 95%;
     line-height: 100%;
+    background: url(/bird.png);
+    background-position: 98% center;
+    background-repeat: no-repeat;
+    background-opacity: 60%;
+    min-height: 40px;
 }
 div.tweet div.body {
     margin-left: 1em;
