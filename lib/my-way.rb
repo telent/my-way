@@ -41,6 +41,22 @@ class Myway
     end
   end
   class Formatter::Textile < Formatter
+    module NewTags
+      def tweet(opts)
+        user,id,txt=opts[:text].split(/ /,3)
+        Erector.inline do
+          div :class=>:tweet do
+            div :class=>:body do
+              rawtext txt
+            end
+            div :class=>:link do
+              a "from twitter",
+              :href=>"http://twitter.com/#{user}/statuses/#{id}"
+            end
+          end
+        end.to_html
+      end
+    end
     def to_html
       string=@string.gsub(/!F([<>]?)(.*?)!/) { |txt|
         case $1
@@ -53,7 +69,8 @@ class Myway
       }
       
       rc=::RedCloth.new(string)
-      rc.hard_breaks=false;
+      rc.extend(NewTags)
+      rc.hard_breaks=false
       rc.to_html
     end
   end

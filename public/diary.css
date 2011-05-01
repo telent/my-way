@@ -172,6 +172,24 @@ h2.subject {
     background-color: #ddd;
 }
 
+div.tweet {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #33ccff;
+    margin: 0 1em 0.5em 2em;
+    padding-right: 0.5em;
+    font-size: 95%;
+    line-height: 100%;
+}
+div.tweet div.body {
+    margin-left: 1em;
+}
+div.tweet div.link {
+    text-align: right;
+    font-size: 80%;
+}
+
+
 h2.subject a[href] {
     float: right;
     padding: 4px;
