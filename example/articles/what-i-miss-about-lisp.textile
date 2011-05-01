@@ -19,7 +19,8 @@ anyway).  It's
   somewhere, it would be really nice to know *which* one.
 
 And maybe the REPL (although irb does most of that).  And kinda sorta
-Defsystem, but I seem to be in the process of "reimplementing that":https://github.com/telent/projectr ...
+Defsystem, but I seem to be in the process of
+ "reimplementing that":https://github.com/telent/projectr ...
 
 But I hope soon to get Rubinius installed, just because I still have
 the irrational opinion that a grown-up programming language ought to

@@ -61,16 +61,16 @@ doesn't for you.  Back up first.
 like @/usr/local/lib/xen/domains/vitrual.4a.telent.net/disk.img@
 
 <pre>
- # cd /usr/local/lib/xen/domains/no.stargreen.com
- # file disk.img 
- disk.img: Linux rev 1.0 ext3 filesystem data, UUID=e6143cef-c3ed-4c21-94d9-32d4ba186910 (large files)
- # ls -l disk.img 
- -rw-r--r-- 1 root staff 4294967296 2009-06-03 14:33 disk.img
+# cd /usr/local/lib/xen/domains/no.stargreen.com
+# file disk.img 
+disk.img: Linux rev 1.0 ext3 filesystem data, UUID=e6143cef-c3ed-4c21-94d9-32d4ba186910 (large files)
+# ls -l disk.img 
+-rw-r--r-- 1 root staff 4294967296 2009-06-03 14:33 disk.img
 </pre>
 Looking promising.  So let's create a qemu image.
 <pre>
- # dd if=/dev/zero of=mbr bs=8225280 count=1
- # cat mbr disk.img mbr | cp --sparse=always /dev/stdin qemudisk.raw
+# dd if=/dev/zero of=mbr bs=8225280 count=1
+# cat mbr disk.img mbr | cp --sparse=always /dev/stdin qemudisk.raw
 </pre>
 Why these numbers?  It's a throwback to ancient technology: ye olde PC
 accessed disks using cylinder/head/sector technology, and the upper
