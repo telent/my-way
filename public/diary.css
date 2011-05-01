@@ -137,6 +137,10 @@ div.entry h2.subject {
 div.entry em {
     font-style: italic;
 }
+div.entry strong {
+    font-weight: bold;
+}
+
 
 h3.date {
     margin: 4px 0 1em 0;
