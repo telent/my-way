@@ -68,6 +68,7 @@ disk.img: Linux rev 1.0 ext3 filesystem data, UUID=e6143cef-c3ed-4c21-94d9-32d4b
 -rw-r--r-- 1 root staff 4294967296 2009-06-03 14:33 disk.img
 </pre>
 Looking promising.  So let's create a qemu image.
+
 <pre>
 # dd if=/dev/zero of=mbr bs=8225280 count=1
 # cat mbr disk.img mbr | cp --sparse=always /dev/stdin qemudisk.raw
