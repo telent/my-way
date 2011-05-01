@@ -134,6 +134,10 @@ div.entry h2.subject {
     margin: -4px -4px;
 }
 
+div.entry em {
+    font-style: italic,oblique;
+}
+
 h3.date {
     margin: 4px 0 1em 0;
     font-weight: bold;
