@@ -1,0 +1,41 @@
+title: I did it my way
+date: Sun May  1 11:50:35 2011
+
+tweet. telent_net 63709899460321280 short unoriginal observation on ruby blogging engines: quicker to write your own than evaluate all the other poorly documented ones
+
+tweet. telent_net 63710033904549888 ... this observation only holds if you skimp on the documentation of course. which is where we came in
+
+If you can see this, you can see my blog design all changed again.
+This time it's a Ruby "Sinatra":http://www.sinatrarb.com/ application
+(whence the name "my-way":https://github.com/telent/my-way) running on
+"thin-prefork":https://github.com/telent/thin-prefork, which keeps the article texts in git and uses RedCloth
+plus some ugly regexps to turn them into HTML.  The Markdown vs
+Textile decision is not an especially interesting one in the first
+place, but gets a lot easier still when you have something like 9
+years worth of previous articles in Textile format.
+
+Publishing is achieved by pushing to a git repository on the live
+machine (a "Bytemark":http://www.bytemark.co.uk vm).  A post-update
+hook in the remote repository is responsible for checking out the
+updated commit (git doesn't like pushing to non-bare repositories) and
+sending @SIGHUP@ to the running instance of my-way which causes it to
+reindex files.
+
+<pre>
+dan@bytemark:~$ cat /home/git/my-way.git/hooks/post-update        
+#!/bin/sh
+GIT_WORK_TREE=/home/dan/src/git/my-way git checkout -f
+kill -1 `cat /tmp/my-way.pid`
+</pre>
+
+The version of my-way on github lags the actual version slightly,
+because I need to separate the engine from the articles and from the
+config data (there are things like adsense subscriber id, flickr api
+keys, etc) before I push the latter to a public service.  Will clean it
+up in the next few days.
+
+And my apologies to RSS feed subscribers.  I've finally dropped the
+@/diary@ prefix on the URL for this blog, and the old RSS feed didn't
+use GUIDs and I'm too lazy to make the new one do so either, so the
+upshot is you just got the ten most recent articles in your feed
+again.  Sorry. 
