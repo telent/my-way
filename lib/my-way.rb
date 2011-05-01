@@ -86,7 +86,7 @@ class Myway
 
     def rescan
       f=File.join(@directory,"articles","*.{html,md,textile}")
-      @articles=Dir.glob(f).reject{|x| /^draft/.match(x) }.map do |f|
+      @articles=Dir.glob(f).reject{|x| %r{/draft-}.match(x) }.map do |f|
         File.open(f) do |fd|
           headers={:filename=>f}
           fd.each_line do |line|
@@ -255,7 +255,6 @@ class Myway
   end
 
   get "/diary/*" do |rest|
-    warn rest
     redirect url(rest)
   end
 
