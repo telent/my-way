@@ -98,3 +98,4 @@ I will doubtless form my own opinions on all of these issues in time
 and with more experience of using this tool in practice, but feedback
 on them and on the general approach is warmly welcomed.
 
+"Fork, clone, spindle, mutilate":https://github.com/telent/projectr
