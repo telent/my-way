@@ -22,10 +22,8 @@ file, but there seems to be a significant lack of DRYness about it
 all.  This led me to think there is a gap in the market for
 
 # a language for describing the files that a project comprises
-
 # some tools to interrogate a project description written in this form
   and find out what's in it
-
 # some code to load them into a running interpreter - and for bonus
   points, when files have previously been loaded into said image but
   since changed on disk, to _reload_ them.  This could be used in irb
