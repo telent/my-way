@@ -13,7 +13,7 @@ let's list some use cases
 * to print them (don't laugh, I did that the other day when I was having trouble deciding how to refactor a bunch of stuff)
 
 As far as I can see from my survey of the Ruby world, the current
-practices for each of these use cases is pretty ad hoc.  Maybe you
+practices for each of these use cases are pretty ad hoc.  Maybe you
 write a file full of @require@ or @require_relative@ statements (as
 the "RBP
 blog":http://blog.rubybestpractices.com/posts/gregory/036-issue-7-good-and-bad-code.html
@@ -45,6 +45,8 @@ is not just slow, it's SLow with a capital S and a capital L and a
 pulsating ever-growing O that rules from the centre of the underworld.
 
 Here's one I made earlier
+
+<notextile>
 <pre>
 Projectr::Project.new :test do
   # directories may be named by symbols or strings
@@ -65,6 +67,7 @@ h.load!   # nothing happens this time
 # touch example/file1.rb
 h.load!   # loads only the changed file
 </pre>
+</notextile>
 
 At the time of writing this, the github version does about that much,
 but is quite clearly still version 0.  Stuff I am still thinking abut:
