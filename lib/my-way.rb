@@ -271,20 +271,22 @@ class Myway
     end.to_html
   end
 
-  get "/diary/*" do |rest|
-    redirect url(rest)
-  end
-
-  get "/*" do |slug|
+  def find_slug(slug)
     slug=slug.strip.gsub(/_+$/,"").downcase
-    a=@blog.articles.find do |art|
+    @blog.articles.find do |art|
       f=art.make_slug.downcase
       f == slug
     end
-    if a then
-      redirect a.url
-    else
-      halt 404
+  end
+
+  get "/diary/*" do |rest|
+    if a=find_slug(rest) then
+      redirect url(a.url),301
+    end
+  end
+  get "/*" do |slug|
+    if a=find_slug(rest) then
+      redirect url(a.url),301
     end
   end
 
