@@ -209,6 +209,7 @@ div.content ul {
     list-style-type: disc;
 }
 div.content ol {
+    margin-left: 1em;
     list-style-type: decimal;
 }
 
