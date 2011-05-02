@@ -280,9 +280,14 @@ class Myway
   end
 
   get "/diary/*" do |rest|
-    if a=find_slug(rest) then
+    case when rest.empty? then
+      redirect url("/"),301
+    when a=find_slug(rest) then
       redirect url(a.url),301
     end
+  end
+  get "/diary" do
+    redirect url("/"),301
   end
   get "/*" do |slug|
     if a=find_slug(rest) then
