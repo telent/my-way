@@ -1,0 +1,98 @@
+subject: Introducing Projectr
+date: Mon May  2 10:39:18 2011
+
+Why might you want to know the names of all the files in your project?
+One might turn the question around and ask why would you possibly
+would not want to, but maybe that's not a constructive dialogue.  So
+let's list some use cases
+
+* to load them into your application 
+* to load them into irb for debugging or for help in constructing test cases
+* to process them through rdoc
+* to put them in a gem
+* to print them (don't laugh, I did that the other day when I was having trouble deciding how to refactor a bunch of stuff)
+
+As far as I can see from my survey of the Ruby world, the current
+practices for each of these use cases is pretty ad hoc.  Maybe you
+write a file full of @require@ or @require_relative@ statements (as
+the "RBP
+blog":http://blog.rubybestpractices.com/posts/gregory/036-issue-7-good-and-bad-code.html
+author likes to do), maybe you use a glob, maybe you write a MANIFEST
+file, but there seems to be a significant lack of DRYness about it
+all.  This led me to think there is a gap in the market for
+
+# a language for describing the files that a project comprises
+
+# some tools to interrogate a project description written in this form
+  and find out what's in it
+
+# some code to load them into a running interpreter - and for bonus
+  points, when files have previously been loaded into said image but
+  since changed on disk, to _reload_ them.  This could be used in irb
+  sessions, or could form the basis of a development-oriented web
+  server that reloads changed files without needing to be stopped and
+  started all the time
+
+Note that item 3 above gives us something that "file containing list
+of @require@ statements" doesn't, because it allows us to _reload_
+files that we've already seen instead of just saying "meh, seen it
+already".  If you're using a comparatively low-powered machine then
+reloading your entire app in irb every time you change a method
+definition is unnecessarily and obviously slow.  If you're also using
+Bundler (which I rather like now i's settled down a bit, and will
+write more about in a future entry) then the additional @bundle exec@
+is not just slow, it's SLow with a capital S and a capital L and a
+pulsating ever-growing O that rules from the centre of the underworld.
+
+Here's one I made earlier
+<pre>
+Projectr::Project.new :test do
+  # directories may be named by symbols or strings
+  directory :example do
+    #as may files
+    file "file1"
+    file :file2
+    directory "subdir" do 
+      file :subdir_file
+    end
+  end
+end
+
+h=Projectr::Project[:test]
+h.load!   # it loads all the files
+# and again
+h.load!   # nothing happens this time
+# touch example/file1.rb
+h.load!   # loads only the changed file
+</pre>
+
+At the time of writing this, the github version does about that much,
+but is quite clearly still version 0.  Stuff I am still thinking abut:
+
+* Load-order dependencies.  Lisp programmers may recognise that
+  Projectr was inspired by using (and indeed implementing a version
+  of) "defsystem":http://www.nhplace.com/kent/CL/Issues/defsystem.html
+  (or more recently
+  "here":http://common-lisp.net/project/asdf/asdf/Introduction.html#Introduction)
+  but Projectr is almost minimally featured compared to any of the
+  Lisp-based defsystem facilities.  Many of those features I don't
+  have any strong evidence that the Ruby world would find use for, but
+  load-order dependencies allow us to say for example that if file A
+  defines a DSL and files B and C use that DSL, changing A should make
+  the computer reload B and C as well
+
+* It seems clear to me that defining a project and loading it are two
+  separate operations - you may wish instead to define it and then
+  generate a Gemspec, for example - but there's still a lot of verbiage in
+  the common case that you do want to load it, and I haven't really found
+  file layout and naming conventions that I feel good about
+
+* likewise, what happens when we redefine the project itself (as would
+  happen if we want to add a file to it, for example) is slightly up
+  for grabs.  Should the project definition file be considered a part
+  of the project?
+
+I will doubtless form my own opinions on all of these issues in time
+and with more experience of using this tool in practice, but feedback
+on them and on the general approach is warmly welcomed.
+
