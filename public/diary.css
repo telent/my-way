@@ -208,6 +208,10 @@ div.content ul {
     margin-left: 1em;
     list-style-type: disc;
 }
+div.content ol {
+    list-style-type: decimal;
+}
+
 div.content li {
     margin-left: 1em;
     margin-bottom: 0.5em;
