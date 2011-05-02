@@ -67,8 +67,9 @@ h.load!   # loads only the changed file
 </pre>
 </notextile>
 
-At the time of writing this, the github version does about that much,
-but is quite clearly still version 0.  Stuff I am still thinking about:
+At the time of writing this, the 
+"github version":https://github.com/telent/projectr does about that much, but
+is quite clearly still version 0.  Stuff I am still thinking about:
 
 * Load-order dependencies.  Lisp programmers may recognise that
   Projectr was inspired by using (and indeed implementing a version
