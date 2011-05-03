@@ -205,14 +205,18 @@ div.tweet div.link {
 }
 
 
-h2.subject a[href] {
+h2.subject a.permalink {
     float: right;
     padding: 4px;
     font-family: Courier;
     font-weight: bold;
-    text-decoration: none;
     color: blue;
 }
+h2.subject a {
+    text-decoration: none;
+    color: black;
+}
+
 
 div.content ul {
     margin-left: 1em;

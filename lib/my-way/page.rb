@@ -76,7 +76,7 @@ var twitterCallback2 =function(C)
             :style=>"text-decoration: none; color: black"
           end
           ul :id=>"twitter_update_list" do
-            text "(loading)"
+            li "(loading)"
           end
         end
         div do
@@ -111,6 +111,6 @@ var twitterCallback2 =function(C)
     div :class=>:content do
       super
     end
-    rawtext %q{<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/telent_net.json?callback=twitterCallback2&count=5" ></script>}
+    rawtext %q{<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/telent_net.json?callback=twitterCallback2&amp;count=5" ></script>}
   end
 end

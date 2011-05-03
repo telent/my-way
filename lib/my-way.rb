@@ -142,8 +142,8 @@ class Myway
       Erector.inline do
         div :class=>:entry do
           h2 :class=>:subject do 
-            a art.subject,:name=>target
-            a "#",:href=>target
+            a art.subject,:href=>target
+            a "#",:href=>target,:class=>:permalink
           end
 
           h3 art.date.rfc2822, :class=>:date
