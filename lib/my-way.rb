@@ -279,11 +279,17 @@ class Myway
     end
   end
 
+  # over the years since 2001 the permalink(sic) format has changed:
+  # originally /diary/yyyy/mm/#dd, then later /diary/slug.  This should
+  # cope with both
+
   get "/diary/*" do |slug|
     case when slug.empty? then
       redirect url("/"),301
     when a=find_slug(slug) then
       redirect url(a.url),301
+    else
+      redirect url("/"+slug),301
     end
   end
   get "/diary" do
