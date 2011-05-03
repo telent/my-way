@@ -1,7 +1,7 @@
 title: The symptom-  we're getting a SIGSEGV due to writing into a
 write-enabled page
 author: Daniel Barlow
-date: Fri, 9 Aug 2002 0:25:51 +0000
+date: Fri  9 Aug 0:25:51 2002 
 
 <p>The symptom: we're getting a SIGSEGV which (from looking at the
 arguments to the handler) appears to be due to writing into a
