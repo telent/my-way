@@ -1,4 +1,5 @@
-title: The symptom: we're getting a SIGSEGV which (from looking at the
+title: The symptom: we're getting a SIGSEGV due to writing into a
+write-enabled page
 author: Daniel Barlow
 date: Fri, 9 Aug 2002 0:25:51 +0000
 
@@ -6,7 +7,7 @@ date: Fri, 9 Aug 2002 0:25:51 +0000
 arguments to the handler) appears to be due to writing into a
 write-enabled page.  Yes, I did say <b>enabled</b>
 
-<p>The cause: I'd written (void *)foo-1 instead of (void **)foo-1
+<p>The cause: I'd written @(void *)foo-1@ instead of @(void **)foo-1@
 
 <p>The intervening steps (in reverse order)
 <ol>
