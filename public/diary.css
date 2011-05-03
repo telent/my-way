@@ -163,7 +163,7 @@ h3.date {
 div.content p {
     padding-bottom: 1em;
 }
-div.content pre,code {
+div.content pre,code,tt {
     /*  monospace fonts always look bigger at the same point size */
     background-color: #eef;
     font-size: 90%;

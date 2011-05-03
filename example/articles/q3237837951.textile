@@ -14,7 +14,7 @@ write-enabled page.  Yes, I did say <b>enabled</b>
 nothing (much) to do with write-enabled pages.  
 
 <li> The iret was in a part of memory mostly filled with zeroes.  In
-x86 assembler, zeroes disassemble to <tt>add %al,(%eax)</tt> which
+x86 assembler, zeroes disassemble to @add %al,(%eax)@ which
 while pointless is basically harmless, so we really didn't know for how
 long it had been dashing through snowfields by the time it got
 there
@@ -45,7 +45,7 @@ address (raw untagged address: x86 insns aren't all the same length
 after all)
 
 </li>
-<li><tt>0x0caffeff</tt> was full of zeroes.  So were the code pointers for the
+<li>@0x0caffeff@ was full of zeroes.  So were the code pointers for the
 preceding several frames
 
 <li>Why do we have apparently correct control frames which contain
