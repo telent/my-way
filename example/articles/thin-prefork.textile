@@ -1,0 +1,82 @@
+Subject: Preforking multi-process Sinatra serving (with Sequel)
+author: Daniel Barlow
+date: Tue May  3 16:11:12 2011
+
+Picture the scene.  I have a largish Ruby web application (actually, a
+combination of several apps, all based on Sinatra, sharing a model
+layer, and tied together with Rack::URLMap), and I want a better way
+of reloading it on my development laptop when the files comprising it
+change.
+
+At the same time, I have a largish Ruby web application (etc etc) and
+I wanted a better way of running several instances of it on the same
+machine on different ports, because running a one-request-at-a-time
+web server in production is not especially prudent if you can't
+guarantee that (a) it will always generate a response very very
+quickly, and (b) there is no way that slow clients can stall it.  So,
+I needed something like the
+"thin(1)":http://code.macournoyer.com/thin/doc/files/bin/thin.html
+command, but with more hooks to do stuff at worker startup time that I
+need to do but won't bore you with.
+
+And in the what-the-hell-why-not department I see no good reason that
+I shouldn't be using the same code in development as is running in
+production and plenty of good reasons that I should.  And a program
+that basically @fork()@s three times (for user-specified values of
+_three_) can't be that hard to write, can it?
+
+Version 0 of "thin-prefork" kind of escaped onto
+"github":https://github.com/telent/thin-prefork/ and contains the germ
+of a good idea plus two big problems and an exceedingly boring name.
+
+What's good about it?  It consists of a parent process and some
+workers that are started by @fork()@.  There is a protocol for the
+master to send control messages to the workers over a socket (start,
+stop, reload, and basically whatever else you decide), and you
+subclass the Worker to implement these commands.  This was found to be
+necessary, because "version -1":https://gist.github.com/894392 used
+signals between parent and child, and it was found eventually and
+empirically that EventMachine (or thin, or something else somewhere in
+the stack) likes to install signal handlers that overwrote the ones I
+was depending on.  And at that point I had two commands which each
+needed a signal and in accordance with the "Zero-One-Infinity
+Rule":http://c2.com/cgi/wiki?ZeroOneInfinityRule I could easily
+foresee a future in which I would run out of spare Unix signals.
+
+What's not so good?  Reloading - ironically, the whole reason we set
+out to write the thing.  Reloading is implemented by having the master
+send a control message to the children, and the children then reload
+themselves (using @Projectr@ or however else you want to).  But when
+you have 300MB x _n_ children to reload you'd much rather do the
+reload once in the parent and then kill and respawn the kids than you
+would have each of the kids go off and do it themselves - that way
+lies Thrash City, which is a better place for skateboarders than
+servers.  (This would also be a bad thing for sharing pages between
+parent and child, but I am informed by someone who sounded
+convincingly knowledgeable that the garbage collector in MRI writes
+into pretty much every page anyway thus spitting all over
+"COW":http://en.wikipedia.org/wiki/Copy-on-write, so this turns out
+not to be a concern at present.  But someday, maybe - and in the
+meantime it's still kinda ugly)
+
+What's also not so good is that the interaction between "baked in"
+stuff that needs to happen for some actions - like "quit" - and
+user-specified customizations is kind of fuzzy and it's not presently
+at all obvious if, for example, a worker subclass command should call
+@super@: if you want to do somewthing before quitting, then obviously
+you should then hand off to the superclass to actually exit, but if
+you want to define a reload handler then you don't want to call a
+non-existent superclass method when you're done.  But how do you know
+it doesn't exist?  Your worker might be based off another
+customisation that _does_ want to do something important at reload
+time.  So it's back to the drawing board to work out the protocol
+there, though rereading what I've just written it sounds like I should
+make a distinction between notifiers and command implementations -
+"tell me when X is happening because I need to do something" vs
+"this is the code you should run to implement X".  
+
+And why does the post title namecheck Sequel?  Because my experience
+with other platforms is that holding database handles open across a
+@fork()@ call can be "somewhat fraught":http://ww.telent.net/2004/11/16/What_a_fun_day_I_ve_had 
+and I wanted somewhere to document "everything I know about how Sequel handles this":http://thread.gmane.org/gmane.comp.lang.ruby.sequel/2372
+
