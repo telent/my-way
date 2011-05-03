@@ -247,7 +247,7 @@ class Myway
     end.to_html
   end
 
-  get %r{^/(\d+)/(\d+)/$} do |y,m|
+  get %r{^/(\d+)/(\d+)/?$} do |y,m|
     articles= @blog.articles 
     time=Time.gm(y,m,1,0,0,0)
     time-=2*86400
