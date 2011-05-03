@@ -50,7 +50,14 @@ table {
 
 /******************************************/
 
-html { font-family: Verdana,Arial; font-size: 11pt;}
+html { 
+    font-family: 'Droid Sans',Arial, "Helvetica Neue", Helvetica, sans-serif; 
+    color: #333;
+    font-size: 11pt;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
+}
 
 div#banner {
     background-color: #226;
@@ -96,13 +103,16 @@ nav ul {
     list-style-type: circle;
 }
 nav li {
-    margin: 0 0 0.2em 1em;
+    margin: 0 0 0.3em 1em;
 }
 
 nav h2 {
     padding: 0.5em 0;
     font-weight: bold;
     font-size: 110%;
+}
+nav {
+    line-height: 130%;
 }
 
 div.content {
@@ -131,7 +141,7 @@ div.entry h3 {
 
 div.entry h2.subject {
     font-size: 120%;
-    margin: -4px -4px;
+    margin: -4px 0px;
 }
 
 div.entry em {

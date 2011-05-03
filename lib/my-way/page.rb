@@ -7,12 +7,18 @@ class Myway::Page < Erector::Widgets::Page
     "#{@title} - diary at Telent Netowrks"
   end
 
+  def  doctype
+    '<!DOCTYPE HTML>'
+  end
+
+
   def head_content
     super
     link :rel=>:alternate,:type=>"application/rss+xml",:title=>"RSS Feed",
     :href=>"/news.rss"
   end
 
+  depends_on :css, "http://fonts.googleapis.com/css?family=Droid+Sans"
   depends_on :css, "/diary.css"
   depends_on :script,%q{
   var _gaq = _gaq || [];
