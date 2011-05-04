@@ -24,14 +24,14 @@ not.  Some ferretting through Sinatra source code is needed to see how
 it does this, but the bottom line is that MyApp has a class method
 MyApp.call which rack invokes, and this delegates to (after first, if
 necessary, instantiating) a singleton instance of MyApp stored in the
-@prototype@ field.  I am not at all sure why they did this - it may
+@prototype@ field.  I am not at all sure why they did this.  It may
 just be a hangover from Sinatra's heritage and this stuff came along
 for the ride when Sinatra::Base was factored out of the
-Sinatra::Application classic app support, or they may have a perfectly
-good reason (this is the hypothesis I am leaning towards and I suspect
-that "Rack middleware pipelines" is that reason) or.  For my purposes
-currently it's probably sufficient to know that they do it without
-needing to know why, and that I should stop trying to write
+Sinatra::Application classic app support.  Or they may have a
+perfectly good reason (this is the hypothesis I am leaning towards and
+I suspect that "Rack middleware pipelines" is that reason).  For my
+purposes currently it's probably sufficient to know that they do it
+without needing to know why, and that I should stop trying to write
 Sinatra::Base subclasses which takes extra parameters to @new@.
 
 <notextile>
