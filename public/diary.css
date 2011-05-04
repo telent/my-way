@@ -243,3 +243,12 @@ div.adsense_box {
     border: none;
 }
 
+div.search_box input[type=submit] {
+    font-size: 11px;
+    float: right;
+}
+
+div.search_box input[type=text] {
+    width: 140px;
+    font-size: 8pt;
+}

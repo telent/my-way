@@ -11,7 +11,6 @@ class Myway::Page < Erector::Widgets::Page
     '<!DOCTYPE HTML>'
   end
 
-
   def head_content
     super
     link :rel=>:alternate,:type=>"application/rss+xml",:title=>"RSS Feed",
@@ -66,6 +65,14 @@ var twitterCallback2 =function(C)
           text "I'm Daniel Barlow.  This blog contains geeky stuff about what I do, and in the older entries, what I used to do.  Ruby, Linux, Lisp, Android, thoughts about software development and matters arising.  For my other personality (tech--, skating++), see "
           a "Coruskate", :href=>"http://www.coruskate.net"
         end
+        div :class=>:search_box do
+          form :method=>:get,:action=>'http://www.google.co.uk/search' do
+            input :type=>:hidden,:name=>:q,:value=>"site:ww.telent.net"
+            input :type=>:text,:name=>:q,:value=>""
+            input :type=>:submit,:value=>"Find"
+          end
+        end
+
         div :class=>:adsense_box do
           rawtext Adsense::Box_ad
         end

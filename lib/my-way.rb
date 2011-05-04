@@ -8,6 +8,7 @@ require 'builder'
 require 'htmlentities'
 require 'flickraw'
 require 'rss/maker'
+require 'uri'
 load "config.rb"
 
 class Myway < Sinatra::Base;end
@@ -84,8 +85,11 @@ class Myway
     def markup
       ::Myway::Formatter::Textile
     end
+    def self.slug_for_title(title)
+      title.gsub(/[^A-Za-z0-9]+/,"_").gsub(/_+$/,"").downcase
+    end
     def make_slug
-      @slug || @subject.gsub(/[^A-Za-z0-9]/,"_")
+      @slug || self.class.slug_for_title(@subject)
     end
     def url
       "/"+[@date.year,@date.month,@date.day,make_slug].join("/")
@@ -118,6 +122,7 @@ class Myway
             when "date" then headers[:date]=Time.parse(val)
             end             
           end             
+          headers[:slug] ||= Article.slug_for_title(headers[:subject])
           Article.new headers
         end
       end
@@ -272,9 +277,9 @@ class Myway
   end
 
   def find_slug(slug)
-    slug=slug.strip.gsub(/_+$/,"").downcase
+    slug=Article.slug_for_title(URI.unescape(slug))
     @blog.articles.find do |art|
-      f=art.make_slug.downcase
+      f=art.slug
       f == slug
     end
   end
@@ -292,15 +297,20 @@ class Myway
       redirect url("/"+slug),301
     end
   end
+
   get "/diary" do
     redirect url("/"),301
   end
+
+  get %r{\.(ico|png|gif)$} do
+    halt 404
+  end
+ 
   get "/*" do |slug|
     if a=find_slug(slug) then
       redirect url(a.url),301
     end
   end
-
 
   def route_missing
     raise Sinatra::NotFound
