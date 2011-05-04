@@ -182,6 +182,10 @@ h2.subject {
     background-color: #ddd;
 }
 
+blockquote {
+    margin-left: 2em;
+}
+
 div.tweet {
     border-width: 2px;
     border-style: solid;
