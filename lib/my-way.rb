@@ -305,6 +305,10 @@ class Myway
   get %r{\.(ico|png|gif)$} do
     halt 404
   end
+
+  get "/cliki/*" do |page|
+    redirect "http://www.cliki.net/"+page
+  end
  
   get "/*" do |slug|
     if a=find_slug(slug) then
