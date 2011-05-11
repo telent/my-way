@@ -29,7 +29,7 @@ list them in the order they occur to me.
   somewhere and to be annoyingly and unnecessarily long somewhere else
   especially as the number of tests grows.
 
-* We make some effort to kill the server off if tests fail, but it's
+* We make some effort to kill the server off when we're done, but it's
   not robust: if the interpreter dies, for example, we may end up with
   random grandchild processes lying around and listening to TCP ports,
   and that means that future runs fail too.  
@@ -38,22 +38,22 @@ list them in the order they occur to me.
   portable.  Determining what interfaces are available to bind to,
   less so.  I rely on there most likely being a working loopback and
   hope that there is additionally another interface on which packets
-  to github.com can be routed.  I'm sure that's not always true, but
+  to @github.com@ can be routed.  I'm sure that's not always true, but
   it;'ll have to do for now. (Once again I am indebted to coderr's
   neat trick for "getting the local IP
   address":http://coderrr.wordpress.com/2008/05/28/get-your-local-ip-address/
   - and no, @gethostbyname(gethostname())@ doesn't work on a mobile or
   a badly-configured system where the hostname may be an alias for
-  127.0.0.1 in @/etc/hosts/)
+  127.0.0.1 in @/etc/hosts/@)
 
-* We need the test stanzas (running in the parent code) somehow to run
+* We need the test stanzas (running in the parent code) somehow to call
   arbitrary methods on the server object (which exists in the child).
-  I know, we'll make our helper method @start@ accept a block install
-  and install another signal handler in the child which @yield@s to
+  I know, we'll make our helper method @start@ accept a block
+  and install another signal handler in the child which @yields@ to
   it.  Ugh
 
 * We needed a way to determine whether child processes have run the
-  correct code for the commands we're testing them.  Best idea I came
+  correct code for the commands we're testing on them.  Best idea I came
   up with was to have the command implementation and hook code set
   global variables, then do HTTP requests to the children which serve
   the value of those global variables.  I'm sort of pleased with this.
@@ -70,6 +70,6 @@ the hook/event protocol this time round.  There are still bits that
 need filling in, but have a look at
 "Thin::Prefork::Worker::Lifecycle":https://github.com/telent/thin-prefork/blob/topic/refactor-worker/20110505/lib/thin/prefork/worker.rb
 and @module TestKidHooks@ for the worker lifecycle hooks, and then at
-the modules with names starting @Test...@ for the nucleus of how to
+the "modules with names starting @Test...@":https://github.com/telent/thin-prefork/blob/979ed708ace626cd2337ed61892fb3d84db3dcdc/spec/prefork_spec.rb#L32 for the nucleus of how to
 add a custom command.
 
