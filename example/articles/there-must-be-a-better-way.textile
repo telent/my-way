@@ -1,0 +1,75 @@
+date: Wed May 11 16:56:25 2011
+subject: Testing a monolithic app - how not to
+
+In the process of redesiging the interfaces to
+"thin-prefork":http://ww.telent.net/2011/5/3/preforking_multi_process_sinatra_serving_with_sequel,
+I thought that if it's going to be a design not a doodle I'd try to do
+it the TDD way and add some of that rspec goodness.
+
+I'm not so proud of "what I ended up with":https://github.com/telent/thin-prefork/blob/979ed708ace626cd2337ed61892fb3d84db3dcdc/spec/prefork_spec.rb 
+
+There are a number of issues with this code that are all kind of
+overlapped and linked with each other, and this post is, unless it
+sits as a draft for considerably longer than I intended to spend on
+it, going to be kind of inchoate because all I really plan to do is
+list them in the order they occur to me.
+
+* The first and most obvious hurdle is that once you call @#run!@, the
+  server process and its kids go off and don't come back: in
+  real-world use, any interaction you might have with it after that is
+  driven by external events (such as signals).  In testing, we have to
+  control the external environment of the server to give it the right
+  stimuli at the right time, then we need some way to look inside it
+  and see how it reacts.  So we fork and run it in a child process.
+  (Just to remind you, thin-prefork is a forking server, so we now
+  have a parent and a child and some grandchildren.)  This is messy
+  already and leads to heuristics and potential race conditions: for
+  example, there is a @sleep 2@ after the fork, which we hope is long
+  enough for it to be ready after we fork it, but is sure to fail
+  somewhere and to be annoyingly and unnecessarily long somewhere else
+  especially as the number of tests grows.
+
+* We make some effort to kill the server off if tests fail, but it's
+  not robust: if the interpreter dies, for example, we may end up with
+  random grandchild processes lying around and listening to TCP ports,
+  and that means that future runs fail too.  
+
+* Binding a socket to a particular interface is (in Unix-land) pretty
+  portable.  Determining what interfaces are available to bind to,
+  less so.  I rely on there most likely being a working loopback and
+  hope that there is additionally another interface on which packets
+  to github.com can be routed.  I'm sure that's not always true, but
+  it;'ll have to do for now. (Once again I am indebted to coderr's
+  neat trick for "getting the local IP
+  address":http://coderrr.wordpress.com/2008/05/28/get-your-local-ip-address/
+  - and no, @gethostbyname(gethostname())@ doesn't work on a mobile or
+  a badly-configured system where the hostname may be an alias for
+  127.0.0.1 in @/etc/hosts/)
+
+* We need the test stanzas (running in the parent code) somehow to run
+  arbitrary methods on the server object (which exists in the child).
+  I know, we'll make our helper method @start@ accept a block install
+  and install another signal handler in the child which @yield@s to
+  it.  Ugh
+
+* We needed a way to determine whether child processes have run the
+  correct code for the commands we're testing them.  Best idea I came
+  up with was to have the command implementation and hook code set
+  global variables, then do HTTP requests to the children which serve
+  the value of those global variables.  I'm sort of pleased with this.
+  In a way.
+
+Overall I *think* the process has been useful, but the end result
+feels brittle, it's taken nearly as long as the code did to write, and
+it's still not giving me the confidence to refactor (or indeed to
+rewrite) blindly that all the TDD/BDD advocates promote as the raison
+d'embêter
+
+The brighter news is, perhaps, that I'm a lot more comfortable about
+the hook/event protocol this time round.  There are still bits that
+need filling in, but have a look at
+"Thin::Prefork::Worker::Lifecycle":https://github.com/telent/thin-prefork/blob/topic/refactor-worker/20110505/lib/thin/prefork/worker.rb
+and @module TestKidHooks@ for the worker lifecycle hooks, and then at
+the modules with names starting @Test...@ for the nucleus of how to
+add a custom command.
+
