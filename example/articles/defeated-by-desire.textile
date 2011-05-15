@@ -1,0 +1,98 @@
+subject: Desire S: don't
+date: Sun May 15 14:10:27 2011
+
+If I had known a week ago about the lengths to which HTC are now going
+to prevent people from using their phones, I would have bought some
+other phone (like maybe the the LG Optimus 2X) instead - and if you
+are the kind of person who prefers to choose your own software than to
+let device manufacturers and mobile phone networks do it for you, *I
+would recommend that you don't buy it* either.
+
+That's right, as far as I can determine it's not (currently, at least)
+rootable.  Finding this out is made harder than it needs to be because
+for any conceivable relevant search term, Google seems to prefer the
+xda-dev forum - by volume, 98% composed of script kiddies saying "OMG
+LOLZ" - over any results from people who know what they're talking
+about.  But here's the summary:
+
+# as delivered, there is no root access.  Well, so far so perfectly
+  standard
+
+# there are a couple of promising-sounding exploits which work on
+  other similar devices.  The
+  "psneuter":https://github.com/tmzt/g2root-kmod/blob/master/scotty2/psneuter/psneuter.c
+  exploit - or at least the binary copy of psneuter of unknown
+  provenance that I downlaoded from some ad-filled binaries site -
+  doesn't work, erroring out with @failed to set prot mask@.
+  "GingerBreak":http://c-skills.blogspot.com/2011/04/yummy-yummy-gingerbreak.html,
+  though, will get you a root shell.  Or at least it will if you get
+  the original version that runs from the command line and not the APK
+  packaged version that a third party has created for the benefit of
+  xda-dev forum users.
+
+# the problem is that GingerBreak works by exploiting bugs in @vold@
+  and as the side-effect is to render vold unusable, you can't get
+  access to your sd card after running it.  So, you think, "no
+  problem, I'll remount @/system@ as writable and install @su@ or some
+  setuid backdoor program that will let me back in".  "This doesn't
+  work":https://gist.github.com/968586 although it looks like it did
+  right up until you reboot and notice your new binary has
+  disappeared.
+
+# (incidentally, if you run GingerBreak again after rebooting the phone
+  and it fails, it's because you need to remove
+  @/data/local/tmp/{sh,boomsh}@ by hand.)
+
+# The explanation for this freakiness is that @/system@ is mounted
+  from an eMMC filesystem which is hardware write-protected in early
+  boot (before the Linux kernel starts up) but Linux doesn't know
+  this, so the changes you make to it are cached by the kernel but
+  don't get flushed.  There is a kernel module called
+  "wpthis":https://github.com/tmzt/g2root-kmod/blob/master/scotty2/wpthis.c
+  designed for the G2/Desire Z whih attempts to remove the
+  write-protect flag by power-cycling the eMMC controller, but it
+  appears that HTC have somehow plugged this bug on the Desire S.  For
+  completeness sake, I should add that every other mounted partition
+  has @noexec@ and/or @nosuid@ settings, so @/system@ is the only
+  possible place to put the backdoor command.
+
+# Um.
+
+Avenues to explore right now: (1) the write-protect-at-boot behaviour
+is apparently governed by a "secu flag" which defaults to S-ON on
+retail devices but can be toggled to S-OFF using a hardware device
+called the "XTC Clip", available in some phone unlocking shops.  (2)
+Perhaps it is possible to become root without calling @setuid@ by
+installing an APK containing a started-on-boot service and hacking
+@/data/system/packages.xml@ so that the service launches with uid
+0. Although (3) wait and see if anyone else has any good ideas; (4)
+study the Carphone Warehouse web site carefully and see if they have
+an option to return the phone for exchange, bearing in mind that I've
+been using it for seven days.  Obviously those last two options are
+mutually incompatible.
+
+Summary of the summary: HTC, you suck.
+
+Incidentally, if you want to build the wpthis module for yourself
+there's not a lot of useful documentation on building Android kernels
+(or modules for them) for devices: everything refers to a page on
+sources.google.com which appears to be 404.  The short answers: (a)
+the gcc 4.4.0 cross-compiler toolchain is in the NDK; (b) the kernel
+source that corresponds to the on-device binary, at the time I write
+this, can be had from
+http://dl4.htc.com/RomCode/Source_and_Binaries/saga-2.6.35-crc.tar.gz
+(linked from http://developer.htc.com/); (c)
+https://github.com/tmzt/g2root-kmod/ doesn't compile cleanly anyway:
+you'll need to scatter @#include <linux/slab.h>@ around a bit and to
+copy/paste the definition of @mmc_delay@ from
+@linux/drivers/mmc/core/core.h@
+
+Incidentally (2): http://tjworld.net/wiki/Android has lots of
+interesting stuff.
+
+At this point, though, my advice remains that you should buy a
+different phone.  Even if this one is rooted eventually (and I
+certainly hope it will be), HTC have deliberately made it more
+difficult than it needs to and why reward that kind of anti-social
+behaviour?
+
