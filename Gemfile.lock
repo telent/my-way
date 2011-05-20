@@ -1,7 +1,8 @@
-PATH
-  remote: ../thin-prefork
+GIT
+  remote: git://github.com/telent/thin-prefork.git
+  revision: b02254b8208a84da5cd66fd1a0c1a72038065a4f
   specs:
-    thin-prefork (0.03)
+    thin-prefork (0.031)
 
 GEM
   remote: http://rubygems.org/
