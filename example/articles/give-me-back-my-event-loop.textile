@@ -29,7 +29,8 @@ no reason either to start a new thread (or process) exclusively for
 your use when you could have just written a method that says whether
 there are fresh oojimaflips and another to say what they are.
 
-I am prompted to say this by rb-inotify, where the kernel
+I am prompted to say this by
+"rb-inotify":https://github.com/nex3/rb-inotify, where the kernel
 functionality it's wrapping communicates via a file descriptor.  I'd
 like a wrapper like this to (1) give me a file descriptor I can call
 @Kernel.select@ on, along with all the other files I'm looking at; (2)
