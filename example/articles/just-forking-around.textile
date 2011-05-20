@@ -1,0 +1,13 @@
+subject: Just forking around (ANN think-refork 0.03, still not ready)
+date: Fri May 20 14:04:41 2011
+draft: true
+
+I landed my big Thin::Prefork refactor.  As "previous blog
+entries":http://ww.telent.net/2011/5/3/preforking_multi_process_sinatra_serving_with_sequel
+have hinted, this one is a bit less handwavey about what calls what in
+the implementation or customization of a command, and it also does
+reloads in a way that would take advantage of COW if we were using a
+Ruby implementation that allowed COW.  The rspeccage is even uglier now
+than it previously was, but has actually helped to expose the existence of a bug.  And just after admiring @git merge@ and pushing the whole ting to github I realised there is 
+
+ about the 

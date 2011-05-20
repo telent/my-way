@@ -1,0 +1,61 @@
+subject: Give me back my event loop
+date: Fri May 20 14:19:57 2011
+
+My new phone has now been emancipated, thanks in part to
+Atheer-pronounced-Arthur (or possibly vice versa) at the "Root"
+internet cafe on Edgware Road.  They have an XTC Clip and he was able
+to do the S-OFF thing for me in about ten minutes and for the princely
+sum of £10.  Recommended.  I have been looking at AOSP build
+instructions, but actually doing the build and flashing the phone with
+a nice clean 2.3.4 Sense-free system will have to wait until I can
+devote a few more mental cycles to it.
+
+In between the distractions of Shiny! New! Toy! I have been working on
+the projectr/thin-prefork pair - I am still reasonably convinced that
+they should be independent modules, though as I always seem to end up
+hacking on both at once I worry about the degree of coupling between
+them - to impose some sense on the interface for extending the
+thin-prefork server.  Which I think is 80% there, but this morning I
+thought it was 100% there until I started trying to use it for real, so
+that's a little bit annoying.
+
+Which brings us to the rant/plea for today, as indicated in the title.
+Hands off my event loop!  I'm sure 
+"I've said already this in other contexts":https://groups.google.com/group/comp.lang.lisp/msg/a00db59d7ba8b454?hl=en
+and with regard to other platforms, but: I am not going to devote my
+process to call @Oojimaflip.run!@ when there are other things it
+should be doing concurrently with watching for Oojimaflips, and I see
+no reason either to start a new thread (or process) exclusively for
+your use when you could have just written a method that says whether
+there are fresh oojimaflips and another to say what they are.
+
+What triggered this rant, today, is rb-inotify, where the kernel
+functionality it's wrapping communicates via a file descriptor.  I'd
+like a wrapper like this to (1) give me a file descriptor I can call
+@Kernel.select@ on, along with all the other files I'm looking at; (2)
+give me a method which I will call when @select@ says the fd is ready
+to read, which will read them and digest them into beautiful
+Ruby-friendly Event objects.  What I've got is about two out of three
+(good odds if you're Meatloaf): there is a public method @#to_io#
+whose return value I can plug into @select@, there are beautiful
+Ruby-friendly Event objects, but to get those objects, unless I'm
+overlooking something (and I don't _mean_ that to sound
+passive-aggressive), I have to run one cycle of the rb-inotify event
+loop: call the @#process@ method which calls my callback once per
+event, which has to find somewhere to store the events it's passed,
+and then check the stored events when control eventually unwinds from
+@#process@ and returns to me.
+
+I'm actually being a bit harsh here, because the event-parsing code is
+there in the internals and not hard to grab.  In the basement lavatory
+behind the "beware of the leopard" sign, I find a method called
+@read_events@, which if you don't mind calling undocumented code can
+be used "something like this.":https://github.com/telent/projectr/blob/master/lib/projectr/watch_changes.rb#L21
+The preceding call to @select@ would be better replaced by some code
+to put the file into non-blocking mode, but that's a refinement that
+can wait for another time.
+
+I have opened "an issue":https://github.com/nex3/rb-inotify/issues/12
+on github saying something similar, which I expect will be far more
+likely to have a useful effect than ranting on this obscure blog.
+But, yeah, I like ranting
