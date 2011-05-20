@@ -30,22 +30,22 @@ your use when you could have just written a method that says whether
 there are fresh oojimaflips and another to say what they are.
 
 I am prompted to say this by
-"rb-inotify":https://github.com/nex3/rb-inotify, where the kernel
-functionality it's wrapping communicates via a file descriptor.  I'd
-like a wrapper like this to (1) give me a file descriptor I can call
-@Kernel.select@ on, along with all the other files I'm looking at; (2)
-give me a method which I will call when @select@ says the fd is ready
-to read, which will read them and digest them into beautiful
-Ruby-friendly Event objects.  What I've got is about two out of three
-(good odds if you're Meatloaf): there is a public method @#to_io@
-whose return value I can plug into @select@, there are beautiful
-Ruby-friendly Event objects, but to get those objects, unless I'm
-overlooking something (and I don't _mean_ that to sound
-passive-aggressive), I have to run one cycle of the rb-inotify event
-loop: call the @#process@ method which calls my callback once per
-event, which has to find somewhere to store the events it's passed,
-and then check the stored events when control eventually unwinds from
-@#process@ and returns to me.
+"rb-inotify":https://github.com/nex3/rb-inotify, which is a (quite
+nicely written) wrapper around some kernel functionality that
+communicates via a file descriptor.  I'd like a wrapper like this to
+(1) give me the file descriptor so I can call @Kernel.select@ on it,
+along with all the other files I'm looking at; (2) give me a method
+which I will call when @select@ says the fd is ready to read, which
+will read them and (3) digest them into beautiful Ruby-friendly Event
+objects.  What I've got is about two out of three (good odds if you're
+Meatloaf): there is a public method @#to_io@ whose return value I can
+plug into @select@, there are beautiful Ruby-friendly Event objects,
+but to get those objects, unless I'm overlooking something (and I
+don't _mean_ that to sound passive-aggressive), I have to run one
+cycle of the rb-inotify event loop: call the @#process@ method which
+calls my callback once per event, which has to find somewhere to store
+the events it's passed, and then check the stored events when control
+eventually unwinds from @#process@ and returns to me.
 
 I'm actually being a bit harsh here, because the event-parsing code is
 there in the internals and not hard to grab.  In the basement lavatory
