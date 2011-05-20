@@ -29,14 +29,14 @@ no reason either to start a new thread (or process) exclusively for
 your use when you could have just written a method that says whether
 there are fresh oojimaflips and another to say what they are.
 
-What triggered this rant, today, is rb-inotify, where the kernel
+I am prompted to say this by rb-inotify, where the kernel
 functionality it's wrapping communicates via a file descriptor.  I'd
 like a wrapper like this to (1) give me a file descriptor I can call
 @Kernel.select@ on, along with all the other files I'm looking at; (2)
 give me a method which I will call when @select@ says the fd is ready
 to read, which will read them and digest them into beautiful
 Ruby-friendly Event objects.  What I've got is about two out of three
-(good odds if you're Meatloaf): there is a public method @#to_io#
+(good odds if you're Meatloaf): there is a public method @#to_io@
 whose return value I can plug into @select@, there are beautiful
 Ruby-friendly Event objects, but to get those objects, unless I'm
 overlooking something (and I don't _mean_ that to sound
@@ -56,6 +56,6 @@ to put the file into non-blocking mode, but that's a refinement that
 can wait for another time.
 
 I have opened "an issue":https://github.com/nex3/rb-inotify/issues/12
-on github saying something similar, which I expect will be far more
-likely to have a useful effect than ranting on this obscure blog.
-But, yeah, I like ranting
+on github saying something similar, which I expect is far more likely
+to have a useful effect than posting on this obscure blog.  But, yeah,
+I like ranting.
