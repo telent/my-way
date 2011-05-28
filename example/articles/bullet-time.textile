@@ -1,0 +1,52 @@
+subject: Bullet time
+date: Sat May 28 21:41:16 2011
+
+Short bits
+
+* HTC have apparently "reversed their policy":http://lwn.net/Articles/445049/ on locking their phone
+  bootloaders - i.e. in future, they say they won't do it any more.  I
+  find it interesting that LWN have reported this as "The CEO of HTC
+  has seemingly posted on Facebook that its phones will not be locked
+  down" every report I've seen of this [i]aside[/i] from LWN has
+  assumed it's real, and only LWN have thought to wonder if Facebook
+  _really_ is an official communication channel.  Anyway, if it does
+  prove to be true (I hope so) I will be reversing my previous
+  recommendation against buying their phones
+
+* "Here is a real working example":https://gist.github.com/997241
+  (indeed, the primary use case) for use of thin-prefork.  This blog
+  is already running on it, but as of Tuesday so will be $WORK.  And
+  then maybe I can get back to some actual work.
+
+* After finishing the thin-prefork integration I spent some time on
+Friday trying to sort out $WORK's exception handling.  The exception
+handling stuff in Sinatra is ... kind of involved, and if you test it
+by inserting
+
+    raise Exception, "Error happens here"
+
+into a route, you may spend quite a while wondering why it doesn't
+seem to be working properly.  I wanted Sinatra to pass all exceptions
+up to Rack where I could use @Rack::MailExceptions@ to send me email:
+eventually by reading @sinatra/base.rb@ for a while I find (1) that
+@enable :raise_errors@, perhaps contrary to its documentation, doesn't
+raise an error if there's a @error@ stanza in the application which
+would catch it; (2) that the default @Sinatra::Base@ class installs
+exactly such an @error@ clause for the base @Exception@ class.  So you
+may want to change your test code to use @StandardError@ or something
+instead.
+
+* Once having done that, you will then find that
+  @Rack::MailExceptions@ requires Tmail, which has trouble with Ruby
+  1.9, and then you will find that the mail it sends you is not laid
+  in any order you might reasonably hope for - the errant URL is
+  buried two thirds of the way down - and eventually you will decide
+  that you might as well just copy the entire file into your own code
+  and edit it for your requirements.  Which is what I did.  There's a
+  "ticket":https://github.com/rack/rack-contrib/issues/19 to fix the
+  Tmail dependency: apparently porting it to the newer
+  "Mail":https://rubygems.org/gems/mail gem is a non-starter due to
+  its needing active_support, but it appears that recent versions of
+  Mail no longer need active_support anyway, so maybe that decision
+  can now be revisited.
+
