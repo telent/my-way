@@ -7,16 +7,16 @@ Short bits
   bootloaders - i.e. in future, they say they won't do it any more.  I
   find it interesting that LWN have reported this as "The CEO of HTC
   has seemingly posted on Facebook that its phones will not be locked
-  down" every report I've seen of this [i]aside[/i] from LWN has
-  assumed it's real, and only LWN have thought to wonder if Facebook
-  _really_ is an official communication channel.  Anyway, if it does
-  prove to be true (I hope so) I will be reversing my previous
-  recommendation against buying their phones
+  down" whereas every _other_ report I've seen has assumed it's real,
+  and only LWN have thought to wonder if Facebook _really_ is an
+  official HTC communication channel.  Anyway, if it does prove to be true
+  (I hope so) I will be reversing my previous recommendation against
+  buying their phones
 
 * "Here is a real working example":https://gist.github.com/997241
   (indeed, the primary use case) for use of thin-prefork.  This blog
-  is already running on it, but as of Tuesday so will be $WORK.  And
-  then maybe I can get back to some actual work.
+  is already running on it, and as of Tuesday so will be $WORK.  And
+  then maybe I can get back to some actual work.  Hurrah.
 
 * After finishing the thin-prefork integration I spent some time on
 Friday trying to sort out $WORK's exception handling.  The exception
