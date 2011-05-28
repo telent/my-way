@@ -21,10 +21,7 @@ Short bits
 * After finishing the thin-prefork integration I spent some time on
 Friday trying to sort out $WORK's exception handling.  The exception
 handling stuff in Sinatra is ... kind of involved, and if you test it
-by inserting
-
-    raise Exception, "Error happens here"
-
+by inserting <pre>raise Exception, "Error happens here"</pre>
 into a route, you may spend quite a while wondering why it doesn't
 seem to be working properly.  I wanted Sinatra to pass all exceptions
 up to Rack where I could use @Rack::MailExceptions@ to send me email:
