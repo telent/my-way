@@ -8,15 +8,16 @@ state where I could post the result on Github without spilling all our
 internal secrets, I am pleased to announce
 "Goldleaf":https://github.com/telent/goldleaf/.  From the README:
 
-bq.
+<blockquote>
 Goldleaf is a tool for creating consistent and repeatable KVM Debian system images in which the packages installed, the versions of each package, and the answers to “debconf” configuration questions are specified precisely.
 
-bq.
 The package manifest and configuration files are text-based and are intended to be kept under Git version control.
 
-bq.
 The name ‘goldleaf’ comes from the article "Golden Image or Foil Ball":http://madstop.com/2009/02/04/golden-image-or-foil-ball/ by Luke Kanies. On which note: it is unclear to me whether he would see this script as a good thing or as a bad thing, but I would argue that even if you reduce the number of images under your control to a single “stem cell” image, being able to recreate (any current or previous version of) that image on-demand is just as valuable as being able to recreate (any current or previous version of) any other application.
 
-p. The "README":https://github.com/telent/goldleaf/blob/master/README.textile has full instructions.  You can see the working example at https://github.com/telent/goldleaf-example and you can git clone or download (or just nose around) from https://github.com/telent/goldleaf
+
+</blockquote>
+
+The "README":https://github.com/telent/goldleaf/blob/master/README.textile has full instructions.  You can see the working example at https://github.com/telent/goldleaf-example and you can git clone or download (or just nose around) from https://github.com/telent/goldleaf
 
 Feedback welcome.  Bugs and stuff to the "Github issue tracker":https://github.com/telent/goldleaf/issues
