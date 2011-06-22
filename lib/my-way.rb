@@ -120,13 +120,14 @@ class Myway
             when /subject|title/ then headers[:subject]=val.strip
             when "slug" then headers[:slug]=val.strip
             when "date" then headers[:date]=Time.parse(val)
+            when "draft" then headers[:draft]=true
             end             
           end             
           headers[:slug] ||= Article.slug_for_title(headers[:subject])
-          Article.new headers
+          unless headers[:draft] then Article.new headers end
         end
       end
-      @articles=@articles.sort_by(&:date)
+      @articles=@articles.compact.sort_by(&:date)
     end
   end
 
@@ -319,21 +320,20 @@ class Myway
   def route_missing
     raise Sinatra::NotFound
   end
-
 end
 
-class Worker < Thin::Prefork::Worker
-  def reload!
-    @app.blog.rescan
-    super
-  end
-end
 
-master=Thin::Prefork.new :app=>Myway.new,:worker_class=>Worker,:num_workers=>2,
-:host=>"0.0.0.0",:port=>4567,:stderr=>$stderr,:pid_file=>"/tmp/my-way.pid"
+master=Thin::Prefork.new :app=>Myway.new,
+:num_workers=>2,:host=>"0.0.0.0",:port=>4567,
+:stderr=>$stderr,:pid_file=>"/tmp/my-way.pid"
+
+def master.reload!
+  warn "reloading"
+  self.app.blog.rescan
+  super
+end
 
 Signal.trap("HUP") do
-  warn "reloading"
   master.reload!
 end
 
