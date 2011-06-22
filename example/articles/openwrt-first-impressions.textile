@@ -1,0 +1,95 @@
+Subject: Openwrt "backfire" first impressions
+Date: Wed Jun 22 11:22:56 2011
+
+Some notes on my first impressions of Openwrt 10.03 "Backfire"
+
+Having happily run a Draytek Vigor 2600 in my last home for 2-3 years,
+the obvious thing to do when my exchange was upgraded to 21CN (that's
+ADSL2+ to readers outside the UK) was to buy the same brand again and
+this time go for a model that supports the newer standard. I bought a
+2700 on ebay on the basis that comparing the model numbers indicated
+it should be better by at least 64 (octal, right?).  It
+wasn't. Although I can't prove that it's the router's fault it drops
+out twice a week (we also moved house at about the same time, it could
+be the line), I can say it's not a mark of quality that when I access
+its web interface (e.g. to force a redial) I get an HTTP timeout on at
+least one of the three frames in the frameset - if you're going to use
+framesets for your router admin interface, it would probably be smart
+to give it a web server that can answer more than two queries at the
+same time.  And its syslog client has an approach to the standards
+which is most charitably described as "improvisational", . And I've
+talked before about the missing options for "second subnet support":http://ww.telent.net/2010/5/ that aren't really missing.
+
+Push eventually came to shove last month when my OfflineIMAP process
+decided that 2GB a day was a reasonable amount of traffic to incur
+checking my email (I disagree, for the record) and I hit my ISP
+monthly download allowance, and the router offered absolutely no help
+whatever in finding the source of the problem (between one wired
+computer, three wireless laptops, assorted smartphones and ipod, and a
+"wifi-enabled weighing scale":http://www.withings.com/en/bodyscale it could really have been anywhere). So it was time to
+shove it, preferably in favour of something that would run Linux.
+Like an early WRT-54G won on ebay, coupled with a lightly hacked BT
+Voyager 220V left behind in a previous flat by a previous previous
+tenant and configured in bridge mode for the ADSL hookup.
+
+Openwrt seems to be the most Debian-like of the popular Linux-based
+router firmwares (that's intended as a compliment), in that it has a
+package manager, and it likes to be configured from the command line
+by editing files. My observations based on about 4 hours playing with
+it:
+
+* the documentation is fragmented and lacks any clear sense of order
+or editorial control.  This isn't listed first because it's most
+important (it isn't) but because it's the first thing I noticed.
+Seriously, a Wiki is not a substitute for a user manual, and I say
+that as someone who's written one.  When resorting to Google you will
+find that a lot of what you read there is out of date. For example,
+there is no longer an @ipkg@ command, but @opkg@ seems to replace it.
+
+* It has a web interface called Luci.  It's a bit slow and clunky -
+though still better than the Vigor router's was - but it's helpful for
+getting started.  I was confused by the interaction between the
+various 'Save', 'Apply', 'Save and Apply' buttons at the bottom of the
+page and the 'Unsaved Changes' link in the menu bar at the top: on the
+'Firewall' page, for example, clicking 'Save' at the bottom causes the
+status at the top to go from 'Changes: 0' to 'Unsaved Changes: 1'.  To
+my way of thinking, clicking Save should reduce the number of unsaved
+changes not increase them, but this is probably just bad labelling.
+
+* I say it likes to be configured by editing files: it is however
+fussy about *which* files. If there's a file under /etc/config with a
+relevant-looking setting in it, edit that in preference to whatever
+the upstream app's usual config file would be, then run @uci commit@ -
+although actually you might not need to run @uci commit@ - see 
+"this lovely thread":https://forum.openwrt.org/viewtopic.php?id=30428 
+for the full confusing detail - 
+then run the relevant @/etc/init.d/foo@ scripts to
+restart services as needed.  I am not sure if there's a clear rule for
+what overrides what and what clobbers what if you edit config files
+directly and conflict with UCI, but I suspect it's pretty ad hoc.
+
+* the hardware doesn't speak ADSL, hence the need for a separate box
+to do that.  I set the Voyager up to do PPPoE and the WRT likewise: in
+Luci look for Network -> Interfaces -> WAN and set the Protocol to
+PPPoE: this should get you Username and Password boxes in which you
+put whatever your ISP told you to.
+
+* the wifi did not work no matter what I did in luci, but eventually I found
+the problem was in @/etc/config/wireless@ which had an entirely bogus mac
+address in its definition of @radio1@: I replaced it with the address printed
+by @ifconfig wlan0@ and suddenly everything started working.
+
+* it runs an ssh daemon, which is nice. Although it will authenticate
+using keys, it *won't* look at /root/.ssh/authorized_keys as openssh
+does. I used the web interface to add my key, which worked fine.
+
+Summary: it's not currently suitable for the non-technical end user,
+but if you have some Linux experience and a few hours to screw around
+with Google, it all eventually works fine. And I can run @tcpdump@ on
+it, which more than makes up for all these minor problems 64 times
+over.  Get in.
+
+More on the BT Voyager in a later blog entry, but I leave you with
+some "instructions for unlocking it":http://jcsu.jesus.cam.ac.uk/~acw43/projects/voyager/ which you may need if you are
+sensible enough to use an ISP that isn't BT Retail.
+
