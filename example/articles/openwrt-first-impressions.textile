@@ -39,7 +39,7 @@ by editing files. My observations based on about 4 hours playing with
 it:
 
 * the documentation is fragmented and lacks any clear sense of order
-or editorial control.  This isn't listed first because it's most
+or editorial control.  This is listed first not because it's most
 important (it isn't) but because it's the first thing I noticed.
 Seriously, a Wiki is not a substitute for a user manual, and I say
 that as someone who's written one.  When resorting to Google you will
@@ -57,15 +57,14 @@ my way of thinking, clicking Save should reduce the number of unsaved
 changes not increase them, but this is probably just bad labelling.
 
 * I say it likes to be configured by editing files: it is however
-fussy about *which* files. If there's a file under /etc/config with a
-relevant-looking setting in it, edit that in preference to whatever
+fussy about *which* files. If there's a file under @/etc/config@ with
+a relevant-looking setting in it, edit that in preference to whatever
 the upstream app's usual config file would be, then run @uci commit@ -
-although actually you might not need to run @uci commit@ - see 
-"this lovely thread":https://forum.openwrt.org/viewtopic.php?id=30428 
-for the full confusing detail - 
-then run the relevant @/etc/init.d/foo@ scripts to
-restart services as needed.  I am not sure if there's a clear rule for
-what overrides what and what clobbers what if you edit config files
+although actually you might not need to run @uci commit@ - see "this
+lovely thread":https://forum.openwrt.org/viewtopic.php?id=30428 for
+the full confusing detail - then run the relevant @/etc/init.d/foo@
+scripts to restart services as needed.  I am not sure if there's a
+clear rule for gets overridden or overwritten if you edit config files
 directly and conflict with UCI, but I suspect it's pretty ad hoc.
 
 * the hardware doesn't speak ADSL, hence the need for a separate box
@@ -74,17 +73,17 @@ Luci look for Network -> Interfaces -> WAN and set the Protocol to
 PPPoE: this should get you Username and Password boxes in which you
 put whatever your ISP told you to.
 
-* the wifi did not work no matter what I did in luci, but eventually I found
+* the wifi did not work no matter what I did in Luci, but eventually I found
 the problem was in @/etc/config/wireless@ which had an entirely bogus mac
 address in its definition of @radio1@: I replaced it with the address printed
 by @ifconfig wlan0@ and suddenly everything started working.
 
 * it runs an ssh daemon, which is nice. Although it will authenticate
-using keys, it *won't* look at /root/.ssh/authorized_keys as openssh
+using keys, it *won't* look at @/root/.ssh/authorized_keys@ as openssh
 does. I used the web interface to add my key, which worked fine.
 
-Summary: it's not currently suitable for the non-technical end user,
-but if you have some Linux experience and a few hours to screw around
+Summary: although not currently suitable for the non-technical end user,
+if you have some Linux experience and a few hours to screw around
 with Google, it all eventually works fine. And I can run @tcpdump@ on
 it, which more than makes up for all these minor problems 64 times
 over.  Get in.
