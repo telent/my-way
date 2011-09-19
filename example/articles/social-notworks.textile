@@ -1,0 +1,74 @@
+subject: Social notworking
+date: Sun Sep 18 21:36:00 2011
+
+After a bit over a month using Google Plus (with admittedly decreasing
+enthusiasm over the course of that time) I have no firm conclusions
+about what it's good for, except that it's incredibly good at
+reminding me how much I miss Usenet.
+
+I could compare it with the other networks that people consider it
+"competition" for: it doesn't replace Facebook - for me anyway -
+because the whole world isn't on it, and that means I can't use it to
+stay in touch with friends and family.  It doesn't replace Twitter as
+the the lack of a message length limit means it's useless for epigrams
+(which I like) and not much cop for status updates either (which I can
+live without) - though it does work as "source of interesting links"
+which in my opinion is the third arm of Twitter utility.  And Google
+will, probably, be disappointed to learn that it doesn't replace
+LinkedIn be cause despite the best efforts of the 
+"Real Names policy":http://boingboing.net/2011/08/20/understanding-the-nym-wars.html
+enforcers, it still isn't quite boring enough. Yet, anyway.
+
+But that's enough about Google+, what about Usenet? 
+
+* The unit of discussion was an article.  Not a two-line throwaway
+  comment or a single bit of "me likes this" information.  When you
+  read something on Usenet that you felt strongly enough to reply to,
+  you hit 'r', you got the scary warning about "hundreds if not
+  thousands of dollars", and it dumped you in a full screen text
+  editor where you could compose your pearl of wisdom.  Sure, so you
+  could alternatively compose your "ME TOO!!!1!!", but it wasn't a
+  teeny text widget which practically demands the latter response: the
+  affordances were there for writing something with meat
+
+* It was decentralised.  No capricious site owner could take your
+  comment down because someone might find it offensive, or ban all
+  discussion of certain topics, or refuse to allow you to post links
+  to other places, or even that he was going to pull the plug
+  completely and delete all your words.  You might be reading this and
+  thinking 
+ "Godfrey vs Demon":http://en.wikipedia.org/wiki/Godfrey_v_Demon_Internet_Service
+  and you'd be entirely correct that it wasn't completely uncensored
+  in practice - nor, I contend, should it have been - but there was at
+  least a *bit* more effort involved in getting a post removed than
+  clicking the 'I am offended by this picture of a breast-feeding
+  woman' button, and that made potential complainants think a bit more
+  carefully about whether it was worth it
+
+* It had user interfaces that didn't get in the way.  Really.  I could
+  sit in front of my computer for _hours_ pressing only the space bar
+  (maybe alternating with the 'n' key in less interesting groups) and
+  it would keep the content coming.  (And I did.  I would blame my
+  degree class on Usenet, if it weren't that the time I spent
+  "fiddling with Linux":http://ftp.armedslack.org/slackware/slackware-3.1/docs/ELF-HOWTO
+  was in itself sufficient to leave approximately 0 time for studying.  But i digress.)
+
+The reasons it's dead are well-rehearsed, and boil down to this: it
+couldn't cope with universal access.  It was built back in the days
+when people had access through their institutions or employers,
+and for the most part knew they could lose it by acting like jerks -
+or at least by acting like jerks consistently enough and outrageously
+enough.  Come the personal internet revolution - the Endless September
+- it had no protection against or meaningful sanctions for spammers
+and trolls, and so blogs/web forums sucked away most of the people who
+wanted to just talk, leaving behind people who were by and large too
+much concerned with the minutiae of meta and much less enthused about
+the actual posting of content.
+
+But it did do stuff that nobody else has replicated since.  
+
+Other people:
+
+* "Why we don't have an NNTP back end for web forums":http://reddragdiva.dreamwidth.org/566555.html
+
+* James Adam "on commenting":http://interblah.net/on-commenting
