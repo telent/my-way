@@ -11,11 +11,11 @@ coding and talk about it a bit.
 When I was first playing around with the idea of a "distributed social
 network":http://ww.telent.net/2011/3/2/the_neighbour_net_proxy_protocol
 my focus was on duplicating the interesting bits of Facebook, and one
-of the reasons I expected it wasn't really ever worth pushing was that
-Facebook already exists and nobody (to a first approximation) needs an
-empty duplicate of it.  If you want a network where you can tell your
-friends what you had for breakfast and post cat videos, you want it to
-be the network that your friends are on.
+of the reasons I concluded it wasn't really ever worth pursuing
+was that Facebook already exists and nobody (to a first approximation)
+needs an empty duplicate of it.  If you want a network where you can
+tell your friends what you had for breakfast and post cat videos, you
+want it to be the network that your friends are on.
 
 But in the course of thinking about how to implement it and reading
 about "Atompub":http://tools.ietf.org/html/rfc5023b , I realised that
@@ -35,7 +35,7 @@ people you're replying to by sending them a copy of your reply (as
 Atom POST to their published feed url, falling back to
 "Trackback":http://en.wikipedia.org/wiki/Trackback or
 "Pingback":http://www.hixie.ch/specs/pingback/pingback or
-"Slingback"p://www.elegantfootwear.co.uk/slingback_shoes.html or
+"Slingback"://www.elegantfootwear.co.uk/slingback_shoes.html or
 "Stickleback":http://www.amazon.co.uk/Stickle-Bricks-Sticklebricks-Giant-Set/dp/B004F77ZPM/ref=sr_1_11?ie=UTF8&qid=1317245237&sr=8-11
 or whatever if that doesn't work), and you can incorporate their
 replies to your articles in the same way when they come in.  Stick a
@@ -43,7 +43,7 @@ UI on the front that presents a trn-style threaded view of all unread
 articles by all authors in the channel, et viola, you've just created
 a conversational view of stuff that's out there already.  And by and
 large it's much _better_ stuff than "paste this as your status and tag
-three people"
+three people".
 
 h2. The Extension
 
