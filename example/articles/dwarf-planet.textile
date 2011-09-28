@@ -1,0 +1,111 @@
+subject: Pluto
+date: Mon Sep 26 21:19:16 2011
+
+My "previous entry":/social-notworking was not just a retro whinge
+about today's centralised and balkanised Internet, but also a run up
+to a description of how things could be different.  My efforts on and
+off over the last few weeks to make that difference have recently been
+blocked by too-much-$DAYJOB, so maybe this is a good time to stop
+coding and talk about it a bit.
+
+When I was first playing around with the idea of a "distributed social
+network":http://ww.telent.net/2011/3/2/the_neighbour_net_proxy_protocol
+my focus was on duplicating the interesting bits of Facebook, and one
+of the reasons I expected it wasn't really ever worth pushing was that
+Facebook already exists and nobody (to a first approximation) needs an
+empty duplicate of it.  If you want a network where you can tell your
+friends what you had for breakfast and post cat videos, you want it to
+be the network that your friends are on.
+
+But in the course of thinking about how to implement it and reading
+about "Atompub":http://tools.ietf.org/html/rfc5023b , I realised that
+it showed the way to something subtly different.  And when I thought
+about that a bit more I realised I'd reinvented the blog aggregator.
+Um.  But this is the _threaded_ blog aggregator, which is better.
+
+h2. The Embrace
+
+Well, the logic is unassailable: there are already lots of people on
+the internet publishing their thoughts using Atom (or its gelatinous
+structural isomorph RSS): what we need is an app that sucks all their
+posts, sorts them into categories (which we are calling "channels"),
+and allows the user to post his own articles (either _ab initio_ or in
+reply to those they read) into the same channels.  You can notify the
+people you're replying to by sending them a copy of your reply (as
+Atom POST to their published feed url, falling back to
+"Trackback":http://en.wikipedia.org/wiki/Trackback or
+"Pingback":http://www.hixie.ch/specs/pingback/pingback or
+"Slingback"p://www.elegantfootwear.co.uk/slingback_shoes.html or
+"Stickleback":http://www.amazon.co.uk/Stickle-Bricks-Sticklebricks-Giant-Set/dp/B004F77ZPM/ref=sr_1_11?ie=UTF8&qid=1317245237&sr=8-11
+or whatever if that doesn't work), and you can incorporate their
+replies to your articles in the same way when they come in.  Stick a
+UI on the front that presents a trn-style threaded view of all unread
+articles by all authors in the channel, et viola, you've just created
+a conversational view of stuff that's out there already.  And by and
+large it's much _better_ stuff than "paste this as your status and tag
+three people"
+
+h2. The Extension
+
+How do we turn that into a distributed resilient blah system like Usenet?
+
+The key bit of
+"NNPP":http://ww.telent.net/2011/3/2/the_neighbour_net_proxy_protocol
+was that each node answers proxy requests on behalf of its neighbours,
+for articles it's loaded from its neighbours.  So, if one of your
+usual feed sources is offline, you can fetch their articles from
+someone else who reads them.  Combine that with
+"PubSubHubbub":http://code.google.com/apis/pubsubhubbub/ and add some
+yet-to-be-decided peer-to-peer negotiation protocol so that a group of
+nodes can decide between themselves which will be the hub and which
+will subscribe to it.
+
+This does make the issue of identity a bit more pressing: what's to
+stop node B altering articles published by A, or even introducig
+entirely new ones that purport to come from A?  Crypto, that's what.
+I don't give a stuff whether the name you go by is what your
+government calls you, but I do want to know whether, when someone with
+your moniker is claiming to have written article _N_, it is the same
+someone who prevously wrote articles _1_,_2_,_3_,... _N-1_.  So, you
+get a "PGP":http://tools.ietf.org/html/rfc4880 key (or some other asymmetric peer-to-peer public-key
+encryption system that doesn't depend on a centralised certification
+authority).  Then if the key associated with your feed changes without
+prior notification, my client shows me a big red warning that says you
+probably aren't who you say you are.  Perhaps once you've been posting
+stuff I like for a while I'll sign your key as well, and other people
+- at least, other people who like what _I_ post - will be more likely
+to trust you as a result.
+
+(NNPP also contains an outline sketch of a DNS protocol replacement.  I
+presently think this is an optional extra, but that depends on how
+offensive you plan to be to deep-pocket corporates who will complain
+to your naming authority)
+
+Spam?  No magic solutions, I'm afraid, but the "trusted introducer"
+thing goes some way.  If people that you don't read already send you
+articles that aren't signed by keys you have a trust relationship
+with, they pile up in your "slush pile" (the analogue of the G+
+Incoming feed) until you decide to look at them - you might decide to
+apply spam filtering tools of the same kind as we use for email, or
+you might just decide to junk it sight unread.
+
+
+h2. End
+
+It's called Pluto.  Because Planet is "a feed aggregator application
+designed to collect posts from the weblogs of members of an Internet
+community and display them on a single page" (thank you, Wikipedia)
+and Pluto is a dwarf planet.  Sometime soon, I hope, there will be
+code on Github.
+
+Catchy summary points:
+
+* we care about *content and conversation* - I'm happy to let Facebook
+  and Twitter corner the market in ephemera: this is for keepers
+
+* *protocols not platforms* - we interoperate on equal terms with
+  anything that speaks Atompub (and intend to provide adaptors for RSS
+  or Facebook or scraped content or even an email-to-pluto gateway) -
+  all the other authentication and distribution stuff is strictly
+  opt-in
+
