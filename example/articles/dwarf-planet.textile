@@ -90,7 +90,7 @@ apply spam filtering tools of the same kind as we use for email, or
 you might just decide to junk it sight unread.
 
 
-h2. End
+h2. The End
 
 It's called Pluto.  Because Planet is "a feed aggregator application
 designed to collect posts from the weblogs of members of an Internet
