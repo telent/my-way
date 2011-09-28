@@ -71,10 +71,11 @@ get a "PGP":http://tools.ietf.org/html/rfc4880 key (or some other asymmetric pee
 encryption system that doesn't depend on a centralised certification
 authority).  Then if the key associated with your feed changes without
 prior notification, my client shows me a big red warning that says you
-probably aren't who you say you are.  Perhaps once you've been posting
+probably aren't who you say you are.  "Key management by key continuity":http://tools.ietf.org/id/draft-gutmann-keycont-01.txt a.k.a "what ssh does".
+Perhaps once you've been posting
 stuff I like for a while I'll sign your key as well, and other people
 - at least, other people who like what _I_ post - will be more likely
-to trust you as a result.
+to trust you as a result.  
 
 (NNPP also contains an outline sketch of a DNS protocol replacement.  I
 presently think this is an optional extra, but that depends on how
