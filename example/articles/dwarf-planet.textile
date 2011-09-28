@@ -61,12 +61,12 @@ nodes can decide between themselves which will be the hub and which
 will subscribe to it.
 
 This does make the issue of identity a bit more pressing: what's to
-stop node B altering articles published by A, or even introducig
+stop node B altering articles published by A, or even introducing
 entirely new ones that purport to come from A?  Crypto, that's what.
 I don't give a stuff whether the name you go by is what your
 government calls you, but I do want to know whether, when someone with
 your moniker is claiming to have written article _N_, it is the same
-someone who prevously wrote articles _1_,_2_,_3_,... _N-1_.  So, you
+someone who prevously wrote articles _1,2,3,... N-1_.  So, you
 get a "PGP":http://tools.ietf.org/html/rfc4880 key (or some other asymmetric peer-to-peer public-key
 encryption system that doesn't depend on a centralised certification
 authority).  Then if the key associated with your feed changes without
@@ -82,7 +82,7 @@ offensive you plan to be to deep-pocket corporates who will complain
 to your naming authority)
 
 Spam?  No magic solutions, I'm afraid, but the "trusted introducer"
-thing goes some way.  If people that you don't read already send you
+thing goes some way.  If people that you don't already read send you
 articles that aren't signed by keys you have a trust relationship
 with, they pile up in your "slush pile" (the analogue of the G+
 Incoming feed) until you decide to look at them - you might decide to
