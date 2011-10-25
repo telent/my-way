@@ -1,0 +1,43 @@
+subject: Inanely great
+date: Tue Oct 25 10:35:17 2011
+
+A lot has been written - and I expect a lot more is yet to be written
+- about the attention to detail and unique grasp of design aesthetic
+that Steve Jobs exerted on Apple product development.  A reasonable
+observation and not a new one.  But the implication that goes with it
+which I find curious is that those slacker open source/free software
+people who are threatening to eat his lunch with Android or (perhaps
+less convincingly) with Ubuntu have no hope of ever replicating this
+setup because as they're volunteer-based they have to spend too much
+time being nice to their contributors.
+
+Ignoring the quibble that Android's not actually a very good exemplar
+of open source development style (development directions are quite
+obviously set by Google, and at the time I write this there have been
+two major releases since they even pushed any open source stuff out at
+all) this argument falls down because it's simply not true.  Free
+software projects can be very good indeed at maintaining exacting
+standards in areas that they care about, and not apparently caring too
+much whose toes they tread on in the process - it's just that the
+areas they care about are much more related to code quality and
+maintainability than typography and "exact shades of yellow":http://www.geek.com/articles/apple/steve-jobs-as-ceo-he-cared-about-a-shade-of-yellow-on-a-sunday-20110825/
+
+Taking the Linux kernel for an example, the particular story that
+prompted this observation was the <a
+href="http://lwn.net/Articles/456762/">Broadcom wireless drivers</a>
+contribution, but I could add to that: Reiserfs, nvidia ethernet,
+Intel ethernet drivers, Android wake locks, and a zillion other less
+high-profile cases where badly coded patches have not been accepted,
+even when the rejection is due to something as trivial as whitespace[*].
+(OK, maybe I was wrong to say they don't care about typography ;-) So,
+the social/organisational structures exist for an open source project
+to be quite incredibly demanding of high standards and yet remain
+successful - _the question of why they don't extend these standards to external factors and "UX" probably has to remain open_.  And don't tell
+me it's because they don't appreciate good design when it is on offer,
+because the number of Macs I see at conferences invalidates that
+hypothesis straight off.
+
+
+[*] I am reasonably sure this is not an exaggeration, although I can
+no longer find the mail from when it happened to me so I may be
+misremembering.
