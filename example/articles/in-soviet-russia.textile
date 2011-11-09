@@ -1,0 +1,91 @@
+Date: Wed Nov  9 11:20:41 2011
+Subject: In Soviet Russia, ActiveRecord mocks YOU!
+
+A week ago I attended the "Ru3y Manor":http://rubymanor.org/3/
+conference, which was Really Cool.  Educational, entertaining,
+excellent value for money.
+
+One of the talks was by "Tom Stuart":http://www.twitter.com/mortice on
+"Rails vs object-oriented design":http://lanyrd.com/2011/ru3y-manor/skhmk/ 
+which could be
+summarised as a run through the "SOLID principles":http://butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod and a
+description of how well (or how badly) the affordances in Rails
+encourage adherence to each principle.
+
+ActiveRecord came in for some stick.  The primary offence is against
+the Single Responsibility Principle, which says that a class should
+have only one reason to change - or in the vernacular, should do only
+one thing.  This is because AR is both an implementation of a
+persistence pattern _and_ (usually, in most projects) a place to dump
+all the business logic and often a lot of the presentation logic as
+well. 
+
+Divesting the presentation logic is usually pretty simple.  Decorators
+(Tom plugged the "Draper":https://github.com/jcasimir/draper gem,
+which I haven't yet tried but looks pretty cool in the screencast)
+seem well-equipped to fix that.  
+
+But I wish he'd said more about persistence, because it's a mess.  And
+the root cause of the mess is, I conjecture, that AR objects are
+expected to do two things, although only one at a time.  First, to
+provide a convenient set of OO-ey accessors to some tuples in a
+relational database, allowing mutation of the underlying attributes
+and following of relations.  Second, to provide a container for some
+data that _might_ some day appear in some database - or on the other
+hand, might not even be valid.  I refer of course to the unsaved
+objects.  They might not pass validation, the result of putting them
+in associations is ambiguous, they don't have IDs ... really, they're
+_not actually the same thing_ as a real AR::Model object.  But because
+saving is expensive (network round trips to the database, disk writes,
+etc) people use them e.g. when writing tests and then get surprised
+when they don't honour the same contract that real saved db-backed AR
+objects do.  So, the clear answer there is "don't do that then".
+
+Ideally, I think, there would be a separate layer for business
+functionality which uses the AR stuff just for talkum-to-database and
+can have that dependency neatly replaced by e.g. a Hash when all you
+want to do is test your business methods.  I suggest this is the way
+to go because my experiences with testing AR-based classes have not
+been uniformly painless: when I want to test object A and mock B, and
+each time I run the test I find a new internal ActiveRecord method on
+B that needs stubbing, someone somewhere is Doing Something Wrong.
+Me, most likely.  But what?  I should be using Plain Old Ruby Objects
+which might delegate some stuff to the AR instances: then I should
+decide whether all those CRUD pages should be using my objects or the
+AR backing, then I should decide how to represent associations (as
+objects or arrays of objects or using some kind of lazy on-demand
+reference to avoid loading the entire object graph on each request,
+and will there need to be a consistent syntax for searching or will I
+just end up with a large number of methods @orders_in_last_week@,
+@orders_in_last_month@, @open_orders@ each of which does some query or
+other and then wraps each returned AR object in the appropriate domain
+object) and whether the semantic distinction between an "aggregation"
+relation and a "references" relation (an Order has many OrderLines,
+but a Country doesn't have many People - people can emigrate) has
+practical relevance.  The length of the preceding sentence suggests
+that there's a fair amount to consider.  I don't know of any good
+discussion of this in Ruby, and the prospect of wading through all the
+Java/.NET limitations-imposed-by-insufficiently-expressive-languages
+shit to find it in "enterprise" languages is not one I look forward
+to.  Please, someone must have answers to all this already?
+
+There's other stuff.  Saving objects is expensive.  Saving objects on
+every single update is expensive and wasteful when there's probably
+another update imminent, so there's some kind of case to be made for
+inventing a "to be saved" queue of AR objects which is eventually
+flushed by saving them _once each at most_.  The flush method could be
+called from some suitable post-request method in the controller, or
+wherever the analogous "all done now" point is in a non-Web
+application.  (Side note: this would be no help for the initial object
+creation, because until we have an @id@ field the behaviour of
+associations is officially anybody's guess.  Postgres has a
+per-session "get me the next value of a sequence" function which we
+could use for that purpose, but that's still a round-trip and probably
+a disk write, and I don't know if similar features exist in every
+other AR-supported backend)
+
+Rant over, and I apologise for the length but I am running out of time
+in which to make it shorter.  In happier news:
+"Pry":http://pry.github.com/ - a replacement ruby toplevel that does
+useful stuff and that can be invoked from inside code.  It's like what
+Ruby developers would come up with after seeing SLIME.
