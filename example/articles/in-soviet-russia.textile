@@ -26,20 +26,21 @@ which I haven't yet tried but looks pretty cool in the screencast)
 seem well-equipped to fix that.  
 
 But I wish he'd said more about persistence, because it's a mess.  And
-the root cause of the mess is, I conjecture, that AR objects are
-expected to do two things, although only one at a time.  First, to
-provide a convenient set of OO-ey accessors to some tuples in a
-relational database, allowing mutation of the underlying attributes
-and following of relations.  Second, to provide a container for some
-data that _might_ some day appear in some database - or on the other
-hand, might not even be valid.  I refer of course to the unsaved
-objects.  They might not pass validation, the result of putting them
-in associations is ambiguous, they don't have IDs ... really, they're
-_not actually the same thing_ as a real AR::Model object.  But because
-saving is expensive (network round trips to the database, disk writes,
-etc) people use them e.g. when writing tests and then get surprised
-when they don't honour the same contract that real saved db-backed AR
-objects do.  So, the clear answer there is "don't do that then".
+the root cause of the mess is, I conjecture, that an AR object is
+actually two things (although only one at a time).  First, it reifies
+a database row - it provides a convenient set of OO-ey accessors to
+some tuples in a relational database, allowing mutation of the
+underlying attributes and following of relations.  Second, it provides
+a container for some data that _might_ some day appear in some
+database - or on the other hand, might not even be valid.  I refer of
+course to the unsaved objects.  They might not pass validation, the
+result of putting them in associations is ambiguous, they don't have
+IDs ... really, they're _not actually the same thing_ as a real
+AR::Model object.  But because saving is expensive (network round
+trips to the database, disk writes, etc) people use them e.g. when
+writing tests and then get surprised when they don't honour the same
+contract that real saved db-backed AR objects do.  So, the clear
+answer there is "don't do that then".
 
 Ideally, I think, there would be a separate layer for business
 functionality which uses the AR stuff just for talkum-to-database and
@@ -67,7 +68,7 @@ that there's a fair amount to consider.  I don't know of any good
 discussion of this in Ruby, and the prospect of wading through all the
 Java/.NET limitations-imposed-by-insufficiently-expressive-languages
 shit to find it in "enterprise" languages is not one I look forward
-to.  Please, someone must have answers to all this already?
+to.  Surely someone must have answers already?
 
 There's other stuff.  Saving objects is expensive.  Saving objects on
 every single update is expensive and wasteful when there's probably
@@ -76,13 +77,11 @@ inventing a "to be saved" queue of AR objects which is eventually
 flushed by saving them _once each at most_.  The flush method could be
 called from some suitable post-request method in the controller, or
 wherever the analogous "all done now" point is in a non-Web
-application.  (Side note: this would be no help for the initial object
-creation, because until we have an @id@ field the behaviour of
-associations is officially anybody's guess.  Postgres has a
-per-session "get me the next value of a sequence" function which we
-could use for that purpose, but that's still a round-trip and probably
-a disk write, and I don't know if similar features exist in every
-other AR-supported backend)
+application.  That would probably be a fairly easy task, although it
+would be no help for the initial object creation, because until we
+have an @id@ field - and we need to ask the database to get a
+legitimate value for it - the behaviour of associations is officially
+anybody's guess.
 
 Rant over, and I apologise for the length but I am running out of time
 in which to make it shorter.  In happier news:
