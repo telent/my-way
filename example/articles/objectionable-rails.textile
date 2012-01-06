@@ -1,0 +1,182 @@
+title: Objections on Rails
+author: Daniel Barlow
+date: Thu Jan  5 18:01:28 2012
+
+It seems to be pick-on-rails week/month/quarter again. I'm not sure
+that 3 months and two projects really should qualify me to have an
+opinion on it, but this is the internet, so here we go anyway.
+
+Recent influences which have provoked these thoughts:
+
+* "Tom Stuart's talk":http://lanyrd.com/2011/ru3y-manor/skhmk/ at Ruby
+Manor, about which I have "previously written":http://ww.telent.net/2011/11/9/in_soviet_russia_activerecord_mocks_you
+
+* Avdi Grimm $5 "Objects on
+Rails":http://avdi.org/devblog/2011/11/15/early-access-beta-of-objects-on-rails-now-available-2/
+booklet 
+
+* And "Steve Klabnik's blog":http://blog.steveklabnik.com/posts/2011-12-30-active-record-considered-harmful
+in which he identifies the problem as ActiveRecord and/ or
+ActionController and/or ActionView and/or the whole concept of
+MVC. MVC. Webdevs, you keep using that word. I do not think it means
+what you think it means.
+
+* The veneer of delegating-domain-objects I created in my current
+$dayjob project, inspired by the writings above and about which this
+post was originally going to be until I realised just how much I was
+writing even explaining the problem.  Look out for Part Two
+
+I'm not going to lay into the V and C of Rails here: to be honest,
+although they seem rather unpretty (my controller's instance variables
+appear magically in the view? ew) they're perfectly up to the task as
+long as you don't try to do the heavy lifting in either of those
+layers.  Which is a bad idea anyway.  And actually, after writing an
+entire site including the layouts in Erector (if you don't know
+Erector, think Markaby), there is a certain pleasure in being able to
+write the mostly static HTML bits in ... HTML.
+
+No, instead of generalizing that MVC is the problem, I an going to
+confine myself to the ActiveRecord arena and generalize that M,
+specifically M built on ORM, is the problem.  The two problems.
+
+Here is the first problem.  Object-orientated modelling is about
+defining the responsibilities (or behaviours, if you prefer) of the
+objects in your system.  Object-relational modelling is about
+specifying their attributes.  Except in the trivially simple cases
+("an Elf is responsible for knowing what its name is") the two are not
+the same: you define an Elf with a method which tells him to don his
+pointy shoes, not with direct access to his feet so you can do it
+yourself.  So that's the first problem: the objects you end up with
+when you design with ActiveRecord have accessors where their instance
+variables would be in a sensible universe.  
+
+(Compounding this they also have all the AR methods like @#find@ wich
+in no way correspond to domain requirements, but really I think that's
+a secondary issue: forcing you to inherit baggage from your ancestors
+is one thing, but this pattern actively encourages you to create more
+of it yourself.  This is the kind of thing that drives Philip Larkin
+to poetry)
+
+Here is the second problem.  We're wimping out on <a
+href="http://en.wikipedia.org/wiki/Relational_model">relations</a>.
+For the benefit of readers who equate RDMBS with SQL with punishment
+visited on us by our forebears in 1960s mainframe data processing
+departments, I'm going to expound briefly on the nature of relational
+algebra: why it's cool, and what the "object-relational impedance
+mismatch" really is.  It's not about the difference between @String@
+and @VARCHAR@
+
+h2. Digression: a brief guide to relational algebra
+
+A relation is a collection of tuples.  A tuple is a collection of
+named attributes.  
+
+(You can map these to SQL database terminology if you put your tuples
+in a grid with one column per attribute name.  Then attribute=column,
+row=tuple, and relation=table.  Approximately, at least)
+
+An operation takes relation(s) as arguments and returns a relation as
+result.  Operators are things like
+
+* _select_ (a.k.a. _restrict_), which selects tuples from a relation
+  according to some criteria and forms a new relation of those selected.
+  If the relation is viewed as a grid, this makes the grid shorter
+
+* _project_, which selects attributes from each tuple by name (makes
+  the grid narrower)
+
+* _rename_, which renames one or more attributes in each tuple (change
+  the column titles)
+
+* _set difference_ and _set intersection_
+
+* some kind of _join_: for example the cross join, which takes two
+  relations A (m rows tall) and B (n rows tall) and returns an m*n row
+  relation R in which for each row Ai in A there are n rows each
+  consisting of all attributes in Ai plus all attributes in some row
+  Bj in B.  Usually followed by some kind of selection which picks out
+  the rows where primary and foreign key values match, otherwise
+  usually done accidentally.
+
+Here's an example to illustrate for SQL folk: when you write
+
+<pre>select a,b,c from foo f join bar b on b.foo_id=f.id where a>1
+</pre> 
+this is mathematically a cross join of foo and bar, followed by
+a selection of the rows where b.foo_id=f.id, followed by a projection
+down to attributes a,b,c, followed by a selection of rows where a>1.
+
+Got that?  Now here's the key point: the tuple isn't in itself a
+representation of some real-world object: it's _an assertion_ that
+some object with the given attributes exists.  This makes a difference
+when we look at operations that throw away data.  If Santa has a
+relation with rows representing two elves with the same name but
+different shoe sizes, and he projects this relation to remove
+@shoe_size@, he doesn't say "oh shit, we can't differentiate those two
+elves any more, how do we know which is which?", because he doesn't
+have records of two elves and has never had records of two elves - he
+has two assertions that an elf of that name exists. There might be one
+or two or n different elves with that name and we've thrown away the
+information that previously let us deduce there were at least two of
+them, but we haven't destroyed any meaning.  _Relational systems don't
+have object identity_ - and that is not an unfortunate omission that
+we should paper over by using autoincrement keys on everything, it's
+fundamental to how they work.
+
+(Aside: the relational algebra says we can't have two identical
+rows: SQL says we can.  I say it makes no difference either way
+because both rows represent the same truth and you have to violate the
+abstraction using row_ids or something to differentiate between them)
+
+h2. Back in the room
+
+The reason I've spent this efort explaining the relational model
+instead of just saying "active record has poor support for sticking
+arbitrary bits of sql into the code" is to impress on you that it's a
+beautiful, valuable, and legitimate way to look at the data.  And that
+by imposing the requirement that the resulting relation has to be
+turned back into an object, we limit ourselves.  Consider
+
+* As a present fulfillment agent, Santa wants a list of delivery
+postcodes so that he can put them in his satnav. Do you (a) select all
+the children and iterate over them, or (b) @select distinct postcode
+from children where nice@ (he does the coal lumps in a separate pass)?
+
+* As a financial controller, Mrs Claus wants to know the total cost of
+presents in each of 2011, 2010 and 2009, broken down by year and by
+country of recipient, so that she can submit her tax returns on time.  
+
+We wave #select, #map and #inject around on our in-memory Ruby arrays
+like a Timelord looking for something to use his sonic screwdriver on.
+When it comes to doing the same thing for our persistent data:
+performing set operations on collections instead of iterating over
+them like some kind of VB programmer, why do we get a sense of shame
+from "going behind" the object layer and "dropping into" SQL?  It's
+not an efficiency hack, we're using the relational model how it was
+intended.
+
+So although we _can_ do this in Rails (it gets a lot easier now we
+have Arel and Sequel), I think we need a little bit of infrastructure
+support (for example, conventions for putting relations into views, or
+for adding presenters/decorators to them) to legitimise it.
+
+h2. Wrapping up
+
+Summary: (1) our ORM-derived objects expose their internal state, and
+this is bad.  (2) we don't have conventions for looking at our state
+except by bundling up small parcels of it and creating objects from
+them, and this is limiting us because sometimes we want to see a
+summary composed of parts of several objects.  Yes, I realise the
+apparent contradiction here, and no, I'm not sure how it resolves.  I
+think there's a distinction to be drawn between parts of the sytem
+that allow mutation according to business requirements and the
+"reporting" parts that just let us view information in different ways.
+I also think we're putting behaviour in the wrong places, but that's a
+topic for Part Three
+
+If you have read all the way to the end, Part Two, "Objective in
+Rails", will be a run through of my current progress (with code!
+honest!) for coping with with the first problem and parts of the
+second.  Part Three will be a probably-quite-handwavey look at
+"DCI":http://www.artima.com/articles/dci_vision.html and how it might
+provide a way of looking at things which makes both problems go away.

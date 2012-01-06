@@ -15,7 +15,7 @@ the the lack of a message length limit means it's useless for epigrams
 live without) - though it does work as "source of interesting links"
 which in my opinion is the third arm of Twitter utility.  And Google
 will, probably, be disappointed to learn that it doesn't replace
-LinkedIn be cause despite the best efforts of the 
+LinkedIn because despite the best efforts of the 
 "Real Names policy":http://boingboing.net/2011/08/20/understanding-the-nym-wars.html
 enforcers, it still isn't quite boring enough. Yet, anyway.
 
