@@ -79,10 +79,11 @@ An operation takes relation(s) as arguments and returns a relation as
 result.  Operators are things like
 
 * _select_ (a.k.a. _restrict_), which selects tuples from a relation
-  according to some criteria and forms a new relation of those selected.
-  If the relation is viewed as a grid, this makes the grid shorter
+  according to some criteria and forms a new relation containing those
+  selected.  If you view the relation as a grid, this operation makes
+  the grid shorter
 
-* _project_, which selects attributes from each tuple by name (makes
+* _project_, which selects attributes from each tuple by name (make
   the grid narrower)
 
 * _rename_, which renames one or more attributes in each tuple (change
@@ -102,37 +103,43 @@ Here's an example to illustrate for SQL folk: when you write
 
 <pre>select a,b,c from foo f join bar b on b.foo_id=f.id where a>1
 </pre> 
-this is mathematically a cross join of foo and bar, followed by
-a selection of the rows where b.foo_id=f.id, followed by a projection
-down to attributes a,b,c, followed by a selection of rows where a>1.
+this is mathematically a cross join of @foo@ with @bar@, followed by
+a selection of the rows where @b.foo_id=f.id@, followed by a projection
+down to attributes @a,b,c@, followed by a selection of rows where @a>1@.
 
-Got that?  Now here's the key point: the tuple isn't in itself a
+Now here's the important bit: the tuple isn't in itself a
 representation of some real-world object: it's _an assertion_ that
-some object with the given attributes exists.  This makes a difference
-when we look at operations that throw away data.  If Santa has a
-relation with rows representing two elves with the same name but
-different shoe sizes, and he projects this relation to remove
-@shoe_size@, he doesn't say "oh shit, we can't differentiate those two
-elves any more, how do we know which is which?", because he doesn't
-have records of two elves and has never had records of two elves - he
-has two assertions that an elf of that name exists. There might be one
-or two or n different elves with that name and we've thrown away the
-information that previously let us deduce there were at least two of
-them, but we haven't destroyed any meaning.  _Relational systems don't
-have object identity_ - and that is not an unfortunate omission that
-we should paper over by using autoincrement keys on everything, it's
-fundamental to how they work.
+some object with the given attributes exists. 
 
-(Aside: the relational algebra says we can't have two identical
-rows: SQL says we can.  I say it makes no difference either way
-because both rows represent the same truth and you have to violate the
-abstraction using row_ids or something to differentiate between them)
+Why is this important? It makes a difference when we look at
+operations that throw away data.  If Santa has a relation with rows
+representing two elves with the same name but different shoe sizes,
+and he projects this relation to remove @shoe_size@, he doesn't say
+"oh shit, we can't differentiate those two elves any more, how do we
+know which is which?", because he doesn't have records of two elves
+and has never had records of two elves - he has two assertions that at
+least one elf of that name exists. There might be one or two or n
+different elves with that name and we've thrown away the information
+that previously let us deduce there were at least two of them, but we
+haven't broken our database - we've just deleted data from it.
+_Relational systems fundamentally don't and can't have object
+identity_, because they don't contain objects.  They record facts
+about objects that have an existence of their own.  If you delete some
+of those facts your database is not screwed.  *You* might be screwed,
+if you needed to know those facts, but your convention that a relation
+row uniquely identifies a real-world object is your convention, not
+the database's rule.
+
+(Aside: the relational algebra says we can't have two identical rows:
+SQL says we can.  I say it makes no difference either way because both
+rows represent the same truth and you have to violate the abstraction
+using internal row identifiers to differentiate between them)
 
 h2. Back in the room
 
-The reason I've spent this efort explaining the relational model
-instead of just saying "active record has poor support for sticking
-arbitrary bits of sql into the code" is to impress on you that it's a
+The reason I've spent this expended all those words explaining the relational model
+instead of just saying "ActiveRecord has poor support for sticking
+arbitrary bits of SQL into the code" is to impress on you that it's a
 beautiful, valuable, and legitimate way to look at the data.  And that
 by imposing the requirement that the resulting relation has to be
 turned back into an object, we limit ourselves.  Consider
@@ -155,24 +162,28 @@ from "going behind" the object layer and "dropping into" SQL?  It's
 not an efficiency hack, we're using the relational model how it was
 intended.
 
-So although we _can_ do this in Rails (it gets a lot easier now we
-have Arel and Sequel), I think we need a little bit of infrastructure
-support (for example, conventions for putting relations into views, or
-for adding presenters/decorators to them) to legitimise it.
+And although we _can_ do this in Rails (in fairness, it gets a lot
+easier now we have Arel and Sequel), I think we need a little bit of
+infrastructure support (for example, conventions for putting relations
+into views, or for adding presenters/decorators to them) to legitimise
+it.
 
 h2. Wrapping up
 
 Summary: (1) our ORM-derived objects expose their internal state, and
-this is bad.  (2) we don't have conventions for looking at our state
-except by bundling up small parcels of it and creating objects from
-them, and this is limiting us because sometimes we want to see a
-summary composed of parts of several objects.  Yes, I realise the
-apparent contradiction here, and no, I'm not sure how it resolves.  I
-think there's a distinction to be drawn between parts of the sytem
-that allow mutation according to business requirements and the
-"reporting" parts that just let us view information in different ways.
-I also think we're putting behaviour in the wrong places, but that's a
-topic for Part Three
+this is bad.  (2) we don't have good conventions for looking at our
+state except by bundling up small parcels of it and creating objects
+from them, and this is limiting us because sometimes we want to see a
+summary composed of parts of several objects.  Summary of the summary:
+(1) exposing state is bad; (2) we can't see all the state in the
+combinations we'd like.
+
+Yes, I realise the apparent contradiction here, and no, I'm not sure
+how it resolves.  I think there's a distinction to be drawn between
+parts of the sytem that allow mutation according to business
+requirements and the "reporting" parts that just let us view
+information in different ways.  I also think we're putting behaviour
+in the wrong places, but that's a topic for Part Three
 
 If you have read all the way to the end, Part Two, "Objective in
 Rails", will be a run through of my current progress (with code!
