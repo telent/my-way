@@ -182,8 +182,8 @@ combinations we'd like.
 
 Yes, I realise the apparent contradiction here, and no, I'm not sure
 how it resolves.  I think there's a distinction to be drawn between
-parts of the sytem that allow mutation according to business
-requirements and the "reporting" parts that just let us view
+the parts of the sytem that allow mutation according to business
+requirements, and the "reporting" parts that just let us view
 information in different ways.  I also think we're putting behaviour
 in the wrong places, but that's a topic for Part Three
 
