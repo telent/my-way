@@ -179,4 +179,4 @@ Rails", will be a run through of my current progress (with code!
 honest!) for coping with with the first problem and parts of the
 second.  Part Three will be a probably-quite-handwavey look at
 "DCI":http://www.artima.com/articles/dci_vision.html and how it might
-provide a way of looking at things which makes both problems go away.
+provide a way of looking at things which makes _both_ problems go away.
