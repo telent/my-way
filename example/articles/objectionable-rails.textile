@@ -107,7 +107,9 @@ this is mathematically a cross join of @foo@ with @bar@, followed by
 a selection of the rows where @b.foo_id=f.id@, followed by a projection
 down to attributes @a,b,c@, followed by a selection of rows where @a>1@.
 
-Now here's the important bit: the tuple isn't in itself a
+Now here's the important bit: 
+
+bq. the tuple isn't in itself a
 representation of some real-world object: it's _an assertion_ that
 some object with the given attributes exists. 
 
