@@ -19,6 +19,11 @@ way":http://www.dotnetguy.co.uk/post/2011/08/23/replace-the-rails-console-with-p
 by assigning @IRB=Pry@ is you'll get an error that @Pry::ExtendCommandBundle@
 doesn't exist.
 
+(I've seen 'fixes' for this bug that assign
+@Pry::ExtendCommandBundle=Pry@.  This will make @rail console@ start,
+but it still doesn't make the commands accessible.  Less than
+_entirely_ useful then)
+
 So, let's make it.  Here's the relevant bit of my @.pryrc@: feel free
 to use as inspiration, but don't blame me if copy/paste doesn't work
 <pre>
@@ -39,6 +44,6 @@ they may have fixed this already and if so you can ignore this whole
 post.  But if they haven't, and if @Pry::Commands.command@ is giving
 you trouble, note that the unreleased Pry 0.9.8 is set to include a
 new way of defining custom commands and you may need to rewrite this
-using @Pry::Commands.block_command@ instead
+using the new @Pry::Commands.block_command@ construct instead.
 
 HTH
