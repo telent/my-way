@@ -24,8 +24,24 @@ doesn't exist.
 but it still doesn't make the commands accessible.  Less than
 _entirely_ useful then)
 
-So, let's make it.  Here's the relevant bit of my @.pryrc@: feel free
+So, let's make it so.   Here's the relevant bit of my config: feel free
 to use as inspiration, but don't blame me if copy/paste doesn't work
+
+First, in @config/environments/development.rb@
+<pre>
+  silence_warnings do
+    begin
+      require 'pry'
+      IRB = Pry
+      module Pry::RailsCommands ;end
+      IRB::ExtendCommandBundle = Pry::RailsCommands
+    rescue LoadError
+    end
+  end
+</pre>
+
+and then in @$HOME/.pryrc@ we create commands for the methods in that module
+
 <pre>
 if Kernel.const_defined?("Rails") then
   require File.join(Rails.root,"config","environment")
