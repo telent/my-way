@@ -7,7 +7,7 @@ when you run @rails console@ no longer work fully in Rails 3.2.
 Specifically, the Rails team have changed the way they create irb
 commands like @reload!@: where in earlier version they were added to
 @Object@, now they are added to @IRB::ExtendCommandBundle@ to avoid
-polluting the global namespace.
+polluting the global namespace.  Here's the "github pull request":https://github.com/rails/rails/pull/3509 where the change is described.
 
 (The cynic here will say "Rails?  Namespace pollution?  Lost cause,
 mate", but hey, let's not be down on attempts to make it better)
