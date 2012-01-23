@@ -1,0 +1,44 @@
+Date: Mon Jan 23 14:08:41 2012
+Subject: Making reload! work in Pry with Rails 3.2
+
+As of Pry 0.9.7.4 (the current version according to Bundler at the
+time I write this), the setup instructions for replacing irb with Pry
+when you run @rails console@ no longer work fully in Rails 3.2.
+Specifically, the Rails team have changed the way they create irb
+commands like @reload!@: where in earlier version they were added to
+@Object@, now they are added to @IRB::ExtendCommandBundle@ to avoid
+polluting the global namespace.
+
+(The cynic here will say "Rails?  Namespace pollution?  Lost cause,
+mate", but hey, let's not be down on attempts to make it better)
+
+IRB already knows how to look in @IRB::ExtendCommandBundle@; Pry
+doesn't, so what will happen if you have installed Pry in "the usually
+recommended
+way":http://www.dotnetguy.co.uk/post/2011/08/23/replace-the-rails-console-with-pry
+by assigning @IRB=Pry@ is you'll get an error that @Pry::ExtendCommandBundle@
+doesn't exist.
+
+So, let's make it.  Here's the relevant bit of my @.pryrc@: feel free
+to use as inspiration, but don't blame me if copy/paste doesn't work
+<pre>
+if Kernel.const_defined?("Rails") then
+  require File.join(Rails.root,"config","environment")
+  require 'rails/console/app'
+  require 'rails/console/helpers'
+  Pry::RailsCommands.instance_methods.each do |name| 
+    Pry::Commands.command name.to_s do 
+      Class.new.extend(Pry::RailsCommands).send(name)
+    end
+  end
+end
+</pre>
+
+If you are using a newer version of Pry than me - well, first off,
+they may have fixed this already and if so you can ignore this whole
+post.  But if they haven't, and if @Pry::Commands.command@ is giving
+you trouble, note that the unreleased Pry 0.9.8 is set to include a
+new way of defining custom commands and you may need to rewrite this
+using @Pry::Commands.block_command@ instead
+
+HTH
