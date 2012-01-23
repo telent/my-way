@@ -11,7 +11,8 @@ than all that faffage with @minitest-rails@ and stuff
 <pre>
 require 'test_helper'
 require 'edition'
- describe Edition do
+&nbsp;
+describe Edition do
   it "ex nihilo nihil fit" do
     nil.must_be_nil
   end
