@@ -7,12 +7,11 @@ than all that faffage with @minitest-rails@ and stuff
 
 * add the line @require 'minitest/spec'@ somewhere near the top of @test/test_helper.rb@
 
-* write tests that look somethng like this:
+* write tests that look something like this:
 <pre>
 require 'test_helper'
 require 'edition'
- 
-describe Edition do
+ describe Edition do
   it "ex nihilo nihil fit" do
     nil.must_be_nil
   end
