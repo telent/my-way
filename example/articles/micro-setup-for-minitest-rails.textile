@@ -5,13 +5,13 @@ I think this is the bare minimum setup for being able to write
 @Minitest::Spec@ tests in a Rails 3.1 app, and certainly a lot simpler
 than all that faffage with @minitest-rails@ and stuff
 
-# add the line @require 'minitest/spec'@ somewhere near the top of @test/test_helper.rb@
+* add the line @require 'minitest/spec'@ somewhere near the top of @test/test_helper.rb@
 
-# write tests that look somethng like this:
+* write tests that look somethng like this:
 <pre>
 require 'test_helper'
 require 'edition'
-
+ 
 describe Edition do
   it "ex nihilo nihil fit" do
     nil.must_be_nil
@@ -19,7 +19,7 @@ describe Edition do
 end
 </pre>
 
-# we don't create generators, but really, why do you need a generator
+* we don't create generators, but really, why do you need a generator
 to add one line of code?  To disable the builtin @Test::Unit@
 generators - which you may as well because in this context they're
 useless, add
