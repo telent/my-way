@@ -1,0 +1,61 @@
+Date: Sat Jan 21 18:27:16 2012
+Subject Micro setup for minitest in rails
+
+I think this is the bare minimum setup for being able to write
+@Minitest::Spec@ tests in a Rails 3.1 app, and certainly a lot simpler
+than all that faffage with @minitest-rails@ and stuff
+
+# add the line @require 'minitest/spec'@ somewhere near the top of @test/test_helper.rb@
+
+# write tests that look somethng like this:
+<pre>
+require 'test_helper'
+require 'edition'
+
+describe Edition do
+  it "ex nihilo nihil fit" do
+    nil.must_be_nil
+  end
+end
+</pre>
+
+# we don't create generators, but really, why do you need a generator
+to add one line of code?  To disable the builtin @Test::Unit@
+generators - which you may as well because in this context they're
+useless, add
+
+<pre>
+    config.generators do |g|
+      g.test_framework nil
+    end
+</pre>
+
+inside @YourApp::Application@ in @config/application.rb@
+
+This is all pretty vanilla - it doesn't do spork or any of the
+faster-testing-through-not-loading-the-framework stuff, but with those
+three simple steps you can run @rake test:units@ just as you would
+with the default Test::Unit stuff.  @test:foo@ for other values of foo
+appears also to work, but I don't have any integration tests in this
+project yet so don't take my word for it.
+
+<h2>Double Trouble</h2>
+
+I can see no way in minitest to create a partial mock: viz. a real
+object with some but not all methods mocked.  In fact I can see no
+_documented_ way in minitest to do any kind of mocking at all.  As the
+new fashionable Double Ruby (a.k.a. "rr":https://github.com/btakita/rr
+) library scores highly on both these counts, I decided to use that
+too.
+
+This is a simple matter of adding "rr" to the @Gemfile@, then amending
+@test/test_helper.rb@ to include the lines
+<pre>
+require 'rr'
+</pre>
+and
+<pre>
+class MiniTest::Unit::TestCase
+  include RR::Adapters::MiniTest
+end
+</pre>
