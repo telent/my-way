@@ -80,10 +80,10 @@ event handlers, see the pages for "on":http://api.jquery.com/on/ and
 "live":http://api.jquery.com/live/ - look upon these works, ye mighty,
 and despair.
 
-backbone.js is at http://documentcloud.github.com/backbone/.  There's
+backbone.js is "here":http://documentcloud.github.com/backbone/.  There's
 a Ruby gem for using it with Rails: add @rails-backbone@ to your
-Gemfile, and you get a handy set of generators wich write coffeescript
-for you.  A brief inspection of the result says that this is a good
+Gemfile, and you get a handy set of generators which write Coffeescript
+for you.  (A brief inspection of the result says that this is a good
 thing because there's no way on earth I'd want to write that stuff
-myself.  But I concede, signiicant whitespace is a valid personal
-preference, just not one of mine.
+myself.  But I concede, significant whitespace is a valid personal
+preference, just not one of mine.)
