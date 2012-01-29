@@ -1,0 +1,81 @@
+Subject: backbone.js 1 0 jQuery
+Date: Sun Jan 29 22:04:06 2012
+
+I've spent a few hours over the last couple of days figuring out how to
+use backbone.js, and so far I'm impressed by it: it solves a real
+problem elegantly and doesnt seem to have an entire religion bolted
+onto the side of it.
+
+5 minute summary: it introduces models and views to client-side
+javascript, and connects them with a publish/subscribe event notifier
+system so that when you make changes to a model all the views of it
+update without your having to remember to do anything to them.
+
+A Model is an object that knows how to update itself from a Rails-y
+"REST" server (scare quotes, because as we all know these days "REST
+isn't what you think it
+is":http://intridea.com/2010/4/29/rest-isnt-what-you-think-it-is?blog=company
+), and publishes its attributes using the methods @set@ and @get@.
+
+<pre>
+	var m=get_me_a_model();
+	var selected= (m.has('selected')) ? m.get('selected') : false;
+	m.set({selected:  !selected});
+</pre>
+
+Calling @set@ will, if the value has changed, trigger a @"changed"@
+event handler to be called in all objects which have bound to it.
+These objects are usually Views.
+
+A View is an object with a @render@ method and an @el@ attribute, and
+in which calling the former creates a piece of DOM tree in the latter,
+which you can then attach to your document somewhere
+
+<pre>
+MyApp.Views.ThingView=Backbone.View.extend({
+    initialize: function() {
+	this.model.bind("all",this.render,this);
+	this.render();
+    },
+    // ... this is not working code - I missed some important bits ...
+    events: {
+	"click li" : "do_select",
+    },
+    do_select: function(e) { ... },
+    render: function() {
+	var ul=$(this.el);
+	ul.html(some_html_for(this.model));
+        return this;
+    }
+})
+
+jQuery(document).ready(function() {
+     var myView=new MyApp.Views.ThingView()
+     $('#some_element').append(myView.render().el);
+});
+</pre>
+
+To complete this summary: there are also Collections - which as the
+name suggests are collections of Models.  Collections come with a
+large number of iteration functions (@map@, @filter@, @reduce@, all
+that stuff) which makes them really rather useful, and you can build
+Views of them in much the same way as you can build views of models.
+
+(To complete the completion, there's also a Router, which is an
+interface for monkeying around with the URL so you can build
+bookmarkable client-side apps.  But I haven't had to use that yet)
+
+Anyway.  As you see, the view can also take a hash of events which is
+registered with jQuery using its
+"delegate":http://api.jquery.com/delegate/ method.  In this case we're
+asking to have @do_select@ called whenever a @click@ event is received
+on any @li@ element inside it.  Great!
+
+Not so great when it unexpectedly doesn't work, though.  Specifically,
+jQuery drag/drop events don't work with jQuery's delegate method, and
+there's nothing in the documentation on either page to stop you
+wasting an afternoon finding this out.  Way to go.  For more details
+on just _how much_ hysterical raisins mess is involved with jQuery
+event handlers, see the pages for "on":http://api.jquery.com/on/ and
+"live":http://api.jquery.com/live/ - look upon these works, ye mighty,
+and despair.
