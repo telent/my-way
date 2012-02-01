@@ -1,0 +1,38 @@
+Date: Wed Feb  1 12:54:57 2012
+Subject: ANN Twitling: a Twitter link digest tool
+
+Problem: I can't keep up with the Internet
+
+I often read Twitter on my phone.  When I see tweets with links in
+them I tend to skip over them intending to return later when I'm on a
+computer with a full-size screen, and then forget about them either
+because I find something else to look at or I can't be bothered with
+scrolling all the way down again.  
+
+Proposed solution: I need a computer program to read the Internet for me
+
+Thus, <a href="http://twitling.telent.net/">Twitling</a>: a small
+script consisting of Ruby and Sinatra and OmniAuth and the Twitter gem
+and Typhoeus to grab links in parallel, the function of which is to
+read one's timeline and display the resolved URL, the title and an
+excerpt from the text of each link that was posted.  Try not to break
+it please.
+
+I haven't really used it myself yet in anger: the first thing I notice
+while testing it is that there are a whole lot more links in my feed
+than I thought there were, and the original plan to produce a 24 hour
+digest might become very unwieldy.
+
+Possible further development ideas include
+
+* speed it up, by prefetching, better caching, or fetching the links
+  asynchronously and client-side
+
+* Atom/RSS output so it gets fed to me every so often and I don't have
+  to remember to check it
+
+* email output (for the same reason)
+
+* _your suggestion here_: email dan@telent.net
+
+
