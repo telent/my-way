@@ -31,6 +31,8 @@ Possible further development ideas include
 * speed it up, by prefetching, better caching, or fetching the links
   asynchronously and client-side
 
+* an "older" link at the bottom of the page
+
 * Atom/RSS output so it gets fed to me every so often and I don't have
   to remember to check it
 
@@ -40,7 +42,8 @@ Possible further development ideas include
   used text-shadow, what do you want, round button borders?)
 
 * _your suggestion here_: email dan@telent.net or "open an
-  issue":https://github.com/telent/twitling/issues on Github.  Bugs too.
+  issue":https://github.com/telent/twitling/issues on Github.  Bug
+  reports too.
 
 
 Try not to break it, please.
