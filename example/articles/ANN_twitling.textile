@@ -17,7 +17,9 @@ Thus, <a href="http://twitling.telent.net/">Twitling</a>: a small
 script consisting of Ruby and Sinatra and OmniAuth and the Twitter gem
 and Typhoeus to grab links in parallel, the function of which is to
 read one's timeline and display the resolved URL, the title and an
-excerpt from the text of each link that was posted.  
+excerpt from the text of each link that was posted.  <a
+href="https://github.com/telent/twitling">Source code</a> is on
+Github.
 
 I haven't really used it myself yet in anger: the first thing I notice
 while testing it is that there are a whole lot more links in my feed
@@ -37,8 +39,8 @@ Possible further development ideas include
 * some css gradient fills just to make it look modern (hey, I already
   used text-shadow, what do you want, round button borders?)
 
-* _your suggestion here_: email dan@telent.net
+* _your suggestion here_: email dan@telent.net or "open an
+  issue":https://github.com/telent/twitling/issues on Github.  Bugs too.
 
 
-
-Try not to break it please.
+Try not to break it, please.
