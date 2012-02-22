@@ -1,0 +1,87 @@
+Subject: Sharpening the sawfish
+Date: Wed Feb 22 20:25:20 2012
+
+My son is two weeks old today.  I don't usually go a bundle on
+putting personal info on the public web - I keep that for
+Facebook, where they at least _pretend_ to keep it private for me
+- but I mention this to explain why I'm using my laptop a lot
+more than my desktop lately.
+
+The problem with my laptop is the mouse pointer.  It's one of those 
+"pointing stick":http://en.wikipedia.org/wiki/Pointing_stick
+devices technically known (apparently) as an isometric joystick
+and more commonly known as a "nipple":http://xkcd.com/243/ , and 
+when the room is warm the little rubber cap gets slippery very quickly.
+So I decided to invest a little time in a few keyboard shortcuts.
+
+As an Emacs user I know I'm _supposed_ to like tiling window
+managers, but I don't.  My editor windows are _windows_ onto text
+files that may be any size and shape but in which it's a fairly
+safe bet (see "locality of reference") that the spot I want to
+edit next is usually spatially close to the spot I'm currently
+looking at.  The other 'windows' on my screen are things like web
+browsers and GUI programs where there's no such guarantee, and
+the only way to make them work is to allow them to take the size
+and shape that their authors wanted them to have.  So after a
+brief experiment with "awesome": http://awesome.naquadah.org/ I
+punted it and went looking for a programable window manager that
+was designed for overlapping windows.
+
+And ended up back with Sawfish, which I used to use 
+"back when it was fashionable.":http://ww.telent.net/2003/7/16/it_s_looking_a_little_less_frenetic_around_here_now_then
+Sawfish customization is a two-phase process: first you write
+commands in Lisp, then you use the @sawfish-ui@ program to assign
+them to keystrokes.  A bit like Emacs, really, and perhaps not
+surprisingly.
+
+First I needed  some shortcuts to focus particular windows (Emacs, Firefox,
+xterms).  Happily, someone has done the work for this already: I
+just had to download
+the "Gimme":http://sawfish.wikia.com/wiki/Gimme script and set up bindings 
+for it
+
+Then I needed something to chuck windows around the screen.  The
+requirement is pretty simple here: every window on my screen is
+aligned against an edge, so I just need commands to pan a window
+to each edge.  Here is "the finished script":https://github.com/telent/dotfiles/blob/master/.sawfish/lisp/throw-window.jl in which I would like to 
+draw attention to
+
+* I use focus-follows-mouse mode, or whatever it's called these
+  days.  This means that if I move a window under the pointer I
+  need to move the pointer too otherwise it will go out of focus.
+  The @warp-cursor-to-window@ function does this: I needed to 
+  calculate the pointer position relative to window, which for some 
+  reason isn't a builtin
+
+* @window-frame-dimensions@ is @window-dimensions@ plus the
+  decorations.  We need these dimenstions for throwing windows
+  rightwards or downwards, otherwise they end up slightly
+  offscreen
+
+* @define-command@ is the magic that makes our new functions show
+  up in the @sawfish-ui@ dialog.  The @"%f"@ sigil means to pass
+  the current window into the function.
+
+And that's about it.  Put the file somewhere that sawfish will
+find it - for me, @~/.sawfish/lisp@ seems to be a good place - add the lines
+
+<pre>
+(require 'gimme)
+(setq warp-to-window-enabled t)
+(require 'throw-window)
+</pre>
+
+to @.sawfishrc@, and then set up your keys in @sawfish-ui@.  I
+assigned them to Windows-key shortcuts: at last, I have a use for
+the Windows key.
+
+If you hadn't spotted in amongst all that, I have 
+"githubbed my dotfiles":https://github.com/telent/dotfiles/ More
+for my convenience than for your edification, but feel free to
+rummage.  If you are one of the three other remaining XTerm
+users, have a look at the @XTerm*VT100*translations@ in
+my ".Xdefaults":https://github.com/telent/dotfiles/blob/master/.Xdefaults
+- I stole that "press Shift+RET to background the command" trick
+from "Malcolm Beattie":http://www.clueful.co.uk/mbeattie/ 
+nearly twenty years ago and have been using
+it ever since.
