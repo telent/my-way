@@ -58,7 +58,7 @@ that apparently you can work with rfcomm sockets using actual, y'know,
 point that _sending_ data to a heart rate monitor strap is a
 peculiarly pointless endeavour, but really we want to write our code
 in Ruby not in C.  This turns out to be easier than we might expect.
-Ruby's @socket@ library wraps the C socket interface suffiently
+Ruby's @socket@ library wraps the C socket interface sufficently
 closely that we can use "pack":http://www.ruby-doc.org/core-1.9.3/Array.html#method-i-pack to forge @sockaddr@ structures for any
 protocol the kernel supports, if we know the layout in memory and the 
 values of the constants.
