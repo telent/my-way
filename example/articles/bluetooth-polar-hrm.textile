@@ -37,7 +37,7 @@ summary) the Wearlink packet format is actually quite simple.
 
 While we're looking at Android for clues, we also find the very useful information in the API docs for "BluetoothSocket":http://developer.android.com/reference/android/bluetooth/BluetoothSocket.html that "The most common type of Bluetooth socket is RFCOMM, which is the type supported by the Android APIs. RFCOMM is a connection-oriented, streaming transport over Bluetooth. It is also known as the Serial Port Profile (SPP)".  So, all we need to do is figure out how to do the same in Linux
 
-Doing anything with Bluetooth inevitably turns into an exercise in yak
+Doing anything with Bluetooth in Linux inevitably turns into an exercise in yak
 epilation, especially for the kind of retrocomputing grouch (that's
 me) who doesn't have a full GNOME or KDE desktop with all the D buses
 and applets and stuff that come with it.  In this case, I found that
@@ -54,12 +54,12 @@ else, I don't know, but in any case this is not ideal at 180bpm.
 So, time for an alternative approach: thanks to Albert Huang, we find
 that apparently you can work with rfcomm sockets using actual, y'know,
 "sockets":http://people.csail.mit.edu/albert/bluez-intro/x502.html
-. The provided @rfcomm-client.c@ worked perfectly, modulo the obvious
+. The @rfcomm-client.c@ example on that we page worked perfectly, modulo the obvious
 point that _sending_ data to a heart rate monitor strap is a
 peculiarly pointless endeavour, but really we want to write our code
-in Ruby not in C.  Which turns out to be easier than we might expect.
+in Ruby not in C.  This turns out to be easier than we might expect.
 Ruby's @socket@ library wraps the C socket interface suffiently
-closely that we can use @pack@ to forge @sockaddr@ structures for any
+closely that we can use "pack":http://www.ruby-doc.org/core-1.9.3/Array.html#method-i-pack to forge @sockaddr@ structures for any
 protocol the kernel supports, if we know the layout in memory and the 
 values of the constants.
 
@@ -70,11 +70,11 @@ constants"?  With gdb.  First we start it
 :; gdb rfcomm-client
 [...]
 (gdb) break 21
-Breakpoint 1 at 0x804865e: file c.c, line 21.
+Breakpoint 1 at 0x804865e: file rfcomm-client.c, line 21.
 (gdb) run
-Starting program: /home/dan/bc 
+Starting program: /home/dan/rfcomm-client
 
-Breakpoint 1, main (argc=1, argv=0xbffff954) at c.c:22
+Breakpoint 1, main (argc=1, argv=0xbffff954) at rfcomm-client.c:22
 22          status = connect(s, (struct sockaddr *)&addr, sizeof(addr));
 </pre>
 
@@ -106,7 +106,7 @@ So, overall length 10, rc_family is at offset 0, rc_bdaddr at 2, and
 rc_channel at 8.  And the undocumented (as far as I can see) @str2ba@
 function results in the octets of the bluetooth address going
 right-to-left into memory locations, so that should be easy to
-replicate in Ruby
+replicate in Ruby.
 
 <pre>
   def connect_bt address_str,channel=1
@@ -127,8 +127,10 @@ packet should be.  Because this logic is slightly complicated we wrap
 it in an Enumerator so that our caller gets one packet only each and
 every time they call @Enumerator#next@
 
-The complete example code is at https://gist.github.com/2500413 and
+The complete example code is at
+"https://gist.github.com/2500413":https://gist.github.com/2500413 and
 the licence is "do what you like with it".  What I will like to do
 with it is (1) log the data, (2) put up a window in the middle of the
-display showing my heart rate and zone, (3) later, do some interesting
-graphing and analysis stuff.  But your mileage may vary.
+display showing my instantaneous heart rate and zone so that I know if
+I'm trying, (3) later, do some interesting graphing and analysis
+stuff.  But your mileage may vary.
