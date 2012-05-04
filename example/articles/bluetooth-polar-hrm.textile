@@ -1,0 +1,134 @@
+Date: Thu May  3 22:10:29 2012
+Subject: Listening to a Polar Bluetooth HRM in Linux
+
+My new toy, as of last Friday, is a "Polar WearLink®+ transmitter with
+Bluetooth®":http://www.polar.fi/en/products/accessories/Polar_WearLink_transmitter_with_Bluetooth
+because I wanted to track my heart rate from Android.  Absent some
+initial glitches which turned out to be due to the battery it was
+shipped with having almost no charge left, it works pretty well with
+the open source Google "My
+Tracks":https://play.google.com/store/apps/details?id=com.google.android.maps.mytracks&hl=en application.
+
+But, but.  A significant part of my exercise regime consists of riding
+a stationary bicycle until I feel sick.  I do this in the same room as
+my computer: not only are GPS traces rather uninformative for this
+activity, but getting satellite coverage in the first place is tricky
+while indoors.  So I thought it would be potentially useful and at
+least slightly interesting to work out how to access it directly from
+my desktop.
+
+My first port of call was the source code for My Tracks.  Digging into
+"src/com/google/android/apps/mytracks/services/sensors/PolarMessageParser.java":http://code.google.com/p/mytracks/source/browse/MyTracks/src/com/google/android/apps/mytracks/services/sensors/PolarMessageParser.java
+we find a helpful comment revealing that, notwithstanding Polar's
+ridiculous stance on giving out development info (they don't, is the
+summary) the Wearlink packet format is actually quite simple.
+
+<pre>
+ *  Polar Bluetooth Wearlink packet example;
+ *   Hdr Len Chk Seq Status HeartRate RRInterval_16-bits
+ *    FE  08  F7  06   F1      48          03 64
+ *   where; 
+ *      Hdr always = 254 (0xFE), 
+ *      Chk = 255 - Len
+ *      Seq range 0 to 15
+ *      Status = Upper nibble may be battery voltage
+ *               bit 0 is Beat Detection flag.
+</pre>
+
+While we're looking at Android for clues, we also find the very useful information in the API docs for "BluetoothSocket":http://developer.android.com/reference/android/bluetooth/BluetoothSocket.html that "The most common type of Bluetooth socket is RFCOMM, which is the type supported by the Android APIs. RFCOMM is a connection-oriented, streaming transport over Bluetooth. It is also known as the Serial Port Profile (SPP)".  So, all we need to do is figure out how to do the same in Linux
+
+Doing anything with Bluetooth inevitably turns into an exercise in yak
+epilation, especially for the kind of retrocomputing grouch (that's
+me) who doesn't have a full GNOME or KDE desktop with all the D buses
+and applets and stuff that come with it.  In this case, I found that
+XFCE and the Debian "blueman package":http://packages.debian.org/wheezy/blueman were sufficient to
+get my bluetooth dongle registered, and to find and pair with the HRM.
+It also included a natty wizard thing which claimed to be able to
+create an rfcomm connection in @/dev/rfcomm0@.  I say "claimed" not
+because it didn't - it did, so ... - but because for no readily
+apparent reason I could never get more than a single packet from this
+device without disconnecting, unpairing and repairing.  Perhaps there
+was weird flow control stuff going on or perhaps it was something
+else, I don't know, but in any case this is not ideal at 180bpm.
+
+So, time for an alternative approach: thanks to Albert Huang, we find
+that apparently you can work with rfcomm sockets using actual, y'know,
+"sockets":http://people.csail.mit.edu/albert/bluez-intro/x502.html
+. The provided @rfcomm-client.c@ worked perfectly, modulo the obvious
+point that _sending_ data to a heart rate monitor strap is a
+peculiarly pointless endeavour, but really we want to write our code
+in Ruby not in C.  Which turns out to be easier than we might expect.
+Ruby's @socket@ library wraps the C socket interface suffiently
+closely that we can use @pack@ to forge @sockaddr@ structures for any
+protocol the kernel supports, if we know the layout in memory and the 
+values of the constants.
+
+How do we find "the layout in memory and the values of the
+constants"?  With gdb.  First we start it
+
+<pre>
+:; gdb rfcomm-client
+[...]
+(gdb) break 21
+Breakpoint 1 at 0x804865e: file c.c, line 21.
+(gdb) run
+Starting program: /home/dan/bc 
+
+Breakpoint 1, main (argc=1, argv=0xbffff954) at c.c:22
+22          status = connect(s, (struct sockaddr *)&addr, sizeof(addr));
+</pre>
+
+then we check the values of the things
+
+<pre>
+(gdb) print sizeof addr
+$2 = 10
+(gdb) print addr.rc_family 
+$3 = 31
+(gdb) p/x addr.rc_bdaddr
+$4 = {b = {0xab, 0x89, 0x67, 0x45, 0x23, 0x1}}
+</pre>
+
+then we look at the offsets
+
+<pre>
+(gdb) p/x &addr
+$5 = 0xbffff88e
+(gdb) p/x &(addr.rc_family)
+$6 = 0xbffff88e
+(gdb) p/x &(addr.rc_bdaddr)
+$7 = 0xbffff890
+(gdb) p/x &(addr.rc_channel)
+$8 = 0xbffff896
+</pre>
+
+So, overall length 10, rc_family is at offset 0, rc_bdaddr at 2, and
+rc_channel at 8.  And the undocumented (as far as I can see) @str2ba@
+function results in the octets of the bluetooth address going
+right-to-left into memory locations, so that should be easy to
+replicate in Ruby
+
+<pre>
+  def connect_bt address_str,channel=1
+    bytes=address_str.split(/:/).map {|x| x.to_i(16) }
+    s=Socket.new(AF_BLUETOOTH, :STREAM, BTPROTO_RFCOMM)
+    sockaddr=[AF_BLUETOOTH,0, *bytes.reverse, channel,0 ].pack("C*")
+    s.connect(sockaddr)    
+    s
+  end
+</pre>
+
+The only thing left to do is the actual decoding.  Considerations here
+are that we need to deal with short reads and that the start of a
+packet may not be at the start of the buffer we get - so we keep
+reading buffers and catenating them until @decode@ says it's found a
+packet, then we start again from where decode says the end of the
+packet should be.  Because this logic is slightly complicated we wrap
+it in an Enumerator so that our caller gets one packet only each and
+every time they call @Enumerator#next@
+
+The complete example code is at https://gist.github.com/2500413 and
+the licence is "do what you like with it".  What I will like to do
+with it is (1) log the data, (2) put up a window in the middle of the
+display showing my heart rate and zone, (3) later, do some interesting
+graphing and analysis stuff.  But your mileage may vary.
