@@ -23,10 +23,11 @@ Users.where(country_id: 44).order(:joined_at).offset(200).as_batches do |user|
 end
 </pre>
 
-I should of course caution you that you might get the wrong answer if
-you mutate the data as you're traversing it (so Don't Do That Then),
-and that ordering by something other than @id ascending@ may be slower
-in MySql.
+and it all works as you'd expect.  I should of course caution you that
+
+* you might get the wrong answer if you mutate the data as you're
+traversing it (so Don't Do That Then), and that 
+* ordering by something other than @id ascending@ may be slower in MySql.
 
 I don't know whether to be proud or ashamed of the
 "tests":https://github.com/telent/ar-as-batches/blob/master/test/as-batches-test.rb
