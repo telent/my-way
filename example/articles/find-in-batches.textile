@@ -1,0 +1,37 @@
+Date: Fri May  4 07:29:34 2012
+Subject: Changing sort order with ActiveRecord find_in_batches
+
+The subject is Googlebait pure and simple, because the short version
+is that you can't.  The very slightly longer and significantly more
+defensible version is that you may be able to but "they don't want you
+to":https://rails.lighthouseapp.com/projects/8994/tickets/2502-patch-arbase-reverse-find_in_batches
+apparently because you might get the wrong answer if you mutate the
+data as you're traversing it (and because it's fast in MySql).
+Personally I think the answer there is Well Don't Do That Then (and
+who cares about MySql) but that's just my opinion.  If you want to order by,
+say, @created_at descending@, and perhaps you want to paginate the
+results, the only sensible conclusion to draw is that
+@find_in_batches@ is just not intended for this use.
+
+But it's not an unreasonable use.  So I wrote
+"ar-as-batches":https://github.com/telent/ar-as-batches/blob/master/README.md 
+which lets you do 
+
+<pre>
+Users.where(country_id: 44).order(:joined_at).offset(200).as_batches do |user|
+  user.party_all_night!
+end
+</pre>
+
+I should of course caution you that you might get the wrong answer if
+you mutate the data as you're traversing it (so Don't Do That Then),
+and that ordering by something other than @id ascending@ may be slower
+in MySql.
+
+I don't know whether to be proud or ashamed of the
+"tests":https://github.com/telent/ar-as-batches/blob/master/test/as-batches-test.rb
+, which check
+the generated queries by assigning a @StringIO@ logger to
+@ActiveRecord::Base.logger@ and then matching regexps in it after each
+test runs.  There ought to be a  better way.  Perhaps there _is_ a
+better way.  Don't know what though.
