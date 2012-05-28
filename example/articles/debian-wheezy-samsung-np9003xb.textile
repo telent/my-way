@@ -1,0 +1,87 @@
+Date: Mon May 28 11:40:28 2012
+Subject: Debian on the Samsung Series 9 NP900X3B
+
+There are other guides to getting Linux going on the Samsung Series 9
+NP900X3B, but both that I've found are for Fedora.  Mostly it's the
+same in Debian, but here are some of the things I've spotted.
+
+h2. Install media
+
+Recent versions of Debian install media images are created as hybrid
+ISO images, which means you can download them and dd them directly to
+a USB stick.  This is what I did, with the Squeeze netinst image. The
+computer's BIOS settings needed changing to look at USB before the
+internal SSD, but that's not hard.  I deselected all packages which
+resulted in a very minimal basic install, then added @xfce4@ and a few
+essential utilities using @apt-get@
+
+h2. Networking
+
+The wired network works out of the box.
+
+The wireless networking is courtesy of an Intel 6230 adapter 
+"@Intel Corporation Centrino Advanced-N 6230 [8086:0091] (rev 34)@"
+(apparently this also does Bluetooth, but I haven't tried that
+yet).  This is _not_ supported in Squeeze's default kernel, but is
+available in Wheezy.  After much swearing at backports I decided to
+do the @apt-get upgrade@ dance
+
+h2. Touchpad
+
+Touchpad handling worked in Squeeze and partially broke when I
+upgraded to get working wifi.  Pointer movement worked fine, but
+tapping (for the uninitiated, "tapping" on the touchpad is simulating
+button presses by briefly touching the pressure-sensitive area instead
+of the hardware buttons below it) didn't.  On this system tapping is
+infinitely preferable to the hardware buttons, because it appears
+impossible to move the pointer while one of the hardware buttons is
+pressed - this makes window placement pretty tricky.  The fix here is
+
+<pre>synclient TapButton1=1 
+synclient TapButton2=2 
+synclient TapButton2=3 
+synclient PalmDetect=1
+</pre>
+
+which means you can use one finger to simulate button 1, two fingers
+simultaneously (note: not double-clicking, as I foolishly initially
+thought) to simulate button 2, and three for button 3.  It also turns
+on palm detection, so that accidentally brushing the pad as you type
+won't send your cursor off into the wild blue yonder.
+
+This affect the current session only.  To make it permanent you need to
+edit files: copy
+@/usr/share/X11/xorg.conf.d/50-synaptics.conf@ to
+@/etc/X11/xorg.conf.d@ and add the lines
+
+<pre>
+        Option "TapButton1" "1"
+        Option "TapButton2" "2"
+        Option "TapButton3" "3"
+        Option "PalmDetect" "1"
+</pre>
+
+in the first @Section "InputClass"@ stanza
+
+h2. Suspend and hibernate
+
+I had the same problem with suspend as 
+"John Teslade":http://jtes.net/2012/03/23/samsung-series-9-2012-np900x3b/ :
+it appears not to resume but in fact it works perfectly except for the
+display backlight.  However, I had it harder because my Fn-F2 and
+Fn-F3 keys didn't do anything.  After determining with @acpi_listen@
+that Linux is listening to those keys (they send ACPI events
+@video/brightnessdown@ and @video/brightnessup@ respectively) and is
+capable of controlling the brightness (try e.g. @xrandr --output eDP1
+--set BACKLIGHT 1@) I decided this must clearly be a 90% solved
+problem and that the missing link was probably somewhere in the Debian
+package archive.  It was, it was @xfce4-power-manager@
+
+After that, suspend and hibernate are both usable.
+
+h2.  Battery life
+
+Pretty poor right now (looks like about 3 hours), but I've just
+installed @laptop-mode-tools@ which has turned most of the PowerTOP
+tunables from "Bad" to "Good", so I will be disappointed if that
+doesn't make a significant difference.  We'll see ...
