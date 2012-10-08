@@ -1,0 +1,46 @@
+date: Mon Oct  8 19:30:47 2012
+subject: Something old, something new
+
+Sorry for the silence.  This has been a scheduling thing mostly: I
+managed to schedule 'breaking my arm' for about three days after
+'starting a new job', and together with the ongoing project of 'being
+a new Dad' (I plan to pivot that one into just 'being a Dad' if and
+when I finally feel like I know what I'm doing - so maybe in about 20
+years or so) this has left not much time for discretionary writing.
+
+Something old: a couple of months ago Vsevolod Dyomkin emailed me to
+ask if I wanted to be featured in his series of interviews with 
+"Lisp hackers":http://lisp-univ-etc.blogspot.co.uk/search/label/lisp-hackers
+(or, in my case, former Lisp hackers).  After keeping him
+waiting for unsnsionably long - partly due, of course, to the
+aforementioned bone breakage - finally I have sent him my answers and
+he has "posted them":http://lisp-univ-etc.blogspot.co.uk/2012/10/lisp-hackers-daniel-barlow.html
+
+(I can't decide if I'm actually serious about writing something
+justifying the existence of ASDF, or if I'm just going to let it lie.
+It can probably be summarised as "it made sense at the time")
+
+Something new:
+
+* New job: I'm now working at <a
+href="http://www.simplybusiness.co.uk">Simply Business</a>, nominally
+as a Ruby programmer but in practice so far mostly doing Puppet and
+Vagrant and general devops-y deployment-y stuff. It's slightly odd
+having a commute further than the spare bedroom (which is no longer
+actually *spare* now, please note) but I seem to have adjusted mostly
+to having to get up in the morning, and the walk to work is podcast
+time. Except when it's Spotify time.  Or when I take a bike, but for a
+2km journey that often seems a bit like overkill.
+
+* New consumer toys.  After dropping the Desire S and breaking the
+screen on it twice, I gave up and sniped a second hand Galaxy Nexus on
+Ebay. It's a bit like running an Android phone, except that it has no
+stupid skins or preloaded apps, and it gets timely updates to the
+newest OS version.  Seriously, there is a certain irony in the
+fact that a phone I chose because it was open and easy to reflash or
+root turns out to be the first Android phone I've owned that I haven't
+*needed* to reflash or root.  Flushed with that success (and, for the
+first time in a while, flush also with some ready cash), I bagged a
+tablet too.  Nexus 7, Jelly Bean again, it's basically like a big
+version of the phone except that it doesn't make phone calls.
+
