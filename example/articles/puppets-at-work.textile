@@ -7,7 +7,7 @@ get used to it, but you probably are already.  This is a short note to say that 
 In other news, having confirmed that the "X11 touchpad
 support":http://lwn.net/Articles/485484/ is broken by design - the
 choice of whether to emulate mouse events (left click, middle click,
-drag) is set at a global level n the driver and cannot be overridden
+drag etc) is set at a global level in the driver and cannot be overridden
 per client, so legacy mouse-only clients cannot meaningfully coexist
 with clients that usefully _could_ handle touch events directly - I am
 working on a client implementation of the Wayland protocol in Clojure.
