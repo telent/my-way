@@ -1,0 +1,15 @@
+Date: Fri Mar  1 11:12:54 2013
+Subject: Puppets at work
+
+Another huge long gap between updates.  I'd say that you might as well
+get used to it, but you probably are already.  This is a short note to say that I have developed a Capistrano extension which runs Puppet as part of an app deploy, and you can read about it on the "Simply Business tech blog":http://tech.simplybusiness.co.uk/2013/02/install-all-the-things-a-capistrano-extension-to-run-puppet/
+
+In other news, having confirmed that the "X11 touchpad
+support":http://lwn.net/Articles/485484/ is broken by design - the
+choice of whether to emulate mouse events (left click, middle click,
+drag) is set at a global level n the driver and cannot be overridden
+per client, so legacy mouse-only clients cannot meaningfully coexist
+with clients that usefully _could_ handle touch events directly - I am
+working on a client implementation of the Wayland protocol in Clojure.
+I hope this will eventually will turn into a habitable text editor.
+
