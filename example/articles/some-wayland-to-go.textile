@@ -1,0 +1,147 @@
+Date: Thu Mar  7 22:01:54 2013
+Subject: Still some way(land) to go
+
+Ignoring, because I can, this whole Ubuntu Mir thing completely, I
+have begun to learn stuff about the "Wayland protocol":http://wayland.freedesktop.org/docs/html/sect-Protocol-Wire-Format.html (and about
+Clojure, with which I am still at the
+constantly-having-to-google-stuff stage).  Some random notes on what I
+have learnt so far
+
+First off: Java has no builtin support for talking to unix-domain
+(@AF_FILE@) sockets. And nobody seems to make a Maven-packaged library
+that does it either.  This is a shame because Leiningen makes Maven
+manageable, but anything unmavened involved tedious mucking around.
+Eventually I did
+
+<pre>
+:; apt-get install libunixsocket-java
+:; cat project.clj
+(defproject psadan "0.1.0-SNAPSHOT"
+  :description "FIXME: write description"
+  :resource-paths ["/usr/share/java/unix-0.5.jar"]
+  :url "http://example.com/FIXME"
+  :jvm-opts ["-Djava.library.path=native/:/usr/lib/jni/"]
+  :main psadan.core
+  :license {:name "Eclipse Public License"
+            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :dependencies [[org.clojure/clojure "1.3.0"]
+                 [org.clojure/data.zip "0.1.1"]
+                 ])
+</pre>
+
+which seems to be holding up.  Then I opened a socket and tried reading from it
+in the hope of getting some lovely protocoly stuff
+<pre>
+(defn open-socket [name]
+  (let [s (cx.ath.matthew.unix.UnixSocket. name)
+        in (. s getInputStream)
+        out (. s getOutputStream)
+        ]
+    {:socket s :input in :output out}))
+
+(def socket (open-socket "/home/dan/private/wayland-0"))
+
+(defn rd []
+  (let [buf (byte-array 1024)]
+    (. (:input socket) (read buf))
+    buf))
+</pre>
+
+and watched it hang.  After some time looking at documentation to see
+if it was trying to read the full buffer and not just returning as
+soon as it got anything (we unix people refer to this latter behaviour
+as a "short read", but Java heads seem to think that's just another
+way of saying "reading a short") and then mucking about with @strace@
+to utterly utterly no avail, I thought to use @socat@ instead of
+clojure.  It tuens out that the client is expected to make the first
+request before the server sends anything, and with the use of @strace
+weston-info@ I was able to find out what.
+
+<pre>
+26335 sendmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"\1\0\0\0\1\0\f\0\2\0\0\0\1\0\0\0\0\0\f\0\3\0\0\0", 24}], msg_controllen=0, msg_flags=0}, MSG_DONTWAIT|MSG_NOSIGNAL) = 24
+</pre>
+
+Time to start writing some code to parse
+"wayland.xml":http://cgit.freedesktop.org/wayland/wayland/tree/protocol/wayland.xml?id=ae6f3001a51cce102422e4ccbeb394fe90945a12
+so we can actually find out what this means. The usual way to do XML parsing in clojure seems to be using
+zippers and the easy examples seem to be somewhat lacking or slightly
+ungooglable.  You need a project dependency on org.clojure/data.zip
+and a bunch of package requires, then you call clojure.zip/xml-zip on
+the return value of clojure.xml/parse and that gets you a zipper
+
+<pre>
+(ns psadan.core
+  (:require [clojure.xml]
+            [clojure.data.zip :as dz]
+            [clojure.data.zip.xml :as x]
+            [clojure.walk]
+            [clojure.zip :as z]))
+
+;; [...]
+
+(def the-protocol
+  (->
+   "/home/dan/wayland/source/wayland/protocol/wayland.xml"
+   clojure.xml/parse
+   z/xml-zip
+   parse-protocol))
+
+</pre>
+
+where I have conveniently left out the definition of parse-protocol
+and everythng it calls because it's longwinded and tedious (but the
+code will be on github as soon as I'm not ashamed of it) but it might
+hypothetically do things like
+
+<pre>(x/xml-> my-zipper :protocol :interface :request)</pre> 
+
+to descend the tree through &lt;protocol> &lt;interface> &lt;request>
+and return all the elements.  Use the similarly named @x/xml1->@ to
+get the first matching element.  The return values from these things
+are themselves zippers and you can call @up@, @down@ etc - or @xml->@
+again - to traverse the tree further then eventually call @node@ when
+you want to get the element itself.  So e.g.
+
+<pre>
+(defn parse-interface [i n]
+  ;; n is a badly named zippered xml object thingy
+  (let [el (z/node n)
+        requests (map-indexed parse-message (x/xml-> n :request))
+        events (map-indexed parse-message (x/xml-> n :event))
+        enums (map parse-enum (x/xml-> n :enum))]
+    {:index i
+     :name (:name (:attrs el))
+     :requests requests
+     :events events
+     :enums enums
+     }))
+</pre>
+
+So let's handwave over the details and take it on trust that I have
+parsed the whole file.  There are two other things I discovered -
+mostly thanks to the #wayland IRC channel participants - about the
+wayland wire protocol that the docs don't mention:
+
+* where it says "The first word is the sender's object id (32-bit)",
+when it's describing a message sent from client to compositor, what it
+_means_ is "The first word is the target object's id (32-bit)".
+
+* object id 1 is special: it refers to the core global singleton
+  object, which implements the interface @wl_display@
+
+Given which, we can attempt to parse that first client->compositor message
+
+<pre>
+psadan.core> (parse-messages-from-buf (vec (.getBytes "\1\0\0\0\1\0\f\0\2\0\0\0\1\0\0\0\0\0\f\0\3\0\0\0")) :requests)
+({:object-id 1, :bytes 12, :interface "wl_display", :message "get_registry", :opcode 1, :args (2)} {:object-id 1, :bytes 12, :interface "wl_display", :message "sync", :opcode 0, :args (3)})
+</pre>
+
+Looks plausible so far ...
+
+Next up, some code to create messages.  After that, we find out what
+the Wayland FAQ _really_ means by "shareable buffer" when it says the
+drawing API is
+
+<blockquote>
+"Whatever you want it to be, honey". Wayland doesn't render on behalf of the clients, it expects the clients to use whatever means they prefer to render into a shareable buffer. </blockquote>
+
