@@ -47,15 +47,13 @@ in the hope of getting some lovely protocoly stuff
     buf))
 </pre>
 
-and watched it hang.  After some time looking at documentation to see
-if it was trying to read the full buffer and not just returning as
-soon as it got anything (we unix people refer to this latter behaviour
-as a "short read", but Java heads seem to think that's just another
-way of saying "reading a short") and then mucking about with @strace@
-to utterly utterly no avail, I thought to use @socat@ instead of
-clojure.  It tuens out that the client is expected to make the first
-request before the server sends anything, and with the use of @strace
-weston-info@ I was able to find out what.
+and watched it hang.  After some time looking at documentation and
+mucking about with strace to see if it was trying to read the full
+buffer instead of doing the dhort read I wanted it to, I eventually
+thought to use @socat@ instead of clojure.  It turns out that the
+client is expected to make the first request before the server sends
+anything, and with the use of @strace weston-info@ I was able to find
+out what.
 
 <pre>
 26335 sendmsg(3, {msg_name(0)=NULL, msg_iov(1)=[{"\1\0\0\0\1\0\f\0\2\0\0\0\1\0\0\0\0\0\f\0\3\0\0\0", 24}], msg_controllen=0, msg_flags=0}, MSG_DONTWAIT|MSG_NOSIGNAL) = 24
@@ -89,7 +87,7 @@ the return value of clojure.xml/parse and that gets you a zipper
 </pre>
 
 where I have conveniently left out the definition of parse-protocol
-and everythng it calls because it's longwinded and tedious (but the
+and everything it calls because it's longwinded and tedious (but the
 code will be on github as soon as I'm not ashamed of it) but it might
 hypothetically do things like
 
@@ -99,7 +97,7 @@ to descend the tree through &lt;protocol> &lt;interface> &lt;request>
 and return all the elements.  Use the similarly named @x/xml1->@ to
 get the first matching element.  The return values from these things
 are themselves zippers and you can call @up@, @down@ etc - or @xml->@
-again - to traverse the tree further then eventually call @node@ when
+again - to traverse the tree further, then eventually call @node@ when
 you want to get the element itself.  So e.g.
 
 <pre>
@@ -124,7 +122,7 @@ wayland wire protocol that the docs don't mention:
 
 * where it says "The first word is the sender's object id (32-bit)",
 when it's describing a message sent from client to compositor, what it
-_means_ is "The first word is the target object's id (32-bit)".
+_means_ is "The first word is the _target object's_ id (32-bit)".
 
 * object id 1 is special: it refers to the core global singleton
   object, which implements the interface @wl_display@
@@ -138,10 +136,7 @@ psadan.core> (parse-messages-from-buf (vec (.getBytes "\1\0\0\0\1\0\f\0\2\0\0\0\
 
 Looks plausible so far ...
 
-Next up, some code to create messages.  After that, we find out what
-the Wayland FAQ _really_ means by "shareable buffer" when it says the
-drawing API is
-
-<blockquote>
-"Whatever you want it to be, honey". Wayland doesn't render on behalf of the clients, it expects the clients to use whatever means they prefer to render into a shareable buffer. </blockquote>
-
+Next up, some code to create messages.  And something, which may
+involve an atom, to map object ids to their corresponding interfaces
+as we learn them.  After that, we find out what the "Wayland FAQ":http://wayland.freedesktop.org/faq.html#heading_toc_j_3
+_really_ means by "shareable buffer"
