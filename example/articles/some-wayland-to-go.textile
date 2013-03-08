@@ -155,9 +155,9 @@ is the same thing as
 (fn3 (fn2 (fn1 x)))
 </pre>
 
-Googling for 'clojure ->' is not a terribly fulfilling endeavour, so
+Googling for @clojure ->@ is not a terribly fulfilling endeavour, so
 it's helpful to know that it's also referred to as the 'arrow'
-operator, the 'threading'operator, and apparently also the 'thrush'
+operator, the 'threading' operator, and apparently also the 'thrush'
 operator.  "This
 blog article":http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/
 from Fogus explains further.
