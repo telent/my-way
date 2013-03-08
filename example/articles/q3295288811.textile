@@ -1,4 +1,4 @@
-title: CLiki now supports editing old versions, for greater ease of
+title: CLiki now supports editing old versions, for greater ease of recovery from vandalism
 author: Daniel Barlow
 date: Thu, 3 Jun 2004 23:0:11 +0000
 

@@ -240,10 +240,13 @@ class Myway
   end
 
   get %r{^/(\d+)/(\d+)/(\d+)/(.*)$} do |y,m,d,slug|
-    articles= @blog.articles 
+    articles= @blog.articles
     time=Time.gm(y,m,d,0,0,0)
-    articles=articles.find_all do |a| 
-      (a.date >= time) && (a.date <= time+86400)
+    articles=articles.find_all do |a|
+      # this is a nasty hack to get round DST issues where articles have
+      # been written around midnight
+      hour_30 = 3600 + 1800
+      (a.date >= time-hour_30) && (a.date <= time+86400+hour_30)
     end
     # XXX should check slug
     a=articles[0]
