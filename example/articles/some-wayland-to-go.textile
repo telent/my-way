@@ -49,7 +49,7 @@ in the hope of getting some lovely protocoly stuff
 
 and watched it hang.  After some time looking at documentation and
 mucking about with strace to see if it was trying to read the full
-buffer instead of doing the dhort read I wanted it to, I eventually
+buffer instead of doing the short read I wanted it to, I eventually
 thought to use @socat@ instead of clojure.  It turns out that the
 client is expected to make the first request before the server sends
 anything, and with the use of @strace weston-info@ I was able to find
@@ -95,7 +95,7 @@ hypothetically do things like
 
 to descend the tree through &lt;protocol> &lt;interface> &lt;request>
 and return all the elements.  Use the similarly named @x/xml1->@ to
-get the first matching element.  The return values from these things
+get the first matching element only.  The return values from these things
 are themselves zippers and you can call @up@, @down@ etc - or @xml->@
 again - to traverse the tree further, then eventually call @node@ when
 you want to get the element itself.  So e.g.
