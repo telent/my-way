@@ -22,7 +22,7 @@ class Myway
       }
     end
   end
-  
+
   class Formatter
     def initialize(string)
       @string=string
@@ -68,7 +68,7 @@ class Myway
         id=($2 || $1).to_i
         flickr_link(id,float)
       }
-      
+
       rc=::RedCloth.new(string)
       rc.extend(NewTags)
       rc.hard_breaks=false
@@ -95,7 +95,7 @@ class Myway
       "/"+[@date.year,@date.month,@date.day,make_slug].join("/")
     end
   end
-  
+
   class Blog
     include NamedArgs
     attr_accessor :directory,:articles
@@ -121,8 +121,8 @@ class Myway
             when "slug" then headers[:slug]=val.strip
             when "date" then headers[:date]=Time.parse(val)
             when "draft" then headers[:draft]=true
-            end             
-          end             
+            end
+          end
           headers[:slug] ||= Article.slug_for_title(headers[:subject])
           unless headers[:draft] then Article.new headers end
         end
@@ -147,7 +147,7 @@ class Myway
       target=url(art.url)
       Erector.inline do
         div :class=>:entry do
-          h2 :class=>:subject do 
+          h2 :class=>:subject do
             a art.subject,:href=>target
             a "#",:href=>target,:class=>:permalink
           end
@@ -163,8 +163,8 @@ class Myway
             end
           end
 
-        end    
-      end    
+        end
+      end
     end
   end
 
@@ -183,7 +183,7 @@ class Myway
         i.title = a.subject
         i.link = url(a.url)
         i.guid.content = url(a.url)
-        
+
         i.description=Erector.inline do
           File.open(a.filename) do |fd|
             fd.seek(a.content_offset)
@@ -199,7 +199,7 @@ class Myway
 
 
   get '/' do
-    articles= @blog.articles 
+    articles= @blog.articles
     recent=articles[-2..-1]
     older=articles[-8..-3]
     Page.new(:title=>"Recent posts",:base=>uri,:blog=>@blog) do
@@ -257,11 +257,11 @@ class Myway
   end
 
   get %r{^/(\d+)/(\d+)/?$} do |y,m|
-    articles= @blog.articles 
+    articles= @blog.articles
     time=Time.gm(y,m,1,0,0,0)
     time-=2*86400
     end_t=time+35*86400;
-    articles=articles.find_all do |a| 
+    articles=articles.find_all do |a|
       (a.date >= time) && (a.date <= end_t)
     end
     Page.new(:title=>"Month of #{(time+6*86400).strftime('%B %Y')}",
@@ -313,7 +313,7 @@ class Myway
   get "/cliki/*" do |page|
     redirect "http://www.cliki.net/"+page
   end
- 
+
   get "/*" do |slug|
     if a=find_slug(slug) then
       redirect url(a.url),301
