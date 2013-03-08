@@ -32,7 +32,7 @@ class Myway::Page < Erector::Widgets::Page
 }
   depends_on :js,"http://twitter.com/javascripts/blogger.js"
   depends_on :script,"var old_callback = twitterCallback2;
-var twitterCallback2 =function(C) 
+var twitterCallback2 =function(C)
 { var A=[];  for(var D=0;D<C.length;D++) { if(C[D].in_reply_to_screen_name == null) A.push(C[D]);  } old_callback(A); }"
 
   depends_on :script,"
@@ -45,12 +45,12 @@ var twitterCallback2 =function(C)
     })();
 "
 
-  def body_content 
+  def body_content
     recent=@blog.articles
     if recent.length > 10 then recent=recent[-10..-1]  end
 
     months=Hash.new {|h,k| h[k]=[] }
-    @blog.articles.each {|x| 
+    @blog.articles.each {|x|
       d=x.date
       months[d.year] << d.month
     }
@@ -71,10 +71,6 @@ var twitterCallback2 =function(C)
             input :type=>:text,:name=>:q,:value=>""
             input :type=>:submit,:value=>"Find"
           end
-        end
-
-        div :class=>:adsense_box do
-          rawtext Adsense::Box_ad
         end
 
         div :id=>:twitter_div do
