@@ -140,3 +140,25 @@ Next up, some code to create messages.  And something, which may
 involve an atom, to map object ids to their corresponding interfaces
 as we learn them.  After that, we find out what the "Wayland FAQ":http://wayland.freedesktop.org/faq.html#heading_toc_j_3
 _really_ means by "shareable buffer"
+
+h2. Addendi
+
+Because this is supposed to be a log of what I am learning, and I had
+never previously learned about the @->@ operator (seen it, never used
+it), for completeness' sake:
+
+<pre>
+(-> x fn1 fn2 fn3)
+</pre>
+is the same thing as
+<pre>
+(fn3 (fn2 (fn1 x)))
+</pre>
+
+Googling for 'clojure ->' is not a terribly fulfilling endeavour, so
+it's helpful to know that it's also referred to as the 'arrow'
+operator, the 'threading'operator, and apparently also the 'thrush'
+operator.  "This
+blog article":http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/
+from Fogus explains further.
+
