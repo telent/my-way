@@ -141,7 +141,7 @@ involve an atom, to map object ids to their corresponding interfaces
 as we learn them.  After that, we find out what the "Wayland FAQ":http://wayland.freedesktop.org/faq.html#heading_toc_j_3
 _really_ means by "shareable buffer"
 
-h2. Addendi
+h2. Addendum, penned the following morning
 
 Because this is supposed to be a log of what I am learning, and I had
 never previously learned about the @->@ operator (seen it, never used
